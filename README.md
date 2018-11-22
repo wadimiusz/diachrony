@@ -1,12 +1,6 @@
 # diachrony
 This is the repository of the project that uses distributional semantics to track semantic shifts in words within short time spans.
 
-Встреча 7.11.18, тимлид - Вадим Фомин
-- сформулировали краткосрочные и долгосрочные задачи по проекту в целом,
-- определили задачи к следущему созвону: с каким материалом необходимо ознакомиться, какие статьи прочитать,
-- выбрали текущего тимлида
-- ...
-
-Встреча 15.11.18, тимлид - Вадим Фомин
-- обсудили, что должно быть в презентации: сформулировали цель, задачи, сложности,
-- ...
+The tead lead of the project in switched once a month.
+The november team lead is Vadim Fomin (https://github.com/wadimiusz).
+The december team lead is Julia Rodina (https://github.com/juliarodina).
