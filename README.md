@@ -1,7 +1,7 @@
 # diachrony
 This is the repository of the project that uses distributional semantics to track semantic shifts in words within short time spans.
 
-The tead lead of the project in switched once a month.
+The tead leam of the project in switched monthly.
 
 The november team lead is Vadim Fomin (https://github.com/wadimiusz).
 
