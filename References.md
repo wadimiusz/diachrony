@@ -8,4 +8,11 @@ https://arxiv.org/pdf/1811.06278.pdf
 
 ### Background
 
+* Tomas Mikolov (word2vec)
+https://papers.nips.cc/paper/5021-distributed-representations-of-words-and-phrases-and-their-compositionality.pdf
+https://arxiv.org/pdf/1301.3781.pdf
+* About semantic shifts in theoretical linguistics:
+__Bloomfield__ Leonard - _Language_ (1933)
+__Stern__ Gustaf - _Meaning and change of meaning with special reference to the English language_ (1931)
+
 ### Methodologies
