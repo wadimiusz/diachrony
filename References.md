@@ -18,17 +18,17 @@ __Stern__ Gustaf - _Meaning and change of meaning with special reference to the 
 
 ### Methodologies
 
-* Hamilton et al. 2016. Diachronic Word Embeddings Reveal Statistical Laws of Semantic Change.  
+* __Hamilton__ et al. 2016. Diachronic Word Embeddings Reveal Statistical Laws of Semantic Change.  
 http://aclweb.org/anthology/P16-1141
-* Hamilton et al. 2016. Cultural Shift or Linguistic Drift? Comparing Two Computational Measures of Semantic Change.  
+* __Hamilton__ et al. 2016. Cultural Shift or Linguistic Drift? Comparing Two Computational Measures of Semantic Change.  
 http://www.anthology.aclweb.org/D/D16/D16-1229.pdf
-* Kulkarni et al. 2015. Statistically Significant Detection of Linguistic Change.  
+* __Kulkarni__ et al. 2015. Statistically Significant Detection of Linguistic Change.  
 https://arxiv.org/pdf/1411.3315.pdf
-* Rosenfeld, Erk. 2018. Deep Neural Models of Semantic Shift.  
+* __Rosenfeld, Erk__. 2018. Deep Neural Models of Semantic Shift.  
 http://aclweb.org/anthology/N18-1044
-* Kim et al. 2014. Temporal Analysis of Language through Neural Language Models.  
+* __Kim__ et al. 2014. Temporal Analysis of Language through Neural Language Models.  
 https://arxiv.org/pdf/1405.3515.pdf
-* Bamler, Mandt. 2017. Dynamic Word Embeddings.  
+* __Bamler, Mandt__. 2017. Dynamic Word Embeddings.  
 https://arxiv.org/pdf/1702.08359.pdf
 
 * Yao et al. 2018. Dynamic Word Embeddings for Evolving Semantic Discovery  
