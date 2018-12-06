@@ -1,11 +1,42 @@
 import argparse
 import gensim
 import os
+import random
+
+
+def tag_cutter(word:str):
+    """
+    :param word: a string with our without a tag, e g дом_NOUN or дом
+    :return: the word without tags, e. g. дом
+    """
+
+    if "_" in word:
+        return word[:word.find("_")]
+    else:
+        return word
+
+
+def get_top_neighbors(word: str, w2v: gensim.models.KeyedVectors, n: int, cut_tags: bool):
+        """
+        :param word: the word whose neighbors to retrieve
+        :param w2v: the keyed vectors model
+        :param n: top n neighbors will be extracted
+        :param cut_tags: if True: i. g. word="дом", it will retrieve all instances of дом with tags: дом_NOUN etc.
+        :return:
+        """
+        if cut_tags:
+            result = list()
+            for word in w2v.vocab:
+                if word.startswith(word + "_"):
+                    result.extend([word for word, score in w2v.most_similar(word, topn = n)])
+            return result
+        else:
+            return [word for word, score in w2v.most_similar(word, topn = n)]
 
 
 def comparison(w2v1_path: str, w2v2_path: str, binary1: bool, binary2: bool, top_n_neighbors: int,
                top_n_changed_words: (int, None), top_n_most_frequent_words: (int, None), pos_tag: str,
-               verbose: bool):
+               verbose: bool, cut_tags: bool):
     """
     This module extracts two models from two specified paths and compares the meanings of words within their vocabulary.
     :param w2v1_path: the path to the first model
@@ -39,6 +70,16 @@ def comparison(w2v1_path: str, w2v2_path: str, binary1: bool, binary2: bool, top
     vocab1 = list(w2v1.vocab.keys())
     vocab2 = list(w2v2.vocab.keys())
 
+    if verbose:
+        print("The first model contains {words1} words, e. g. {word1}\n"
+              "The second model contains {words2} words, e. g. {word2}".format(words1=len(vocab1), words2=len(vocab2),
+                                                                               word1=random.choice(vocab1),
+                                                                               word2=random.choice(vocab2)))
+
+    if cut_tags:
+        vocab1 = [tag_cutter(word) for word in vocab1]
+        vocab2 = [tag_cutter(word) for word in vocab2]
+
     if pos_tag is not None:
         vocab1 = [word for word in vocab1 if word.endswith(pos_tag)]
         vocab2 = [word for word in vocab2 if word.endswith(pos_tag)]
@@ -47,17 +88,23 @@ def comparison(w2v1_path: str, w2v2_path: str, binary1: bool, binary2: bool, top
     vocab2 = vocab2[:top_n_most_frequent_words]
 
     shared_vocabulary = [word for word in vocab1 if word in vocab2]
+    if verbose:
+        print("The shared vocabulary contains {n} words".format(n=len(shared_vocabulary)))
 
     n = top_n_neighbors
 
     results = list()
-    for word in shared_vocabulary:
-        top_n_1 = [word for word, score in w2v1.most_similar(word, topn=n)]
-        top_n_2 = [word for word, score in w2v2.most_similar(word, topn=n)]
-        intersection = [word for word in top_n_1 if word in top_n_2]
-        union = set(top_n_1 + top_n_2)
-        jaccard = len(intersection) / len(union)
-        results.append((word, jaccard))
+    for num, word in enumerate(shared_vocabulary):
+        if verbose and num % 10 == 0:
+            print("{words_num} / {length}".format(words_num=num, length=len(shared_vocabulary)), end='\r')
+
+        top_n_1 = get_top_neighbors(word, w2v1, n, cut_tags)
+        top_n_2 = get_top_neighbors(word, w2v2, n, cut_tags)
+        if len(top_n_1) + len(top_n_2) != 0:
+            intersection = [word for word in top_n_1 if word in top_n_2]
+            union = set(top_n_1 + top_n_2)
+            jaccard = len(intersection) / len(union)
+            results.append((word, jaccard))
 
     results = sorted(results, key=lambda x: x[1])[:top_n_changed_words]
     for word, jaccard in results:
@@ -92,10 +139,14 @@ def main():
     parser.add_argument("--verbose", action="store_true", help="Give this argument "
                                                                "to make the model verbose")
 
+    parser.add_argument("--cut-tags", action="store_true", help="Use this argument to cut off the pos-tags, e. g. "
+                                                                "дом_NOUN --> дом")
+
     args = parser.parse_args()
     comparison(w2v1_path=args.model1, w2v2_path=args.model2, binary1=args.binary1, binary2=args.binary2,
                top_n_neighbors=args.top_n_neighbors, top_n_most_frequent_words=args.top_n_most_frequent_words,
-               pos_tag=args.pos_tag, verbose=args.verbose, top_n_changed_words=args.top_n_changed_words)
+               pos_tag=args.pos_tag, verbose=args.verbose, top_n_changed_words=args.top_n_changed_words,
+               cut_tags=args.cut_tags)
 
 
 if __name__ == "__main__":
