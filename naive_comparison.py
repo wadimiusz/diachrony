@@ -70,7 +70,8 @@ def get_top_neighbors(word: str, w2v: gensim.models.KeyedVectors, n: int, cut_ta
         :param w2v: the keyed vectors model
         :param n: top n neighbors will be extracted
         :param cut_tags: if True: i. g. word="дом", it will retrieve all instances of дом with tags: дом_NOUN etc.
-        :return:
+        :return: n closest neighbors for the given word (for each tag if cut_tags is True, so if there is word_NOUN,
+                word_ADJ and word_VERB for the same word, it returns 30 neighbors
         """
         if cut_tags:
             result = list()
@@ -144,7 +145,7 @@ def comparison(w2v1_path: str, w2v2_path: str, top_n_neighbors: int,
         print("word {word} has jaccard measure {jaccard}".format(word=word, jaccard=jaccard))
         print("word {word} has the following neighbors in model1:".format(word=word))
         print(*[word for word, score in w2v1.most_similar(word)], sep=",")
-        print("word {word} has the following neighbors in model2:".formar(word=word))
+        print("word {word} has the following neighbors in model2:".format(word=word))
         print(*[word for word, score in w2v2.most_similar(word)], sep=",")
         print("==========================================================")
 
