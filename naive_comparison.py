@@ -142,9 +142,9 @@ def comparison(w2v1_path: str, w2v2_path: str, top_n_neighbors: int,
     results = sorted(results, key=lambda x: x[1])[:top_n_changed_words]
     for word, jaccard in results:
         print("word {word} has jaccard measure {jaccard}".format(word=word, jaccard=jaccard))
-        print("word {word} has the following neighbors in model1:")
+        print("word {word} has the following neighbors in model1:".format(word=word))
         print(*[word for word, score in w2v1.most_similar(word)], sep=",")
-        print("word {word} has the following neighbors in model2:")
+        print("word {word} has the following neighbors in model2:".formar(word=word))
         print(*[word for word, score in w2v2.most_similar(word)], sep=",")
         print("==========================================================")
 
