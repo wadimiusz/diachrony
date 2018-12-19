@@ -76,11 +76,11 @@ def get_top_neighbors(word: str, w2v: gensim.models.KeyedVectors, vocab: list, n
         """
         if cut_tags:
             result = list()
-            for word in w2v.vocab:
+            for word in vocab:
                 if word.startswith(word + "_"):
-                    result.extend([word for word, score in w2v.most_similar(word, topn=n * 5)])
+                    result.extend([word for word, score in w2v.most_similar(word, topn=n*5)])
         else:
-            result = [word for word, score in w2v.most_similar(word, topn=n)]
+            result = [word for word, score in w2v.most_similar(word, topn=n*5)]
 
         result = [word for word in result if word in vocab][:n]
         return result
@@ -100,7 +100,7 @@ def preprocess_vocabs(w2v1: gensim.models.KeyedVectors, w2v2: gensim.models.Keye
         print("Preprocessing...")
 
     vocab1 = sorted(vocab1, key=lambda x: word_frequency(w2v1, x), reverse=True)
-    vocab1 = sorted(vocab1, key=lambda x: word_frequency(w2v2, x), reverse=True)
+    vocab2 = sorted(vocab2, key=lambda x: word_frequency(w2v2, x), reverse=True)
 
     if cut_tags:
         vocab1 = [tag_cutter(word) for word in vocab1]
@@ -156,6 +156,12 @@ def comparison(w2v1_path: str, w2v2_path: str, top_n_neighbors: int,
     vocab1, vocab2 = preprocess_vocabs(w2v1=w2v1, w2v2=w2v2, vocab1=vocab1, vocab2=vocab2, pos_tag=pos_tag, verbose=verbose, cut_tags=cut_tags,
                                        top_n_most_frequent_words=top_n_most_frequent_words)
 
+    if verbose:
+        print("After preprocessing, the first model contains {words1} words, e. g. {word1}\n"
+              "The second model contains {words2} words, e. g. {word2}".format(words1=len(vocab1), words2=len(vocab2),
+                                                                               word1=random.choice(vocab1),
+                                                                               word2=random.choice(vocab2)))
+
     shared_vocabulary = list(set(vocab1).intersection(set(vocab2)))
     if verbose:
         print("The shared vocabulary contains {n} words".format(n=len(shared_vocabulary)))
@@ -165,21 +171,27 @@ def comparison(w2v1_path: str, w2v2_path: str, top_n_neighbors: int,
         if verbose and num % 10 == 0:
             print("{words_num} / {length}".format(words_num=num, length=len(shared_vocabulary)), end='\r')
 
-        top_n_1 = get_top_neighbors(word=word, w2v=w2v1, vocab=vocab, n=top_n_neighbors, cut_tags=cut_tags)
-        top_n_2 = get_top_neighbors(word=word, w2v=w2v2, vocab=vocab, n=top_n_neighbors, cut_tags=cut_tags)
-        if len(top_n_1) + len(top_n_2) != 0:
-            intersection = [word for word in top_n_1 if word in top_n_2]
+        top_n_1 = get_top_neighbors(word=word, w2v=w2v1, vocab=vocab1, n=top_n_neighbors, cut_tags=cut_tags)
+        top_n_2 = get_top_neighbors(word=word, w2v=w2v2, vocab=vocab2, n=top_n_neighbors, cut_tags=cut_tags)
+        if len(top_n_1) == top_n_neighbors and len(top_n_2) == top_n_neighbors:
+            intersection = set(top_n_1).intersection(set(top_n_2))
             union = set(top_n_1 + top_n_2)
             jaccard = len(intersection) / len(union)
             results.append((word, jaccard))
+            # print("Intersection", *intersection)
+            # print("Union", *union)
+            # print("Intersection length", len(intersection))
+            # print("Union length", len(union))
 
-    results = sorted(results, key=lambda x: x[1])[:top_n_changed_words]
+    results = sorted(results, key=lambda x: x[1],)[:top_n_changed_words]
     for word, jaccard in results:
+        top_n_1 = get_top_neighbors(word=word, w2v=w2v1, vocab=vocab1, n=top_n_neighbors, cut_tags=cut_tags)
+        top_n_2 = get_top_neighbors(word=word, w2v=w2v2, vocab=vocab2, n=top_n_neighbors, cut_tags=cut_tags)
         print("word {word} has jaccard measure {jaccard}".format(word=word, jaccard=jaccard))
         print("word {word} has the following neighbors in model1:".format(word=word))
-        print(*[word for word, score in w2v1.most_similar(word)], sep=",")
+        print(*top_n_1, sep=',')
         print("word {word} has the following neighbors in model2:".format(word=word))
-        print(*[word for word, score in w2v2.most_similar(word)], sep=",")
+        print(*top_n_2, sep=',')
         print("==========================================================")
 
 
