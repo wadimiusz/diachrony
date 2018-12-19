@@ -83,13 +83,51 @@ def get_top_neighbors(word: str, w2v: gensim.models.KeyedVectors, n: int, cut_ta
             return [word for word, score in w2v.most_similar(word, topn=n)]
 
 
+def preprocess_vocabs(w2v1: gensim.models.KeyedVectors, w2v2: gensim.models.KeyedVectors, vocab1: list, vocab2: list,
+                      pos_tag: str, verbose: bool, cut_tags: bool, top_n_most_frequent_words: int):
+    """
+    This function does the preprocessing and cleanup of embedding vocabs before we can do the main job
+    :param w2v1: the first model WHOSE vocabulary we preprocess. we use the model to extract the frequencies
+    :param w2v2: the second model WHOSE vocabulary we preprocess. we use the model to extract the frequencies
+    :param vocab1: list
+    :param vocab2: list
+    :return: vocab1, vocab2, preprocessed, both are lists
+    """
+    if verbose:
+        print("Preprocessing...")
+
+    vocab1 = sorted(vocab1, key=lambda x: word_frequency(w2v1, x), reverse=True)
+    vocab1 = sorted(vocab1, key=lambda x: word_frequency(w2v2, x), reverse=True)
+
+    if cut_tags:
+        vocab1 = [tag_cutter(word) for word in vocab1]
+        vocab2 = [tag_cutter(word) for word in vocab2]
+
+    if pos_tag is not None:
+        vocab1 = [word for word in vocab1 if word.endswith(pos_tag)]
+        vocab2 = [word for word in vocab2 if word.endswith(pos_tag)]
+
+    vocab1 = vocab1[:top_n_most_frequent_words]
+    vocab2 = vocab2[:top_n_most_frequent_words]
+
+    return vocab1, vocab2
+
+def word_frequency(model: gensim.models.KeyedVectors, word: str) -> int:
+    """
+    A handy function for extracting the word frequency from models
+    :param model: the model in question
+    :param word: extract the frequency of this word
+    :return:
+    """
+    return model.wv.vocab[word].count
+
 def comparison(w2v1_path: str, w2v2_path: str, top_n_neighbors: int,
-               top_n_changed_words: (int, None), top_n_most_frequent_words: (int, None), pos_tag: str,
+               top_n_changed_words: (int, None), top_n_most_frequent_words: (int, None), pos_tag: (str, None),
                verbose: bool, cut_tags: bool):
     """
     This module extracts two models from two specified paths and compares the meanings of words within their vocabulary.
     :param w2v1_path: the path to the first model
-    :param w2v2_path: the path to the second model
+    :param w2v2_path: the path to the second modet
     :param top_n_neighbors: we will compare top n neighbors of words
     :param top_n_changed_words: we will output top n most interesting words, may be int or None
     :param top_n_most_frequent_words: we will use top n most frequent words from each model, may be int or None
@@ -110,30 +148,20 @@ def comparison(w2v1_path: str, w2v2_path: str, top_n_neighbors: int,
                                                                                word1=random.choice(vocab1),
                                                                                word2=random.choice(vocab2)))
 
-    if cut_tags:
-        vocab1 = [tag_cutter(word) for word in vocab1]
-        vocab2 = [tag_cutter(word) for word in vocab2]
-
-    if pos_tag is not None:
-        vocab1 = [word for word in vocab1 if word.endswith(pos_tag)]
-        vocab2 = [word for word in vocab2 if word.endswith(pos_tag)]
-
-    vocab1 = vocab1[:top_n_most_frequent_words]
-    vocab2 = vocab2[:top_n_most_frequent_words]
+    vocab1, vocab2 = preprocess_vocabs(w2v1=w2v1, w2v2=w2v2, vocab1, vocab2, pos_tag=pos_tag, verbose=verbose, cut_tags=cut_tags,
+                                       top_n_most_frequent_words=top_n_most_frequent_words)
 
     shared_vocabulary = list(set(vocab1).intersection(set(vocab2)))
     if verbose:
         print("The shared vocabulary contains {n} words".format(n=len(shared_vocabulary)))
-
-    n = top_n_neighbors
 
     results = list()
     for num, word in enumerate(shared_vocabulary):
         if verbose and num % 10 == 0:
             print("{words_num} / {length}".format(words_num=num, length=len(shared_vocabulary)), end='\r')
 
-        top_n_1 = get_top_neighbors(word, w2v1, n, cut_tags)
-        top_n_2 = get_top_neighbors(word, w2v2, n, cut_tags)
+        top_n_1 = get_top_neighbors(word, w2v1, top_n_neighbors, cut_tags)
+        top_n_2 = get_top_neighbors(word, w2v2, top_n_neighbors, cut_tags)
         if len(top_n_1) + len(top_n_2) != 0:
             intersection = [word for word in top_n_1 if word in top_n_2]
             union = set(top_n_1 + top_n_2)
