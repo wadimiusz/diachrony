@@ -2,6 +2,7 @@ import argparse
 import gensim
 import os
 import random
+from scipy.stats import mstats
 
 
 def load_model(embeddings_file):
@@ -66,7 +67,7 @@ def loader(w2v1_path: str, w2v2_path: str, verbose: bool):
 
 def get_top_neighbors(word: str, w2v: gensim.models.KeyedVectors, vocab: list, n: int, cut_tags: bool):
         """
-        :param word: the word whose neighbors to retrieve
+        :param word: the word neighbors of which to retrieve
         :param w2v: the keyed vectors model
         :param vocab: we only retrieve words that are included in vocab
         :param n: top n neighbors will be extracted
@@ -90,11 +91,15 @@ def preprocess_vocabs(w2v1: gensim.models.KeyedVectors, w2v2: gensim.models.Keye
                       pos_tag: str, verbose: bool, cut_tags: bool, top_n_most_frequent_words: int):
     """
     This function does the preprocessing and cleanup of embedding vocabs before we can do the main job
-    :param w2v1: the first model WHOSE vocabulary we preprocess. we use the model to extract the frequencies
-    :param w2v2: the second model WHOSE vocabulary we preprocess. we use the model to extract the frequencies
+    :param w2v1: the first model the vocabulary of which we preprocess. we use the model to extract the frequencies
+    :param w2v2: the second model the vocabulary of which we preprocess. we use the model to extract the frequencies
     :param vocab1: list
     :param vocab2: list
-    :return: vocab1, vocab2, preprocessed, both are lists
+    :param pos_tag: str or None, if str we only look for words with this pos tag
+    :param verbose: bool, if True we print system messages
+    :param cut_tags: bool, if True we ignore pos tags
+    :param top_n_most_frequent_words:
+    :return: vocab1, vocab2, both are preprocessed lists
     """
     if verbose:
         print("Preprocessing...")
@@ -126,6 +131,86 @@ def word_frequency(model: gensim.models.KeyedVectors, word: str) -> int:
     return model.wv.vocab[word].count
 
 
+def word_index(model: gensim.models.KeyedVectors, word: str) -> int:
+    """
+    A handy function for extracting the word index from models
+    :param model: the model in question
+    :param word: the word index of which we extract
+    :return:
+    """
+    return model.wv.vocab[word].index
+
+
+def get_changes_by_jaccard(w2v1: gensim.models.KeyedVectors, w2v2: gensim.models.KeyedVectors,
+                           vocab1: list, vocab2: list, top_n_neighbors: int, cut_tags: bool,
+                           verbose: bool, top_n_changed_words: int, shared_vocabulary: list):
+    if verbose:
+        print("JACCARD")
+
+    results = list()
+    for num, word in enumerate(shared_vocabulary):
+        if verbose and num % 10 == 0:
+            print("{words_num} / {length}".format(words_num=num, length=len(shared_vocabulary)), end='\r')
+
+        top_n_1 = get_top_neighbors(word=word, w2v=w2v1, vocab=vocab1, n=top_n_neighbors, cut_tags=cut_tags)
+        top_n_2 = get_top_neighbors(word=word, w2v=w2v2, vocab=vocab2, n=top_n_neighbors, cut_tags=cut_tags)
+        if len(top_n_1) == top_n_neighbors and len(top_n_2) == top_n_neighbors:
+            intersection = set(top_n_1).intersection(set(top_n_2))
+            union = set(top_n_1 + top_n_2)
+            jaccard = len(intersection) / len(union)
+            results.append((word, jaccard))
+            # print("Intersection", *intersection)
+            # print("Union", *union)
+            # print("Intersection length", len(intersection))
+            # print("Union length", len(union))
+
+    results = sorted(results, key=lambda x: x[1], )[:top_n_changed_words]
+    print("results", results)
+    for word, jaccard in results:
+        top_n_1 = get_top_neighbors(word=word, w2v=w2v1, vocab=vocab1, n=top_n_neighbors, cut_tags=cut_tags)
+        top_n_2 = get_top_neighbors(word=word, w2v=w2v2, vocab=vocab2, n=top_n_neighbors, cut_tags=cut_tags)
+        print("word {word} has jaccard measure {jaccard}".format(word=word, jaccard=jaccard))
+        print("word {word} has the following neighbors in model1:".format(word=word))
+        print(*top_n_1, sep=',')
+        print("word {word} has the following neighbors in model2:".format(word=word))
+        print(*top_n_2, sep=',')
+        print("==========================================================")
+
+
+def get_changes_by_kendelltau(w2v1: gensim.models.KeyedVectors, w2v2: gensim.models.KeyedVectors,
+                              vocab1: list, vocab2: list, top_n_neighbors: int, cut_tags: bool,
+                              verbose: bool, top_n_changed_words: int, shared_vocabulary: list):
+
+    if verbose:
+        print("KENDALL TAU")
+    result = list()
+    for num, word in enumerate(shared_vocabulary):
+        if verbose and num % 10 == 0:
+            print("{words_num} / {length}".format(words_num=num, length=len(shared_vocabulary)), end='\r')
+
+        top_n_1 = get_top_neighbors(word=word, w2v=w2v1, vocab=vocab1, n=top_n_neighbors, cut_tags=cut_tags)
+        top_n_2 = get_top_neighbors(word=word, w2v=w2v2, vocab=vocab2, n=top_n_neighbors, cut_tags=cut_tags)
+        if len(top_n_1) == len(top_n_2) == top_n_neighbors:
+            score, p_value = mstats.kendalltau(top_n_1, top_n_2)
+            result.append((word, score))
+
+    result = sorted(result, key=lambda x: x[1], )[:top_n_changed_words]
+    for word, score in result:
+            top_n_1 = get_top_neighbors(word=word, w2v=w2v1, vocab=vocab1, n=top_n_neighbors, cut_tags=cut_tags)
+            top_n_2 = get_top_neighbors(word=word, w2v=w2v2, vocab=vocab2, n=top_n_neighbors, cut_tags=cut_tags)
+
+            top_n_1 = [word_index(w2v1, word) for word in top_n_1]
+            top_n_2 = [word_index(w2v1, word) for word in top_n_2]
+            # we specifically want w2v1 indexing in both cases
+            # because it matters that we have the same indices
+            print("word {word} has kendall-tau score {score}".format(word=word, score=score))
+            print("word {word} has the following neighbors in model1:".format(word=word))
+            print(*top_n_1, sep=',')
+            print("word {word} has the following neighbors in model2:".format(word=word))
+            print(*top_n_2, sep=',')
+            print("==========================================================")
+
+
 def comparison(w2v1_path: str, w2v2_path: str, top_n_neighbors: int,
                top_n_changed_words: (int, None), top_n_most_frequent_words: (int, None), pos_tag: (str, None),
                verbose: bool, cut_tags: bool):
@@ -141,7 +226,6 @@ def comparison(w2v1_path: str, w2v2_path: str, top_n_neighbors: int,
     :param cut_tags: if True words like дом_NOUN turn into words like дом, without tags
     :return: None
     """
-
     w2v1, w2v2 = loader(w2v1_path=w2v1_path, w2v2_path=w2v2_path, verbose=verbose)
 
     vocab1 = list(w2v1.vocab.keys())
@@ -165,34 +249,13 @@ def comparison(w2v1_path: str, w2v2_path: str, top_n_neighbors: int,
     shared_vocabulary = list(set(vocab1).intersection(set(vocab2)))
     if verbose:
         print("The shared vocabulary contains {n} words".format(n=len(shared_vocabulary)))
+    get_changes_by_jaccard(w2v1=w2v1, w2v2=w2v2, vocab1=vocab1, vocab2=vocab2, top_n_neighbors=top_n_neighbors,
+                           cut_tags=cut_tags, top_n_changed_words=top_n_changed_words, verbose=verbose,
+                           shared_vocabulary=shared_vocabulary)
 
-    results = list()
-    for num, word in enumerate(shared_vocabulary):
-        if verbose and num % 10 == 0:
-            print("{words_num} / {length}".format(words_num=num, length=len(shared_vocabulary)), end='\r')
-
-        top_n_1 = get_top_neighbors(word=word, w2v=w2v1, vocab=vocab1, n=top_n_neighbors, cut_tags=cut_tags)
-        top_n_2 = get_top_neighbors(word=word, w2v=w2v2, vocab=vocab2, n=top_n_neighbors, cut_tags=cut_tags)
-        if len(top_n_1) == top_n_neighbors and len(top_n_2) == top_n_neighbors:
-            intersection = set(top_n_1).intersection(set(top_n_2))
-            union = set(top_n_1 + top_n_2)
-            jaccard = len(intersection) / len(union)
-            results.append((word, jaccard))
-            # print("Intersection", *intersection)
-            # print("Union", *union)
-            # print("Intersection length", len(intersection))
-            # print("Union length", len(union))
-
-    results = sorted(results, key=lambda x: x[1],)[:top_n_changed_words]
-    for word, jaccard in results:
-        top_n_1 = get_top_neighbors(word=word, w2v=w2v1, vocab=vocab1, n=top_n_neighbors, cut_tags=cut_tags)
-        top_n_2 = get_top_neighbors(word=word, w2v=w2v2, vocab=vocab2, n=top_n_neighbors, cut_tags=cut_tags)
-        print("word {word} has jaccard measure {jaccard}".format(word=word, jaccard=jaccard))
-        print("word {word} has the following neighbors in model1:".format(word=word))
-        print(*top_n_1, sep=',')
-        print("word {word} has the following neighbors in model2:".format(word=word))
-        print(*top_n_2, sep=',')
-        print("==========================================================")
+    get_changes_by_kendelltau(w2v1=w2v1, w2v2=w2v2, vocab1=vocab1, vocab2=vocab2, top_n_neighbors=top_n_neighbors,
+                           cut_tags=cut_tags, top_n_changed_words=top_n_changed_words, verbose=verbose,
+                           shared_vocabulary=shared_vocabulary)
 
 
 def main():
