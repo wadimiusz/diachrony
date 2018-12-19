@@ -3,9 +3,9 @@ This is the repository of the project that uses distributional semantics to trac
 
 The tead leam of the project in switched monthly.
 
-The november team lead is Vadim Fomin (https://github.com/wadimiusz).
+The November team lead is Vadim Fomin (https://github.com/wadimiusz).
 
-The december team lead is Julia Rodina (https://github.com/juliarodina).
+The December team lead is Julia Rodina (https://github.com/juliarodina).
 
 **Встреча 7.11.2018**
 Присутствуют все (Андрей, Даша, Вадим, Юля, Света)
