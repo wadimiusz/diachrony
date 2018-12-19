@@ -64,10 +64,11 @@ def loader(w2v1_path: str, w2v2_path: str, verbose: bool):
     return w2v1, w2v2
 
 
-def get_top_neighbors(word: str, w2v: gensim.models.KeyedVectors, n: int, cut_tags: bool):
+def get_top_neighbors(word: str, w2v: gensim.models.KeyedVectors, vocab: list, n: int, cut_tags: bool):
         """
         :param word: the word whose neighbors to retrieve
         :param w2v: the keyed vectors model
+        :param vocab: we only retrieve words that are included in vocab
         :param n: top n neighbors will be extracted
         :param cut_tags: if True: i. g. word="дом", it will retrieve all instances of дом with tags: дом_NOUN etc.
         :return: n closest neighbors for the given word (for each tag if cut_tags is True, so if there is word_NOUN,
@@ -77,10 +78,12 @@ def get_top_neighbors(word: str, w2v: gensim.models.KeyedVectors, n: int, cut_ta
             result = list()
             for word in w2v.vocab:
                 if word.startswith(word + "_"):
-                    result.extend([word for word, score in w2v.most_similar(word, topn=n)])
-            return result
+                    result.extend([word for word, score in w2v.most_similar(word, topn=n * 5)])
         else:
-            return [word for word, score in w2v.most_similar(word, topn=n)]
+            result = [word for word, score in w2v.most_similar(word, topn=n)]
+
+        result = [word for word in result if word in vocab][:n]
+        return result
 
 
 def preprocess_vocabs(w2v1: gensim.models.KeyedVectors, w2v2: gensim.models.KeyedVectors, vocab1: list, vocab2: list,
@@ -112,6 +115,7 @@ def preprocess_vocabs(w2v1: gensim.models.KeyedVectors, w2v2: gensim.models.Keye
 
     return vocab1, vocab2
 
+
 def word_frequency(model: gensim.models.KeyedVectors, word: str) -> int:
     """
     A handy function for extracting the word frequency from models
@@ -120,6 +124,7 @@ def word_frequency(model: gensim.models.KeyedVectors, word: str) -> int:
     :return:
     """
     return model.wv.vocab[word].count
+
 
 def comparison(w2v1_path: str, w2v2_path: str, top_n_neighbors: int,
                top_n_changed_words: (int, None), top_n_most_frequent_words: (int, None), pos_tag: (str, None),
@@ -148,7 +153,7 @@ def comparison(w2v1_path: str, w2v2_path: str, top_n_neighbors: int,
                                                                                word1=random.choice(vocab1),
                                                                                word2=random.choice(vocab2)))
 
-    vocab1, vocab2 = preprocess_vocabs(w2v1=w2v1, w2v2=w2v2, vocab1, vocab2, pos_tag=pos_tag, verbose=verbose, cut_tags=cut_tags,
+    vocab1, vocab2 = preprocess_vocabs(w2v1=w2v1, w2v2=w2v2, vocab1=vocab1, vocab2=vocab2, pos_tag=pos_tag, verbose=verbose, cut_tags=cut_tags,
                                        top_n_most_frequent_words=top_n_most_frequent_words)
 
     shared_vocabulary = list(set(vocab1).intersection(set(vocab2)))
@@ -160,8 +165,8 @@ def comparison(w2v1_path: str, w2v2_path: str, top_n_neighbors: int,
         if verbose and num % 10 == 0:
             print("{words_num} / {length}".format(words_num=num, length=len(shared_vocabulary)), end='\r')
 
-        top_n_1 = get_top_neighbors(word, w2v1, top_n_neighbors, cut_tags)
-        top_n_2 = get_top_neighbors(word, w2v2, top_n_neighbors, cut_tags)
+        top_n_1 = get_top_neighbors(word=word, w2v=w2v1, vocab=vocab, n=top_n_neighbors, cut_tags=cut_tags)
+        top_n_2 = get_top_neighbors(word=word, w2v=w2v2, vocab=vocab, n=top_n_neighbors, cut_tags=cut_tags)
         if len(top_n_1) + len(top_n_2) != 0:
             intersection = [word for word in top_n_1 if word in top_n_2]
             union = set(top_n_1 + top_n_2)
