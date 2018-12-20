@@ -2,6 +2,7 @@ import argparse
 import gensim
 import os
 import random
+import numpy as np
 from scipy.stats import mstats
 
 
@@ -26,16 +27,85 @@ def load_model(embeddings_file):
     return emb_model
 
 
-def tag_cutter(word: str):
-    """
-    :param word: a string with our without a tag, e g дом_NOUN or дом
-    :return: the word without tags, e. g. дом
-    """
+# def tag_cutter(word: str):
+#    """
+#    :param word: a string with our without a tag, e g дом_NOUN or дом
+#    :return: the word without tags, e. g. дом
+#    """
+#
+#    if "_" in word:
+#        return word[:word.find("_")]
+#    else:
+#        return word
 
-    if "_" in word:
-        return word[:word.find("_")]
+
+def intersection_align_gensim(m1: gensim.models.KeyedVectors, m2: gensim.models.KeyedVectors,
+                              pos_tag: (str, None) = None, words: (list, None) = None,
+                              top_n_most_frequent_words: (int, None) = None):
+    """
+    This procedure, taken from https://gist.github.com/quadrismegistus/09a93e219a6ffc4f216fb85235535faf and slightly
+    modified, corrects two models in a way that only the shared words of the vocabulary are kept in the model,
+    and both vocabularies are sorted by frequencies.
+    Original comment is as follows:
+
+    Intersect two gensim word2vec models, m1 and m2.
+    Only the shared vocabulary between them is kept.
+    If 'words' is set (as list or set), then the vocabulary is intersected with this list as well.
+    Indices are re-organized from 0..N in order of descending frequency (=sum of counts from both m1 and m2).
+    These indices correspond to the new syn0 and syn0norm objects in both gensim models:
+        -- so that Row 0 of m1.syn0 will be for the same word as Row 0 of m2.syn0
+        -- you can find the index of any word on the .index2word list: model.index2word.index(word) => 2
+    The .vocab dictionary is also updated for each model, preserving the count but updating the index.
+
+    :param m1: the first model
+    :param m2: the second model
+    :param pos_tag: if given, we remove words with other pos tags
+    :param words: a container
+    :param top_n_most_frequent_words: if not None, we only use top n words by frequency
+    :return m1, m2: both models after their vocabs are modified
+    """
+    
+    # Get the vocab for each model
+    if pos_tag is None:
+        vocab_m1 = set(m1.wv.vocab.keys())
+        vocab_m2 = set(m2.wv.vocab.keys())
     else:
-        return word
+        vocab_m1 = set(word for word in m1.wv.vocab.keys() if word.endswith("_" + pos_tag))
+        vocab_m2 = set(word for word in m2.wv.vocab.keys() if word.endswith("_" + pos_tag))
+
+    # Find the common vocabulary
+    common_vocab = vocab_m1 & vocab_m2
+    if words:
+        common_vocab &= set(words)
+
+    # If no alignment necessary because vocab is identical...
+    if not vocab_m1-common_vocab and not vocab_m2-common_vocab and top_n_most_frequent_words is not None:
+        return m1, m2
+
+    # Otherwise sort by frequency (summed for both)
+    common_vocab = list(common_vocab)
+    common_vocab.sort(key=lambda w: m1.wv.vocab[w].count + m2.wv.vocab[w].count, reverse=True)
+    common_vocab = common_vocab[:top_n_most_frequent_words]
+    
+    # Then for each model...
+    for m in [m1, m2]:
+        # Replace old syn0norm array with new one (with common vocab)
+        indices = [m.wv.vocab[w].index for w in common_vocab]
+        old_arr = m.syn0norm
+        new_arr = np.array([old_arr[index] for index in indices])
+        m.syn0norm = m.syn0 = new_arr
+
+        # Replace old vocab dictionary with new one (with common vocab)
+        # and old index2word with new one
+        m.index2word = common_vocab
+        old_vocab = m.wv.vocab
+        new_vocab = dict()
+        for new_index, word in enumerate(common_vocab):
+            old_vocab_obj = old_vocab[word]
+            new_vocab[word] = gensim.models.word2vec.Vocab(index=new_index, count=old_vocab_obj.count)
+        m.wv.vocab = new_vocab
+
+    return m1, m2
 
 
 def loader(w2v1_path: str, w2v2_path: str, verbose: bool):
@@ -65,62 +135,6 @@ def loader(w2v1_path: str, w2v2_path: str, verbose: bool):
     return w2v1, w2v2
 
 
-def get_top_neighbors(word: str, w2v: gensim.models.KeyedVectors, vocab: list, n: int, cut_tags: bool):
-        """
-        :param word: the word neighbors of which to retrieve
-        :param w2v: the keyed vectors model
-        :param vocab: we only retrieve words that are included in vocab
-        :param n: top n neighbors will be extracted
-        :param cut_tags: if True: i. g. word="дом", it will retrieve all instances of дом with tags: дом_NOUN etc.
-        :return: n closest neighbors for the given word (for each tag if cut_tags is True, so if there is word_NOUN,
-                word_ADJ and word_VERB for the same word, it returns 30 neighbors
-        """
-        if cut_tags:
-            result = list()
-            for word in vocab:
-                if word.startswith(word + "_"):
-                    result.extend([word for word, score in w2v.most_similar(word, topn=n*5)])
-        else:
-            result = [word for word, score in w2v.most_similar(word, topn=n*5)]
-
-        result = [word for word in result if word in vocab][:n]
-        return result
-
-
-def preprocess_vocabs(w2v1: gensim.models.KeyedVectors, w2v2: gensim.models.KeyedVectors, vocab1: list, vocab2: list,
-                      pos_tag: str, verbose: bool, cut_tags: bool, top_n_most_frequent_words: int):
-    """
-    This function does the preprocessing and cleanup of embedding vocabs before we can do the main job
-    :param w2v1: the first model the vocabulary of which we preprocess. we use the model to extract the frequencies
-    :param w2v2: the second model the vocabulary of which we preprocess. we use the model to extract the frequencies
-    :param vocab1: list
-    :param vocab2: list
-    :param pos_tag: str or None, if str we only look for words with this pos tag
-    :param verbose: bool, if True we print system messages
-    :param cut_tags: bool, if True we ignore pos tags
-    :param top_n_most_frequent_words:
-    :return: vocab1, vocab2, both are preprocessed lists
-    """
-    if verbose:
-        print("Preprocessing...")
-
-    vocab1 = sorted(vocab1, key=lambda x: word_frequency(w2v1, x), reverse=True)
-    vocab2 = sorted(vocab2, key=lambda x: word_frequency(w2v2, x), reverse=True)
-
-    if cut_tags:
-        vocab1 = [tag_cutter(word) for word in vocab1]
-        vocab2 = [tag_cutter(word) for word in vocab2]
-
-    if pos_tag is not None:
-        vocab1 = [word for word in vocab1 if word.endswith(pos_tag)]
-        vocab2 = [word for word in vocab2 if word.endswith(pos_tag)]
-
-    vocab1 = vocab1[:top_n_most_frequent_words]
-    vocab2 = vocab2[:top_n_most_frequent_words]
-
-    return vocab1, vocab2
-
-
 def word_frequency(model: gensim.models.KeyedVectors, word: str) -> int:
     """
     A handy function for extracting the word frequency from models
@@ -145,19 +159,18 @@ def word_index(w2v1: gensim.models.KeyedVectors, w2v2: gensim.models.KeyedVector
         return len(w2v1.wv.vocab) + w2v2.wv.vocab[word].index
 
 
-def get_changes_by_jaccard(w2v1: gensim.models.KeyedVectors, w2v2: gensim.models.KeyedVectors,
-                           vocab1: list, vocab2: list, top_n_neighbors: int, cut_tags: bool,
-                           verbose: bool, top_n_changed_words: int, shared_vocabulary: list):
+def get_changes_by_jaccard(w2v1: gensim.models.KeyedVectors, w2v2: gensim.models.KeyedVectors, top_n_neighbors: int,
+                           verbose: bool, top_n_changed_words: int):
     if verbose:
         print("JACCARD")
 
     results = list()
-    for num, word in enumerate(shared_vocabulary):
+    for num, word in enumerate(w2v1.wv.vocab):
         if verbose and num % 10 == 0:
-            print("{words_num} / {length}".format(words_num=num, length=len(shared_vocabulary)), end='\r')
+            print("{words_num} / {length}".format(words_num=num, length=len(w2v1.wv.vocab.keys())), end='\r')
 
-        top_n_1 = get_top_neighbors(word=word, w2v=w2v1, vocab=vocab1, n=top_n_neighbors, cut_tags=cut_tags)
-        top_n_2 = get_top_neighbors(word=word, w2v=w2v2, vocab=vocab2, n=top_n_neighbors, cut_tags=cut_tags)
+        top_n_1 = [word for word, score in w2v1.most_similar(word, topn=top_n_neighbors)]
+        top_n_2 = [word for word, score in w2v2.most_similar(word, topn=top_n_neighbors)]
         if len(top_n_1) == top_n_neighbors and len(top_n_2) == top_n_neighbors:
             intersection = set(top_n_1).intersection(set(top_n_2))
             union = set(top_n_1 + top_n_2)
@@ -170,8 +183,8 @@ def get_changes_by_jaccard(w2v1: gensim.models.KeyedVectors, w2v2: gensim.models
 
     results = sorted(results, key=lambda x: x[1], )[:top_n_changed_words]
     for word, jaccard in results:
-        top_n_1 = get_top_neighbors(word=word, w2v=w2v1, vocab=vocab1, n=top_n_neighbors, cut_tags=cut_tags)
-        top_n_2 = get_top_neighbors(word=word, w2v=w2v2, vocab=vocab2, n=top_n_neighbors, cut_tags=cut_tags)
+        top_n_1 = [word for word, score in w2v1.most_similar(word, topn=top_n_neighbors)]
+        top_n_2 = [word for word, score in w2v2.most_similar(word, topn=top_n_neighbors)]
         print("word {word} has jaccard measure {jaccard}".format(word=word, jaccard=jaccard))
         print("word {word} has the following neighbors in model1:".format(word=word))
         print(*top_n_1, sep=',')
@@ -180,19 +193,18 @@ def get_changes_by_jaccard(w2v1: gensim.models.KeyedVectors, w2v2: gensim.models
         print("==========================================================")
 
 
-def get_changes_by_kendalltau(w2v1: gensim.models.KeyedVectors, w2v2: gensim.models.KeyedVectors,
-                              vocab1: list, vocab2: list, top_n_neighbors: int, cut_tags: bool,
-                              verbose: bool, top_n_changed_words: int, shared_vocabulary: list):
+def get_changes_by_kendalltau(w2v1: gensim.models.KeyedVectors, w2v2: gensim.models.KeyedVectors, top_n_neighbors: int,
+                              verbose: bool, top_n_changed_words: int):
 
     if verbose:
         print("KENDALL TAU")
     result = list()
-    for num, word in enumerate(shared_vocabulary):
+    for num, word in enumerate(w2v1.wv.vocab.keys()):
         if verbose and num % 10 == 0:
-            print("{words_num} / {length}".format(words_num=num, length=len(shared_vocabulary)), end='\r')
+            print("{words_num} / {length}".format(words_num=num, length=len(w2v1.wv.vocab)), end='\r')
 
-        top_n_1 = get_top_neighbors(word=word, w2v=w2v1, vocab=vocab1, n=top_n_neighbors, cut_tags=cut_tags)
-        top_n_2 = get_top_neighbors(word=word, w2v=w2v2, vocab=vocab2, n=top_n_neighbors, cut_tags=cut_tags)
+        top_n_1 = [word for word, score in w2v1.most_similar(word, topn=top_n_neighbors)]
+        top_n_2 = [word for word, score in w2v2.most_similar(word, topn=top_n_neighbors)]
         if len(top_n_1) == len(top_n_2) == top_n_neighbors:
             top_n_1 = [word_index(w2v1=w2v1, w2v2=w2v2, word=word) for word in top_n_1]
             top_n_2 = [word_index(w2v1=w2v1, w2v2=w2v2, word=word) for word in top_n_2]
@@ -201,20 +213,20 @@ def get_changes_by_kendalltau(w2v1: gensim.models.KeyedVectors, w2v2: gensim.mod
 
     result = sorted(result, key=lambda x: x[1], )[:top_n_changed_words]
     for word, score in result:
-            top_n_1 = get_top_neighbors(word=word, w2v=w2v1, vocab=vocab1, n=top_n_neighbors, cut_tags=cut_tags)
-            top_n_2 = get_top_neighbors(word=word, w2v=w2v2, vocab=vocab2, n=top_n_neighbors, cut_tags=cut_tags)
+        top_n_1 = [word for word, score in w2v1.most_similar(word, topn=top_n_neighbors)]
+        top_n_2 = [word for word, score in w2v2.most_similar(word, topn=top_n_neighbors)]
 
-            print("word {word} has kendall-tau score {score}".format(word=word, score=score))
-            print("word {word} has the following neighbors in model1:".format(word=word))
-            print(*top_n_1, sep=',')
-            print("word {word} has the following neighbors in model2:".format(word=word))
-            print(*top_n_2, sep=',')
-            print("==========================================================")
+        print("word {word} has kendall-tau score {score}".format(word=word, score=score))
+        print("word {word} has the following neighbors in model1:".format(word=word))
+        print(*top_n_1, sep=',')
+        print("word {word} has the following neighbors in model2:".format(word=word))
+        print(*top_n_2, sep=',')
+        print("==========================================================")
 
 
 def comparison(w2v1_path: str, w2v2_path: str, top_n_neighbors: int,
                top_n_changed_words: (int, None), top_n_most_frequent_words: (int, None), pos_tag: (str, None),
-               verbose: bool, cut_tags: bool):
+               verbose: bool):
     """
     This module extracts two models from two specified paths and compares the meanings of words within their vocabulary.
     :param w2v1_path: the path to the first model
@@ -224,40 +236,30 @@ def comparison(w2v1_path: str, w2v2_path: str, top_n_neighbors: int,
     :param top_n_most_frequent_words: we will use top n most frequent words from each model, may be int or None
     :param pos_tag: specify this to consider only words with a specific pos_tag
     :param verbose: if True the model is verbose (gives system messages)
-    :param cut_tags: if True words like дом_NOUN turn into words like дом, without tags
     :return: None
     """
     w2v1, w2v2 = loader(w2v1_path=w2v1_path, w2v2_path=w2v2_path, verbose=verbose)
 
-    vocab1 = list(w2v1.vocab.keys())
-    vocab2 = list(w2v2.vocab.keys())
-
     if verbose:
-        print("The first model contains {words1} words, e. g. {word1}\n"
-              "The second model contains {words2} words, e. g. {word2}".format(words1=len(vocab1), words2=len(vocab2),
-                                                                               word1=random.choice(vocab1),
-                                                                               word2=random.choice(vocab2)))
+        print("Thee first model contains {words1} words, e. g. {word1}\n"
+              "The second model contains {words2} words, e. g. {word2}".format(
+               words1=len(w2v1.wv.vocab), words2=len(w2v2.wv.vocab),word1=random.choice(list(w2v1.wv.vocab.keys())),
+               word2=random.choice(list(w2v2.wv.vocab.keys()))))
 
-    vocab1, vocab2 = preprocess_vocabs(w2v1=w2v1, w2v2=w2v2, vocab1=vocab1, vocab2=vocab2, pos_tag=pos_tag,
-                                       verbose=verbose, cut_tags=cut_tags,
-                                       top_n_most_frequent_words=top_n_most_frequent_words)
+    w2v1, w2v2 = intersection_align_gensim(w2v1, w2v2, pos_tag=pos_tag,
+                                           top_n_most_frequent_words=top_n_most_frequent_words)
 
     if verbose:
         print("After preprocessing, the first model contains {words1} words, e. g. {word1}\n"
-              "The second model contains {words2} words, e. g. {word2}".format(words1=len(vocab1), words2=len(vocab2),
-                                                                               word1=random.choice(vocab1),
-                                                                               word2=random.choice(vocab2)))
+              "The second model contains {words2} words, e. g. {word2}".format(
+               words1=len(w2v1.wv.vocab), words2=len(w2v2.wv.vocab),word1=random.choice(list(w2v1.wv.vocab.keys())),
+               word2=random.choice(list(w2v2.wv.vocab.keys()))))
 
-    shared_vocabulary = list(set(vocab1).intersection(set(vocab2)))
-    if verbose:
-        print("The shared vocabulary contains {n} words".format(n=len(shared_vocabulary)))
-    get_changes_by_jaccard(w2v1=w2v1, w2v2=w2v2, vocab1=vocab1, vocab2=vocab2, top_n_neighbors=top_n_neighbors,
-                           cut_tags=cut_tags, top_n_changed_words=top_n_changed_words, verbose=verbose,
-                           shared_vocabulary=shared_vocabulary)
+    get_changes_by_jaccard(w2v1=w2v1, w2v2=w2v2, top_n_neighbors=top_n_neighbors,
+                           top_n_changed_words=top_n_changed_words, verbose=verbose)
 
-    get_changes_by_kendalltau(w2v1=w2v1, w2v2=w2v2, vocab1=vocab1, vocab2=vocab2, top_n_neighbors=top_n_neighbors,
-                              cut_tags=cut_tags, top_n_changed_words=top_n_changed_words, verbose=verbose,
-                              shared_vocabulary=shared_vocabulary)
+    get_changes_by_kendalltau(w2v1=w2v1, w2v2=w2v2, top_n_neighbors=top_n_neighbors,
+                              top_n_changed_words=top_n_changed_words, verbose=verbose)
 
 
 def main():
@@ -279,13 +281,14 @@ def main():
     parser.add_argument("--verbose", action="store_true", help="Give this argument "
                                                                "to make the model verbose")
 
-    parser.add_argument("--cut-tags", action="store_true", help="Use this argument to cut off the pos-tags, e. g. "
-                                                                "дом_NOUN --> дом")
+    # parser.add_argument("--cut-tags", action="store_true", help="Use this argument to cut off the pos-tags, e. g. "
+    #                                                            "дом_NOUN --> дом")
+
 
     args = parser.parse_args()
     comparison(w2v1_path=args.model1, w2v2_path=args.model2, top_n_neighbors=args.top_n_neighbors,
                top_n_most_frequent_words=args.top_n_most_frequent_words, pos_tag=args.pos_tag, verbose=args.verbose,
-               top_n_changed_words=args.top_n_changed_words, cut_tags=args.cut_tags)
+               top_n_changed_words=args.top_n_changed_words)
 
 
 if __name__ == "__main__":
