@@ -131,14 +131,18 @@ def word_frequency(model: gensim.models.KeyedVectors, word: str) -> int:
     return model.wv.vocab[word].count
 
 
-def word_index(model: gensim.models.KeyedVectors, word: str) -> int:
+def word_index(w2v1: gensim.models.KeyedVectors, w2v2: gensim.models.KeyedVectors, word: str) -> object:
     """
     A handy function for extracting the word index from models
-    :param model: the model in question
-    :param word: the word index of which we extract
-    :return:
+    :param w2v1: the model in question. if present, we use the index from that model
+    :param w2v2: if word not present in w2v1, we look it up in the second model, w2v2
+    :param word: word the index of which we extract
+    :return: the index of the word, an integer
     """
-    return model.wv.vocab[word].index
+    if word in w2v1.wv:
+        return w2v1.wv.vocab[word].index
+    else:
+        return len(w2v1.wv.vocab) + w2v2.wv.vocab[word].index
 
 
 def get_changes_by_jaccard(w2v1: gensim.models.KeyedVectors, w2v2: gensim.models.KeyedVectors,
@@ -177,7 +181,7 @@ def get_changes_by_jaccard(w2v1: gensim.models.KeyedVectors, w2v2: gensim.models
         print("==========================================================")
 
 
-def get_changes_by_kendelltau(w2v1: gensim.models.KeyedVectors, w2v2: gensim.models.KeyedVectors,
+def get_changes_by_kendalltau(w2v1: gensim.models.KeyedVectors, w2v2: gensim.models.KeyedVectors,
                               vocab1: list, vocab2: list, top_n_neighbors: int, cut_tags: bool,
                               verbose: bool, top_n_changed_words: int, shared_vocabulary: list):
 
@@ -191,6 +195,8 @@ def get_changes_by_kendelltau(w2v1: gensim.models.KeyedVectors, w2v2: gensim.mod
         top_n_1 = get_top_neighbors(word=word, w2v=w2v1, vocab=vocab1, n=top_n_neighbors, cut_tags=cut_tags)
         top_n_2 = get_top_neighbors(word=word, w2v=w2v2, vocab=vocab2, n=top_n_neighbors, cut_tags=cut_tags)
         if len(top_n_1) == len(top_n_2) == top_n_neighbors:
+            top_n_1 = [word_index(w2v1=w2v1, w2v2=w2v2, word=word) for word in top_n_1]
+            top_n_2 = [word_index(w2v1=w2v1, w2v2=w2v2, word=word) for word in top_n_2]
             score, p_value = mstats.kendalltau(top_n_1, top_n_2)
             result.append((word, score))
 
@@ -199,10 +205,6 @@ def get_changes_by_kendelltau(w2v1: gensim.models.KeyedVectors, w2v2: gensim.mod
             top_n_1 = get_top_neighbors(word=word, w2v=w2v1, vocab=vocab1, n=top_n_neighbors, cut_tags=cut_tags)
             top_n_2 = get_top_neighbors(word=word, w2v=w2v2, vocab=vocab2, n=top_n_neighbors, cut_tags=cut_tags)
 
-            top_n_1 = [word_index(w2v1, word) for word in top_n_1]
-            top_n_2 = [word_index(w2v1, word) for word in top_n_2]
-            # we specifically want w2v1 indexing in both cases
-            # because it matters that we have the same indices
             print("word {word} has kendall-tau score {score}".format(word=word, score=score))
             print("word {word} has the following neighbors in model1:".format(word=word))
             print(*top_n_1, sep=',')
@@ -237,7 +239,8 @@ def comparison(w2v1_path: str, w2v2_path: str, top_n_neighbors: int,
                                                                                word1=random.choice(vocab1),
                                                                                word2=random.choice(vocab2)))
 
-    vocab1, vocab2 = preprocess_vocabs(w2v1=w2v1, w2v2=w2v2, vocab1=vocab1, vocab2=vocab2, pos_tag=pos_tag, verbose=verbose, cut_tags=cut_tags,
+    vocab1, vocab2 = preprocess_vocabs(w2v1=w2v1, w2v2=w2v2, vocab1=vocab1, vocab2=vocab2, pos_tag=pos_tag,
+                                       verbose=verbose, cut_tags=cut_tags,
                                        top_n_most_frequent_words=top_n_most_frequent_words)
 
     if verbose:
@@ -253,9 +256,9 @@ def comparison(w2v1_path: str, w2v2_path: str, top_n_neighbors: int,
                            cut_tags=cut_tags, top_n_changed_words=top_n_changed_words, verbose=verbose,
                            shared_vocabulary=shared_vocabulary)
 
-    get_changes_by_kendelltau(w2v1=w2v1, w2v2=w2v2, vocab1=vocab1, vocab2=vocab2, top_n_neighbors=top_n_neighbors,
-                           cut_tags=cut_tags, top_n_changed_words=top_n_changed_words, verbose=verbose,
-                           shared_vocabulary=shared_vocabulary)
+    get_changes_by_kendalltau(w2v1=w2v1, w2v2=w2v2, vocab1=vocab1, vocab2=vocab2, top_n_neighbors=top_n_neighbors,
+                              cut_tags=cut_tags, top_n_changed_words=top_n_changed_words, verbose=verbose,
+                              shared_vocabulary=shared_vocabulary)
 
 
 def main():
