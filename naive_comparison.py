@@ -169,7 +169,6 @@ def get_changes_by_jaccard(w2v1: gensim.models.KeyedVectors, w2v2: gensim.models
             # print("Union length", len(union))
 
     results = sorted(results, key=lambda x: x[1], )[:top_n_changed_words]
-    print("results", results)
     for word, jaccard in results:
         top_n_1 = get_top_neighbors(word=word, w2v=w2v1, vocab=vocab1, n=top_n_neighbors, cut_tags=cut_tags)
         top_n_2 = get_top_neighbors(word=word, w2v=w2v2, vocab=vocab2, n=top_n_neighbors, cut_tags=cut_tags)
