@@ -1,9 +1,16 @@
 import argparse
 import gensim
 import os
+import sys
 import random
 import numpy as np
 from scipy.stats import mstats
+
+
+def log(message: str, verbose: bool, end: str = '\n'):
+    if verbose:
+        sys.stderr.write(message+end)
+        sys.stderr.flush()
 
 
 def load_model(embeddings_file):
@@ -122,15 +129,11 @@ def loader(w2v1_path: str, w2v2_path: str, verbose: bool):
     if not os.path.exists(w2v2_path):
         raise FileNotFoundError("File {path} is not found".format(path=w2v2_path))
 
-    if verbose:
-        print("Loading the first model")
+    log("Loading the first model", verbose)
     w2v1 = load_model(w2v1_path)
-    if verbose:
-        print("Success.")
-        print("Loading the second model")
+    log("Success.\n Loading the second model", verbose)
     w2v2 = load_model(w2v2_path)
-    if verbose:
-        print("Success.")
+    log("Success.", verbose)
 
     return w2v1, w2v2
 
@@ -161,13 +164,12 @@ def word_index(w2v1: gensim.models.KeyedVectors, w2v2: gensim.models.KeyedVector
 
 def get_changes_by_jaccard(w2v1: gensim.models.KeyedVectors, w2v2: gensim.models.KeyedVectors, top_n_neighbors: int,
                            verbose: bool, top_n_changed_words: int):
-    if verbose:
-        print("JACCARD")
+    print("\n" + "JACCARD MEASURE".center(40, '='))
 
     results = list()
     for num, word in enumerate(w2v1.wv.vocab):
-        if verbose and num % 10 == 0:
-            print("{words_num} / {length}".format(words_num=num, length=len(w2v1.wv.vocab.keys())), end='\r')
+        if num % 10 == 0:
+            log("{words_num} / {length}".format(words_num=num, length=len(w2v1.wv.vocab.keys())), verbose, end='\r')
 
         top_n_1 = [word for word, score in w2v1.most_similar(word, topn=top_n_neighbors)]
         top_n_2 = [word for word, score in w2v2.most_similar(word, topn=top_n_neighbors)]
@@ -190,18 +192,17 @@ def get_changes_by_jaccard(w2v1: gensim.models.KeyedVectors, w2v2: gensim.models
         print(*top_n_1, sep=',')
         print("word {word} has the following neighbors in model2:".format(word=word))
         print(*top_n_2, sep=',')
-        print("==========================================================")
+        print("")
 
 
 def get_changes_by_kendalltau(w2v1: gensim.models.KeyedVectors, w2v2: gensim.models.KeyedVectors, top_n_neighbors: int,
                               verbose: bool, top_n_changed_words: int):
+    print("\n" + "KENDALL TAU".center(40, '='))
 
-    if verbose:
-        print("KENDALL TAU")
     result = list()
     for num, word in enumerate(w2v1.wv.vocab.keys()):
-        if verbose and num % 10 == 0:
-            print("{words_num} / {length}".format(words_num=num, length=len(w2v1.wv.vocab)), end='\r')
+        if num % 10 == 0:
+            log("{words_num} / {length}".format(words_num=num, length=len(w2v1.wv.vocab)), verbose, end='\r')
 
         top_n_1 = [word for word, score in w2v1.most_similar(word, topn=top_n_neighbors)]
         top_n_2 = [word for word, score in w2v2.most_similar(word, topn=top_n_neighbors)]
@@ -221,7 +222,7 @@ def get_changes_by_kendalltau(w2v1: gensim.models.KeyedVectors, w2v2: gensim.mod
         print(*top_n_1, sep=',')
         print("word {word} has the following neighbors in model2:".format(word=word))
         print(*top_n_2, sep=',')
-        print("==========================================================")
+        print("")
 
 
 def comparison(w2v1_path: str, w2v2_path: str, top_n_neighbors: int,
@@ -240,20 +241,18 @@ def comparison(w2v1_path: str, w2v2_path: str, top_n_neighbors: int,
     """
     w2v1, w2v2 = loader(w2v1_path=w2v1_path, w2v2_path=w2v2_path, verbose=verbose)
 
-    if verbose:
-        print("Thee first model contains {words1} words, e. g. {word1}\n"
-              "The second model contains {words2} words, e. g. {word2}".format(
+    log("The first model contains {words1} words, e. g. {word1}\n"
+        "The second model contains {words2} words, e. g. {word2}".format(
                words1=len(w2v1.wv.vocab), words2=len(w2v2.wv.vocab),word1=random.choice(list(w2v1.wv.vocab.keys())),
-               word2=random.choice(list(w2v2.wv.vocab.keys()))))
+               word2=random.choice(list(w2v2.wv.vocab.keys()))), verbose)
 
     w2v1, w2v2 = intersection_align_gensim(w2v1, w2v2, pos_tag=pos_tag,
                                            top_n_most_frequent_words=top_n_most_frequent_words)
 
-    if verbose:
-        print("After preprocessing, the first model contains {words1} words, e. g. {word1}\n"
-              "The second model contains {words2} words, e. g. {word2}".format(
+    log("After preprocessing, the first model contains {words1} words, e. g. {word1}\n"
+        "The second model contains {words2} words, e. g. {word2}".format(
                words1=len(w2v1.wv.vocab), words2=len(w2v2.wv.vocab),word1=random.choice(list(w2v1.wv.vocab.keys())),
-               word2=random.choice(list(w2v2.wv.vocab.keys()))))
+               word2=random.choice(list(w2v2.wv.vocab.keys()))), verbose)
 
     get_changes_by_jaccard(w2v1=w2v1, w2v2=w2v2, top_n_neighbors=top_n_neighbors,
                            top_n_changed_words=top_n_changed_words, verbose=verbose)
@@ -283,7 +282,6 @@ def main():
 
     # parser.add_argument("--cut-tags", action="store_true", help="Use this argument to cut off the pos-tags, e. g. "
     #                                                            "дом_NOUN --> дом")
-
 
     args = parser.parse_args()
     comparison(w2v1_path=args.model1, w2v2_path=args.model2, top_n_neighbors=args.top_n_neighbors,
