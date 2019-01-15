@@ -5,7 +5,8 @@ import sys
 import random
 import numpy as np
 from scipy.stats import mstats
-
+from scipy.spatial.distance import cosine
+from sklearn.metrics.pairwise import cosine_similarity
 
 def log(message: str, verbose: bool, end: str = '\n'):
     if verbose:
@@ -95,7 +96,7 @@ def intersection_align_gensim(m1: gensim.models.KeyedVectors, m2: gensim.models.
     common_vocab = common_vocab[:top_n_most_frequent_words]
     
     # Then for each model...
-    for m in [m1, m2]:
+    for m in (m1, m2):
         # Replace old syn0norm array with new one (with common vocab)
         indices = [m.wv.vocab[w].index for w in common_vocab]
         old_arr = m.syn0norm
@@ -190,6 +191,7 @@ def get_changes_by_jaccard(w2v1: gensim.models.KeyedVectors, w2v2: gensim.models
         print("word {word} has jaccard measure {jaccard}".format(word=word, jaccard=jaccard))
         print("word {word} has the following neighbors in model1:".format(word=word))
         print(*top_n_1, sep=',')
+        print('_' * 40)
         print("word {word} has the following neighbors in model2:".format(word=word))
         print(*top_n_2, sep=',')
         print("")
@@ -220,6 +222,60 @@ def get_changes_by_kendalltau(w2v1: gensim.models.KeyedVectors, w2v2: gensim.mod
         print("word {word} has kendall-tau score {score}".format(word=word, score=score))
         print("word {word} has the following neighbors in model1:".format(word=word))
         print(*top_n_1, sep=',')
+        print('_' * 40)
+        print("word {word} has the following neighbors in model2:".format(word=word))
+        print(*top_n_2, sep=',')
+        print("")
+
+
+def smart_procrustes_align_gensim(base_embed: gensim.models.KeyedVectors, other_embed: gensim.models.KeyedVectors):
+    """
+    This code, taken from https://gist.github.com/quadrismegistus/09a93e219a6ffc4f216fb85235535faf and modified,
+    uses procrustes analysis to make two word embeddings compatible.
+    :param base_embed: first embedding
+    :param other_embed: second embedding to be changed
+    :return other_embed: changed embedding
+    """
+    base_embed.init_sims()
+    other_embed.init_sims()
+
+    base_vecs = base_embed.syn0norm
+    other_vecs = other_embed.syn0norm
+
+    # just a matrix dot product with numpy
+    m = other_vecs.T.dot(base_vecs)
+    # SVD method from numpy
+    u, _, v = np.linalg.svd(m)
+    # another matrix operation
+    ortho = u.dot(v)
+    # Replace original array with modified one
+    # i.e. multiplying the embedding matrix (syn0norm)by "ortho"
+    other_embed.syn0norm = other_embed.syn0 = (other_embed.syn0norm).dot(ortho)
+
+    return other_embed
+
+
+def get_changes_by_procrustes(w2v1: gensim.models.KeyedVectors, w2v2: gensim.models.KeyedVectors, top_n_neighbors: int,
+                              verbose: bool, top_n_changed_words: int):
+    log('\n' + 'PROCRUSTES ALIGNMENT'.center(40, '='), verbose)
+    w2v2_changed = smart_procrustes_align_gensim(w2v1, w2v2)
+    result = list()
+    for word in w2v1.wv.vocab.keys():  # their vocabs should be the same, so it doesn't matter over which to iterate
+        vector1 = w2v1.wv[word]
+        vector2 = w2v2_changed.wv[word]
+        score = cosine_similarity(vector1.reshape((1, -1)), vector2.reshape((1, -1)))[0][0]  # cosine from scipy returns 1 - cos, so 0 = closest
+        result.append((word, score))
+
+    result = sorted(result, key=lambda x: x[1])
+    result = result[:top_n_changed_words]
+    for word, score in result:
+        top_n_1 = [word for word, score in w2v1.most_similar(word, topn=top_n_neighbors)]
+        top_n_2 = [word for word, score in w2v2.most_similar(word, topn=top_n_neighbors)]
+
+        print("word {word} has cosine distance score {score}".format(word=word, score=score))
+        print("word {word} has the following neighbors in model1:".format(word=word))
+        print(*top_n_1, sep=',')
+        print('_' * 40)
         print("word {word} has the following neighbors in model2:".format(word=word))
         print(*top_n_2, sep=',')
         print("")
@@ -243,7 +299,7 @@ def comparison(w2v1_path: str, w2v2_path: str, top_n_neighbors: int,
 
     log("The first model contains {words1} words, e. g. {word1}\n"
         "The second model contains {words2} words, e. g. {word2}".format(
-               words1=len(w2v1.wv.vocab), words2=len(w2v2.wv.vocab),word1=random.choice(list(w2v1.wv.vocab.keys())),
+               words1=len(w2v1.wv.vocab), words2=len(w2v2.wv.vocab), word1=random.choice(list(w2v1.wv.vocab.keys())),
                word2=random.choice(list(w2v2.wv.vocab.keys()))), verbose)
 
     w2v1, w2v2 = intersection_align_gensim(w2v1, w2v2, pos_tag=pos_tag,
@@ -251,13 +307,16 @@ def comparison(w2v1_path: str, w2v2_path: str, top_n_neighbors: int,
 
     log("After preprocessing, the first model contains {words1} words, e. g. {word1}\n"
         "The second model contains {words2} words, e. g. {word2}".format(
-               words1=len(w2v1.wv.vocab), words2=len(w2v2.wv.vocab),word1=random.choice(list(w2v1.wv.vocab.keys())),
+               words1=len(w2v1.wv.vocab), words2=len(w2v2.wv.vocab), word1=random.choice(list(w2v1.wv.vocab.keys())),
                word2=random.choice(list(w2v2.wv.vocab.keys()))), verbose)
 
     get_changes_by_jaccard(w2v1=w2v1, w2v2=w2v2, top_n_neighbors=top_n_neighbors,
                            top_n_changed_words=top_n_changed_words, verbose=verbose)
 
     get_changes_by_kendalltau(w2v1=w2v1, w2v2=w2v2, top_n_neighbors=top_n_neighbors,
+                              top_n_changed_words=top_n_changed_words, verbose=verbose)
+
+    get_changes_by_procrustes(w2v1=w2v1, w2v2=w2v2, top_n_neighbors=top_n_neighbors,
                               top_n_changed_words=top_n_changed_words, verbose=verbose)
 
 
@@ -282,7 +341,7 @@ def main():
 
     # parser.add_argument("--cut-tags", action="store_true", help="Use this argument to cut off the pos-tags, e. g. "
     #                                                            "дом_NOUN --> дом")
-
+ 
     args = parser.parse_args()
     comparison(w2v1_path=args.model1, w2v2_path=args.model2, top_n_neighbors=args.top_n_neighbors,
                top_n_most_frequent_words=args.top_n_most_frequent_words, pos_tag=args.pos_tag, verbose=args.verbose,
