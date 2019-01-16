@@ -1,17 +1,14 @@
 import argparse
 import gensim
 import os
-import sys
 import random
 import numpy as np
-from scipy.stats import mstats
-from scipy.spatial.distance import cosine
-from sklearn.metrics.pairwise import cosine_similarity
 
-def log(message: str, verbose: bool, end: str = '\n'):
-    if verbose:
-        sys.stderr.write(message+end)
-        sys.stderr.flush()
+from models import get_changes_by_jaccard
+from models import get_changes_by_kendalltau
+from models import get_changes_by_procrustes
+from utils import log
+from utils import informative_output, simple_output
 
 
 def load_model(embeddings_file):
@@ -33,18 +30,6 @@ def load_model(embeddings_file):
         emb_model = gensim.models.KeyedVectors.load(embeddings_file)
     emb_model.init_sims(replace=True)
     return emb_model
-
-
-# def tag_cutter(word: str):
-#    """
-#    :param word: a string with our without a tag, e g дом_NOUN or дом
-#    :return: the word without tags, e. g. дом
-#    """
-#
-#    if "_" in word:
-#        return word[:word.find("_")]
-#    else:
-#        return word
 
 
 def intersection_align_gensim(m1: gensim.models.KeyedVectors, m2: gensim.models.KeyedVectors,
@@ -72,7 +57,7 @@ def intersection_align_gensim(m1: gensim.models.KeyedVectors, m2: gensim.models.
     :param top_n_most_frequent_words: if not None, we only use top n words by frequency
     :return m1, m2: both models after their vocabs are modified
     """
-    
+
     # Get the vocab for each model
     if pos_tag is None:
         vocab_m1 = set(m1.wv.vocab.keys())
@@ -94,7 +79,7 @@ def intersection_align_gensim(m1: gensim.models.KeyedVectors, m2: gensim.models.
     common_vocab = list(common_vocab)
     common_vocab.sort(key=lambda w: m1.wv.vocab[w].count + m2.wv.vocab[w].count, reverse=True)
     common_vocab = common_vocab[:top_n_most_frequent_words]
-    
+
     # Then for each model...
     for m in (m1, m2):
         # Replace old syn0norm array with new one (with common vocab)
@@ -149,141 +134,9 @@ def word_frequency(model: gensim.models.KeyedVectors, word: str) -> int:
     return model.wv.vocab[word].count
 
 
-def word_index(w2v1: gensim.models.KeyedVectors, w2v2: gensim.models.KeyedVectors, word: str) -> object:
-    """
-    A handy function for extracting the word index from models
-    :param w2v1: the model in question. if present, we use the index from that model
-    :param w2v2: if word not present in w2v1, we look it up in the second model, w2v2
-    :param word: word the index of which we extract
-    :return: the index of the word, an integer
-    """
-    if word in w2v1.wv:
-        return w2v1.wv.vocab[word].index
-    else:
-        return len(w2v1.wv.vocab) + w2v2.wv.vocab[word].index
-
-
-def get_changes_by_jaccard(w2v1: gensim.models.KeyedVectors, w2v2: gensim.models.KeyedVectors, top_n_neighbors: int,
-                           verbose: bool, top_n_changed_words: int):
-    print("\n" + "JACCARD MEASURE".center(40, '='))
-
-    results = list()
-    for num, word in enumerate(w2v1.wv.vocab):
-        if num % 10 == 0:
-            log("{words_num} / {length}".format(words_num=num, length=len(w2v1.wv.vocab.keys())), verbose, end='\r')
-
-        top_n_1 = [word for word, score in w2v1.most_similar(word, topn=top_n_neighbors)]
-        top_n_2 = [word for word, score in w2v2.most_similar(word, topn=top_n_neighbors)]
-        if len(top_n_1) == top_n_neighbors and len(top_n_2) == top_n_neighbors:
-            intersection = set(top_n_1).intersection(set(top_n_2))
-            union = set(top_n_1 + top_n_2)
-            jaccard = len(intersection) / len(union)
-            results.append((word, jaccard))
-            # print("Intersection", *intersection)
-            # print("Union", *union)
-            # print("Intersection length", len(intersection))
-            # print("Union length", len(union))
-
-    results = sorted(results, key=lambda x: x[1], )[:top_n_changed_words]
-    for word, jaccard in results:
-        top_n_1 = [word for word, score in w2v1.most_similar(word, topn=top_n_neighbors)]
-        top_n_2 = [word for word, score in w2v2.most_similar(word, topn=top_n_neighbors)]
-        print("word {word} has jaccard measure {jaccard}".format(word=word, jaccard=jaccard))
-        print("word {word} has the following neighbors in model1:".format(word=word))
-        print(*top_n_1, sep=',')
-        print('_' * 40)
-        print("word {word} has the following neighbors in model2:".format(word=word))
-        print(*top_n_2, sep=',')
-        print("")
-
-
-def get_changes_by_kendalltau(w2v1: gensim.models.KeyedVectors, w2v2: gensim.models.KeyedVectors, top_n_neighbors: int,
-                              verbose: bool, top_n_changed_words: int):
-    print("\n" + "KENDALL TAU".center(40, '='))
-
-    result = list()
-    for num, word in enumerate(w2v1.wv.vocab.keys()):
-        if num % 10 == 0:
-            log("{words_num} / {length}".format(words_num=num, length=len(w2v1.wv.vocab)), verbose, end='\r')
-
-        top_n_1 = [word for word, score in w2v1.most_similar(word, topn=top_n_neighbors)]
-        top_n_2 = [word for word, score in w2v2.most_similar(word, topn=top_n_neighbors)]
-        if len(top_n_1) == len(top_n_2) == top_n_neighbors:
-            top_n_1 = [word_index(w2v1=w2v1, w2v2=w2v2, word=word) for word in top_n_1]
-            top_n_2 = [word_index(w2v1=w2v1, w2v2=w2v2, word=word) for word in top_n_2]
-            score, p_value = mstats.kendalltau(top_n_1, top_n_2)
-            result.append((word, score))
-
-    result = sorted(result, key=lambda x: x[1], )[:top_n_changed_words]
-    for word, score in result:
-        top_n_1 = [word for word, score in w2v1.most_similar(word, topn=top_n_neighbors)]
-        top_n_2 = [word for word, score in w2v2.most_similar(word, topn=top_n_neighbors)]
-
-        print("word {word} has kendall-tau score {score}".format(word=word, score=score))
-        print("word {word} has the following neighbors in model1:".format(word=word))
-        print(*top_n_1, sep=',')
-        print('_' * 40)
-        print("word {word} has the following neighbors in model2:".format(word=word))
-        print(*top_n_2, sep=',')
-        print("")
-
-
-def smart_procrustes_align_gensim(base_embed: gensim.models.KeyedVectors, other_embed: gensim.models.KeyedVectors):
-    """
-    This code, taken from https://gist.github.com/quadrismegistus/09a93e219a6ffc4f216fb85235535faf and modified,
-    uses procrustes analysis to make two word embeddings compatible.
-    :param base_embed: first embedding
-    :param other_embed: second embedding to be changed
-    :return other_embed: changed embedding
-    """
-    base_embed.init_sims()
-    other_embed.init_sims()
-
-    base_vecs = base_embed.syn0norm
-    other_vecs = other_embed.syn0norm
-
-    # just a matrix dot product with numpy
-    m = other_vecs.T.dot(base_vecs)
-    # SVD method from numpy
-    u, _, v = np.linalg.svd(m)
-    # another matrix operation
-    ortho = u.dot(v)
-    # Replace original array with modified one
-    # i.e. multiplying the embedding matrix (syn0norm)by "ortho"
-    other_embed.syn0norm = other_embed.syn0 = (other_embed.syn0norm).dot(ortho)
-
-    return other_embed
-
-
-def get_changes_by_procrustes(w2v1: gensim.models.KeyedVectors, w2v2: gensim.models.KeyedVectors, top_n_neighbors: int,
-                              verbose: bool, top_n_changed_words: int):
-    log('\n' + 'PROCRUSTES ALIGNMENT'.center(40, '='), verbose)
-    w2v2_changed = smart_procrustes_align_gensim(w2v1, w2v2)
-    result = list()
-    for word in w2v1.wv.vocab.keys():  # their vocabs should be the same, so it doesn't matter over which to iterate
-        vector1 = w2v1.wv[word]
-        vector2 = w2v2_changed.wv[word]
-        score = cosine_similarity(vector1.reshape((1, -1)), vector2.reshape((1, -1)))[0][0]  # cosine from scipy returns 1 - cos, so 0 = closest
-        result.append((word, score))
-
-    result = sorted(result, key=lambda x: x[1])
-    result = result[:top_n_changed_words]
-    for word, score in result:
-        top_n_1 = [word for word, score in w2v1.most_similar(word, topn=top_n_neighbors)]
-        top_n_2 = [word for word, score in w2v2.most_similar(word, topn=top_n_neighbors)]
-
-        print("word {word} has cosine distance score {score}".format(word=word, score=score))
-        print("word {word} has the following neighbors in model1:".format(word=word))
-        print(*top_n_1, sep=',')
-        print('_' * 40)
-        print("word {word} has the following neighbors in model2:".format(word=word))
-        print(*top_n_2, sep=',')
-        print("")
-
-
 def comparison(w2v1_path: str, w2v2_path: str, top_n_neighbors: int,
                top_n_changed_words: (int, None), top_n_most_frequent_words: (int, None), pos_tag: (str, None),
-               verbose: bool):
+               verbose: bool, informative: bool):
     """
     This module extracts two models from two specified paths and compares the meanings of words within their vocabulary.
     :param w2v1_path: the path to the first model
@@ -310,14 +163,24 @@ def comparison(w2v1_path: str, w2v2_path: str, top_n_neighbors: int,
                words1=len(w2v1.wv.vocab), words2=len(w2v2.wv.vocab), word1=random.choice(list(w2v1.wv.vocab.keys())),
                word2=random.choice(list(w2v2.wv.vocab.keys()))), verbose)
 
-    get_changes_by_jaccard(w2v1=w2v1, w2v2=w2v2, top_n_neighbors=top_n_neighbors,
-                           top_n_changed_words=top_n_changed_words, verbose=verbose)
+    jaccard_result = get_changes_by_jaccard(w2v1=w2v1, w2v2=w2v2, top_n_changed_words=top_n_changed_words,
+                                            top_n_neighbors=top_n_neighbors, verbose=verbose)
 
-    get_changes_by_kendalltau(w2v1=w2v1, w2v2=w2v2, top_n_neighbors=top_n_neighbors,
-                              top_n_changed_words=top_n_changed_words, verbose=verbose)
+    kendalltau_result = get_changes_by_kendalltau(w2v1=w2v1, w2v2=w2v2, top_n_changed_words=top_n_changed_words,
+                                                  top_n_neighbors=top_n_neighbors, verbose=verbose)
 
-    get_changes_by_procrustes(w2v1=w2v1, w2v2=w2v2, top_n_neighbors=top_n_neighbors,
-                              top_n_changed_words=top_n_changed_words, verbose=verbose)
+    procrustes_result = get_changes_by_procrustes(w2v1=w2v1, w2v2=w2v2, top_n_changed_words=top_n_changed_words,
+                                                  verbose=verbose)
+
+    results = (jaccard_result, kendalltau_result, procrustes_result)
+    names = ('JACCARD', 'KENDALL TAU', 'PROCRUSTES')
+
+    if informative:
+        for result, name in zip(results, names):
+            informative_output(result, w2v1, w2v2, top_n_neighbors, name)
+    else:
+        for result, name in zip(results, names):
+            simple_output(result, name)
 
 
 def main():
@@ -339,13 +202,13 @@ def main():
     parser.add_argument("--verbose", action="store_true", help="Give this argument "
                                                                "to make the model verbose")
 
-    # parser.add_argument("--cut-tags", action="store_true", help="Use this argument to cut off the pos-tags, e. g. "
-    #                                                            "дом_NOUN --> дом")
+    parser.add_argument('--informative-output', action='store_true', dest='informative_output',
+                        help='This argument makes the output more verbose and interpretable')
  
     args = parser.parse_args()
     comparison(w2v1_path=args.model1, w2v2_path=args.model2, top_n_neighbors=args.top_n_neighbors,
                top_n_most_frequent_words=args.top_n_most_frequent_words, pos_tag=args.pos_tag, verbose=args.verbose,
-               top_n_changed_words=args.top_n_changed_words)
+               top_n_changed_words=args.top_n_changed_words, informative=args.informative_output)
 
 
 if __name__ == "__main__":
