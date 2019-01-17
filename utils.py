@@ -1,5 +1,7 @@
+import os
 import sys
 import gensim
+import numpy as np
 
 
 def informative_output(words_and_scores, w2v1: gensim.models.KeyedVectors, w2v2: gensim.models.KeyedVectors,
@@ -28,3 +30,96 @@ def log(message: str, verbose: bool, end: str = '\n'):
     if verbose:
         sys.stderr.write(message+end)
         sys.stderr.flush()
+
+
+def load_model(embeddings_file):
+    """
+    This function, written by github.com/akutuzov, unifies various standards of word embedding files.
+    It automatically determines the format by the file extension and loads it from the disk correspondingly.
+    :param embeddings_file: path to the file
+    :return: the loaded model
+    """
+    if not os.path.isfile(embeddings_file):
+        raise FileNotFoundError("No file called {file}".format(file=embeddings_file))
+    # Determine the model format by the file extension
+    if embeddings_file.endswith('.bin.gz') or embeddings_file.endswith('.bin'):  # Binary word2vec file
+        emb_model = gensim.models.KeyedVectors.load_word2vec_format(
+            embeddings_file, binary=True, unicode_errors='replace')
+    elif embeddings_file.endswith('.txt.gz') or embeddings_file.endswith('.txt') \
+            or embeddings_file.endswith('.vec.gz') or embeddings_file.endswith('.vec'):  # Text word2vec file
+        emb_model = gensim.models.KeyedVectors.load_word2vec_format(
+            embeddings_file, binary=False, unicode_errors='replace')
+    else:  # Native Gensim format?
+        emb_model = gensim.models.KeyedVectors.load(embeddings_file)
+    emb_model.init_sims(replace=True)
+
+    return emb_model
+
+
+def intersection_align_gensim(m1: gensim.models.KeyedVectors, m2: gensim.models.KeyedVectors,
+                              pos_tag: (str, None) = None, words: (list, None) = None,
+                              top_n_most_frequent_words: (int, None) = None):
+    """
+    This procedure, taken from https://gist.github.com/quadrismegistus/09a93e219a6ffc4f216fb85235535faf and slightly
+    modified, corrects two models in a way that only the shared words of the vocabulary are kept in the model,
+    and both vocabularies are sorted by frequencies.
+    Original comment is as follows:
+
+    Intersect two gensim word2vec models, m1 and m2.
+    Only the shared vocabulary between them is kept.
+    If 'words' is set (as list or set), then the vocabulary is intersected with this list as well.
+    Indices are re-organized from 0..N in order of descending frequency (=sum of counts from both m1 and m2).
+    These indices correspond to the new syn0 and syn0norm objects in both gensim models:
+        -- so that Row 0 of m1.syn0 will be for the same word as Row 0 of m2.syn0
+        -- you can find the index of any word on the .index2word list: model.index2word.index(word) => 2
+    The .vocab dictionary is also updated for each model, preserving the count but updating the index.
+
+    :param m1: the first model
+    :param m2: the second model
+    :param pos_tag: if given, we remove words with other pos tags
+    :param words: a container
+    :param top_n_most_frequent_words: if not None, we only use top n words by frequency
+    :return m1, m2: both models after their vocabs are modified
+    """
+
+    # Get the vocab for each model
+    if pos_tag is None:
+        vocab_m1 = set(m1.wv.vocab.keys())
+        vocab_m2 = set(m2.wv.vocab.keys())
+    else:
+        vocab_m1 = set(word for word in m1.wv.vocab.keys() if word.endswith("_" + pos_tag))
+        vocab_m2 = set(word for word in m2.wv.vocab.keys() if word.endswith("_" + pos_tag))
+
+    # Find the common vocabulary
+    common_vocab = vocab_m1 & vocab_m2
+    if words:
+        common_vocab &= set(words)
+
+    # If no alignment necessary because vocab is identical...
+    if not vocab_m1-common_vocab and not vocab_m2-common_vocab and top_n_most_frequent_words is not None:
+        return m1, m2
+
+    # Otherwise sort by frequency (summed for both)
+    common_vocab = list(common_vocab)
+    common_vocab.sort(key=lambda w: m1.wv.vocab[w].count + m2.wv.vocab[w].count, reverse=True)
+    common_vocab = common_vocab[:top_n_most_frequent_words]
+
+    # Then for each model...
+    for m in (m1, m2):
+        # Replace old syn0norm array with new one (with common vocab)
+        indices = [m.wv.vocab[w].index for w in common_vocab]
+        old_arr = m.syn0norm
+        new_arr = np.array([old_arr[index] for index in indices])
+        m.syn0norm = m.syn0 = new_arr
+
+        # Replace old vocab dictionary with new one (with common vocab)
+        # and old index2word with new one
+        m.index2word = common_vocab
+        old_vocab = m.wv.vocab
+        new_vocab = dict()
+        for new_index, word in enumerate(common_vocab):
+            old_vocab_obj = old_vocab[word]
+            new_vocab[word] = gensim.models.word2vec.Vocab(index=new_index, count=old_vocab_obj.count)
+        m.wv.vocab = new_vocab
+
+    return m1, m2
