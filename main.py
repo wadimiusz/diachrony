@@ -7,6 +7,7 @@ import numpy as np
 from models import get_changes_by_jaccard
 from models import get_changes_by_kendalltau
 from models import get_changes_by_procrustes
+from models import get_changes_by_global_anchors
 from utils import log
 from utils import informative_output, simple_output
 
@@ -172,8 +173,11 @@ def comparison(w2v1_path: str, w2v2_path: str, top_n_neighbors: int,
     procrustes_result = get_changes_by_procrustes(w2v1=w2v1, w2v2=w2v2, top_n_changed_words=top_n_changed_words,
                                                   verbose=verbose)
 
-    results = (jaccard_result, kendalltau_result, procrustes_result)
-    names = ('JACCARD', 'KENDALL TAU', 'PROCRUSTES')
+    global_anchors_result = get_changes_by_global_anchors(w2v1=w2v1, w2v2=w2v2, top_n_changed_words=top_n_changed_words,
+                                                          verbose=verbose)
+
+    results = (jaccard_result, kendalltau_result, procrustes_result, global_anchors_result)
+    names = ('JACCARD', 'KENDALL TAU', 'PROCRUSTES', 'GLOBAL ANCHORS')
 
     if informative:
         for result, name in zip(results, names):
@@ -186,7 +190,7 @@ def comparison(w2v1_path: str, w2v2_path: str, top_n_neighbors: int,
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--model1', type=str, help="the path to the first model", required=True)
-    parser.add_argument('--model2', type=str, help="the path to the first model", required=True)
+    parser.add_argument('--model2', type=str, help="the path to the second model", required=True)
     parser.add_argument("--top-n-neighbors", type=int, default=10, help="We will compare top n nearest neighbors",
                         dest="top_n_neighbors")
 

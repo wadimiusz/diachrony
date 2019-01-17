@@ -33,7 +33,8 @@ def smart_procrustes_align_gensim(base_embed: gensim.models.KeyedVectors, other_
 
 
 def get_changes_by_procrustes(w2v1: gensim.models.KeyedVectors, w2v2: gensim.models.KeyedVectors,
-                              verbose: bool, top_n_changed_words: int):
+                              top_n_changed_words: int, verbose: bool):
+    log('Doing procrustes', verbose)
     w2v2_changed = smart_procrustes_align_gensim(w2v1, w2v2)
     result = list()
     for word in w2v1.wv.vocab.keys():  # their vocabs should be the same, so it doesn't matter over which to iterate
@@ -44,7 +45,7 @@ def get_changes_by_procrustes(w2v1: gensim.models.KeyedVectors, w2v2: gensim.mod
 
     result = sorted(result, key=lambda x: x[1])
     result = result[:top_n_changed_words]
-
+    log('Done', verbose)
     return result
 
 

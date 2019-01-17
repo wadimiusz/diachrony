@@ -21,6 +21,7 @@ def word_index(w2v1: gensim.models.KeyedVectors, w2v2: gensim.models.KeyedVector
 def get_changes_by_kendalltau(w2v1: gensim.models.KeyedVectors, w2v2: gensim.models.KeyedVectors,
                               verbose: bool, top_n_changed_words: int, top_n_neighbors):
 
+    log('Doing kendall tau', verbose)
     result = list()
     for num, word in enumerate(w2v1.wv.vocab.keys()):
         if num % 10 == 0:

@@ -5,7 +5,7 @@ from utils import log
 
 def get_changes_by_jaccard(w2v1: gensim.models.KeyedVectors, w2v2: gensim.models.KeyedVectors, top_n_neighbors: int,
                            verbose: bool, top_n_changed_words: int):
-
+    log('Doing jaccard', verbose)
     result = list()
     for num, word in enumerate(w2v1.wv.vocab):
         if num % 10 == 0:
@@ -20,7 +20,7 @@ def get_changes_by_jaccard(w2v1: gensim.models.KeyedVectors, w2v2: gensim.models
             result.append((word, jaccard))
 
     result = sorted(result, key=lambda x: x[1], )[:top_n_changed_words]
-    log('\nDONE', verbose)
+    log('\nDone', verbose)
     return result
 
 
