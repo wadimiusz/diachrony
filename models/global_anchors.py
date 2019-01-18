@@ -16,7 +16,7 @@ def get_global_anchors(word: str, w2v: gensim.models.KeyedVectors):
 
 
 def get_changes_by_global_anchors(w2v1: gensim.models.KeyedVectors, w2v2: gensim.models.KeyedVectors,
-                                  top_n_changed_words: int, verbose: bool):
+                                  top_n_changed_words: int):
     """
     This method uses approach described in
     Yin, Zi, Vin Sachidananda, and Balaji Prabhakar. "The global anchor method for quantifying linguistic shifts and
@@ -28,14 +28,13 @@ def get_changes_by_global_anchors(w2v1: gensim.models.KeyedVectors, w2v2: gensim
     :param w2v1: the first model
     :param w2v2: the second model, must have the same vocab as the first
     :param top_n_changed_words: we will output n words that differ the most in the given corpora
-    :param verbose: if True program will given system messages to stderr
     :return: list of pairs (word, score), where score indicates how much a word has changed
     """
-    log('Doing global anchors', verbose)
+    log('Doing global anchors')
     result = list()
     for num, word in enumerate(w2v1.wv.vocab.keys()):
         if num % 10 == 0:
-            log("{num} / {length}".format(num=num, length=len(w2v1.wv.vocab)), verbose=verbose, end='\r')
+            log("{num} / {length}".format(num=num, length=len(w2v1.wv.vocab)), end='\r')
 
         w2v1_anchors = get_global_anchors(word, w2v1)
         w2v2_anchors = get_global_anchors(word, w2v2)
@@ -45,5 +44,5 @@ def get_changes_by_global_anchors(w2v1: gensim.models.KeyedVectors, w2v2: gensim
 
     result = sorted(result, key=lambda x: x[1])
     result = result[:top_n_changed_words]
-    log('\nDone', verbose)
+    log('\nDone')
     return result

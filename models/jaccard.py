@@ -4,12 +4,12 @@ from utils import log
 
 
 def get_changes_by_jaccard(w2v1: gensim.models.KeyedVectors, w2v2: gensim.models.KeyedVectors, top_n_neighbors: int,
-                           verbose: bool, top_n_changed_words: int):
-    log('Doing jaccard', verbose)
+                           top_n_changed_words: int):
+    log('Doing jaccard')
     result = list()
     for num, word in enumerate(w2v1.wv.vocab):
         if num % 10 == 0:
-            log("{words_num} / {length}".format(words_num=num, length=len(w2v1.wv.vocab.keys())), verbose, end='\r')
+            log("{words_num} / {length}".format(words_num=num, length=len(w2v1.wv.vocab.keys())), end='\r')
 
         top_n_1 = [word for word, score in w2v1.most_similar(word, topn=top_n_neighbors)]
         top_n_2 = [word for word, score in w2v2.most_similar(word, topn=top_n_neighbors)]
@@ -20,7 +20,7 @@ def get_changes_by_jaccard(w2v1: gensim.models.KeyedVectors, w2v2: gensim.models
             result.append((word, jaccard))
 
     result = sorted(result, key=lambda x: x[1], )[:top_n_changed_words]
-    log('\nDone', verbose)
+    log('\nDone')
     return result
 
 

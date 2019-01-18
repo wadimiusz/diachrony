@@ -4,6 +4,7 @@ import pandas as pd
 
 from utils import load_model
 from utils import intersection_align_gensim
+from utils import log
 from models import get_changes_by_global_anchors
 
 
@@ -27,12 +28,16 @@ def main():
     base_model_names = list()
     ratings = list()
 
-    for model1_path, model2_path in zip(args.models, args.models[1:]):
+    for num, (model1_path, model2_path) in enumerate(zip(args.models, args.models[1:])):
+        log("{num} / {total} {model1} {model2}".format(num=num, total=len(args.models)-1, model1=model1_path,
+                                                       model2=model2_path), end='\r')
+
+        log('Done')
         model1 = load_model(model1_path)
         model2 = load_model(model2_path)
         model1, model2 = intersection_align_gensim(model1, model2, pos_tag=args.pos_tag,
                                                    top_n_most_frequent_words=args.top_n_most_frequent_words)
-        global_anchors_result = get_changes_by_global_anchors(model1, model1, args.positive_samples, verbose=False)
+        global_anchors_result = get_changes_by_global_anchors(model1, model1, args.positive_samples)
         positive_samples = [word for (word, score) in global_anchors_result]
         possible_negative_samples = set(model1.wv.vocab.keys()) - set(positive_samples)
         negative_samples = random.sample(possible_negative_samples, args.negative_samples)

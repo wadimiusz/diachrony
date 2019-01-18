@@ -19,13 +19,13 @@ def word_index(w2v1: gensim.models.KeyedVectors, w2v2: gensim.models.KeyedVector
 
 
 def get_changes_by_kendalltau(w2v1: gensim.models.KeyedVectors, w2v2: gensim.models.KeyedVectors,
-                              verbose: bool, top_n_changed_words: int, top_n_neighbors):
+                              top_n_changed_words: int, top_n_neighbors):
 
-    log('Doing kendall tau', verbose)
+    log('Doing kendall tau')
     result = list()
     for num, word in enumerate(w2v1.wv.vocab.keys()):
         if num % 10 == 0:
-            log("{words_num} / {length}".format(words_num=num, length=len(w2v1.wv.vocab)), verbose, end='\r')
+            log("{words_num} / {length}".format(words_num=num, length=len(w2v1.wv.vocab)), end='\r')
 
         top_n_1 = [word for word, score in w2v1.most_similar(word, topn=top_n_neighbors)]
         top_n_2 = [word for word, score in w2v2.most_similar(word, topn=top_n_neighbors)]
@@ -36,7 +36,7 @@ def get_changes_by_kendalltau(w2v1: gensim.models.KeyedVectors, w2v2: gensim.mod
             result.append((word, score))
 
     result = sorted(result, key=lambda x: x[1], )[:top_n_changed_words]
-    log('\nDONE', verbose)
+    log('\nDONE')
     return result
 
 

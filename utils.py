@@ -26,10 +26,10 @@ def simple_output(words_and_scores, model_name):
     print('')
 
 
-def log(message: str, verbose: bool, end: str = '\n'):
-    if verbose:
-        sys.stderr.write(message+end)
-        sys.stderr.flush()
+def log(message: str, end: str = '\n'):
+    """Used for logging. use 2> /dev/null to swich off log messages"""
+    sys.stderr.write(message+end)
+    sys.stderr.flush()
 
 
 def load_model(embeddings_file):
