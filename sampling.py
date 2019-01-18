@@ -55,11 +55,11 @@ def main():
 
     output = pd.DataFrame({"WORD": samples, "LABEL": labels, 'ASSESSOR_LABEL': -1, 'LEFT_MODEL': base_model_names,
                            "RATING": ratings})
-    output.index.names = ['ID']
 
     if args.shuffle:
         output = output.sample(frac=1).reset_index(drop=True)
 
+    output.index.names = ['ID']
     print(output.to_csv())
 
 
