@@ -57,7 +57,7 @@ def main():
                            "RATING": ratings})
 
     if args.shuffle:
-        output = output.sample(frac=1).reset_index(drop=True)
+        output = output.sample(frac=1).reset_index(drop=True)  # this shuffles the dataframe but not its index
 
     output.index.names = ['ID']
     print(output.to_csv())
