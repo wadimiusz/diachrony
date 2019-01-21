@@ -25,7 +25,7 @@ def main():
 
     samples = list()
     labels = list()
-    base_model_names = list()
+    base_year = list()
     ratings = list()
 
     for num, (model1_path, model2_path) in enumerate(zip(args.models, args.models[1:])):
@@ -51,9 +51,17 @@ def main():
         ratings.extend(range(1, args.positive_samples + 1))
         ratings.extend([-1] * args.negative_samples)
 
-        base_model_names.extend([model1_path] * (args.positive_samples + args.negative_samples))
+        if model1_path.startswith('wordvectors/') and model1_path.endswith('.model'):
+            year = int(model1_path[len('wordvectors/'):-len('.model')])
+        else:
+            raise ValueError("Pattern of {path} is not recognized. Path to model must start with 'wordvectors/'"
+                             " and end with '.model'. Feel free to change the pattern in the source code.".format(
+                path=model1_path
+            ))
 
-    output = pd.DataFrame({"WORD": samples, "LABEL": labels, 'ASSESSOR_LABEL': -1, 'LEFT_MODEL': base_model_names,
+        base_year.extend([year] * (args.positive_samples + args.negative_samples))
+
+    output = pd.DataFrame({"WORD": samples, "LABEL": labels, 'ASSESSOR_LABEL': -1, 'BASE_YEAR': base_year,
                            "RATING": ratings})
 
     if args.shuffle:

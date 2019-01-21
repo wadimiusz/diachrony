@@ -32,6 +32,13 @@ def log(message: str, end: str = '\n'):
     sys.stderr.flush()
 
 
+def format_time(time: float):
+    hours = int(time // 3600)
+    minutes = int(time % 3600) // 60
+    seconds = time % 60
+    return "{h}h {m}m {s:.2f}s".format(h=hours,m=minutes,s=seconds)
+
+
 def load_model(embeddings_file):
     """
     This function, written by github.com/akutuzov, unifies various standards of word embedding files.
