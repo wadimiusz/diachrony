@@ -1,7 +1,6 @@
 import argparse
 import gensim
 import random
-import numpy as np
 
 from models import get_changes_by_jaccard
 from models import get_changes_by_kendalltau
