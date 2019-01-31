@@ -1,11 +1,17 @@
 import argparse
 import random
 import pandas as pd
+from scipy.stats import percentileofscore
 
 from utils import load_model
 from utils import intersection_align_gensim
 from utils import log
 from models import get_changes_by_global_anchors
+
+
+def get_decile(word, vocab):
+    percentile = percentileofscore([vocab[word].count for word in vocab], vocab[word].count)
+    return int(percentile / 10)
 
 
 def main():
@@ -40,6 +46,15 @@ def main():
         global_anchors_result = get_changes_by_global_anchors(model1, model1, args.positive_samples)
         positive_samples = [word for (word, score) in global_anchors_result]
         possible_negative_samples = set(model1.wv.vocab.keys()) - set(positive_samples)
+        negative_samples = list()
+        for positive_sample in positive_samples:
+            number_of_bin = get_decile(positive_sample, model1.vocab)
+            eligible_negative_samples = [word for word in possible_negative_samples
+                                         if get_decile(word, model1.vocab) == number_of_bin]
+
+            negative_sample = random.choice(eligible_negative_samples)
+            negative_samples.append(negative_sample)
+
         negative_samples = random.sample(possible_negative_samples, args.negative_samples)
 
         samples.extend(positive_samples)
