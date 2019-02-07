@@ -12,6 +12,8 @@ for index in corpus.index:
         print(corpus.loc[index, 'WORD'], '\n', corpus.loc[index, 'OLD_CONTEXTS'], '\n', corpus.loc[index, 'NEW_CONTEXTS'], '\n')
 
         answer = input("Оцените, насколько изменилось значение/употребление слова от 0 (совсем не изменилось) до 2 (полностью изменилось): ")
+        if answer not in ["0","1","2","стоп"]:
+            answer = input("Попробуйте ещё раз: ")
         if answer == 'стоп':
             break
     else:
