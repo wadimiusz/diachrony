@@ -1,6 +1,9 @@
 import csv
+import os
+import pandas as pd
+import sys
 
-with open('corpus.csv', 'r') as infile:
+with open(sys.argv[1], 'r') as infile:
     reader = csv.DictReader(infile)
     data = {}
     for row in reader:
@@ -10,12 +13,9 @@ with open('corpus.csv', 'r') as infile:
             except KeyError:
                 data[header] = [value]
 
-output = open('results.csv', 'a')
+samples = pd.read_csv(sys.argv[2])
 
-
-words = list(zip(data['WORD'], data['OLD_CONTEXTS'], data['NEW_CONTEXTS']))
-
-dict = {}
+words = list(zip(data['ID'], data['WORD'], data['OLD_CONTEXTS'], data['NEW_CONTEXTS']))
 
 for item in words:
     print(item[0], '\n', item[1], '\n', item[2], '\n')
@@ -23,9 +23,7 @@ for item in words:
         "Оцените, насколько изменилось значение/употребление слова от 0 (совсем не изменилось) до 3 (полностью изменилось): ")
     if answer == 'стоп':
         break
-    dict[item[0]] = answer
-    output.write(item[0] + ',' + answer + '\n')
+    result = samples.set_value(int(item[0]), 'ASSESSOR_LABEL', answer)
+    samples.update(result)
 
-output.close()
-
-#sorry seems to be the easiest word in our case
+samples.to_csv('results.csv')
