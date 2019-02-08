@@ -9,7 +9,18 @@ samples = pd.read_csv(sys.argv[2], sep = ',', index_col = ['ID'])
 
 for index in corpus.index:
     if samples.loc[index, 'ASSESSOR_LABEL'] == -1:
-        print(corpus.loc[index, 'WORD'], '\n', corpus.loc[index, 'OLD_CONTEXTS'], '\n', corpus.loc[index, 'NEW_CONTEXTS'], '\n')
+        print('===============')
+        print("{0} / 280, {1:0.2%}".format(index, index / 280))
+        print(corpus.loc[index, 'WORD'])
+        print('Старое:')
+        for context in eval(corpus.loc[index, 'OLD_CONTEXTS']):
+            print(*context, sep=' ')
+            print('')
+        print('')
+        print('Новое:')
+        for context in eval(corpus.loc[index, 'NEW_CONTEXTS']):
+            print(*context, sep=' ')
+            print('')
 
         answer = input("Оцените, насколько изменилось значение/употребление слова от 0 (совсем не изменилось) до 2 (полностью изменилось): ")
         if answer not in ["0","1","2","стоп"]:
