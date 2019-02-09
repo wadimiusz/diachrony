@@ -35,8 +35,15 @@ def main():
             idx=idx, year=year, total=len(input_df), word=word.ljust(40),ETA=ETA
         ), end='\r')
         try:
-            five_old_samples = random.sample(get_instances(word, year), 5)
-            five_new_samples = random.sample(get_instances(word, year+1), 5)
+            if len(get_instances(word, year)) > 5:
+                five_old_samples = random.sample(get_instances(word, year), 5)
+            else:
+                five_old_samples = get_instances(word, year)
+
+            if len(get_instances(word, year+1)) > 5:
+                five_new_samples = random.sample(get_instances(word, year+1), 5)
+            else:
+                five_new_samples = get_instances(word, year+1)
 
             old_contexts.append(five_old_samples)
             new_contexts.append(five_new_samples)
