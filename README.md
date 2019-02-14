@@ -6,3 +6,9 @@ E. g. for comparing embeddings from 2013 and embeddings from 2014 in a verbose m
 ```
 sh scripts/comparison_2013_2014_informative.sh
 ```
+
+
+Team:
+Vadim Fomin https://github.com/wadimiusz
+Julia Rodina https://github.com/juliarodina
+Daria Bakshandaeva https://github.com/Gugutse
