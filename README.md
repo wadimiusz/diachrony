@@ -8,7 +8,7 @@ sh scripts/comparison_2013_2014_informative.sh
 ```
 
 
-Team:
-Vadim Fomin https://github.com/wadimiusz
-Julia Rodina https://github.com/juliarodina
-Daria Bakshandaeva https://github.com/Gugutse
+Team:  
+Vadim Fomin https://github.com/wadimiusz  
+Julia Rodina https://github.com/juliarodina  
+Daria Bakshandaeva https://github.com/Gugutse  
