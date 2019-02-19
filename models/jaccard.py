@@ -29,7 +29,7 @@ class Jaccard(object):
             if num % 10 == 0:
                 log("{words_num} / {length}".format(words_num=num, length=len(self.w2v1.wv.vocab.keys())), end='\r')
 
-            score = self.get_score_by_jaccard(word=word)
+            score = self.get_score(word=word)
             result.append((word, score))
 
         result = sorted(result, key=lambda x: x[1])[:top_n_changed_words]

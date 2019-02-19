@@ -26,7 +26,7 @@ class KendallTau(object):
     def get_score(self, word: str, **kwargs):
         top_n_1 = [word for word, score in self.w2v1.most_similar(word, topn=self.top_n_neighbors)]
         top_n_2 = [word for word, score in self.w2v2.most_similar(word, topn=self.top_n_neighbors)]
-        if len(top_n_1) == len(top_n_2) == top_n_neighbors:
+        if len(top_n_1) == len(top_n_2) == self.top_n_neighbors:
             top_n_1 = [self.word_index(word) for word in top_n_1]
             top_n_2 = [self.word_index(word) for word in top_n_2]
             score, p_value = mstats.kendalltau(top_n_1, top_n_2)
@@ -39,9 +39,9 @@ class KendallTau(object):
         result = list()
         for num, word in enumerate(self.w2v1.wv.vocab.keys()):
             if num % 10 == 0:
-                log("{words_num} / {length}".format(words_num=num, length=len(w2v1.wv.vocab)), end='\r')
+                log("{words_num} / {length}".format(words_num=num, length=len(self.w2v1.wv.vocab)), end='\r')
 
-            score = self.get_score_by_kendalltau(word)
+            score = self.get_score(word)
             result.append((word, score))
 
         result = sorted(result, key=lambda x: x[1])[:top_n_changed_words]
