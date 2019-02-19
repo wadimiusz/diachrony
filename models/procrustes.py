@@ -5,7 +5,8 @@ import numpy as np
 from utils import log
 
 
-def smart_procrustes_align_gensim(base_embed: gensim.models.KeyedVectors, other_embed: gensim.models.KeyedVectors):
+def smart_procrustes_align_gensim(base_embed: gensim.models.KeyedVectors,
+                                  other_embed: gensim.models.KeyedVectors, **kwargs):
     """
     This code, taken from https://gist.github.com/quadrismegistus/09a93e219a6ffc4f216fb85235535faf and modified,
     uses procrustes analysis to make two word embeddings compatible.
@@ -32,21 +33,29 @@ def smart_procrustes_align_gensim(base_embed: gensim.models.KeyedVectors, other_
     return other_embed
 
 
-def get_changes_by_procrustes(w2v1: gensim.models.KeyedVectors, w2v2: gensim.models.KeyedVectors,
-                              top_n_changed_words: int):
-    log('Doing procrustes')
-    w2v2_changed = smart_procrustes_align_gensim(w2v1, w2v2)
-    result = list()
-    for word in w2v1.wv.vocab.keys():  # their vocabs should be the same, so it doesn't matter over which to iterate
-        vector1 = w2v1.wv[word]
-        vector2 = w2v2_changed.wv[word]
-        score = cosine_similarity(vector1.reshape((1, -1)), vector2.reshape((1, -1)))[0][0]
-        result.append((word, score))
+class ProcrustesAligner(object):
+    def __init__(self, w2v1: gensim.models.KeyedVectors, w2v2: gensim.models.KeyedVectors):
+        self.w2v1 = w2v1
+        self.w2v2 = w2v2
+        self.w2v2_changed = smart_procrustes_align_gensim(w2v1, w2v2)
 
-    result = sorted(result, key=lambda x: x[1])
-    result = result[:top_n_changed_words]
-    log('Done')
-    return result
+    def get_score(self, word):
+        vector1 = self.w2v1.wv[word]
+        vector2 = self.w2v2_changed.wv[word]
+        score = cosine_similarity(vector1.reshape((1, -1)), vector2.reshape((1, -1)))[0][0]
+        return score
+
+    def get_changes(self, top_n_changed_words: int):
+        log('Doing procrustes')
+        result = list()
+        for word in self.w2v1.wv.vocab.keys():  # their vocabs should be the same, so it doesn't matter over which to iterate
+            score = self.get_score(word)
+            result.append((word, score))
+
+        result = sorted(result, key=lambda x: x[1])
+        result = result[:top_n_changed_words]
+        log('Done')
+        return result
 
 
 if __name__ == "__main__":

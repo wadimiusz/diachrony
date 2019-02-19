@@ -2,10 +2,10 @@ import argparse
 import gensim
 import random
 
-from models import get_changes_by_jaccard
-from models import get_changes_by_kendalltau
-from models import get_changes_by_procrustes
-from models import get_changes_by_global_anchors
+from models import Jaccard
+from models import KendallTau
+from models import ProcrustesAligner
+from models import GlobalAnchors
 from utils import log
 from utils import informative_output, simple_output
 from utils import load_model
@@ -52,15 +52,16 @@ def comparison(w2v1_path: str, w2v2_path: str, top_n_neighbors: int,
                words1=len(w2v1.wv.vocab), words2=len(w2v2.wv.vocab), word1=random.choice(list(w2v1.wv.vocab.keys())),
                word2=random.choice(list(w2v2.wv.vocab.keys()))))
 
-    jaccard_result = get_changes_by_jaccard(w2v1=w2v1, w2v2=w2v2, top_n_changed_words=top_n_changed_words,
-                                            top_n_neighbors=top_n_neighbors)
+    jaccard_result = Jaccard(w2v1=w2v1, w2v2=w2v2, top_n_neighbors=top_n_neighbors).get_changes(
+        top_n_changed_words=top_n_changed_words)
 
-    kendalltau_result = get_changes_by_kendalltau(w2v1=w2v1, w2v2=w2v2, top_n_changed_words=top_n_changed_words,
-                                                  top_n_neighbors=top_n_neighbors)
+    kendalltau_result = KendallTau(w2v1=w2v1, w2v2=w2v2, top_n_neighbors=top_n_neighbors).get_changes(
+        top_n_changed_words=top_n_changed_words)
 
-    procrustes_result = get_changes_by_procrustes(w2v1=w2v1, w2v2=w2v2, top_n_changed_words=top_n_changed_words)
+    procrustes_result = ProcrustesAligner(w2v1=w2v1, w2v2=w2v2).get_changes_by_procrustes(
+        top_n_changed_words=top_n_changed_words)
 
-    global_anchors_result = get_changes_by_global_anchors(w2v1=w2v1, w2v2=w2v2, top_n_changed_words=top_n_changed_words)
+    global_anchors_result = GlobalAnchors(w2v1=w2v1, w2v2=w2v2).get_changes(top_n_changed_words=top_n_changed_words)
 
     results = (jaccard_result, kendalltau_result, procrustes_result, global_anchors_result)
     names = ('JACCARD', 'KENDALL TAU', 'PROCRUSTES', 'GLOBAL ANCHORS')
