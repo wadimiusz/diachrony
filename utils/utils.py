@@ -2,7 +2,7 @@ import os
 import sys
 import gensim
 import numpy as np
-
+import logging
 
 def informative_output(words_and_scores, w2v1: gensim.models.KeyedVectors, w2v2: gensim.models.KeyedVectors,
                        top_n_neighbors: int, model_name: str):
@@ -46,6 +46,8 @@ def load_model(embeddings_file):
     :param embeddings_file: path to the file
     :return: the loaded model
     """
+    logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
+
     if not os.path.isfile(embeddings_file):
         raise FileNotFoundError("No file called {file}".format(file=embeddings_file))
     # Determine the model format by the file extension
