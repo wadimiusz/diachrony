@@ -34,7 +34,6 @@ def get_models_by_year(year: int, kind: str):
         model1 = get_model('wordvectors/incremental/{year}_incremental.model'.format(year=year))
         model2 = get_model('wordvectors/incremental/{year}_incremental.model'.format(year=year+1))
 
-    model1, model2 = intersection_align_gensim(model1, model2)
     return model1, model2
 
 
@@ -49,7 +48,6 @@ def get_soviet_model(kind: str):
         model1 = get_model("wordvectors/soviet/pre-soviet_incremental.model")
         model2 = get_model("wordvectors/soviet/soviet_incremental.model")
 
-    model1, model2 = intersection_align_gensim(model1, model2)
     return model1, model2
 
 
