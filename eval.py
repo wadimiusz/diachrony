@@ -4,6 +4,8 @@ import numpy as np
 import pandas as pd
 
 from sklearn.tree import DecisionTreeClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.neural_network import MLPClassifier
 from sklearn.model_selection import cross_val_score, StratifiedKFold
 from sklearn.metrics import f1_score
 
@@ -83,7 +85,7 @@ for kind in ['regular', 'incremental']:
 
             y_train = y_true[train_idx]
             y_test = y_true[test_idx]
-            clf = DecisionTreeClassifier(max_depth=5).fit(X_train, y_train)
+            clf = LogisticRegression(class_weight='balanced').fit(X_train, y_train)
             y_pred = clf.predict(X_test)
             unique, counts = np.unique(y_true, return_counts=True)
             if min(counts) == 0:
@@ -98,7 +100,7 @@ for kind in ['regular', 'incremental']:
 
             y_train_binary = (y_train > 0).astype(int)
             y_test_binary = (y_test > 0).astype(int)
-            binary_clf = DecisionTreeClassifier(max_depth=5).fit(X_train, y_train_binary)
+            binary_clf = LogisticRegression(class_weight='balanced').fit(X_train, y_train_binary)
             y_pred_binary = binary_clf.predict(X_test)
             current_scores["binary"].append(f1_score(y_test_binary, y_pred_binary))
 
