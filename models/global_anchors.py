@@ -1,10 +1,11 @@
 import gensim
 
-from utils import log
+from utils import log, intersection_align_gensim
 
 
 class GlobalAnchors(object):
     def __init__(self, w2v1, w2v2, **kwargs):
+        w2v1, w2v2 = intersection_align_gensim(w2v1, w2v2)
         self.w2v1 = w2v1
         self.w2v2 = w2v2
 
