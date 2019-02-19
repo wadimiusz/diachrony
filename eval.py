@@ -19,18 +19,37 @@ from utils import load_model
 
 
 @functools.lru_cache(maxsize=None)
+def get_model(name):
+    return load_model(name)
+
+
 def get_models_by_year(year: int, kind: str):
     if kind not in ['regular', 'incremental']:
         raise ValueError
 
     if kind == "regular":
-        model1 = load_model('wordvectors/{year}.model'.format(year=year))
-        model2 = load_model('wordvectors/{year}.model'.format(year=year+1))
+        model1 = get_model('wordvectors/{year}.model'.format(year=year))
+        model2 = get_model('wordvectors/{year}.model'.format(year=year+1))
     else:
-        model1 = load_model('wordvectors/incremental/{year}_incremental.model'.format(year=year))
-        model2 = load_model('wordvectors/incremental/{year}_incremental.model'.format(year=year+1))
+        model1 = get_model('wordvectors/incremental/{year}_incremental.model'.format(year=year))
+        model2 = get_model('wordvectors/incremental/{year}_incremental.model'.format(year=year+1))
 
-    model1, model2 = intersection_align_gensim(model1, model2, pos_tag="ADJ", top_n_most_frequent_words=5000)
+    model1, model2 = intersection_align_gensim(model1, model2)
+    return model1, model2
+
+
+def get_soviet_model(kind: str):
+    if kind not in ['regular', 'incremental']:
+        raise ValueError
+
+    if kind == "regular":
+        model1 = get_model("wordvectors/soviet/pre-soviet.model")
+        model2 = get_model("wordvectors/soviet/soviet.model")
+    else:
+        model1 = get_model("wordvectors/soviet/pre-soviet_incremental.model")
+        model2 = get_model("wordvectors/soviet/soviet_incremental.model")
+
+    model1, model2 = intersection_align_gensim(model1, model2)
     return model1, model2
 
 
