@@ -4,9 +4,12 @@ from utils import log
 
 
 class GlobalAnchors(object):
-    def __init__(self, w2v1, w2v2):
+    def __init__(self, w2v1, w2v2, **kwargs):
         self.w2v1 = w2v1
         self.w2v2 = w2v2
+
+    def __repr__(self):
+        return "GlobalAnchors"
 
     def get_global_anchors(self, word: str, w2v: gensim.models.KeyedVectors):
         """

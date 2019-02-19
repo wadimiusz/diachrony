@@ -5,12 +5,15 @@ from utils import log
 
 
 class KendallTau(object):
-    def __init__(self, w2v1: gensim.models.KeyedVectors, w2v2: gensim.models.KeyedVectors, top_n_neighbors):
+    def __init__(self, w2v1: gensim.models.KeyedVectors, w2v2: gensim.models.KeyedVectors, top_n_neighbors, **kwargs):
         self.w2v1 = w2v1
         self.w2v2 = w2v2
         self.top_n_neighbors = top_n_neighbors
 
-    def word_index(self, word: str, **kwargs) -> object:
+    def __repr__(self):
+        return "KendallTau"
+
+    def word_index(self, word: str) -> int:
         """
         A handy function for extracting the word index from models
         :param w2v1: the model in question. if present, we use the index from that model
@@ -23,7 +26,7 @@ class KendallTau(object):
         else:
             return len(self.w2v1.wv.vocab) + self.w2v2.wv.vocab[word].index
 
-    def get_score(self, word: str, **kwargs):
+    def get_score(self, word: str):
         top_n_1 = [word for word, score in self.w2v1.most_similar(word, topn=self.top_n_neighbors)]
         top_n_2 = [word for word, score in self.w2v2.most_similar(word, topn=self.top_n_neighbors)]
         if len(top_n_1) == len(top_n_2) == self.top_n_neighbors:

@@ -58,7 +58,7 @@ def comparison(w2v1_path: str, w2v2_path: str, top_n_neighbors: int,
     kendalltau_result = KendallTau(w2v1=w2v1, w2v2=w2v2, top_n_neighbors=top_n_neighbors).get_changes(
         top_n_changed_words=top_n_changed_words)
 
-    procrustes_result = ProcrustesAligner(w2v1=w2v1, w2v2=w2v2).get_changes_by_procrustes(
+    procrustes_result = ProcrustesAligner(w2v1=w2v1, w2v2=w2v2).get_changes(
         top_n_changed_words=top_n_changed_words)
 
     global_anchors_result = GlobalAnchors(w2v1=w2v1, w2v2=w2v2).get_changes(top_n_changed_words=top_n_changed_words)

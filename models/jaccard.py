@@ -5,13 +5,16 @@ from utils import log
 
 class Jaccard(object):
     def __init__(self, w2v1: gensim.models.KeyedVectors, w2v2: gensim.models.KeyedVectors,
-                 top_n_neighbors: int):
+                 top_n_neighbors: int, **kwargs):
 
         self.w2v1 = w2v1
         self.w2v2 = w2v2
         self.top_n_neighbors = top_n_neighbors
 
-    def get_score(self, word: str, **kwargs):
+    def __repr__(self):
+        return "Jaccard"
+
+    def get_score(self, word: str):
         top_n_1 = [word for word, score in self.w2v1.most_similar(word, topn=self.top_n_neighbors)]
         top_n_2 = [word for word, score in self.w2v2.most_similar(word, topn=self.top_n_neighbors)]
         if len(top_n_1) == self.top_n_neighbors and len(top_n_2) == self.top_n_neighbors:

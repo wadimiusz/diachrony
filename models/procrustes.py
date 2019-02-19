@@ -6,7 +6,7 @@ from utils import log
 
 
 def smart_procrustes_align_gensim(base_embed: gensim.models.KeyedVectors,
-                                  other_embed: gensim.models.KeyedVectors, **kwargs):
+                                  other_embed: gensim.models.KeyedVectors):
     """
     This code, taken from https://gist.github.com/quadrismegistus/09a93e219a6ffc4f216fb85235535faf and modified,
     uses procrustes analysis to make two word embeddings compatible.
@@ -34,10 +34,13 @@ def smart_procrustes_align_gensim(base_embed: gensim.models.KeyedVectors,
 
 
 class ProcrustesAligner(object):
-    def __init__(self, w2v1: gensim.models.KeyedVectors, w2v2: gensim.models.KeyedVectors):
+    def __init__(self, w2v1: gensim.models.KeyedVectors, w2v2: gensim.models.KeyedVectors, **kwargs):
         self.w2v1 = w2v1
         self.w2v2 = w2v2
         self.w2v2_changed = smart_procrustes_align_gensim(w2v1, w2v2)
+
+    def __repr__(self):
+        return "ProcrustesAligner"
 
     def get_score(self, word):
         vector1 = self.w2v1.wv[word]
