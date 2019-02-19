@@ -35,52 +35,81 @@ def get_models_by_year(year: int, kind: str):
 df = pd.read_csv('dataset/annotated.csv')
 df_longterm = pd.read_csv('dataset/gold_kutuzov_kuzmenko_2017.tsv')
 
-scores = dict()
 f1_macro = pd.DataFrame({"model": ["GlobalAnchors", "ProcrustesAligner", "KendallTau", "Jaccard", "united"]})
 f1_macro.index.name="id"
 
 f1_for_2 = pd.DataFrame({"model": ["GlobalAnchors", "ProcrustesAligner", "KendallTau", "Jaccard", "united"]})
 f1_for_2.index.name="id"
+
+binary = pd.DataFrame({"model": ["GlobalAnchors", "ProcrustesAligner", "KendallTau", "Jaccard", "united"]})
+binary.index.name="id"
+
+
 for kind in ['regular', 'incremental']:
     max_scorers = 4
     max_samples = len(df)
     X = np.ndarray((max_samples, max_scorers))
-    y = np.array(df["GROUND_TRUTH"])
+    y_true = np.array(df["GROUND_TRUTH"])
     current_f1_macro = list()
     current_f1_for_2 = list()
-    for scorer_num, Scorer in enumerate([GlobalAnchors, ProcrustesAligner, KendallTau, Jaccard]):
-        for idx, values in df.iterrows():
-            print("{kind}, {scorer}, {idx} / {max}".format(kind=kind, scorer=str(Scorer), idx=idx, max=280),
-                  file=sys.stderr)
+    scores = {"f1_macro": list(), "f1_for_2": list(), "binary": list()}
+    scorers = [GlobalAnchors, ProcrustesAligner, KendallTau, Jaccard]
+    for scorer_num in [0, 1, 2, 3, None]:
+        if scorer_num is not None:
+            Scorer = scorers[scorer_num]
+            for idx, values in df.iterrows():
+                print("{kind}, {scorer}, {idx} / {max}".format(kind=kind, scorer=str(Scorer), idx=idx, max=280),
+                      file=sys.stderr)
 
-            year = values["BASE_YEAR"]
-            word = values["WORD"]
+                year = values["BASE_YEAR"]
+                word = values["WORD"]
 
-            model1, model2 = get_models_by_year(year, kind)
-            score = Scorer(w2v1=model1, w2v2=model2, top_n_neighbors=50).get_score(word)
-            X[idx, scorer_num] = score
+                model1, model2 = get_models_by_year(year, kind)
+                score = Scorer(w2v1=model1, w2v2=model2, top_n_neighbors=50).get_score(word)
+                X[idx, scorer_num] = score
 
-        clf = DecisionTreeClassifier(max_depth=5)
-        fold = StratifiedKFold(9, shuffle=False)
-        model_f1 = np.mean(cross_val_score(clf, X[:, scorer_num].reshape(-1, 1), y, scoring='f1_macro', cv=fold))
-        current_f1_macro.append(model_f1)
-        model_f1_for_2 = np.mean(cross_val_score(
-            clf, X[:, scorer_num].reshape(-1, 1), y, scoring=lambda estimator, X, y: f1_score(
-                estimator.predict(X), y, average='macro', pos_label=1, labels=[1]), cv=fold))
+        fold_creator = StratifiedKFold(9, shuffle=False)
+        current_scores = {"f1_macro": list(), "f1_for_2": list(), "binary": list()}
+        for train_idx, test_idx in fold_creator.split(X[:, scorer_num], y_true):
+            if scorer_num is not None:
+                X_train = X[:, scorer_num][train_idx]
+                X_test = X[:, scorer_num][test_idx]
+                X_train = X_train.reshape(-1, 1)
+                X_test = X_test.reshape(-1, 1)
+            else:
+                X_train = X[train_idx]
+                X_test = X[test_idx]
+                print(X_train.shape, X_test.shape)
 
-        current_f1_for_2.append(model_f1_for_2)
+            y_train = y_true[train_idx]
+            y_test = y_true[test_idx]
+            clf = DecisionTreeClassifier(max_depth=5).fit(X_train, y_train)
+            y_pred = clf.predict(X_test)
+            unique, counts = np.unique(y_true, return_counts=True)
+            if min(counts) == 0:
+                raise ValueError
+            print("True", np.asarray((unique, counts)).T)
+            unique, counts = np.unique(y_pred, return_counts=True)
+            print("Predicted", np.asarray((unique, counts)).T)
+            if min(counts) == 0:
+                raise ValueError
+            current_scores["f1_macro"].append(f1_score(y_test, y_pred, average='macro'))
+            current_scores["f1_for_2"].append(f1_score(y_test, y_pred, pos_label=2, labels=[2], average='macro'))
 
-    clf = DecisionTreeClassifier(max_depth=5)
-    fold = StratifiedKFold(9, shuffle=False)
-    united_f1 = np.mean(cross_val_score(clf, X, y, scoring='f1_macro', cv=fold))
-    current_f1_macro.append(united_f1)
-    f1_macro[kind] = current_f1_macro
-    united_f1_for_2 = np.mean(cross_val_score(
-            clf, X, y, scoring=lambda estimator, X, y: f1_score(
-                estimator.predict(X), y, average='macro', pos_label=1, labels=[1]), cv=fold))
+            y_train_binary = (y_train > 0).astype(int)
+            y_test_binary = (y_test > 0).astype(int)
+            binary_clf = DecisionTreeClassifier(max_depth=5).fit(X_train, y_train_binary)
+            y_pred_binary = binary_clf.predict(X_test)
+            current_scores["binary"].append(f1_score(y_test_binary, y_pred_binary))
 
-    current_f1_for_2.append(united_f1_for_2)
-    f1_for_2[kind] = current_f1_for_2
+        scores["f1_macro"].append(np.mean(current_scores["f1_macro"]))
+        scores["f1_for_2"].append(np.mean(current_scores["f1_for_2"]))
+        scores["binary"].append(np.mean(current_scores["binary"]))
+
+    f1_macro[kind] = scores["f1_macro"]
+    f1_for_2[kind] = scores["f1_for_2"]
+    binary[kind] = scores["binary"]
 
 f1_macro.to_csv('outputs/f1_macro.csv')
 f1_for_2.to_csv('outputs/f1_for_2.csv')
+binary.to_csv('outputs/binary.csv')
