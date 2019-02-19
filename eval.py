@@ -96,7 +96,7 @@ for kind in ['regular', 'incremental']:
             if min(counts) == 0:
                 raise ValueError
             current_scores["f1_macro"].append(f1_score(y_test, y_pred, average='macro'))
-            current_scores["f1_for_2"].append(f1_score(y_test, y_pred, pos_label=2, labels=[2], average='macro'))
+            current_scores["f1_for_2"].append(f1_score(y_test, y_pred, labels=[2], average='macro'))
 
             y_train_binary = (y_train > 0).astype(int)
             y_test_binary = (y_test > 0).astype(int)
