@@ -3,7 +3,7 @@ import gensim
 import numpy as np
 
 from utils import log
-
+from utils import intersection_align_gensim
 
 def smart_procrustes_align_gensim(base_embed: gensim.models.KeyedVectors,
                                   other_embed: gensim.models.KeyedVectors):
@@ -35,8 +35,7 @@ def smart_procrustes_align_gensim(base_embed: gensim.models.KeyedVectors,
 
 class ProcrustesAligner(object):
     def __init__(self, w2v1: gensim.models.KeyedVectors, w2v2: gensim.models.KeyedVectors, **kwargs):
-        self.w2v1 = w2v1
-        self.w2v2 = w2v2
+        self.w2v1, self.w2v2 = intersection_align_gensim(w2v1, w2v2)
         self.w2v2_changed = smart_procrustes_align_gensim(w2v1, w2v2)
 
     def __repr__(self):

@@ -2,6 +2,7 @@ import sys
 import functools
 import numpy as np
 import pandas as pd
+from copy import deepcopy
 
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.linear_model import LogisticRegression
@@ -14,7 +15,6 @@ from models import ProcrustesAligner
 from models import Jaccard
 from models import KendallTau
 
-from utils import intersection_align_gensim
 from utils import load_model
 
 
@@ -86,7 +86,7 @@ for kind in ['regular', 'incremental']:
                 word = values["WORD"]
 
                 model1, model2 = get_models_by_year(year, kind)
-                score = Scorer(w2v1=model1, w2v2=model2, top_n_neighbors=50).get_score(word)
+                score = Scorer(w2v1=deepcopy(model1), w2v2=deepcopy(model2), top_n_neighbors=50).get_score(word)
                 X[idx, scorer_num] = score
 
         fold_creator = StratifiedKFold(9, shuffle=False)

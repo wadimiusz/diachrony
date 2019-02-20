@@ -3,6 +3,8 @@ import sys
 import gensim
 import numpy as np
 import logging
+import functools
+
 
 def informative_output(words_and_scores, w2v1: gensim.models.KeyedVectors, w2v2: gensim.models.KeyedVectors,
                        top_n_neighbors: int, model_name: str):
@@ -65,6 +67,7 @@ def load_model(embeddings_file):
     return emb_model
 
 
+@functools.lru_cache()
 def intersection_align_gensim(m1: gensim.models.KeyedVectors, m2: gensim.models.KeyedVectors,
                               pos_tag: (str, None) = None, words: (list, None) = None,
                               top_n_most_frequent_words: (int, None) = None):
@@ -105,7 +108,7 @@ def intersection_align_gensim(m1: gensim.models.KeyedVectors, m2: gensim.models.
         common_vocab &= set(words)
 
     # If no alignment necessary because vocab is identical...
-    if not vocab_m1-common_vocab and not vocab_m2-common_vocab and top_n_most_frequent_words is not None:
+    if not vocab_m1-common_vocab and not vocab_m2-common_vocab and top_n_most_frequent_words is None:
         return m1, m2
 
     # Otherwise sort by frequency (summed for both)
