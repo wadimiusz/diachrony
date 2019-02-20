@@ -29,10 +29,10 @@ def get_models_by_year(year: int, kind: str):
 
     if kind == "regular":
         model1 = get_model('wordvectors/{year}.model'.format(year=year))
-        model2 = get_model('wordvectors/{year}.model'.format(year=year+1))
+        model2 = get_model('wordvectors/{year}.model'.format(year=year + 1))
     else:
         model1 = get_model('wordvectors/incremental/{year}_incremental.model'.format(year=year))
-        model2 = get_model('wordvectors/incremental/{year}_incremental.model'.format(year=year+1))
+        model2 = get_model('wordvectors/incremental/{year}_incremental.model'.format(year=year + 1))
 
     return model1, model2
 
@@ -54,17 +54,21 @@ def get_soviet_model(kind: str):
 df = pd.read_csv('dataset/annotated.csv')
 df_longterm = pd.read_csv('dataset/gold_kutuzov_kuzmenko_2017.tsv')
 
-f1_macro = pd.DataFrame({"model": ["GlobalAnchors", "ProcrustesAligner", "KendallTau", "Jaccard", "united"]})
-f1_macro.index.name="id"
+f1_macro = pd.DataFrame(
+    {"model": ["GlobalAnchors", "ProcrustesAligner", "KendallTau", "Jaccard", "united"]})
+f1_macro.index.name = "id"
 
-f1_for_2 = pd.DataFrame({"model": ["GlobalAnchors", "ProcrustesAligner", "KendallTau", "Jaccard", "united"]})
-f1_for_2.index.name="id"
+f1_for_2 = pd.DataFrame(
+    {"model": ["GlobalAnchors", "ProcrustesAligner", "KendallTau", "Jaccard", "united"]})
+f1_for_2.index.name = "id"
 
-binary = pd.DataFrame({"model": ["GlobalAnchors", "ProcrustesAligner", "KendallTau", "Jaccard", "united"]})
-binary.index.name="id"
+binary = pd.DataFrame(
+    {"model": ["GlobalAnchors", "ProcrustesAligner", "KendallTau", "Jaccard", "united"]})
+binary.index.name = "id"
 
 # Choosing the classification algorithm
-algo = LogisticRegression(class_weight='balanced', n_jobs=2, multi_class='multinomial', solver='lbfgs')
+algo = LogisticRegression(class_weight='balanced', n_jobs=2, multi_class='multinomial',
+                          solver='lbfgs')
 
 for kind in ['regular', 'incremental']:
     max_scorers = 4
@@ -79,14 +83,24 @@ for kind in ['regular', 'incremental']:
         if scorer_num is not None:
             Scorer = scorers[scorer_num]
             for idx, values in df.iterrows():
-                print("{kind}, {scorer}, {idx} / {max}".format(kind=kind, scorer=str(Scorer), idx=idx, max=280),
-                      file=sys.stderr)
+                print(
+                    "{kind}, {scorer}, {idx} / {max}".format(kind=kind, scorer=str(Scorer), idx=idx,
+                                                             max=280),
+                    file=sys.stderr)
 
                 year = values["BASE_YEAR"]
                 word = values["WORD"]
 
                 model1, model2 = get_models_by_year(year, kind)
-                score = Scorer(w2v1=deepcopy(model1), w2v2=deepcopy(model2), top_n_neighbors=50).get_score(word)
+
+                if scorer_num == 0 or scorer_num == 1:
+                    big_lumpy_object = Scorer(w2v1=deepcopy(model1), w2v2=deepcopy(model2),
+                                              top_n_neighbors=50)
+                    score = big_lumpy_object.get_score(word)
+                    del big_lumpy_object
+                else:
+                    score = Scorer(w2v1=model1, w2v2=model2, top_n_neighbors=50).get_score(word)
+
                 X[idx, scorer_num] = score
 
         fold_creator = StratifiedKFold(9, shuffle=False)
