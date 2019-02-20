@@ -85,8 +85,7 @@ for kind in ['regular', 'incremental']:
             for idx, values in df.iterrows():
                 print(
                     "{kind}, {scorer}, {idx} / {max}".format(kind=kind, scorer=str(Scorer), idx=idx,
-                                                             max=280),
-                    file=sys.stderr)
+                                                             max=280), file=sys.stderr)
 
                 year = values["BASE_YEAR"]
                 word = values["WORD"]
