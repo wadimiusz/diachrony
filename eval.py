@@ -134,6 +134,9 @@ algo = LogisticRegression(class_weight='balanced', n_jobs=2, multi_class='multin
 # f1_for_2.to_csv('outputs/f1_for_2.csv')
 # binary.to_csv('outputs/binary.csv')
 
+soviet_output = pd.DataFrame(
+    {"model": ["GlobalAnchors", "ProcrustesAligner", "KendallTau", "Jaccard", "united"]})
+
 for kind in ["regular", "incremental"]:
     model1, model2 = get_soviet_model(kind)
     scorers = [GlobalAnchors, ProcrustesAligner, KendallTau, Jaccard]
@@ -142,7 +145,7 @@ for kind in ["regular", "incremental"]:
     current_f1_macro = list()
 
     current_f1_for_2 = list()
-    scores = {"f1_macro": list(), "f1_for_2": list(), "binary": list()}
+    scores = list()
     for scorer_num in range(len(scorers) + 1):
         if scorer_num != len(scorers):
             Scorer = scorers[scorer_num]
@@ -151,49 +154,37 @@ for kind in ["regular", "incremental"]:
                 if scorer_num != len(scorers):
                     X[idx, scorer_num] = scorer.get_score(word)
 
-                fold_creator = StratifiedKFold(9, shuffle=False)
-                current_scores = {"f1_macro": list(), "f1_for_2": list(), "binary": list()}
+        fold_creator = StratifiedKFold(9, shuffle=False)
 
-                for train_idx, test_idx in fold_creator.split(X[:, scorer_num], y_true):
-                    if scorer_num != len(scorers):
-                        X_train = X[:, scorer_num][train_idx]
-                        X_test = X[:, scorer_num][test_idx]
-                        X_train = X_train.reshape(-1, 1)
-                        X_test = X_test.reshape(-1, 1)
-                    else:
-                        X_train = X[train_idx]
-                        X_test = X[test_idx]
-                        print(X_train.shape, X_test.shape)
+        current_scores = list()
+        for train_idx, test_idx in fold_creator.split(X, y_true):
+            if scorer_num != len(scorers):
+                X_train = X[:, scorer_num][train_idx]
+                X_test = X[:, scorer_num][test_idx]
+                X_train = X_train.reshape(-1, 1)
+                X_test = X_test.reshape(-1, 1)
+            else:
+                X_train = X[train_idx]
+                X_test = X[test_idx]
+                print(X_train.shape, X_test.shape)
 
-                    y_train = y_true[train_idx]
-                    y_test = y_true[test_idx]
-                    clf = algo.fit(X_train, y_train)
-                    y_pred = clf.predict(X_test)
-                    unique, counts = np.unique(y_true, return_counts=True)
-                    if min(counts) == 0:
-                        raise ValueError
-                    print("True", np.asarray((unique, counts)).T)
-                    unique, counts = np.unique(y_pred, return_counts=True)
-                    print("Predicted", np.asarray((unique, counts)).T)
-                    if min(counts) == 0:
-                        raise ValueError
-                    current_scores["f1_macro"].append(f1_score(y_test, y_pred, average='macro'))
-                    current_scores["f1_for_2"].append(f1_score(y_test, y_pred, labels=[2], average='macro'))
+            y_train = y_true[train_idx]
+            y_test = y_true[test_idx]
+            clf = algo.fit(X_train, y_train)
+            y_pred = clf.predict(X_test)
 
-                    y_train_binary = (y_train > 0).astype(int)
-                    y_test_binary = (y_test > 0).astype(int)
-                    binary_clf = algo.fit(X_train, y_train_binary)
-                    y_pred_binary = binary_clf.predict(X_test)
-                    current_scores["binary"].append(f1_score(y_test_binary, y_pred_binary))
+            if len(np.unique(y_train)) != 2:
+                raise(np.unique(y_train))
 
-            scores["f1_macro"].append(np.mean(current_scores["f1_macro"]))
-            scores["f1_for_2"].append(np.mean(current_scores["f1_for_2"]))
-            scores["binary"].append(np.mean(current_scores["binary"]))
+            if len(np.unique(y_test)) != 2:
+                raise(np.unique(y_test))
 
-    f1_macro[kind] = scores["f1_macro"]
-    f1_for_2[kind] = scores["f1_for_2"]
-    binary[kind] = scores["binary"]
+            if len(np.unique(y_pred)) != 2:
+                raise(np.unique(y_pred))
+            current_scores.append(f1_score(y_test, y_pred, average='macro'))
 
-f1_macro.to_csv('outputs/soviet/f1_macro.csv')
-f1_for_2.to_csv('outputs/soviet/f1_for_2.csv')
-binary.to_csv('outputs/soviet/binary.csv')
+        scores.append(np.mean(current_scores))
+
+    soviet_output[kind] = scores
+
+soviet_output.to_csv("outputs/soviet_f1_macro.csv")
