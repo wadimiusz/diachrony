@@ -18,21 +18,16 @@ from models import KendallTau
 from utils import load_model
 
 
-@functools.lru_cache(maxsize=None)
-def get_model(name):
-    return load_model(name)
-
-
 def get_models_by_year(year: int, kind: str):
     if kind not in ['regular', 'incremental']:
         raise ValueError
 
     if kind == "regular":
-        model1 = get_model('wordvectors/{year}.model'.format(year=year))
-        model2 = get_model('wordvectors/{year}.model'.format(year=year+1))
+        model1 = load_model('wordvectors/{year}.model'.format(year=year))
+        model2 = load_model('wordvectors/{year}.model'.format(year=year+1))
     else:
-        model1 = get_model('wordvectors/incremental/{year}_incremental.model'.format(year=year))
-        model2 = get_model('wordvectors/incremental/{year}_incremental.model'.format(year=year+1))
+        model1 = load_model('wordvectors/incremental/{year}_incremental.model'.format(year=year))
+        model2 = load_model('wordvectors/incremental/{year}_incremental.model'.format(year=year+1))
 
     return model1, model2
 
@@ -42,11 +37,11 @@ def get_soviet_model(kind: str):
         raise ValueError
 
     if kind == "regular":
-        model1 = get_model("wordvectors/soviet/pre-soviet.model")
-        model2 = get_model("wordvectors/soviet/soviet.model")
+        model1 = load_model("wordvectors/soviet/pre-soviet.model")
+        model2 = load_model("wordvectors/soviet/soviet.model")
     else:
-        model1 = get_model("wordvectors/soviet/pre-soviet_incremental.model")
-        model2 = get_model("wordvectors/soviet/soviet_incremental.model")
+        model1 = load_model("wordvectors/soviet/pre-soviet_incremental.model")
+        model2 = load_model("wordvectors/soviet/soviet_incremental.model")
 
     return model1, model2
 
@@ -78,16 +73,16 @@ for kind in ['regular', 'incremental']:
     for scorer_num in [0, 1, 2, 3, None]:
         if scorer_num is not None:
             Scorer = scorers[scorer_num]
-            for idx, values in df.iterrows():
-                print("{kind}, {scorer}, {idx} / {max}".format(kind=kind, scorer=str(Scorer), idx=idx, max=280),
-                      file=sys.stderr)
-
-                year = values["BASE_YEAR"]
-                word = values["WORD"]
-
+            for year in range(2000, 2014):
                 model1, model2 = get_models_by_year(year, kind)
-                score = Scorer(w2v1=deepcopy(model1), w2v2=deepcopy(model2), top_n_neighbors=50).get_score(word)
-                X[idx, scorer_num] = score
+                scorer = Scorer(w2v1=deepcopy(model1), w2v2=deepcopy(model2), top_n_neighbors=50)
+                for num, (idx, values) in enumerate(df[df["BASE_YEAR"] == year].iterrows()):
+                    print("{kind}, {scorer}, {num} / {year}".format(kind=kind, scorer=str(Scorer), num=num, year=year),
+                          file=sys.stderr)
+
+                    word = values["WORD"]
+                    score = scorer.get_score(word)
+                    X[idx, scorer_num] = score
 
         fold_creator = StratifiedKFold(9, shuffle=False)
         current_scores = {"f1_macro": list(), "f1_for_2": list(), "binary": list()}
