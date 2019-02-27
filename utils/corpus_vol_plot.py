@@ -1,9 +1,3 @@
-
-# coding: utf-8
-
-# In[ ]:
-
-
 import matplotlib.pyplot as plt
 import numpy as np
 from pylab import rcParams
@@ -26,4 +20,3 @@ plt.xticks(x_pos, x, rotation=45)
 
 plt.savefig('corpus_volume.png', bbox_inches = 'tight')
 #plt.show()
-
