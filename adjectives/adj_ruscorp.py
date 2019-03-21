@@ -42,8 +42,8 @@ for i in range(0,len(years)-1):
 results_anchors['mean'] = results_anchors[['00-01', '13-14']].mean(axis=1)
 results_procrustes['mean'] = results_procrustes[['00-01', '13-14']].mean(axis=1)
 
-print(results_anchors.head(10))
-print(results_procrustes.head(10))
+#print(results_anchors.head(10))
+#print(results_procrustes.head(10))
 
 results_anchors.to_csv('globalanchors_result.csv', encoding='utf8')
 results_procrustes.to_csv('procrustesaligner_result.csv', encoding='utf8')
