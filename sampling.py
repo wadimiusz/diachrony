@@ -8,7 +8,7 @@ from scipy.stats import percentileofscore
 from utils import load_model
 from utils import intersection_align_gensim
 from utils import log
-from models import get_changes_by_global_anchors
+from models import GlobalAnchors
 
 
 def get_percentile(word, vocab):
@@ -60,7 +60,7 @@ def main():
         model2 = load_model(model2_path)
         model1, model2 = intersection_align_gensim(model1, model2, pos_tag=args.pos_tag,
                                                    top_n_most_frequent_words=args.top_n_most_frequent_words)
-        global_anchors_result = get_changes_by_global_anchors(model1, model2, args.positive_samples)
+        global_anchors_result = GlobalAnchors.get_changes(model1, model2, args.positive_samples)
         positive_samples = [word for (word, score) in global_anchors_result]
         possible_negative_samples = set(model1.wv.vocab.keys()) - set(positive_samples)
         negative_samples = list()
