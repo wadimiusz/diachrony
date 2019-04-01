@@ -65,7 +65,7 @@ temp = []
 for i in word_freq:
     l = 0
     for j in all_adjs:
-        if word_freq[i] == all_adjs[j] and l <= 2 and j not in temp:
+        if word_freq[i] == all_adjs[j] and l < 6 and j not in temp:
             f.write(j+'\n')
             #print(word_freq[i], i, j)
             l += 1

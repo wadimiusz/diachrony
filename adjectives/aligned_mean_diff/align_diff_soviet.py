@@ -12,9 +12,11 @@ import numpy as np
 results = pd.DataFrame()
 
 words = []
-adjs = open('adjectives/eval_adj_rus.txt', 'r', encoding='utf8')
+#adjs = open('adjectives/eval_adj_rus.txt', 'r', encoding='utf8')
+adjs = open('adjectives/soviet_adjs.txt', 'r', encoding='utf8')
 for line in adjs.read().splitlines():
-    words.append(line + '_ADJ')
+    #words.append(line + '_ADJ')
+    words.append(line)
 results['word'] = words
 
 model1 = load_model("wordvectors/soviet/pre-soviet.model")
@@ -43,4 +45,5 @@ for word in words:
         mean_diff_vectors.append(0)
 
 results['norm_mean_diff_vec'] = [np.linalg.norm(vec) for vec in mean_diff_vectors]
-results.to_csv('alignedvectors_result_soviet.csv', encoding='utf8')
+#results.to_csv('alignedvectors_result_soviet.csv', encoding='utf8')
+results.to_csv('result_soviet_to_compare.csv', encoding='utf8')
