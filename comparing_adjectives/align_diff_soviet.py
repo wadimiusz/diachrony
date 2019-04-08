@@ -12,13 +12,11 @@ import numpy as np
 results = pd.DataFrame()
 
 words = []
-#adjs = open('adjectives/eval_adj_rus.txt', 'r', encoding='utf8')
-#adjs = open('adjectives/soviet_adjs.txt', 'r', encoding='utf8')
-adjs = open('comparing_adjectives/soviet_adjs.txt', 'r', encoding='utf8')
+adjs = open('comparing_adjectives/eval_adj_rus.txt', 'r', encoding='utf8')
+#adjs = open('comparing_adjectives/soviet_adjs.txt', 'r', encoding='utf8')
 for line in adjs.read().splitlines():
-    #words.append(line + '_ADJ')
-    words.append(line)
-results['word'] = words
+    words.append(line + '_ADJ')
+    #words.append(line)
 
 model1 = load_model("wordvectors/soviet/pre-soviet.model")
 model2 = load_model("wordvectors/soviet/soviet.model")
@@ -43,8 +41,11 @@ for word in words:
     try:
         mean_diff_vectors.append(np.nanmean(diffs, axis=0))
     except TypeError:
-        mean_diff_vectors.append(0)
+        mean_diff_vectors.append(np.nan)
 
+results['word'] = words
 results['norm_mean_diff_vec'] = [np.linalg.norm(vec) for vec in mean_diff_vectors]
-#results.to_csv('alignedvectors_result_soviet.csv', encoding='utf8')
-results.to_csv('result_soviet_to_compare.csv', encoding='utf8')
+results = results.dropna()
+results = results.reset_index(drop=True)
+results.to_csv('alignedvectors_result_soviet.csv', encoding='utf8')
+#results.to_csv('result_soviet_to_compare.csv', encoding='utf8')

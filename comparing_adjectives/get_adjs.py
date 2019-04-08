@@ -56,7 +56,7 @@ def mean_freq(word, vocab1, vocab2, vocab3):
     except KeyError:
         fr3 = 0
 
-    print(fr1, fr2, fr3)
+    #print(fr1, fr2, fr3)
 
     return (fr1 + fr2 + fr3) / 3
 
@@ -93,12 +93,12 @@ temp = []
 for i in word_freq:
     l = 0
     for j in all_adjs:
-        if word_freq[i] == all_adjs[j] and l < 2 and j not in temp:
+        if word_freq[i] == all_adjs[j] and l < 6 and j not in temp:
             f.write(j+'\n')
             #print(word_freq[i], i, j)
             l += 1
             temp.append(j)
-    #f.write('\n')
+    f.write('\n')
 f.close()
 
 #print(len(words))

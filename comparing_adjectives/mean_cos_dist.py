@@ -1,5 +1,6 @@
 from models import smart_procrustes_align_gensim
 from utils import load_model, intersection_align_gensim
+from gensim import matutils
 import pandas as pd
 import numpy as np
 
@@ -33,23 +34,23 @@ for word in words:
     dists = []
     try:
         vec1 = model1_aligned[word]
+        vec2 = model2_procrustes[word]
+        dists.append(1 - np.dot(matutils.unitvec(vec1), matutils.unitvec(vec2)))
     except KeyError:
-        vec1 = 1
-    print(vec1)
+        dists.append(None)
     try:
         vec2 = model2_procrustes[word]
-    except KeyError:
-        vec2 = 1
-    print(vec2)
-    try:
         vec3 = model3_procrustes[word]
+        dists.append(1 - np.dot(matutils.unitvec(vec2), matutils.unitvec(vec3)))
     except KeyError:
-        vec3 = 1
-    print(vec3)
-    dists.append(1 - (np.sum(vec1 * vec2) / (np.linalg.norm(vec1) * np.linalg.norm(vec2))))
-    dists.append(1 - (np.sum(vec2 * vec3) / (np.linalg.norm(vec2) * np.linalg.norm(vec3))))
-    mean_dist_vectors.append(np.mean(dists, axis=0))
+        dists.append(None)
+    try:
+        mean_dist_vectors.append(np.nanmean(dists, axis=0))
+    except TypeError:
+        mean_dist_vectors.append(np.nan)
 
 results['norm_mean_diff_vec'] = mean_dist_vectors
+results = results.dropna()
+results = results.reset_index(drop=True)
 results.to_csv('cos_dist_result.csv', encoding='utf8')
 #results.to_csv('cos_dist_to_compare.csv', encoding='utf8')
