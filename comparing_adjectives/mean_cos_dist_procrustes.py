@@ -4,12 +4,6 @@ from gensim import matutils
 import pandas as pd
 import numpy as np
 
-'''
-Модели выравниваются по первой, сначала оставляем пересечение слов,
-потом применяем прокрустово выравнивание, считаем разницу векторных представлений слова
-для каждой пары, усредняем эти вектора и находим евклидову норму.
-'''
-
 results = pd.DataFrame()
 
 model1 = load_model("wordvectors/soviet/pre-soviet.model")
@@ -21,8 +15,8 @@ vocab3 = model3.wv.vocab
 
 words = []
 #adjs = open('comparing_adjectives/eval_adj_rus.txt', 'r', encoding='utf8')
-#adjs = open('comparing_adjectives/rest_adj_largescale.txt', 'r', encoding='utf8')
-adjs = open('comparing_adjectives/rest_adj_largescale_notfiltered_samesize.txt', 'r', encoding='utf8')
+adjs = open('comparing_adjectives/rest_adj_largescale.txt', 'r', encoding='utf8')
+
 for line in adjs.read().splitlines():
     #word = line + '_ADJ'
     word = line
@@ -75,10 +69,8 @@ for word in words:
 results['mean_dist'] = mean_dist_vectors
 results['mean_freq'] = mean_freqs
 #results.to_csv('cos_dist_eval.csv', encoding='utf8')
-#results.to_csv('cos_dist_rest.csv', encoding='utf8')
-results.to_csv('cos_dist_rest_notfiltered.csv', encoding='utf8')
+results.to_csv('cos_dist_rest.csv', encoding='utf8')
 
 sorted = results.sort_values('mean_dist', ascending=False)
 #sorted.to_csv('cos_dist_eval_sorted.csv', encoding='utf8')
-#sorted.to_csv('cos_dist_rest_sorted.csv', encoding='utf8')
-sorted.to_csv('cos_dist_rest_notfiltered_sorted.csv', encoding='utf8')
+sorted.to_csv('cos_dist_rest_sorted.csv', encoding='utf8')

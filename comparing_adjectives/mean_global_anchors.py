@@ -4,12 +4,6 @@ from gensim import matutils
 import pandas as pd
 import numpy as np
 
-'''
-Модели выравниваются по первой, сначала оставляем пересечение слов,
-потом применяем прокрустово выравнивание, считаем разницу векторных представлений слова
-для каждой пары, усредняем эти вектора и находим евклидову норму.
-'''
-
 results = pd.DataFrame()
 
 model1 = load_model("wordvectors/soviet/pre-soviet.model")
@@ -20,12 +14,12 @@ vocab2 = model2.wv.vocab
 vocab3 = model3.wv.vocab
 
 words = []
-#adjs = open('comparing_adjectives/eval_adj_rus.txt', 'r', encoding='utf8')
-adjs = open('comparing_adjectives/rest_adj_largescale.txt', 'r', encoding='utf8')
+adjs = open('comparing_adjectives/eval_adj_rus.txt', 'r', encoding='utf8')
+#adjs = open('comparing_adjectives/rest_adj_largescale.txt', 'r', encoding='utf8')
 
 for line in adjs.read().splitlines():
-    #word = line + '_ADJ'
-    word = line
+    word = line + '_ADJ'
+    #word = line
     if word in list((set(vocab1) & set(vocab2) & set(vocab3))):
         words.append(word)
 results['word'] = words
@@ -38,9 +32,9 @@ for word in words:
     scores = []
 
     ga_score1 = GlobalAnchors(w2v1=model1_aligned, w2v2=model2_aligned).get_score(word)
-    scores.append(ga_score1)
+    scores.append(1 - ga_score1)
     ga_score2 = GlobalAnchors(w2v1=model2_aligned, w2v2=model3_aligned).get_score(word)
-    scores.append(ga_score2)
+    scores.append(1 - ga_score2)
 
     mean_ga.append(np.mean(scores, axis=0))
 
@@ -70,9 +64,9 @@ for word in words:
 
 results['mean_ga'] = mean_ga
 results['mean_freq'] = mean_freqs
-#results.to_csv('globalanchors_eval.csv', encoding='utf8')
-results.to_csv('globalanchors_rest.csv', encoding='utf8')
+results.to_csv('globalanchors_eval.csv', encoding='utf8')
+#results.to_csv('globalanchors_rest.csv', encoding='utf8')
 
 sorted = results.sort_values('mean_ga', ascending=False)
-#sorted.to_csv('globalanchors_eval_sorted.csv', encoding='utf8')
-sorted.to_csv('globalanchors_rest_sorted.csv', encoding='utf8')
+sorted.to_csv('globalanchors_eval_sorted.csv', encoding='utf8')
+#sorted.to_csv('globalanchors_rest_sorted.csv', encoding='utf8')
