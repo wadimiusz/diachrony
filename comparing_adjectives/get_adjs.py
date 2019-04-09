@@ -28,11 +28,6 @@ def load_model(embeddings_file):
 
     return emb_model
 
-words = []
-ruscorp = open('eval_adj_rus.txt', 'r', encoding='utf8')
-for line in ruscorp.read().splitlines():
-    words.append(line + '_ADJ')
-
 model1 = load_model("../wordvectors/soviet/pre-soviet.model")
 model2 = load_model("../wordvectors/soviet/soviet.model")
 model3 = load_model("../wordvectors/soviet/post-soviet.model")
@@ -40,6 +35,12 @@ vocab1 = model1.wv.vocab
 vocab2 = model2.wv.vocab
 vocab3 = model3.wv.vocab
 
+words = []
+ruscorp = open('eval_adj_rus.txt', 'r', encoding='utf8')
+for line in ruscorp.read().splitlines():
+    word = line + '_ADJ'
+    if word in list((set(vocab1) & set(vocab2) & set(vocab3))):
+        words.append(word)
 
 def mean_freq(word, vocab1, vocab2, vocab3):
 
@@ -88,7 +89,7 @@ for word in list((set(vocab1) & set(vocab2) & set(vocab3))):
 # for x in list(all_adjs)[0:10]:
 #    print("key {}, value {} ".format(x, all_adjs[x]))
 
-f = open('soviet_adjs.txt', 'a', encoding='utf-8')
+f = open('rest_adj_largescale.txt', 'a', encoding='utf-8')
 temp = []
 for i in word_freq:
     l = 0
