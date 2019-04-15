@@ -5,6 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from itertools import combinations
 from utils import load_model, intersection_align_gensim
+from models import smart_procrustes_align_gensim
 
 
 def sims_aligned(year, word, *args):
@@ -17,6 +18,7 @@ def sims_aligned(year, word, *args):
 
     for pair in combinations(args, 2):
         _, _ = intersection_align_gensim(pair[0], pair[1])
+        _ = smart_procrustes_align_gensim(pair[0], pair[1])
 
     for i in range(len(args)):
         unite_sims(args[i].most_similar(word, topn=7))
