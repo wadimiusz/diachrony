@@ -1,4 +1,5 @@
 import sys
+import re
 from sklearn.manifold import TSNE
 import numpy as np
 import matplotlib.pyplot as plt
@@ -49,6 +50,9 @@ def viz(all_most_sim, wrd_vectors, model, word, year):
 
     print(arr)
     print(arr.shape)
+    
+    word_labels = [re.sub(r'_[A-Z]+', '', i) for i in word_labels]
+    
     tsne = TSNE(n_components=2, random_state=0, learning_rate=150, init='pca')
     np.set_printoptions(suppress=True)
     embedded = tsne.fit_transform(arr)
