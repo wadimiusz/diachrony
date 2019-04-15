@@ -14,12 +14,14 @@ distances1 = []
 for line in open(file0, 'r').readlines()[1:]:
     res = line.strip().split(',')
     distance = float(res[2])
-    distances0.append(distance)
+    if distance:
+        distances0.append(distance)
 
 for line in open(file1, 'r').readlines()[1:]:
     res = line.strip().split(',')
     distance = float(res[2])
-    distances1.append(distance)
+    if distance:
+        distances1.append(distance)
 
 print('Comparing', file0, file1)
 
