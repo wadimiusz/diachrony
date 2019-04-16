@@ -5,6 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from itertools import combinations
 from utils import load_model, intersection_align_gensim
+from models import smart_procrustes_align_gensim
 
 
 def sims_aligned(year, word, *args):
@@ -17,6 +18,7 @@ def sims_aligned(year, word, *args):
 
     for pair in combinations(args, 2):
         _, _ = intersection_align_gensim(pair[0], pair[1])
+        _ = smart_procrustes_align_gensim(pair[0], pair[1])
 
     for i in range(len(args)):
         unite_sims(args[i].most_similar(word, topn=7))
@@ -47,12 +49,12 @@ def viz(all_most_sim, wrd_vectors, model, word, year):
         wrd_vector = model[i]
         word_labels.append(i)
         arr[row_counter, :] = wrd_vector
+        row_counter += 1
 
-    print(arr)
     print(arr.shape)
-    
+
     word_labels = [re.sub(r'_[A-Z]+', '', i) for i in word_labels]
-    
+
     tsne = TSNE(n_components=2, random_state=0, learning_rate=150, init='pca')
     np.set_printoptions(suppress=True)
     embedded = tsne.fit_transform(arr)
