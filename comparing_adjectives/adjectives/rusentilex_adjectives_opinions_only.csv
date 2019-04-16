@@ -1,0 +1,2675 @@
+ID,WORD,POS,LEMMA,SENTIMENT,SOURCE,SENSE
+1,абсурдный,Adj,абсурдный,negative,opinion,
+2,авантюристический,Adj,авантюристический,negative,opinion,
+3,авантюристский,Adj,авантюристский,negative,opinion,
+4,авантюрный,Adj,авантюрный,negative,opinion,
+7,авральный,Adj,авральный,negative,opinion,
+8,авторитарный,Adj,авторитарный,negative,opinion,
+9,авторитетный,Adj,авторитетный,positive,opinion,
+10,агрессивный,Adj,агрессивный,negative,opinion,
+11,агрессорский,Adj,агрессорский,negative,opinion,
+12,адаптационный,Adj,адаптационный,positive,opinion,
+13,адаптивный,Adj,адаптивный,positive,opinion,
+14,адекватный,Adj,адекватный,positive,opinion,
+15,адов,Adj,адов,negative,opinion,
+17,адский,Adj,адский,negative,opinion,
+19,аккуратный,Adj,аккуратный,positive,opinion,
+20,активный,Adj,активный,positive,opinion,
+21,актуальный,Adj,актуальный,positive,opinion,
+25,алогический,Adj,алогический,negative,opinion,
+26,алогичный,Adj,алогичный,negative,opinion,
+27,алчный,Adj,алчный,negative,opinion,
+28,аморальный,Adj,аморальный,negative,opinion,
+29,аморфный,Adj,аморфный,negative,opinion,БЕЗДЕЯТЕЛЬНЫЙ
+30,аморфный,Adj,аморфный,negative,opinion,РАСПЛЫВЧАТЫЙ (НЕЯСНЫЙ)
+36,ангажированный,Adj,ангажированный,negative,opinion,
+37,ангельский,Adj,ангельский,positive,opinion,
+41,анемичный,Adj,анемичный,negative,opinion,
+42,аномальный,Adj,аномальный,negative,opinion,
+43,антагонистический,Adj,антагонистический,negative,opinion,
+44,антагонистичный,Adj,антагонистичный,negative,opinion,
+45,антагонистский,Adj,антагонистский,negative,opinion,
+46,антигуманистический,Adj,антигуманистический,negative,opinion,
+47,антигуманный,Adj,антигуманный,negative,opinion,
+48,антизаконный,Adj,антизаконный,negative,opinion,
+51,антинародный,Adj,антинародный,negative,opinion,
+52,антиобщественный,Adj,антиобщественный,negative,opinion,
+53,антипатичный,Adj,антипатичный,negative,opinion,
+58,антисоциальный,Adj,антисоциальный,negative,opinion,
+60,античеловеческий,Adj,античеловеческий,negative,opinion,
+61,античеловечный,Adj,античеловечный,negative,opinion,
+62,апатический,Adj,апатический,negative,opinion,
+63,апатичный,Adj,апатичный,negative,opinion,
+65,аппетитный,Adj,аппетитный,positive,opinion,
+66,аристократический,Adj,аристократический,positive,opinion,
+67,аристократичный,Adj,аристократичный,positive,opinion,
+71,артистический,Adj,артистический,positive,opinion,
+72,артистичный,Adj,артистичный,positive,opinion,
+73,архаический,Adj,архаический,negative,opinion,
+74,архаичный,Adj,архаичный,negative,opinion,
+75,архиважный,Adj,архиважный,positive,opinion,
+78,аутсайдерский,Adj,аутсайдерский,negative,opinion,
+79,аферистский,Adj,аферистский,negative,opinion,
+80,афигенный,Adj,афигенный,positive,opinion,
+82,бабский,Adj,бабский,negative,opinion,
+83,балованный,Adj,балованный,negative,opinion,
+84,банальный,Adj,банальный,negative,opinion,
+85,бандитский,Adj,бандитский,negative,opinion,
+87,бардачный,Adj,бардачный,negative,opinion,
+91,барышнический,Adj,барышнический,negative,opinion,
+94,бахвальский,Adj,бахвальский,negative,opinion,
+96,башковитый,Adj,башковитый,positive,opinion,
+97,бдительный,Adj,бдительный,positive,opinion,
+98,беднейший,Adj,беднейший,negative,opinion,
+99,бедненький,Adj,бедненький,positive,opinion,
+100,бедный,Adj,бедный,negative,opinion,
+101,бедняцкий,Adj,бедняцкий,negative,opinion,
+102,бедственный,Adj,бедственный,negative,opinion,
+103,безалаберный,Adj,безалаберный,negative,opinion,
+104,безальтернативный,Adj,безальтернативный,negative,opinion,
+105,безапелляционный,Adj,безапелляционность,negative,opinion,
+106,безбедный,Adj,безбедный,positive,opinion,
+108,безбожный,Adj,безбожный,negative,opinion,БЕССОВЕСТНЫЙ
+109,безбоязненный,Adj,безбоязненный,positive,opinion,
+110,безвинный,Adj,безвинный,positive,opinion,
+112,безвкусный,Adj,безвкусный,negative,opinion,"БЕЗВКУСИЦА,ПЛОХОЙ ВКУС"
+113,безвозбранный,Adj,безвозбранный,positive,opinion,
+114,безвольный,Adj,безвольный,negative,opinion,
+115,безвредный,Adj,безвредный,positive,opinion,
+116,безвременный,Adj,безвременный,negative,opinion,
+117,безвыходный,Adj,безвыходный,negative,opinion,
+118,безголовый,Adj,безголовый,negative,opinion,
+119,безграмотный,Adj,безграмотный,negative,opinion,
+120,безгреховный,Adj,безгреховный,positive,opinion,
+121,безгрешный,Adj,безгрешный,positive,opinion,
+122,бездарный,Adj,бездарный,negative,opinion,
+123,безденежный,Adj,безденежный,negative,opinion,
+124,бездеятельный,Adj,бездеятельный,negative,opinion,
+125,бездоказательный,Adj,бездоказательный,negative,opinion,
+127,бездумный,Adj,бездумный,negative,opinion,
+128,бездушный,Adj,бездушный,negative,opinion,
+129,безжалостный,Adj,безжалостный,negative,opinion,
+130,безжизненный,Adj,безжизненный,negative,opinion,
+131,беззаботный,Adj,беззаботный,positive,opinion,
+132,беззаконный,Adj,беззаконный,negative,opinion,
+133,беззастенчивый,Adj,беззастенчивый,negative,opinion,
+134,беззащитный,Adj,беззащитный,negative,opinion,
+135,беззлобный,Adj,беззлобный,positive,opinion,
+136,безликий,Adj,безликий,negative,opinion,
+137,безмозглый,Adj,безмозглый,negative,opinion,
+138,безмятежный,Adj,безмятежный,positive,opinion,
+139,безнадежный,Adj,безнадежный,negative,opinion,
+140,безнаказанный,Adj,безнаказанный,negative,opinion,
+141,безобидный,Adj,безобидный,positive,opinion,
+143,безоблачный,Adj,безоблачный,positive,opinion,"ИДИЛЛИЯ,БЕЗМЯТЕЖНОЕ СУЩЕСТВОВАНИЕ"
+144,безобразный,Adj,безобразный,negative,opinion,
+145,безопасный,Adj,безопасный,positive,opinion,
+146,безосновательный,Adj,безосновательный,negative,opinion,
+147,безответственный,Adj,безответственный,negative,opinion,
+148,безотказный,Adj,безотказный,positive,opinion,
+149,безотрадный,Adj,безотрадный,negative,opinion,
+150,безошибочный,Adj,безошибочный,positive,opinion,
+151,безперебойный,Adj,безперебойный,positive,opinion,
+153,безрадостный,Adj,безрадостный,negative,opinion,
+154,безразличный,Adj,безразличный,negative,opinion,
+155,безрезультативный,Adj,безрезультативный,negative,opinion,
+156,безрезультатный,Adj,безрезультатный,negative,opinion,
+157,безрукий,Adj,безрукий,negative,opinion,
+158,безукоризненный,Adj,безукоризненный,positive,opinion,
+159,безумный,Adj,безумный,negative,opinion,
+160,безупречный,Adj,безупречный,positive,opinion,
+161,безуспешный,Adj,безуспешный,negative,opinion,
+162,безустанный,Adj,безустанный,positive,opinion,
+163,безутешный,Adj,безутешный,negative,opinion,
+164,безучастный,Adj,безучастный,negative,opinion,
+165,безыскусный,Adj,безыскусный,positive,opinion,
+166,безыскусственный,Adj,безыскусственный,positive,opinion,
+167,безысходный,Adj,безысходный,negative,opinion,
+168,белесый,Adj,белесый,negative,opinion,
+171,бережливый,Adj,бережливый,positive,opinion,
+172,бережный,Adj,бережный,positive,opinion,
+173,бескомпромиссный,Adj,бескомпромиссный,positive,opinion,
+174,бесконтрольный,Adj,бесконтрольный,negative,opinion,
+175,бескорыстный,Adj,бескорыстный,positive,opinion,
+176,бескультурный,Adj,бескультурный,negative,opinion,
+177,беспалевный,Adj,беспалевный,positive,opinion,
+179,беспамятный,Adj,беспамятный,negative,opinion,ЗАБЫВЧИВЫЙ
+180,беспардонный,Adj,беспардонный,negative,opinion,
+181,бесперспективный,Adj,бесперспективный,negative,opinion,
+182,беспечный,Adj,беспечный,negative,opinion,
+184,бесплодный,Adj,бесплодный,negative,opinion,
+185,бесподобный,Adj,бесподобный,positive,opinion,
+187,бесполезный,Adj,бесполезный,negative,opinion,
+188,беспомощный,Adj,беспомощный,negative,opinion,
+189,беспорочный,Adj,беспорочный,positive,opinion,
+190,беспорядочный,Adj,беспорядочный,negative,opinion,
+191,беспочвенный,Adj,беспочвенный,negative,opinion,
+192,беспощадный,Adj,беспощадный,negative,opinion,
+193,беспрепятственный,Adj,беспрепятственный,positive,opinion,
+194,беспризорнический,Adj,беспризорнический,negative,opinion,
+195,беспризорный,Adj,беспризорный,negative,opinion,
+196,беспринципный,Adj,беспринципный,negative,opinion,
+197,беспристрастный,Adj,беспристрастный,positive,opinion,
+198,беспроигрышный,Adj,беспроигрышный,positive,opinion,
+199,беспросветный,Adj,беспросветный,negative,opinion,
+200,беспутнический,Adj,беспутнический,negative,opinion,
+201,беспутный,Adj,беспутный,negative,opinion,
+202,бессвязный,Adj,бессвязный,negative,opinion,
+203,бессердечный,Adj,бессердечный,negative,opinion,
+205,бессильный,Adj,бессильный,negative,opinion,БЕССИЛИЕ (НЕСПОСОБНОСТЬ)
+206,бесславный,Adj,бесславный,negative,opinion,
+208,бессмертный,Adj,бессмертный,positive,opinion,"НЕПРЕХОДЯЩИЙ,НЕТЛЕННЫЙ"
+209,бессмысленный,Adj,бессмысленный,negative,opinion,
+210,бессовестный,Adj,бессовестный,negative,opinion,
+211,бессодержательный,Adj,бессодержательный,negative,opinion,
+213,бесстрашный,Adj,бесстрашный,positive,opinion,
+214,бесстыдный,Adj,бесстыдный,negative,opinion,
+215,бессчетный,Adj,бессчетный,neutral,opinion,
+216,бестактный,Adj,бестактный,negative,opinion,
+217,бесталанный,Adj,бесталанный,negative,opinion,
+218,бестолковый,Adj,бестолковый,negative,opinion,
+219,бесхитростный,Adj,бесхитростный,positive,opinion,
+220,бесхребетный,Adj,бесхребетный,negative,opinion,
+221,бесцветный,Adj,бесцветный,negative,opinion,БЛЕДНЫЙ (НЕВЫРАЗИТЕЛЬНЫЙ)
+223,бесценный,Adj,бесценный,positive,opinion,
+224,бесцеремонный,Adj,бесцеремонный,negative,opinion,
+225,бесчеловечный,Adj,бесчеловечный,negative,opinion,
+226,бесчестный,Adj,бесчестный,negative,opinion,
+227,бесчисленный,Adj,бесчисленный,neutral,opinion,
+228,бесчувственный,Adj,бесчувственный,negative,opinion,
+229,бешеный,Adj,бешеный,negative,opinion,
+230,бирючий,Adj,бирючий,negative,opinion,
+231,битый,Adj,битый,negative,opinion,
+232,благоверный,Adj,благоверный,positive,opinion,"ПРАВОВЕРНЫЙ,НАБОЖНЫЙ"
+233,благовоспитанный,Adj,благовоспитанный,positive,opinion,
+237,благодатный,Adj,благодатный,positive,opinion,
+238,благодетельный,Adj,благодетельный,positive,opinion,
+239,благожелательный,Adj,благожелательный,positive,opinion,
+241,благой,Adj,благой,positive,opinion,
+242,благополучный,Adj,благополучный,positive,opinion,
+243,благопристойный,Adj,благопристойный,positive,opinion,
+244,благоприятный,Adj,благоприятный,positive,opinion,
+245,благоразумный,Adj,благоразумный,positive,opinion,
+246,благородный,Adj,благородный,positive,opinion,
+247,благосклонный,Adj,благосклонный,positive,opinion,
+248,благословенный,Adj,благословенный,positive,opinion,
+251,благотворный,Adj,благотворный,positive,opinion,
+252,благоустроенный,Adj,благоустроенный,positive,opinion,
+253,благочестивый,Adj,благочестивый,positive,opinion,
+255,бледноватый,Adj,бледноватый,negative,opinion,
+256,бледный,Adj,бледный,negative,opinion,БЛЕДНОСТЬ ЛИЦА
+257,бледный,Adj,бледный,negative,opinion,БЛЕДНЫЙ (НЕВЫРАЗИТЕЛЬНЫЙ)
+258,бледный,Adj,бледный,neutral,opinion,БЛЕДНЫЙ ПО ОКРАСКЕ
+259,блеклый,Adj,блеклый,negative,opinion,
+260,блестящий,Adj,блестящий,positive,opinion,
+261,блефовый,Adj,блефовый,negative,opinion,
+263,близорукий,Adj,близорукий,negative,opinion,"БЛИЗОРУКИЙ,НЕДАЛЬНОВИДНЫЙ"
+264,блистательный,Adj,блистательный,positive,opinion,
+266,богатенький,Adj,богатенький,negative,opinion,
+267,богатый,Adj,богатый,positive,opinion,
+268,богобоязненный,Adj,богобоязненный,positive,opinion,
+269,богомольный,Adj,богомольный,positive,opinion,
+270,богохульный,Adj,богохульный,negative,opinion,
+271,богохульственный,Adj,богохульственный,negative,opinion,
+272,бодрый,Adj,бодрый,positive,opinion,
+273,бодряцкий,Adj,бодряцкий,negative,opinion,
+274,бодряческий,Adj,бодряческий,negative,opinion,
+275,божеский,Adj,божеский,positive,opinion,
+277,божественный,Adj,божественный,positive,opinion,ПРЕКРАСНЫЙ (ОЧЕНЬ КРАСИВЫЙ)
+278,бойкий,Adj,бойкий,neutral,opinion,БОЙКИЙ (ЛЮДНЫЙ)
+279,бойкий,Adj,бойкий,positive,opinion,"БОЙКИЙ (БЫСТРЫЙ,ЖИВОЙ)"
+280,бойкий,Adj,бойкий,positive,opinion,БОЙКИЙ (РАСТОРОПНЫЙ)
+283,болезненный,Adj,болезненный,negative,opinion,БОЛЕЗНЕННЫЙ (ЧРЕЗМЕРНЫЙ)
+284,болезненный,Adj,болезненный,negative,opinion,"БОЛЕЗНЕННЫЙ,СЛАБЫЙ ПО ЗДОРОВЬЮ"
+288,бомжеский,Adj,бомжеский,negative,opinion,
+291,бравый,Adj,бравый,positive,opinion,
+293,бранный,Adj,бранный,negative,opinion,
+296,бредовый,Adj,бредовый,negative,opinion,НЕЛЕПЫЙ
+298,бродяжий,Adj,бродяжий,negative,opinion,
+299,бродяжнический,Adj,бродяжнический,negative,opinion,
+302,бросовый,Adj,бросовый,negative,opinion,БРОСОВЫЙ
+303,брутальный,Adj,брутальный,positive,opinion,
+304,брюзгливый,Adj,брюзгливый,negative,opinion,
+305,бузотерский,Adj,бузотерский,negative,opinion,
+306,буйный,Adj,буйный,negative,opinion,
+307,бульварный,Adj,бульварный,negative,opinion,БУЛЬВАРНАЯ ЛИТЕРАТУРА
+309,бунтарский,Adj,бунтарский,negative,opinion,
+312,бутафорский,Adj,бутафорский,negative,opinion,"ПОКАЗУХА,БУТАФОРИЯ"
+315,буферный,Adj,буферный,positive,opinion,БУФЕР (РОЛЬ)
+316,бухой,Adj,бухой/бухий,negative,opinion,
+317,быстротечный,Adj,быстротечный,negative,opinion,
+318,бюрократический,Adj,бюрократический,negative,opinion,
+319,бюрократичный,Adj,бюрократичный,negative,opinion,
+320,бюрократский,Adj,бюрократский,negative,opinion,
+321,важный,Adj,важный,positive,opinion,
+322,валкий,Adj,валкий,negative,opinion,
+323,вампирный,Adj,вампирный,negative,opinion,
+324,вампирский,Adj,вампирский,negative,opinion,
+325,вандалистский,Adj,вандалистский,negative,opinion,
+326,варварский,Adj,варварский,negative,opinion,
+327,вареный,Adj,вареный,negative,opinion,ЗАТОРМОЖЕННЫЙ
+332,вдумчивый,Adj,вдумчивый,positive,opinion,
+333,вежливый,Adj,вежливый,positive,opinion,
+334,везучий,Adj,везучий,positive,opinion,
+335,велеречивый,Adj,велеречивый,negative,opinion,
+336,великий,Adj,великий,negative,opinion,ВЕЛИК ПО РАЗМЕРУ
+337,великий,Adj,великий,neutral,opinion,БОЛЬШОЙ ПО РАЗМЕРУ
+338,великий,Adj,великий,positive,opinion,"ВЫДАЮЩИЙСЯ,ВЕЛИКИЙ"
+339,великодержавный,Adj,великодержавный,negative,opinion,
+340,великолепный,Adj,великолепный,positive,opinion,
+341,величавый,Adj,величавый,positive,opinion,
+342,величественный,Adj,величественный,positive,opinion,
+344,верноподданический,Adj,верноподданический,negative,opinion,
+345,верноподданный,Adj,верноподданный,positive/negative,opinion,
+347,верный,Adj,верный,positive,opinion,"ИСТИННЫЙ,ВЕРНЫЙ"
+348,верный,Adj,верный,positive,opinion,"ПРАВИЛЬНЫЙ,СООТВЕТСТВУЮЩИЙ ПРАВИЛАМ"
+349,верный,Adj,верный,positive,opinion,ПРЕДАННЫЙ
+350,вероломный,Adj,вероломный,positive,opinion,
+351,вероотступнический,Adj,вероотступнический,negative,opinion,
+352,веселенький,Adj,веселенький,positive,opinion,
+353,веселый,Adj,веселый,positive,opinion,
+354,веский,Adj,веский,positive,opinion,
+355,весомый,Adj,весомый,positive,opinion,
+357,ветреный,Adj,ветреный,negative,opinion,"ЛЕГКОМЫСЛЕННЫЙ,БЕЗДУМНЫЙ"
+358,ветхий,Adj,ветхий,negative,opinion,
+359,ветхозаветный,Adj,ветхозаветный,negative,opinion,"УСТАРЕЛЫЙ,НЕСОВРЕМЕННЫЙ"
+362,вздорный,Adj,вздорный,negative,opinion,
+365,взрывной,Adj,взрывной,negative,opinion,"ВСПЫЛЬЧИВЫЙ,ЗАПАЛЬЧИВЫЙ"
+366,взрывоопасный,Adj,взрывоопасный,negative,opinion,
+367,взрывчатый,Adj,взрывчатый,negative,opinion,"ВСПЫЛЬЧИВЫЙ,ЗАПАЛЬЧИВЫЙ"
+369,взыскательный,Adj,взыскательный,positive,opinion,
+371,видимый,Adj,видимый,negative,opinion,ВНЕШНИЙ (ПОВЕРХНОСТНЫЙ)
+374,видный,Adj,видный,positive,opinion,
+375,виноватый,Adj,виноватый,negative,opinion,
+376,виновный,Adj,виновный,negative,opinion,
+378,виртуозный,Adj,виртуозный,positive,opinion,
+380,вкрадчивый,Adj,вкрадчивый,negative,opinion,
+384,властный,Adj,властный,positive/negative,opinion,"ВЛАСТНЫЙ,АВТОРИТАРНЫЙ"
+385,властолюбивый,Adj,властолюбивый,negative,opinion,
+387,вменяемый,Adj,вменяемый,positive,opinion,
+388,вместительный,Adj,вместительный,positive,opinion,
+389,внешний,Adj,внешний,negative,opinion,ВНЕШНИЙ (ПОВЕРХНОСТНЫЙ)
+391,внимательнейший,Adj,внимательнейший,positive,opinion,
+392,внимательный,Adj,внимательный,positive,opinion,
+393,внушительный,Adj,внушительный,neutral,opinion,ВНУШИТЕЛЬНЫЙ ПО РАЗМЕРУ
+394,внушительный,Adj,внушительный,positive,opinion,"ПРЕДСТАВИТЕЛЬНЫЙ,ПРЕЗЕНТАБЕЛЬНЫЙ"
+395,внятный,Adj,внятный,positive,opinion,
+396,вожделенный,Adj,вожделенный,positive,opinion,
+397,возбудимый,Adj,возбудимый,negative,opinion,
+398,возбужденный,Adj,возбужденный,negative,opinion,
+399,возвышенный,Adj,возвышенный,positive,opinion,
+400,возмутительный,Adj,возмутительный,negative,opinion,
+401,воинствующий,Adj,воинствующий,negative,opinion,
+402,волевой,Adj,волевой,positive,opinion,
+404,волокитный,Adj,волокитный,negative,opinion,
+405,волшебный,Adj,волшебный,positive,opinion,
+406,вольготный,Adj,вольготный,positive,opinion,
+407,вольный,Adj,вольный,negative,opinion,ВОЛЬНЫЙ (НЕТОЧНЫЙ)
+408,вольный,Adj,вольный,positive,opinion,НЕПРИНУЖДЕННЫЙ
+409,вольный,Adj,вольный,positive,opinion,СВОБОДНЫЙ (НИЧЕМ НЕ СТЕСНЕННЫЙ)
+410,волюнтаристический,Adj,волюнтаристический,negative,opinion,
+411,волюнтаристский,Adj,волюнтаристский,negative,opinion,
+413,вопиющий,Adj,вопиющий,negative,opinion,
+414,воровской,Adj,воровской,negative,opinion,
+415,ворчливый,Adj,ворчливый,negative,opinion,
+417,воспаленный,Adj,воспаленный,negative,opinion,ВОЗБУЖДЕННЫЙ
+419,воспитанный,Adj,воспитанный,positive,opinion,
+420,восторженный,Adj,восторженный,positive,opinion,
+421,востребованный,Adj,востребованный,positive,opinion,
+422,восхитительный,Adj,восхитительный,positive,opinion,
+423,впечатляющий,Adj,впечатляющий,positive,opinion,
+424,враждебный,Adj,враждебный,negative,opinion,
+425,вражеский,Adj,вражеский,negative,opinion,
+426,вражий,Adj,вражий,negative,opinion,
+427,вразумительный,Adj,вразумительный,positive,opinion,
+429,вредный,Adj,вредный,negative,opinion,
+430,вредоносный,Adj,вредоносный,negative,opinion,
+431,вседозволенный,Adj,вседозволенный,negative,opinion,
+432,всеисцеляющий,Adj,всеисцеляющий,negative,opinion,
+433,всемогущий,Adj,всемогущий,positive,opinion,
+434,всесильный,Adj,всесильный,positive,opinion,
+435,вспыльчивый,Adj,вспыльчивый,negative,opinion,
+437,второстепенный,Adj,второстепенный,negative,opinion,
+438,вульгарный,Adj,вульгарный,negative,opinion,
+439,вчерашний,Adj,вчерашний,negative,opinion,
+441,въедливый,Adj,въедливый,negative,opinion,"ВЪЕДЛИВЫЙ,ДОТОШНЫЙ"
+442,въедчивый,Adj,въедчивый,negative,opinion,
+443,выгодный,Adj,выгодный,positive,opinion,
+444,выдающийся,Adj,видный,positive,opinion,
+445,выигрышный,Adj,выигрышный,positive,opinion,
+446,вымогательский,Adj,вымогательский,negative,opinion,
+447,выносливый,Adj,выносливый,positive,opinion,
+448,выполнимый,Adj,выполнимый,positive,opinion,
+449,выразительный,Adj,выразительный,positive,opinion,
+450,высокогуманный,Adj,высокогуманный,positive,opinion,
+451,высококачественный,Adj,высококачественный,positive,opinion,
+452,высококлассный,Adj,высококлассный,positive,opinion,
+453,высокомерный,Adj,высокомерный,negative,opinion,
+454,высокоморальный,Adj,высокоморальный,positive,opinion,
+455,высоконравственный,Adj,высоконравственный,positive,opinion,
+456,высокоодаренный,Adj,высокоодаренный,positive,opinion,
+457,высокопарный,Adj,высокопарный,negative,opinion,
+458,высокоперспективный,Adj,высокоперспективный,positive,opinion,
+459,высокопорядочный,Adj,высокопорядочный,positive,opinion,
+460,высокопрофессиональный,Adj,высокопрофессиональный,positive,opinion,
+461,высокопрочный,Adj,высокопрочный,positive,opinion,
+462,высокосортный,Adj,высокосортный,positive,opinion,
+463,высокотоксичный,Adj,высокотоксичный,negative,opinion,
+464,высокочтимый,Adj,высокочтимый,positive,opinion,
+465,высокоэффективный,Adj,высокоэффективный,positive,opinion,
+466,выспренний,Adj,выспренний,negative,opinion,
+467,вычурный,Adj,вычурный,negative,opinion,
+468,вяловатый,Adj,вяловатый,negative,opinion,
+469,вялый,Adj,вялый,negative,opinion,
+470,гадкий,Adj,гадкий,negative,opinion,
+472,гадостный,Adj,гадостный,negative,opinion,
+474,галантный,Adj,галантный,positive,opinion,
+475,галимый,Adj,галимый,negative,opinion,
+479,гармоничный,Adj,гармоничный,positive,opinion,
+483,гениальный,Adj,гениальный,positive,opinion,
+486,геройский,Adj,геройский,positive,opinion,
+487,героический,Adj,героический,positive,opinion,
+488,героичный,Adj,героичный,positive,opinion,
+490,гибельный,Adj,гибельный,negative,opinion,
+491,гиблый,Adj,гиблый,negative,opinion,
+492,гигантский,Adj,гигантский,neutral,opinion,
+496,гламурный,Adj,гламурный,negative,opinion,
+499,глубокий,Adj,глубокий,neutral,opinion,"ГЛУБОКИЙ, БОЛЬШОЙ ПО ГЛУБИНЕ"
+500,глубокий,Adj,глубокий,positive,opinion,"ГЛУБИНА,ОСНОВАТЕЛЬНОСТЬ"
+501,глубокомысленный,Adj,глубокомысленный,positive,opinion,
+502,глупенький,Adj,глупенький,negative,opinion,
+503,глуповатый,Adj,глуповатый,negative,opinion,
+504,глупый,Adj,глупый,negative,opinion,
+506,глухой,Adj,глухой,negative,opinion,"БЕСЧУВСТВЕННЫЙ,ГЛУХОЙ"
+510,гневный,Adj,гневный,negative,opinion,
+512,гнилой,Adj,гнилой,negative,opinion,"ГНИЛОЙ (ВРЕДНЫЙ,НЕЗДОРОВЫЙ)"
+513,гнилостный,Adj,гнилостный,negative,opinion,
+516,гнусный,Adj,гнусный,negative,opinion,
+518,головастый,Adj,головастый,positive,opinion,СООБРАЗИТЕЛЬНЫЙ
+520,головокружительный,Adj,головокружительный,positive,opinion,ГОЛОВОКРУЖИТЕЛЬНЫЙ (ПОТРЯСАЮЩИЙ)
+521,голодный,Adj,голодный,negative,opinion,
+524,голословный,Adj,голословный,negative,opinion,
+527,горемычный,Adj,горемычный,negative,opinion,
+528,горестный,Adj,горестный,negative,opinion,
+530,горьковатый,Adj,горьковатый,negative,opinion,
+532,горячий,Adj,горячий,negative,opinion,"ВСПЫЛЬЧИВЫЙ,ЗАПАЛЬЧИВЫЙ"
+533,горячий,Adj,горячий,negative,opinion,ГОРЯЧИЙ (НАПРЯЖЕННЫЙ)
+534,горячий,Adj,горячий,neutral,opinion,ГОРЯЧИЙ ПО ТЕМПЕРАТУРЕ
+535,горячий,Adj,горячий,positive,opinion,"ПЫЛКИЙ,СТРАСТНЫЙ,ГОРЯЧИЙ"
+536,гостеприимный,Adj,гостеприимный,positive,opinion,
+537,готовый,Adj,готовый,positive,opinion,
+538,грабительский,Adj,грабительский,negative,opinion,
+541,грамотный,Adj,грамотный,positive,opinion,
+542,гребанный,Adj,гребанный,negative,opinion,
+543,гребаный,Adj,гребаный,negative,opinion,
+544,греховный,Adj,греховный,negative,opinion,
+545,грешный,Adj,грешный,negative,opinion,
+548,грозный,Adj,грозный,negative,opinion,
+549,громадный,Adj,громадный,neutral,opinion,
+550,громоздкий,Adj,громоздкий,negative,opinion,
+551,грошовый,Adj,грошовый,negative,opinion,
+552,грубейший,Adj,грубейший,negative,opinion,
+553,грубоватый,Adj,грубоватый,negative,opinion,
+554,грубый,Adj,грубый,negative,opinion,
+555,грузный,Adj,грузный,negative,opinion,
+556,грустноватый,Adj,грустноватый,negative,opinion,
+557,грустный,Adj,грустный,negative,opinion,
+560,грязненький,Adj,грязненький,negative,opinion,
+561,грязноватый,Adj,грязноватый,negative,opinion,
+562,грязный,Adj,грязный,negative,opinion,
+563,губительный,Adj,губительный,negative,opinion,
+564,гуманный,Adj,гуманный,positive,opinion,
+565,гурманский,Adj,гурманский,positive,opinion,
+566,гяурский,Adj,гяурский,negative,opinion,
+567,далекий,Adj,далекий,negative,opinion,"ЧУЖДЫЙ,ДАЛЕКИЙ"
+568,далекий,Adj,далекий,neutral,opinion,ДАЛЕКИЙ ПО ВРЕМЕНИ
+569,далекий,Adj,далекий,neutral,opinion,ДАЛЕКИЙ ПО РАССТОЯНИЮ
+570,дальновидный,Adj,дальновидный,positive,opinion,
+571,даровитый,Adj,даровитый,positive,opinion,
+573,двоедушный,Adj,двоедушный,negative,opinion,
+574,двойственный,Adj,двойственный,negative,opinion,
+575,двоякий,Adj,двоякий,negative,opinion,
+576,двуликий,Adj,двуликий,negative,opinion,
+577,двуличный,Adj,двуличный,negative,opinion,
+578,двурушнический,Adj,двурушнический,negative,opinion,
+579,двусмысленный,Adj,двусмысленный,negative,opinion,
+580,дебильный,Adj,дебильный,negative,opinion,
+581,дебоширский,Adj,дебоширский,negative,opinion,
+583,девственный,Adj,девственный,positive,opinion,
+586,дедовский,Adj,дедовский,negative,opinion,"УСТАРЕЛЫЙ,НЕСОВРЕМЕННЫЙ"
+589,дееспособный,Adj,дееспособный,positive,opinion,
+590,дезертирский,Adj,дезертирский,negative,opinion,
+591,дезинформационный,Adj,дезинформационный,negative,opinion,
+592,дезорганизаторский,Adj,дезорганизаторский,negative,opinion,
+593,действенный,Adj,действенный,positive,opinion,
+594,декларативный,Adj,декларативный,negative,opinion,
+595,деланный,Adj,деланный,negative,opinion,
+596,деликатный,Adj,деликатный,negative,opinion,ДЕЛИКАТНЫЙ (ЗАТРУДНИТЕЛЬНЫЙ)
+597,деликатный,Adj,деликатный,positive,opinion,"ДЕЛИКАТНЫЙ,ТАКТИЧНЫЙ"
+598,деловитый,Adj,деловитый,positive,opinion,
+600,деловой,Adj,деловой,positive,opinion,ПРЕДПРИИМЧИВЫЙ
+601,дельный,Adj,дельный,positive,opinion,
+602,демагогический,Adj,демагогический,negative,opinion,
+603,демагогичный,Adj,демагогичный,negative,opinion,
+604,демократичный,Adj,демократичный,positive,opinion,
+607,денежный,Adj,денежный,positive,opinion,"БОГАТЫЙ,НЕБЕДНЫЙ"
+612,державный,Adj,державный,positive,opinion,"ВЕЛИЧАВЫЙ,ЦАРСТВЕННЫЙ"
+613,дерзкий,Adj,дерзкий,negative,opinion,ДЕРЗКИЙ (НЕПОЧТИТЕЛЬНЫЙ)
+614,дерзкий,Adj,дерзкий,positive,opinion,"ДЕРЗКИЙ,ДЕРЗНОВЕННЫЙ"
+615,дерзновенный,Adj,дерзновенный,positive,opinion,
+616,дерзостный,Adj,дерзостный,negative,opinion,ДЕРЗКИЙ (НЕПОЧТИТЕЛЬНЫЙ)
+617,дерзостный,Adj,дерзостный,positive,opinion,"ДЕРЗКИЙ,ДЕРЗНОВЕННЫЙ"
+618,дерьмовый,Adj,дерьмовый,negative,opinion,
+619,деспотический,Adj,деспотический,negative,opinion,
+620,деспотичный,Adj,деспотичный,negative,opinion,
+621,дестабилизационный,Adj,дестабилизационный,negative,opinion,
+622,дестабильный,Adj,дестабильный,negative,opinion,
+624,детальнейший,Adj,детальнейший,positive,opinion,
+626,детальный,Adj,детальный,positive,opinion,"ПОДРОБНЫЙ,ДЕТАЛЬНЫЙ"
+631,дешевенький,Adj,дешевенький,negative,opinion,
+632,дешевый,Adj,дешевый,negative,opinion,НИЗКОПРОБНЫЙ
+633,дешевый,Adj,дешевый,positive,opinion,ДЕШЕВЫЙ ПО ЦЕНЕ
+634,джентльменский,Adj,джентльменский,positive,opinion,
+636,дибильный,Adj,дибильный,negative,opinion,
+638,диверсионный,Adj,диверсионный,negative,opinion,
+639,дивный,Adj,дивный,positive,opinion,
+641,дикарский,Adj,дикарский,negative,opinion,
+642,дикий,Adj,дикий,negative,opinion,НЕЛЮДИМЫЙ (НЕОБЩИТЕЛЬНЫЙ)
+643,дикий,Adj,дикий,negative,opinion,НЕОБУЗДАННЫЙ
+645,диковинный,Adj,диковинный,neutral,opinion,
+646,диктаторский,Adj,диктаторский,negative,opinion,
+647,динамичный,Adj,динамичный,positive,opinion,
+649,дипломатический,Adj,дипломатический,positive,opinion,ДИПЛОМАТИЧНЫЙ В ОБРАЩЕНИИ
+650,дипломатичный,Adj,дипломатичный,positive,opinion,
+651,директивный,Adj,директивный,negative,opinion,"КАТЕГОРИЧЕСКИЙ,НЕПРЕРЕКАЕМЫЙ"
+653,дисбалансовый,Adj,дисбалансовый,negative,opinion,
+656,дискриминационный,Adj,дискриминационный,negative,opinion,
+657,диссонансный,Adj,диссонансный,negative,opinion,
+661,дисциплинированный,Adj,дисциплинированный,positive,opinion,
+665,доблестный,Adj,доблестный,positive,opinion,
+666,добрейший,Adj,добрейший,positive,opinion,
+667,добродетельный,Adj,добродетельный,positive,opinion,
+668,добродушный,Adj,добродушный,positive,opinion,
+669,доброжелательный,Adj,доброжелательный,positive,opinion,
+671,доброкачественный,Adj,доброкачественный,positive,opinion,"КАЧЕСТВЕННЫЙ,ВЫСОКОГО КАЧЕСТВА"
+672,добропорядочный,Adj,добропорядочный,positive,opinion,
+673,добросердечный,Adj,добросердечный,positive,opinion,
+674,добросовестный,Adj,добросовестный,positive,opinion,
+675,добрососедский,Adj,добрососедский,positive,opinion,
+676,добротный,Adj,добротный,positive,opinion,
+677,добрый,Adj,добрый,positive,opinion,
+678,доверительный,Adj,доверительный,positive,opinion,
+679,довольный,Adj,довольный,positive,opinion,
+680,догадливый,Adj,догадливый,positive,opinion,
+681,дозволительный,Adj,дозволительный,positive,opinion,
+682,дозрелый,Adj,дозрелый,positive,opinion,
+683,доказательный,Adj,доказательный,positive,opinion,
+684,докучливый,Adj,докучливый,negative,opinion,
+685,докучный,Adj,докучный,negative,opinion,
+686,долбаный,Adj,долбаный,negative,opinion,
+687,долговечный,Adj,долговечный,positive,opinion,
+689,долгожданный,Adj,долгожданный,positive,opinion,
+690,долготерпеливый,Adj,долготерпеливый,positive,opinion,
+691,доморощенный,Adj,доморощенный,negative,opinion,
+692,донжуанский,Adj,донжуанский,negative,opinion,
+694,доносчицкий,Adj,доносчицкий,negative,opinion,
+696,доподлинный,Adj,доподлинный,positive,opinion,
+697,допотопный,Adj,допотопный,negative,opinion,
+698,допустимый,Adj,допустимый,positive,opinion,
+699,дороговатый,Adj,дороговатый,negative,opinion,
+700,дорогой,Adj,дорогой,negative,opinion,ДОРОГОЙ ПО ЦЕНЕ
+701,дорогой,Adj,дорогой,positive,opinion,"ДОРОГОЙ,МИЛЫЙ"
+702,дорогой,Adj,дорогой,positive,opinion,"ЦЕННЫЙ (ВАЖНЫЙ,НУЖНЫЙ)"
+703,дорогущий,Adj,дорогущий,negative,opinion,
+705,доскональный,Adj,доскональный,positive,opinion,
+706,достоверный,Adj,достоверный,positive,opinion,
+707,достойный,Adj,достойный,positive,opinion,
+708,достославный,Adj,достославный,positive,opinion,
+709,доступный,Adj,доступный,positive,opinion,
+710,досужий,Adj,досужий,negative,opinion,
+711,дотошный,Adj,дотошный,positive,opinion,
+713,доходчивый,Adj,доходчивый,positive,opinion,
+714,дошлый,Adj,дошлый,negative,opinion,
+715,драгоценный,Adj,драгоценный,positive,opinion,
+716,дражайший,Adj,дражайший,positive,opinion,
+717,драконовский,Adj,драконовский,negative,opinion,
+718,драматический,Adj,драматический,negative,opinion,"ДРАМА,ДРАМАТИЧЕСКАЯ СИТУАЦИЯ"
+719,драматический,Adj,драматический,negative,opinion,ДРАМАТИЗМ СИТУАЦИИ
+721,драматичный,Adj,драматичный,negative,opinion,
+722,дремучий,Adj,дремучий,negative,opinion,ОТСТАЛЫЙ (СЛАБОРАЗВИТЫЙ)
+723,дремучий,Adj,дремучий,neutral,opinion,ЧАЩА (ГУСТОЙ ЛЕС)
+724,дружелюбный,Adj,дружелюбный,positive,opinion,
+725,дружеский,Adj,дружеский,positive,opinion,
+726,дружественный,Adj,дружественный,positive,opinion,
+727,дружный,Adj,дружный,positive,opinion,
+728,дряблый,Adj,дряблый,negative,opinion,
+729,дрянной,Adj,дрянной,negative,opinion,
+730,дряхлый,Adj,дряхлый,negative,opinion,
+731,дурацкий,Adj,дурацкий,negative,opinion,
+732,дурной,Adj,дурной,negative,opinion,
+733,дутый,Adj,дутый,negative,opinion,ДУТЫЙ (ПРЕУВЕЛИЧЕННЫЙ)
+736,душевный,Adj,душевный,positive,opinion,"ДОБРЫЙ,ДОБРОСЕРДЕЧНЫЙ"
+737,душевный,Adj,душевный,positive,opinion,"ДУШЕВНЫЙ (ИСКРЕННИЙ,ДРУЖЕЛЮБНЫЙ)"
+738,душераздирающий,Adj,душераздирающий,negative,opinion,
+739,душещипательный,Adj,душещипательный,positive/negative,opinion,
+743,дюжинный,Adj,дюжинный,negative,opinion,
+744,егозливый,Adj,егозливый,negative,opinion,
+746,едкий,Adj,едкий,negative,opinion,ЕДКИЙ (НЕПРИЯТНЫЙ)
+747,едкий,Adj,едкий,negative,opinion,ЯЗВИТЕЛЬНЫЙ
+748,елейный,Adj,елейный,negative,opinion,"ПРИТОРНЫЙ,ИЗЛИШНЕ ЛЮБЕЗНЫЙ"
+750,емкий,Adj,емкий,positive,opinion,
+751,еретический,Adj,еретический,negative,opinion,
+752,ернический,Adj,ернический,negative,opinion,
+753,ерундовый,Adj,ерундовый,negative,opinion,
+754,ершистый,Adj,ершистый,negative,opinion,
+756,естественный,Adj,естественный,positive,opinion,ЕСТЕСТВЕННЫЙ (НОРМАЛЬНЫЙ)
+757,естественный,Adj,естественный,positive,opinion,"НАТУРАЛЬНЫЙ,ЕСТЕСТВЕННЫЙ,НЕПРИТВОРНЫЙ"
+758,ехидный,Adj,ехидный,negative,opinion,
+759,жадный,Adj,жадный,negative,opinion,"СКУПОСТЬ,ЖАДНОСТЬ"
+760,жадный,Adj,жадный,positive,opinion,"ЖАДНЫЙ,ЖАДНО СТРЕМЯЩИЙСЯ"
+761,жалкий,Adj,жалкий,negative,opinion,
+762,жалобный,Adj,жалобный,negative,opinion,
+763,жалостливый,Adj,жалостливый,negative,opinion,"ЖАЛОБНЫЙ (ВЫРАЖАЮЩИЙ ЖАЛОБУ,СКОРБЬ,ТОСКУ)"
+764,жалостливый,Adj,жалостливый,positive,opinion,ЖАЛОСТЛИВЫЙ
+765,жалостный,Adj,жалостный,negative,opinion,"ЖАЛОБНЫЙ (ВЫРАЖАЮЩИЙ ЖАЛОБУ,СКОРБЬ,ТОСКУ)"
+766,жалостный,Adj,жалостный,positive,opinion,ЖАЛОСТЛИВЫЙ
+771,жгучий,Adj,жгучий,positive,opinion,"ЗНОЙНЫЙ (СТРАСТНЫЙ,ПЫЛКИЙ)"
+772,желанный,Adj,желанный,positive,opinion,
+773,желательный,Adj,желательный,positive,opinion,
+775,железный,Adj,железный,positive,opinion,"ВОЛЕВОЙ,С СИЛОЙ ВОЛИ"
+776,желторотый,Adj,желторотый,negative,opinion,
+778,желчный,Adj,желчный,negative,opinion,ЯЗВИТЕЛЬНЫЙ
+781,жертвенный,Adj,жертвенный,positive,opinion,САМООТВЕРЖЕННЫЙ
+783,жесткий,Adj,жесткий,positive/negative,opinion,БЕЗОГОВОРОЧНЫЙ
+784,жестковатый,Adj,жестковатый,negative,opinion,
+785,жесткосердный,Adj,жесткосердный,negative,opinion,
+786,жесткосердый,Adj,жесткосердый,negative,opinion,
+787,жестокий,Adj,жестокий,negative,opinion,
+788,живодерский,Adj,живодерский,negative,opinion,
+790,живой,Adj,живой,positive,opinion,"ЖИВОЙ (АКТИВНЫЙ,ДЕЯТЕЛЬНЫЙ)"
+791,живой,Adj,живой,positive,opinion,ЖИВОЙ (ВЫРАЗИТЕЛЬНЫЙ)
+793,живописный,Adj,живописный,positive,opinion,ЖИВОПИСНЫЙ НА ВИД
+794,живописный,Adj,живописный,positive,opinion,"ЖИВОПИСНЫЙ,КОЛОРИТНЫЙ"
+795,живучий,Adj,живучий,positive,opinion,
+797,жизненный,Adj,жизненный,positive,opinion,ЖИЗНЕННО НЕОБХОДИМЫЙ
+798,жизнерадостный,Adj,жизнерадостный,positive,opinion,
+799,жизнеспособный,Adj,жизнеспособный,positive,opinion,
+800,жирный,Adj,жирный,negative,opinion,ЖИРНЫЙ (ОЧЕНЬ ТОЛСТЫЙ)
+801,жирный,Adj,жирный,negative,opinion,"ЖИРНЫЙ,ГРЯЗНЫЙ ОТ ЖИРА"
+804,жульнический,Adj,жульнический,negative,opinion,
+805,жуткий,Adj,жуткий,negative,opinion,
+806,жутковатый,Adj,жутковатый,negative,opinion,
+807,заангажированный,Adj,заангажированный,negative,opinion,
+808,забавный,Adj,забавный,positive,opinion,
+810,забитый,Adj,забитый,negative,opinion,
+811,заботливый,Adj,заботливый,positive,opinion,
+812,забывчивый,Adj,забывчивый,negative,opinion,
+813,завальный,Adj,завальный,negative,opinion,"ПРОВАЛИТЬСЯ,ПОТЕРПЕТЬ ПРОВАЛ"
+815,заведомый,Adj,заведомый,negative,opinion,
+816,заветный,Adj,заветный,positive,opinion,
+817,завидный,Adj,завидный,positive,opinion,
+818,завиральный,Adj,завиральный,negative,opinion,
+821,завлекательный,Adj,завлекательный,positive,opinion,
+822,завышенный,Adj,завышенный,negative,opinion,
+823,заговорщицкий,Adj,заговорщицкий,negative,opinion,
+824,заговорщический,Adj,заговорщический,negative,opinion,
+825,загорелый,Adj,загорелый,positive,opinion,
+826,загрубелый,Adj,загрубелый,negative,opinion,
+828,задушевный,Adj,задушевный,positive,opinion,
+829,заезженный,Adj,заезженный,negative,opinion,
+830,зажатый,Adj,зажатый,negative,opinion,
+831,зажиточный,Adj,зажиточный,positive,opinion,
+832,зазорный,Adj,зазорный,negative,opinion,"ПОЗОРНЫЙ,ПОСТЫДНЫЙ"
+835,заинтересованный,Adj,заинтересованный,positive,opinion,"ВЫГОДА,ПОЛЬЗА"
+836,заклятый,Adj,заклятый,negative,opinion,
+838,законный,Adj,законный,positive,opinion,
+840,закономерный,Adj,закономерный,positive,opinion,"ЗАКОННЫЙ,ЗАКОНОМЕРНЫЙ (ВПОЛНЕ ПОНЯТНЫЙ,ДОПУСТИМЫЙ)"
+841,законопослушный,Adj,законопослушный,positive,opinion,
+842,законоустановленный,Adj,законоустановленный,positive,opinion,
+843,закоперщицкий,Adj,закоперщицкий,positive/negative,opinion,
+844,закоренелый,Adj,закоренелый,negative,opinion,
+845,закоснелый,Adj,закоснелый,negative,opinion,
+847,закулисный,Adj,закулисный,negative,opinion,
+849,заманчивый,Adj,заманчивый,positive,opinion,
+850,заматерелый,Adj,заматерелый,negative,opinion,
+851,замечательный,Adj,замечательный,positive,opinion,
+852,замкнутый,Adj,замкнутый,negative,opinion,
+853,занимательный,Adj,занимательный,positive,opinion,
+854,заносчивый,Adj,заносчивый,negative,opinion,
+855,заношенный,Adj,заношенный,negative,opinion,
+856,занудливый,Adj,занудливый,negative,opinion,
+857,занудный,Adj,занудный,negative,opinion,
+858,занятный,Adj,занятный,positive,opinion,
+861,запальчивый,Adj,запальчивый,negative,opinion,
+862,запоздалый,Adj,запоздалый,negative,opinion,
+867,запутанный,Adj,запутанный,negative,opinion,
+868,запущенный,Adj,запущенный,negative,opinion,
+871,застарелый,Adj,застарелый,negative,opinion,
+873,застойный,Adj,застойный,negative,opinion,
+875,затасканный,Adj,затасканный,negative,opinion,
+876,заторможенный,Adj,заторможенный,negative,opinion,
+878,затруднительный,Adj,затруднительный,negative,opinion,
+879,затхлый,Adj,затхлый,negative,opinion,
+880,затяжной,Adj,затяжной,negative,opinion,
+881,затянутый,Adj,затянутый,negative,opinion,
+882,заумный,Adj,заумный,negative,opinion,
+883,заунывный,Adj,заунывный,negative,opinion,
+884,заурядный,Adj,заурядный,negative,opinion,
+885,захватнический,Adj,захватнический,negative,opinion,
+886,захолустный,Adj,захолустный,negative,opinion,
+887,зачинщицкий,Adj,зачинщицкий,negative,opinion,
+888,заштатный,Adj,заштатный,negative,opinion,
+889,защитнический,Adj,защитнический,positive,opinion,
+891,звериный,Adj,звериный,negative,opinion,ЗВЕРСТВО (ЖЕСТОКОСТЬ)
+893,зверский,Adj,зверский,negative,opinion,
+894,звонкий,Adj,звонкий,positive,opinion,
+895,звучный,Adj,звучный,positive,opinion,
+896,здоровенный,Adj,здоровенный,neutral,opinion,
+897,здоровский,Adj,здоровский,negative,opinion,
+898,здоровый,Adj,здоровый,neutral,opinion,"ОГРОМНЫЙ ПО РАЗМЕРУ,СТЕПЕНИ"
+899,здоровый,Adj,здоровый,positive,opinion,"ЗДОРОВЫЙ,НЕБОЛЬНОЙ"
+900,здоровый,Adj,здоровый,positive,opinion,"ЗДОРОВЫЙ,ПОЛЕЗНЫЙ ДЛЯ ЗДОРОВЬЯ"
+901,здравомыслящий,Adj,здравомыслящий,positive,opinion,
+902,здравый,Adj,здравый,positive,opinion,
+903,зеленый,Adj,зеленый,negative,opinion,ЗЕЛЕНЫЙ (БЛЕДНЫЙ (О ЦВЕТЕ ЛИЦА)
+904,зеленый,Adj,зеленый,negative,opinion,"НЕЗРЕЛЫЙ,НЕСПЕЛЫЙ"
+905,зеленый,Adj,зеленый,negative,opinion,НЕОПЫТНЫЙ
+907,злобный,Adj,злобный,negative,opinion,
+908,зловещий,Adj,зловещий,negative,opinion,
+910,зловредный,Adj,зловредный,negative,opinion,
+911,злодейский,Adj,злодейский,negative,opinion,
+912,злой,Adj,злой,negative,opinion,
+913,злокачественный,Adj,злокачественный,negative,opinion,
+914,злокозненный,Adj,злокозненный,negative,opinion,
+915,злонамеренный,Adj,злонамеренный,negative,opinion,
+916,злопамятный,Adj,злопамятный,negative,opinion,
+917,злополучный,Adj,злополучный,negative,opinion,
+918,злопыхательный,Adj,злопыхательный,negative,opinion,
+919,злопыхательский,Adj,злопыхательский,negative,opinion,
+920,злорадный,Adj,злорадный,negative,opinion,
+921,злостный,Adj,злостный,negative,opinion,
+922,злосчастный,Adj,злосчастный,negative,opinion,
+923,злоумышленный,Adj,злоумышленный,negative,opinion,
+924,знаменитый,Adj,знаменитый,positive,opinion,
+925,значимый,Adj,значимый,positive,opinion,
+926,значительный,Adj,значительный,positive,opinion,
+927,зоркий,Adj,зоркий,positive,opinion,
+929,зрелищный,Adj,зрелищный,positive,opinion,ЗРЕЛИЩНЫЙ (ВПЕЧАТЛЯЮЩИЙ)
+931,зрелый,Adj,зрелый,positive,opinion,"ЗРЕЛЫЙ,СПЕЛЫЙ"
+932,зряшный,Adj,зряшный,negative,opinion,
+933,зубоскальский,Adj,зубоскальский,negative,opinion,
+934,зыбкий,Adj,зыбкий,negative,opinion,
+935,игривый,Adj,игривый,positive,opinion,
+936,игрушечный,Adj,игрушечный,negative,opinion,НАИГРАННЫЙ
+938,игрушечный,Adj,игрушечный,neutral,opinion,ИГРУШЕЧНЫЙ (ОЧЕНЬ МАЛЕНЬКИЙ)
+939,идеальный,Adj,идеальный,positive,opinion,
+940,идиллический,Adj,идиллический,positive,opinion,
+941,идиотский,Adj,идиотский,negative,opinion,
+942,иезуитский,Adj,иезуитский,negative,opinion,ИЕЗУИТСТВО (ЛИЦЕМЕРИЕ)
+944,иждивенческий,Adj,иждивенческий,negative,opinion,
+945,избалованный,Adj,избалованный,negative,opinion,
+946,избитый,Adj,избитый,negative,opinion,БАНАЛЬНЫЙ
+947,избыточный,Adj,избыточный,negative,opinion,
+948,изветшалый,Adj,изветшалый,negative,opinion,
+949,изворотливый,Adj,изворотливый,negative,opinion,"ЛОВКИЙ,ПРОНЫРЛИВЫЙ"
+950,изворотливый,Adj,изворотливый,positive,opinion,УВЕРТЛИВЫЙ
+951,извращенный,Adj,извращенный,negative,opinion,
+952,издевательский,Adj,издевательский,negative,opinion,
+953,излишний,Adj,излишний,negative,opinion,
+954,излюбленный,Adj,излюбленный,positive,opinion,
+955,изменнический,Adj,изменнический,negative,opinion,
+957,измывательский,Adj,измывательский,negative,opinion,
+959,изношенный,Adj,изношенный,negative,opinion,
+961,изнурительный,Adj,изнурительный,negative,opinion,
+962,изобильный,Adj,изобильный,positive,opinion,
+963,изобретательный,Adj,изобретательный,positive,opinion,
+964,изощренный,Adj,изощренный,positive,opinion,
+965,изуверский,Adj,изуверский,negative,opinion,
+966,изумительный,Adj,изумительный,positive,opinion,
+967,изысканный,Adj,изысканный,positive,opinion,
+968,изящный,Adj,изящный,positive,opinion,
+969,иллюзорный,Adj,иллюзорный,negative,opinion,
+970,именитый,Adj,именитый,positive,opinion,
+973,имперский,Adj,имперский,negative,opinion,
+974,импозантный,Adj,импозантный,positive,opinion,
+976,индифферентный,Adj,индифферентный,negative,opinion,
+977,инертный,Adj,инертный,negative,opinion,
+978,инициативный,Adj,инициативный,positive,opinion,
+979,инородный,Adj,инородный,negative,opinion,
+982,интегральный,Adj,интегральный,positive,opinion,ЦЕЛОСТНЫЙ
+983,интеллигентный,Adj,интеллигентный,positive,opinion,
+984,интеллигентский,Adj,интеллигентский,positive,opinion,
+985,интенсивный,Adj,интенсивный,neutral,opinion,ЯРКИЙ ПО ЦВЕТУ
+986,интенсивный,Adj,интенсивный,positive,opinion,"ИНТЕНСИВНЫЙ (НАПРЯЖЕННЫЙ,УСИЛЕННЫЙ)"
+988,интереснейший,Adj,интереснейший,positive,opinion,
+989,интересненький,Adj,интересненький,positive,opinion,
+990,интересный,Adj,интересный,positive,opinion,
+991,интриганский,Adj,интриганский,negative,opinion,
+997,иррациональный,Adj,иррациональный,negative,opinion,"ИРРАЦИОНАЛЬНЫЙ,ЛОГИЧЕСКИ НЕОБЪЯСНИМЫЙ"
+1000,исключительный,Adj,исключительный,positive,opinion,ИСКЛЮЧИТЕЛЬНЫЙ ПО СВОИМ КАЧЕСТВАМ
+1001,искренний,Adj,искренний,positive,opinion,
+1002,искусный,Adj,искусный,positive,opinion,
+1003,искусственный,Adj,искусственный,negative,opinion,ПРИТВОРНЫЙ
+1006,исполинский,Adj,исполинский,neutral,opinion,
+1007,исполнимый,Adj,исполнимый,positive,opinion,
+1009,исполнительный,Adj,исполнительный,positive,opinion,ИСПОЛНИТЕЛЬНЫЙ
+1010,исправный,Adj,исправный,positive,opinion,
+1011,истинный,Adj,истинный,positive,opinion,
+1014,истязательский,Adj,истязательский,negative,opinion,
+1015,исхудалый,Adj,исхудалый,negative,opinion,
+1017,кабальный,Adj,кабальный,negative,opinion,
+1018,каверзный,Adj,каверзный,negative,opinion,
+1019,казенный,Adj,казенный,negative,opinion,"БЮРОКРАТИЗМ (ФОРМАЛИЗМ,КАНЦЕЛЯРЩИНА)"
+1021,кайфовый,Adj,кайфовый,positive,opinion,
+1022,каменный,Adj,каменный,negative,opinion,"БЕЗЖАЛОСТНЫЙ,ЖЕСТОКИЙ"
+1024,канительщицкий,Adj,канительщицкий,negative,opinion,
+1028,капитальный,Adj,капитальный,positive,opinion,
+1029,капризный,Adj,капризный,negative,opinion,
+1030,карикатурный,Adj,карикатурный,negative,opinion,КАРИКАТУРНОЕ ПОДОБИЕ
+1033,картинный,Adj,картинный,negative,opinion,"ЖИВОПИСНЫЙ,КОЛОРИТНЫЙ"
+1036,катастрофический,Adj,катастрофический,negative,opinion,
+1037,катастрофичный,Adj,катастрофичный,negative,opinion,
+1039,категоричный,Adj,категоричный,negative,opinion,
+1041,качественный,Adj,качественный,positive,opinion,"КАЧЕСТВЕННЫЙ,ВЫСОКОГО КАЧЕСТВА"
+1043,кисловатый,Adj,кисловатый,negative,opinion,
+1045,кислый,Adj,кислый,negative,opinion,УНЫЛЫЙ
+1047,кислый,Adj,кислый,neutral,opinion,КИСЛЫЙ ВКУС
+1048,кичливый,Adj,кичливый,negative,opinion,
+1049,класный,Adj,класный,positive,opinion,
+1050,классненький,Adj,классненький,positive,opinion,
+1052,классный,Adj,классный,positive,opinion,ПЕРВОКЛАССНЫЙ
+1053,клеветнический,Adj,клеветнический,negative,opinion,
+1054,клевый,Adj,клевый,positive,opinion,
+1056,коварный,Adj,коварный,positive,opinion,
+1058,козырной,Adj,козырной,positive,opinion,КОЗЫРЬ (ПРЕИМУЩЕСТВО)
+1059,колдовской,Adj,колдовской,negative,opinion,
+1060,коленопреклоненный,Adj,коленопреклоненный,negative,opinion,РАБСКИЙ (ПОКОРНЫЙ)
+1063,колкий,Adj,колкий,negative,opinion,"КОЛКИЙ,КОЛЮЧИЙ"
+1064,колкий,Adj,колкий,negative,opinion,ЯЗВИТЕЛЬНЫЙ
+1065,колкий,Adj,колкий,positive/negative,opinion,КОЛКИЙ (ПОДАТЛИВЫЙ)
+1066,коллаборационистский,Adj,коллаборационистский,negative,opinion,
+1067,коллизионный,Adj,коллизионный,negative,opinion,
+1070,колоритный,Adj,колоритный,positive,opinion,"ЖИВОПИСНЫЙ,КОЛОРИТНЫЙ"
+1071,колоссальный,Adj,колоссальный,neutral,opinion,
+1072,колючий,Adj,колючий,negative,opinion,
+1075,комический,Adj,комический,positive,opinion,"КОМИЧЕСКИЙ (СМЕШНОЙ,ЗАБАВНЫЙ)"
+1076,комичный,Adj,комичный,positive/negative,opinion,
+1078,коммуникабельный,Adj,коммуникабельный,positive,opinion,
+1079,компанейский,Adj,компанейский,positive,opinion,
+1081,компетентный,Adj,компетентный,positive,opinion,"КОМПЕТЕНЦИЯ,ОСВЕДОМЛЕННОСТЬ"
+1083,комплиментарный,Adj,комплиментарный,positive,opinion,КОМПЛИМЕНТ (ЛЕСТНЫЙ ОТЗЫВ)
+1084,компроматный,Adj,компроматный,negative,opinion,
+1085,компромиссный,Adj,компромиссный,positive,opinion,
+1086,комфортабельный,Adj,комфортабельный,positive,opinion,
+1087,комфортный,Adj,комфортный,positive,opinion,
+1090,конструктивный,Adj,конструктивный,positive,opinion,КОНСТРУКТИВНЫЙ (ПОЛЕЗНЫЙ)
+1094,контактный,Adj,контактный,positive,opinion,ОБЩИТЕЛЬНЫЙ
+1098,контрпродуктивный,Adj,контрпродуктивный,negative,opinion,
+1101,конфликтный,Adj,конфликтный,negative,opinion,
+1103,конфронтационный,Adj,конфронтационный,negative,opinion,
+1105,конченный,Adj,конченный,negative,opinion,
+1106,конченый,Adj,конченый,negative,opinion,
+1107,копеечный,Adj,копеечный,negative,opinion,НИЗКАЯ ОПЛАТА ТРУДА
+1108,копеечный,Adj,копеечный,negative,opinion,"НИЧТОЖНЫЙ,НИЩЕНСКИЙ"
+1109,копеечный,Adj,копеечный,negative,opinion,СЛИШКОМ ДЕШЕВЫЙ
+1113,коронный,Adj,коронный,positive,opinion,"КОРОННЫЙ (ЛУЧШИЙ,УДАЧНЫЙ)"
+1114,корректный,Adj,корректный,positive,opinion,
+1120,корыстный,Adj,корыстный,negative,opinion,
+1121,корыстолюбивый,Adj,корыстолюбивый,negative,opinion,
+1122,корявый,Adj,корявый,negative,opinion,
+1125,костлявый,Adj,костлявый,negative,opinion,
+1127,кошмарный,Adj,кошмарный,negative,opinion,КОШМАР (ОБСТОЯТЕЛЬСТВА)
+1128,кошмарный,Adj,кошмарный,negative,opinion,ОТВРАТИТЕЛЬНЫЙ (ОЧЕНЬ ПЛОХОЙ)
+1129,кощунственный,Adj,кощунственный,negative,opinion,
+1130,крамольный,Adj,крамольный,negative,opinion,
+1131,красивейший,Adj,красивейший,positive,opinion,
+1132,красивый,Adj,красивый,positive,opinion,
+1133,красноречивый,Adj,красноречивый,positive,opinion,
+1135,красочный,Adj,красочный,neutral,opinion,ЦВЕТАСТЫЙ
+1136,красочный,Adj,красочный,positive,opinion,"ЖИВОПИСНЫЙ,КОЛОРИТНЫЙ"
+1138,крепкий,Adj,крепкий,positive,opinion,"КРЕПКИЙ,ПРОЧНЫЙ"
+1139,крепкий,Adj,крепкий,positive,opinion,ПРОЧНЫЙ (НЕИЗМЕННЫЙ)
+1140,крепкий,Adj,крепкий,positive,opinion,"ТВЕРДОСТЬ,СТОЙКОСТЬ,НЕПОКОЛЕБИМОСТЬ"
+1141,крепкий,Adj,крепкий,positive,opinion,ФИЗИЧЕСКИ КРЕПКИЙ
+1142,крепкоголовый,Adj,крепкоголовый,negative,opinion,
+1143,крепколобый,Adj,крепколобый,negative,opinion,
+1144,криворукий,Adj,криворукий,negative,opinion,
+1145,кризисный,Adj,кризисный,negative,opinion,
+1148,кристальный,Adj,кристальный,positive,opinion,
+1149,критиканский,Adj,критиканский,negative,opinion,
+1150,критический,Adj,критический,negative,opinion,КРИТИЧЕСКИ ОПАСНЫЙ
+1153,критичный,Adj,критичный,negative,opinion,
+1155,кровожадный,Adj,кровожадный,negative,opinion,
+1159,кромешный,Adj,кромешный,negative,opinion,
+1160,кропотливый,Adj,кропотливый,positive,opinion,
+1161,кроткий,Adj,кроткий,positive,opinion,
+1162,крутой,Adj,крутой,negative,opinion,КРУТОЙ (СУРОВЫЙ)
+1164,крутой,Adj,крутой,neutral,opinion,КРУТОЙ (ГУСТОЙ)
+1165,крутой,Adj,крутой,positive,opinion,КРУТОЙ (МОДНЫЙ)
+1166,крючкотворский,Adj,крючкотворский,negative,opinion,
+1168,кудеснический,Adj,кудеснический,positive,opinion,
+1169,кулуарный,Adj,кулуарный,negative,opinion,
+1172,кунацкий,Adj,кунацкий,positive,opinion,
+1173,кустарный,Adj,кустарный,negative,opinion,ТОПОРНО ИЗГОТОВЛЕННЫЙ
+1175,лавиноопасный,Adj,лавиноопасный,negative,opinion,
+1177,лаконичный,Adj,лаконичный,positive,opinion,
+1178,ласковый,Adj,ласковый,positive,opinion,
+1179,латентный,Adj,латентный,neutral,opinion,
+1180,легальный,Adj,легальный,positive,opinion,
+1182,легендарный,Adj,легендарный,positive,opinion,ЛЕГЕНДАРНЫЙ (ШИРОКОИЗВЕСТНЫЙ)
+1183,легитимный,Adj,легитимный,positive,opinion,
+1184,легкий,Adj,легкий,negative,opinion,"ЛЕГКИЙ (ПОВЕРХНОСТНЫЙ,ЛЕГКОМЫСЛЕННЫЙ)"
+1185,легкий,Adj,легкий,neutral,opinion,ЛЕГКИЙ ПО ВЕСУ
+1186,легкий,Adj,легкий,neutral,opinion,"ЛЕГКИЙ ПО СИЛЕ,СТЕПЕНИ"
+1187,легкий,Adj,легкий,positive,opinion,"ЛЕГКИЙ,НЕТРУДНЫЙ"
+1188,легкий,Adj,легкий,positive,opinion,ПОКЛАДИСТЫЙ
+1189,легковесный,Adj,легковесный,negative,opinion,ЛЕГКОВЕСНЫЙ (ПОВЕРХНОСТНЫЙ)
+1190,легковесный,Adj,легковесный,neutral,opinion,ЛЕГКИЙ ПО ВЕСУ
+1191,легковыполняемый,Adj,легковыполняемый,positive,opinion,
+1192,легкомысленный,Adj,легкомысленный,negative,opinion,
+1193,легонький,Adj,легонький,positive,opinion,
+1194,леденящий,Adj,леденящий,negative,opinion,
+1195,ледяной,Adj,ледяной,negative,opinion,ЛЕДЯНОЙ (ОЧЕНЬ ХОЛОДНЫЙ)
+1196,ледяной,Adj,ледяной,negative,opinion,ЛЕДЯНОЙ (ПРЕЗРИТЕЛЬНО-ХОЛОДНЫЙ)
+1200,ленивый,Adj,ленивый,negative,opinion,
+1201,лестный,Adj,лестный,positive,opinion,
+1204,лженаучный,Adj,лженаучный,negative,opinion,
+1205,лживый,Adj,лживый,negative,opinion,
+1206,липовый,Adj,липовый,negative,opinion,"ПОДДЕЛКА,ФАЛЬШИВКА"
+1209,лихаческий,Adj,лихаческий,negative,opinion,
+1213,лихорадочный,Adj,лихорадочный,negative,opinion,НЕРВНЫЙ (ПОРЫВИСТЫЙ И СУДОРОЖНЫЙ)
+1214,лицемерный,Adj,лицемерный,negative,opinion,
+1215,лицемерский,Adj,лицемерский,negative,opinion,
+1216,лицеприятный,Adj,лицеприятный,negative,opinion,
+1217,лишний,Adj,лишний,negative,opinion,"ИЗБЫТОЧНЫЙ,ИЗЛИШНИЙ"
+1218,лишний,Adj,лишний,negative,opinion,"ЛИШНИЙ (НЕНУЖНЫЙ,БЕСПОЛЕЗНЫЙ)"
+1220,ловкаческий,Adj,ловкаческий,negative,opinion,
+1221,ловкий,Adj,ловкий,positive,opinion,
+1223,логический,Adj,логический,positive,opinion,ЛОГИКА (ВНУТРЕННЯЯ ЗАКОНОМЕРНОСТЬ)
+1224,логичный,Adj,логичный,positive,opinion,
+1225,ложный,Adj,ложный,negative,opinion,
+1226,ломкий,Adj,ломкий,negative,opinion,
+1227,лояльный,Adj,лояльный,positive,opinion,
+1228,лукавый,Adj,лукавый,positive,opinion,
+1229,лучезарный,Adj,лучезарный,positive,opinion,
+1230,лучистый,Adj,лучистый,positive,opinion,
+1231,лучший,Adj,лучший,positive,opinion,
+1232,лысоватый,Adj,лысоватый,negative,opinion,
+1235,льстивый,Adj,льстивый,negative,opinion,
+1236,любезный,Adj,любезный,positive,opinion,
+1237,любимый,Adj,любимый,positive,opinion,
+1239,любопытнейший,Adj,любопытнейший,positive,opinion,
+1241,любопытный,Adj,любопытный,positive,opinion,ЛЮБОПЫТНЫЙ (ИНТЕРЕСНЫЙ)
+1243,лютый,Adj,лютый,negative,opinion,
+1244,магический,Adj,магический,positive,opinion,
+1247,мазохистский,Adj,мазохистский,negative,opinion,
+1248,малейший,Adj,малейший,negative,opinion,
+1249,маловажный,Adj,маловажный,negative,opinion,
+1250,маловразумительный,Adj,маловразумительный,negative,opinion,
+1251,маловыгодный,Adj,маловыгодный,negative,opinion,
+1252,маловыразительный,Adj,маловыразительный,negative,opinion,
+1253,малограмотный,Adj,малограмотный,negative,opinion,
+1254,малодушный,Adj,малодушный,negative,opinion,
+1255,малозначащий,Adj,малозначащий,negative,opinion,
+1256,малозначимый,Adj,малозначимый,negative,opinion,
+1257,малозначительный,Adj,малозначительный,negative,opinion,
+1258,малоимущий,Adj,малоимущий,negative,opinion,
+1259,малоинтересный,Adj,малоинтересный,negative,opinion,
+1260,малокомпетентный,Adj,малокомпетентный,negative,opinion,
+1261,малообеспеченный,Adj,малообеспеченный,negative,opinion,
+1262,малообоснованный,Adj,малообоснованный,negative,opinion,
+1263,малообразованный,Adj,малообразованный,negative,opinion,
+1264,малообщительный,Adj,малообщительный,negative,opinion,
+1265,малоопытный,Adj,малоопытный,negative,opinion,
+1266,малоосмысленный,Adj,малоосмысленный,negative,opinion,
+1267,малопонятный,Adj,малопонятный,negative,opinion,
+1268,малопочтенный,Adj,малопочтенный,negative,opinion,
+1269,малопригодный,Adj,малопригодный,negative,opinion,
+1270,малопримечательный,Adj,малопримечательный,negative,opinion,
+1271,малопристойный,Adj,малопристойный,negative,opinion,
+1272,малоприятный,Adj,малоприятный,negative,opinion,
+1273,малопродуктивный,Adj,малопродуктивный,negative,opinion,
+1274,малореалистичный,Adj,малореалистичный,negative,opinion,
+1275,малорезультативный,Adj,малорезультативный,negative,opinion,
+1276,малосведущий,Adj,малосведущий,negative,opinion,
+1277,малосильный,Adj,малосильный,negative,opinion,
+1278,малосимпатичный,Adj,малосимпатичный,negative,opinion,
+1279,малосодержательный,Adj,малосодержательный,negative,opinion,
+1280,малосущественный,Adj,малосущественный,negative,opinion,
+1281,малоубедительный,Adj,малоубедительный,negative,opinion,
+1282,малоудачный,Adj,малоудачный,negative,opinion,
+1283,малоутешительный,Adj,малоутешительный,negative,opinion,
+1284,малоэффективный,Adj,малоэффективный,negative,opinion,
+1287,маниакальный,Adj,маниакальный,negative,opinion,МАНИЯ (СИЛЬНОЕ ПРИСТРАСТИЕ)
+1288,манипулятивный,Adj,манипулятивный,negative,opinion,
+1290,маразматический,Adj,маразматический,negative,opinion,"МАРАЗМ,ИДИОТИЗМ"
+1291,марионеточный,Adj,марионеточный,negative,opinion,МАРИОНЕТКА (ЧЕЛОВЕК)
+1294,мастерский,Adj,мастерский,positive,opinion,
+1295,маститый,Adj,маститый,positive,opinion,
+1297,матерый,Adj,матерый,negative,opinion,"ОТЪЯВЛЕННЫЙ,ПРОЖЖЕНЫЙ"
+1298,матерый,Adj,матерый,neutral,opinion,МАТЕРЫЙ (ЗРЕЛЫЙ)
+1299,мафиозный,Adj,мафиозный,negative,opinion,
+1300,махровый,Adj,махровый,negative,opinion,"ОТЪЯВЛЕННЫЙ,ПРОЖЖЕНЫЙ"
+1302,медлительный,Adj,медлительный,negative,opinion,
+1303,медовый,Adj,медовый,negative,opinion,"ПРИТОРНЫЙ,ИЗЛИШНЕ ЛЮБЕЗНЫЙ"
+1306,мелкий,Adj,мелкий,negative,opinion,"МАЛОЗНАЧИТЕЛЬНЫЙ,НЕЗНАЧИТЕЛЬНЫЙ"
+1307,мелкий,Adj,мелкий,neutral,opinion,МЕЛКИЙ (НЕБОЛЬШОЙ)
+1308,мелкий,Adj,мелкий,neutral,opinion,МЕЛКИЙ ПО ГЛУБИНЕ
+1309,мелковатый,Adj,мелковатый,negative,opinion,
+1310,мелкотравчатый,Adj,мелкотравчатый,negative,opinion,
+1311,мелодичный,Adj,мелодичный,positive,opinion,
+1313,мельчайший,Adj,мельчайший,neutral,opinion,"МАЛОЗНАЧИТЕЛЬНЫЙ,НЕЗНАЧИТЕЛЬНЫЙ"
+1315,менторский,Adj,менторский,negative,opinion,
+1316,мерзкий,Adj,мерзкий,negative,opinion,
+1317,мерзопакостный,Adj,мерзопакостный,negative,opinion,
+1318,мерзостный,Adj,мерзостный,negative,opinion,
+1319,меркантильный,Adj,меркантильный,negative,opinion,
+1320,местечковый,Adj,местечковый,negative,opinion,
+1322,меткий,Adj,меткий,positive,opinion,
+1326,мизерный,Adj,мизерный,negative,opinion,
+1327,милейший,Adj,милейший,positive,opinion,
+1328,миловидный,Adj,миловидный,positive,opinion,
+1330,милый,Adj,милый,positive,opinion,
+1335,мирный,Adj,мирный,positive,opinion,"МИРНЫЙ (СПОКОЙНЫЙ,ЧУЖДЫЙ ВОЛНЕНИЙ)"
+1336,мирный,Adj,мирный,positive,opinion,МИРОЛЮБИЕ
+1337,миролюбивый,Adj,миролюбивый,positive,opinion,
+1338,мифический,Adj,мифический,negative,opinion,"ВЫДУМКА,ВЫМЫСЕЛ"
+1340,мнимый,Adj,мнимый,negative,opinion,ПРИТВОРНЫЙ
+1341,мнимый,Adj,мнимый,neutral,opinion,МНИМЫЙ (ВООБРАЖАЕМЫЙ)
+1342,мнительный,Adj,мнительный,negative,opinion,
+1343,многогранный,Adj,многогранный,positive,opinion,
+1344,многозначительный,Adj,многозначительный,positive,opinion,
+1345,многомудрый,Adj,многомудрый,positive,opinion,
+1346,многообещающий,Adj,многообещающий,positive,opinion,
+1347,многословный,Adj,многословный,negative,opinion,
+1348,многосторонний,Adj,многосторонний,positive,opinion,
+1349,многотрудный,Adj,многотрудный,negative,opinion,
+1350,могучий,Adj,могучий,positive,opinion,
+1351,могущественный,Adj,могущественный,positive,opinion,
+1356,модный,Adj,модный,positive,opinion,МОДНЫЙ (ПОПУЛЯРНЫЙ)
+1357,модный,Adj,модный,positive,opinion,"МОДНЫЙ,СТИЛЬНЫЙ"
+1358,молодцеватый,Adj,молодцеватый,positive,opinion,
+1360,молчаливый,Adj,молчаливый,positive/negative,opinion,"МОЛЧАЛИВЫЙ,НЕРАЗГОВОРЧИВЫЙ"
+1361,моралистический,Adj,моралистический,negative,opinion,
+1363,моральный,Adj,моральный,positive,opinion,"НРАВСТВЕННЫЙ,ЭТИЧНЫЙ"
+1365,мотовской,Adj,мотовской,negative,opinion,
+1366,мошеннический,Adj,мошеннический,negative,opinion,
+1371,мракобесный,Adj,мракобесный,negative,opinion,
+1372,мрачноватый,Adj,мрачноватый,negative,opinion,
+1373,мрачный,Adj,мрачный,negative,opinion,
+1375,мужественный,Adj,мужественный,positive,opinion,
+1377,музыкальный,Adj,музыкальный,positive,opinion,МЕЛОДИЧНЫЙ
+1379,мутноватый,Adj,мутноватый,negative,opinion,
+1380,мутный,Adj,мутный,negative,opinion,
+1381,муторный,Adj,муторный,negative,opinion,
+1384,мучительский,Adj,мучительский,negative,opinion,
+1385,мягкий,Adj,мягкий,neutral,opinion,МЯГКИЙ ПРИ НАДАВЛИВАНИИ
+1387,мягкий,Adj,мягкий,positive,opinion,МЯГКИЙ ПО ХАРАКТЕРУ
+1388,мягкий,Adj,мягкий,positive,opinion,"МЯГКИЙ,НЕРЕЗКИЙ"
+1389,мягкий,Adj,мягкий,positive,opinion,"МЯГКИЙ,НЕСТРОГИЙ"
+1390,мягкий,Adj,мягкий,positive,opinion,"МЯГКИЙ,НЕЧЕРСТВЫЙ"
+1391,мягкосердечный,Adj,мягкосердечный,positive,opinion,
+1392,мягкотелый,Adj,мягкотелый,negative,opinion,
+1393,мясистый,Adj,мясистый,neutral,opinion,
+1396,мятый,Adj,мятый,negative,opinion,
+1397,набитый,Adj,набитый,negative,opinion,
+1399,наблюдательный,Adj,наблюдательный,positive,opinion,НАБЛЮДАТЕЛЬНЫЙ (ВНИМАТЕЛЬНЫЙ)
+1400,набожный,Adj,набожный,positive,opinion,
+1401,наболевший,Adj,наболевший,negative,opinion,
+1402,навязчивый,Adj,навязчивый,negative,opinion,
+1403,нагловатый,Adj,нагловатый,negative,opinion,
+1404,наглый,Adj,наглый,negative,opinion,
+1406,надежный,Adj,надежный,positive,opinion,
+1407,надменный,Adj,надменный,negative,opinion,
+1408,надоедливый,Adj,надоедливый,negative,opinion,
+1409,надоедный,Adj,надоедный,negative,opinion,
+1410,надуманный,Adj,надуманный,negative,opinion,
+1412,назидательный,Adj,назидательный,negative,opinion,
+1413,назойливый,Adj,назойливый,negative,opinion,
+1414,наивкуснейший,Adj,наивкуснейший,positive,opinion,
+1415,наивный,Adj,наивный,negative,opinion,
+1416,наигранный,Adj,наигранный,negative,opinion,
+1417,наилучший,Adj,наилучший,positive,opinion,
+1418,наисложнейший,Adj,наисложнейший,negative,opinion,
+1419,наихудший,Adj,наихудший,negative,opinion,
+1420,намеренный,Adj,намеренный,neutral,opinion,
+1421,напористый,Adj,напористый,positive,opinion,
+1422,напрасный,Adj,напрасный,negative,opinion,
+1423,напряженный,Adj,напряженный,negative,opinion,
+1424,напускной,Adj,напускной,negative,opinion,
+1425,напыщенный,Adj,напыщенный,negative,opinion,
+1431,наружный,Adj,наружный,negative,opinion,ВНЕШНИЙ (ПОВЕРХНОСТНЫЙ)
+1435,нарядный,Adj,нарядный,positive,opinion,НАРЯДНО ОДЕТЫЙ
+1436,насильственный,Adj,насильственный,negative,opinion,
+1437,насмешливый,Adj,насмешливый,negative,opinion,
+1438,насмешнический,Adj,насмешнический,negative,opinion,
+1440,наставительный,Adj,наставительный,negative,opinion,
+1441,настойчивость,Adj,настойчивость,positive,opinion,
+1442,настойчивый,Adj,настойчивый,positive,opinion,
+1444,настоятельный,Adj,настоятельный,neutral,opinion,НАСУЩНЫЙ
+1445,настоятельный,Adj,настоятельный,positive,opinion,НАСТОЯТЕЛЬНЫЙ (ОЧЕНЬ НАСТОЙЧИВЫЙ)
+1446,настырный,Adj,настырный,negative,opinion,
+1447,насупленный,Adj,насупленный,negative,opinion,
+1448,насущный,Adj,насущный,positive,opinion,
+1449,насыщенный,Adj,насыщенный,positive,opinion,
+1450,натужный,Adj,натужный,negative,opinion,
+1452,натуральный,Adj,натуральный,positive,opinion,"НАТУРАЛЬНЫЙ,ЕСТЕСТВЕННЫЙ,НЕПРИТВОРНЫЙ"
+1453,натянутый,Adj,натянутый,negative,opinion,"НАПРЯЖЕННЫЙ,ПРИНУЖДЕННЫЙ"
+1455,нахальный,Adj,нахальный,negative,opinion,
+1456,нахмуренный,Adj,нахмуренный,negative,opinion,
+1457,находчивый,Adj,находчивый,positive,opinion,
+1462,неадекватный,Adj,неадекватный,negative,opinion,
+1463,неаккуратный,Adj,неаккуратный,negative,opinion,
+1464,неактуальный,Adj,неактуальный,negative,opinion,
+1465,неальтернативный,Adj,неальтернативный,negative,opinion,
+1466,неаргументированный,Adj,неаргументированный,negative,opinion,
+1467,небанальный,Adj,небанальный,positive,opinion,
+1468,небедный,Adj,небедный,positive,opinion,
+1469,небезвозмездный,Adj,небезвозмездный,negative,opinion,
+1470,небезвредный,Adj,небезвредный,negative,opinion,
+1471,небезвыгодный,Adj,небезвыгодный,positive,opinion,
+1472,небезгрешный,Adj,небезгрешный,negative,opinion,
+1473,небездарный,Adj,небездарный,positive,opinion,
+1474,небезобидный,Adj,небезобидный,negative,opinion,
+1475,небезопасный,Adj,небезопасный,negative,opinion,
+1476,небезосновательный,Adj,небезосновательный,positive,opinion,
+1478,небезрезультатный,Adj,небезрезультатный,positive,opinion,
+1479,небезупречный,Adj,небезупречный,negative,opinion,
+1480,небезуспешный,Adj,небезуспешный,positive,opinion,
+1481,небезынтересный,Adj,небезынтересный,positive,opinion,
+1482,небескорыстный,Adj,небескорыстный,negative,opinion,
+1484,небесплодный,Adj,небесплодный,positive,opinion,
+1485,небесполезный,Adj,небесполезный,positive,opinion,
+1486,небеспочвенный,Adj,небеспочвенный,positive,opinion,
+1487,небеспристрастный,Adj,небеспристрастный,negative,opinion,
+1488,небесспорный,Adj,небесспорный,negative,opinion,
+1489,небесталанный,Adj,небесталанный,positive,opinion,
+1490,неблаговидный,Adj,неблаговидный,negative,opinion,
+1491,неблагодарный,Adj,неблагодарный,negative,opinion,
+1492,неблагозвучный,Adj,неблагозвучный,negative,opinion,
+1493,неблагополучный,Adj,неблагополучный,negative,opinion,
+1494,неблагопристойный,Adj,неблагопристойный,negative,opinion,
+1495,неблагоприятный,Adj,неблагоприятный,negative,opinion,
+1496,неблагоразумный,Adj,неблагоразумный,negative,opinion,
+1497,неблизкий,Adj,неблизкий,negative,opinion,"ЧУЖДЫЙ,ДАЛЕКИЙ"
+1498,неблизкий,Adj,неблизкий,neutral,opinion,ДАЛЕКИЙ ПО ВРЕМЕНИ
+1499,неблизкий,Adj,неблизкий,neutral,opinion,ДАЛЕКИЙ ПО РАССТОЯНИЮ
+1500,небольной,Adj,небольной,positive,opinion,
+1501,небрежный,Adj,небрежный,negative,opinion,
+1502,неважнецкий,Adj,неважнецкий,negative,opinion,
+1503,неважный,Adj,неважный,negative,opinion,
+1504,невежественный,Adj,невежественный,negative,opinion,
+1505,невежливый,Adj,невежливый,negative,opinion,
+1506,невезучий,Adj,невезучий,negative,opinion,
+1507,неверный,Adj,неверный,negative,opinion,
+1508,невеселый,Adj,невеселый,negative,opinion,
+1509,невзрачный,Adj,невзрачный,negative,opinion,
+1510,невиданный,Adj,невиданный,positive,opinion,
+1511,невинный,Adj,невинный,positive,opinion,
+1512,невиноватый,Adj,невиноватый,positive,opinion,
+1513,невиновный,Adj,невиновный,positive,opinion,
+1515,невменяемый,Adj,невменяемый,negative,opinion,
+1516,невнимательный,Adj,невнимательный,negative,opinion,
+1517,невнятный,Adj,невнятный,negative,opinion,
+1518,невозбранный,Adj,невозбранный,positive,opinion,
+1519,невозбраняемый,Adj,невозбраняемый,positive,opinion,
+1520,невозможный,Adj,невозможный,negative,opinion,
+1521,невозмутимый,Adj,невозмутимый,negative,opinion,
+1523,невоспитанный,Adj,невоспитанный,negative,opinion,
+1524,невосполнимый,Adj,невосполнимый,negative,opinion,
+1525,невостребованный,Adj,невостребованный,negative,opinion,
+1526,невразумительный,Adj,невразумительный,negative,opinion,
+1528,неврастенический,Adj,неврастенический,negative,opinion,
+1529,невыгодный,Adj,невыгодный,negative,opinion,
+1530,невыносимый,Adj,невыносимый,negative,opinion,
+1532,невыполнимый,Adj,невыполнимый,negative,opinion,
+1533,невыразительный,Adj,невыразительный,negative,opinion,
+1534,невыясненный,Adj,невыясненный,negative,opinion,
+1535,негативный,Adj,негативный,negative,opinion,ОТРИЦАТЕЛЬНАЯ ОЦЕНКА
+1537,неглубокий,Adj,неглубокий,negative,opinion,"ПОВЕРХНОСТНЫЙ,НЕГЛУБОКИЙ"
+1538,неглубокий,Adj,неглубокий,neutral,opinion,МЕЛКИЙ ПО ГЛУБИНЕ
+1539,неглубокий,Adj,неглубокий,neutral,opinion,"НЕГЛУБОКИЙ,БЛИЗКИЙ К ПОВЕРХНОСТИ"
+1540,неглупый,Adj,неглупый,positive,opinion,
+1541,негодный,Adj,негодный,negative,opinion,
+1542,негодяйский,Adj,негодяйский,negative,opinion,
+1543,негожий,Adj,негожий,negative,opinion,
+1544,неголодный,Adj,неголодный,positive,opinion,
+1546,неграмотный,Adj,неграмотный,negative,opinion,БЕЗГРАМОТНЫЙ (ОШИБОЧНЫЙ)
+1547,неграмотный,Adj,неграмотный,negative,opinion,"НЕГРАМОТНЫЙ,НЕКОМПЕТЕНТНЫЙ"
+1548,негуманный,Adj,негуманный,negative,opinion,
+1549,недалекий,Adj,недалекий,negative,opinion,"ГЛУПЫЙ,НЕДАЛЕКИЙ"
+1550,недалекий,Adj,недалекий,neutral,opinion,БЛИЗКИЙ ПО ВРЕМЕНИ
+1551,недалекий,Adj,недалекий,neutral,opinion,БЛИЗКИЙ ПО РАССТОЯНИЮ
+1552,недалекий,Adj,недалекий,neutral,opinion,БЛИЗОСТЬ (СХОДСТВО)
+1553,недальновидный,Adj,недальновидный,negative,opinion,
+1554,недееспособный,Adj,недееспособный,negative,opinion,
+1555,недешевый,Adj,недешевый,negative,opinion,
+1556,недисциплинированный,Adj,недисциплинированный,negative,opinion,
+1557,недобровольный,Adj,недобровольный,negative,opinion,
+1559,недоброкачественный,Adj,недоброкачественный,negative,opinion,НИЗКОКАЧЕСТВЕННЫЙ
+1560,недобросовестный,Adj,недобросовестный,negative,opinion,
+1561,недобрый,Adj,недобрый,negative,opinion,
+1562,недоверчивый,Adj,недоверчивый,negative,opinion,
+1563,недовольный,Adj,недовольный,negative,opinion,
+1565,недозволенный,Adj,недозволенный,negative,opinion,
+1566,недозрелый,Adj,недозрелый,negative,opinion,
+1567,недопонятый,Adj,недопонятый,negative,opinion,
+1568,недопустимый,Adj,недопустимый,negative,opinion,
+1569,недоработанный,Adj,недоработанный,negative,opinion,
+1570,недоразвитый,Adj,недоразвитый,negative,opinion,
+1571,недорогой,Adj,недорогой,positive,opinion,
+1572,недостаточный,Adj,недостаточный,negative,opinion,
+1573,недостижимый,Adj,недостижимый,negative,opinion,
+1574,недостойный,Adj,недостойный,negative,opinion,
+1575,недосягаемый,Adj,недосягаемый,negative,opinion,
+1576,недотепистый,Adj,недотепистый,negative,opinion,
+1577,недоуменный,Adj,недоуменный,negative,opinion,
+1581,недурен,Adj,недурной,positive,opinion,
+1582,недурной,Adj,недурной,positive,opinion,
+1583,недюжинный,Adj,недюжинный,positive,opinion,
+1584,неестественный,Adj,неестественный,negative,opinion,
+1585,нежадный,Adj,нежадный,positive,opinion,
+1586,нежаркий,Adj,нежаркий,neutral,opinion,
+1587,нежелательный,Adj,нежелательный,negative,opinion,
+1588,нежизненный,Adj,нежизненный,negative,opinion,
+1589,нежирный,Adj,нежирный,neutral,opinion,"НЕЖИРНЫЙ,МАЛОЖИРНЫЙ"
+1590,нежирный,Adj,нежирный,positive,opinion,"ХУДОЙ,НЕТОЛСТЫЙ"
+1591,нежный,Adj,нежный,negative,opinion,"ХРУПКИЙ (СЛИШКОМ СЛАБЫЙ,НЕЖНЫЙ)"
+1592,нежный,Adj,нежный,positive,opinion,ЛАСКОВЫЙ
+1593,нежный,Adj,нежный,positive,opinion,"МЯГКИЙ,НЕЖНЫЙ НА ОЩУПЬ"
+1594,нежный,Adj,нежный,positive,opinion,НЕЖНЫЙ ПО ЗВУЧАНИЮ
+1595,незабвенный,Adj,незабвенный,positive,opinion,
+1596,незабываемый,Adj,незабываемый,positive,opinion,
+1597,незавершенный,Adj,незавершенный,negative,opinion,
+1598,незавидный,Adj,незавидный,negative,opinion,
+1599,независимый,Adj,независимый,positive,opinion,
+1600,незавуалированный,Adj,незавуалированный,negative,opinion,
+1601,незадачливый,Adj,незадачливый,negative ,opinion,
+1602,незаконный,Adj,незаконный,negative,opinion,
+1603,незаконченный,Adj,незаконченный,negative,opinion,
+1604,незаменимый,Adj,незаменимый,positive,opinion,
+1605,незамутненный,Adj,незамутненный,positive,opinion,
+1606,незамысловатый,Adj,незамысловатый,negative,opinion,
+1607,незанятый,Adj,незанятый,neutral,opinion,
+1609,незапамятный,Adj,незапамятный,positive,opinion,НЕЗАБЫВАЕМЫЙ
+1610,незаслуженный,Adj,незаслуженный,negative,opinion,
+1611,незатейливый,Adj,незатейливый,neutral,opinion,
+1612,незатратный,Adj,незатратный,positive,opinion,
+1613,незаурядный,Adj,незаурядный,positive,opinion,
+1614,нездоровый,Adj,нездоровый,negative,opinion,
+1616,неземной,Adj,неземной,positive,opinion,ИСКЛЮЧИТЕЛЬНЫЙ ПО СВОИМ КАЧЕСТВАМ
+1617,незлобивый,Adj,незлобивый,positive,opinion,
+1618,незлой,Adj,незлой,positive,opinion,
+1619,незначащий,Adj,незначащий,negative,opinion,
+1620,незначимый,Adj,незначимый,negative,opinion,
+1621,незначительный,Adj,незначительный,neutral,opinion,"НЕБОЛЬШОЙ,МАЛЫЙ"
+1622,незначительный,Adj,незначительный,positive/negative,opinion,"МАЛОЗНАЧИТЕЛЬНЫЙ,НЕЗНАЧИТЕЛЬНЫЙ"
+1623,незрелый,Adj,незрелый,negative,opinion,
+1625,незыблемый,Adj,незыблемый,positive,opinion,
+1626,неизбежный,Adj,неизбежный,negative,opinion,
+1627,неизбитый,Adj,неизбитый,positive,opinion,
+1628,неизгладимый,Adj,неизгладимый,positive,opinion,
+1631,неимущий,Adj,неимущий,negative,opinion,
+1632,неинтересный,Adj,неинтересный,negative,opinion,
+1633,неискренний,Adj,неискренний,negative,opinion,
+1634,неискусный,Adj,неискусный,negative,opinion,
+1635,неискушенный,Adj,неискушенный,negative,opinion,
+1637,неисполнимый,Adj,неисполнимый,negative,opinion,
+1639,неиссякаемый,Adj,неиссякаемый,positive,opinion,
+1640,неистинный,Adj,неистинный,negative,opinion,
+1641,неистощимый,Adj,неистощимый,positive,opinion,
+1642,неисчерпаемый,Adj,неисчерпаемый,positive,opinion,
+1643,неисчислимый,Adj,неисчислимый,neutral,opinion,
+1644,неказистый,Adj,неказистый,negative,opinion,
+1645,некачественный,Adj,некачественный,negative,opinion,
+1646,неквалифицированный,Adj,неквалифицированный,negative,opinion,
+1647,неколебимый,Adj,неколебимый,positive,opinion,
+1648,некоммуникабельный,Adj,некоммуникабельный,negative,opinion,
+1649,некомпетентный,Adj,некомпетентный,negative,opinion,
+1650,неконкурентный,Adj,неконкурентный,negative,opinion,
+1652,некорректный,Adj,некорректный,negative,opinion,
+1653,некрасивый,Adj,некрасивый,negative,opinion,
+1654,неладный,Adj,неладный,negative,opinion,
+1655,нелегальный,Adj,нелегальный,negative,opinion,
+1656,нелегитимный,Adj,нелегитимный,negative,opinion,
+1657,нелегкий,Adj,нелегкий,negative,opinion,
+1658,нелепый,Adj,нелепый,negative,opinion,
+1659,нелестный,Adj,нелестный,negative,opinion,
+1661,нелицеприятный,Adj,нелицеприятный,negative,opinion,
+1662,нелишний,Adj,нелишний,positive,opinion,
+1663,неловкий,Adj,неловкий,negative,opinion,
+1664,нелогичный,Adj,нелогичный,negative,opinion,
+1665,нелюбимый,Adj,нелюбимый,negative,opinion,
+1666,нелюдимый,Adj,нелюдимый,negative,opinion,
+1667,немаловажный,Adj,немаловажный,positive,opinion,
+1668,немилосердный,Adj,немилосердный,negative,opinion,
+1669,неминуемый,Adj,неминуемый,negative,opinion,
+1670,немногословный,Adj,немногословный,negative,opinion,"МОЛЧАЛИВЫЙ,НЕРАЗГОВОРЧИВЫЙ"
+1671,немногословный,Adj,немногословный,positive,opinion,ЛАКОНИЧНЫЙ
+1672,немодный,Adj,немодный,negative,opinion,
+1673,немолодой,Adj,немолодой,neutral,opinion,
+1675,немудреный,Adj,немудреный,neutral,opinion,
+1676,немудрящий,Adj,немудрящий,neutral,opinion,
+1677,немытый,Adj,немытый,negative,opinion,
+1680,ненаглядный,Adj,ненаглядный,positive,opinion,
+1681,ненадежный,Adj,ненадежный,negative,opinion,
+1682,ненадлежащий,Adj,ненадлежащий,negative,opinion,
+1683,ненастный,Adj,ненастный,negative,opinion,
+1684,ненастоящий,Adj,ненастоящий,negative,opinion,
+1685,ненатуральный,Adj,ненатуральный,negative,opinion,
+1686,неновый,Adj,неновый,neutral,opinion,
+1687,ненормальный,Adj,ненормальный,negative,opinion,
+1688,ненормативный,Adj,ненормативный,negative,opinion,
+1689,ненужный,Adj,ненужный,negative,opinion,
+1690,необдуманный,Adj,необдуманный,negative,opinion,
+1691,необеспеченный,Adj,необеспеченный,negative,opinion,
+1692,необоснованный,Adj,необоснованный,negative,opinion,
+1693,необразованный,Adj,необразованный,negative,opinion,
+1694,необузданный,Adj,необузданный,negative,opinion,
+1695,необщительный,Adj,необщительный,negative,opinion,
+1696,необъективный,Adj,необъективный,negative,opinion,
+1697,необыкновенный,Adj,необыкновенный,neutral,opinion,НЕОБЫЧНЫЙ
+1698,необыкновенный,Adj,необыкновенный,positive,opinion,ИСКЛЮЧИТЕЛЬНЫЙ ПО СВОИМ КАЧЕСТВАМ
+1699,неодинаковый,Adj,неодинаковый,neutral,opinion,
+1700,неодобрительный,Adj,неодобрительный,negative,opinion,
+1701,неоимперский,Adj,неоимперский,negative,opinion,
+1702,неоконченный,Adj,неоконченный,negative,opinion,
+1704,неоправданный,Adj,неоправданный,negative,opinion,
+1705,неопределенный,Adj,неопределенный,negative,opinion,РАСПЛЫВЧАТЫЙ ПО ФОРМЕ
+1706,неопределенный,Adj,неопределенный,negative,opinion,РАСПЛЫВЧАТЫЙ (НЕЯСНЫЙ)
+1707,неопределенный,Adj,неопределенный,neutral,opinion,НЕОПРЕДЕЛЕННЫЙ (ТОЧНО НЕ УСТАНОВЛЕННЫЙ)
+1709,неопрятный,Adj,неопрятный,negative,opinion,
+1710,неопытный,Adj,неопытный,negative,opinion,
+1711,неординарный,Adj,неординарный,positive,opinion,
+1712,неосведомленный,Adj,неосведомленный,negative,opinion,
+1713,неосновательный,Adj,неосновательный,negative,opinion,
+1714,неосторожный,Adj,неосторожный,negative,opinion,
+1715,неосуществимый,Adj,неосуществимый,negative,opinion,
+1716,неотвратимый,Adj,неотвратимый,negative,opinion,
+1717,неотвязный,Adj,неотвязный,negative,opinion,
+1718,неотесанный,Adj,неотесанный,negative,opinion,
+1719,неотзывчивый,Adj,неотзывчивый,negative,opinion,
+1720,неотразимость,Adj,неотразимость,positive,opinion,НЕОТРАЗИМЫЙ (ВПЕЧАТЛЯЮЩИЙ)
+1722,неотразимый,Adj,неотразимый,positive,opinion,НЕОТРАЗИМЫЙ (ВПЕЧАТЛЯЮЩИЙ)
+1724,неотступный,Adj,неотступный,negative,opinion,
+1725,неотчетливый,Adj,неотчетливый,negative,opinion,
+1728,неоценимый,Adj,неоценимый,positive,opinion,
+1730,неощутимый,Adj,неощутимый,neutral,opinion,"МАЛОЗНАЧИТЕЛЬНЫЙ,НЕЗНАЧИТЕЛЬНЫЙ"
+1731,непереносимый,Adj,непереносимый,negative,opinion,
+1732,неперспективный,Adj,неперспективный,negative,opinion,
+1733,непечатный,Adj,непечатный,negative,opinion,
+1734,неплохой,Adj,неплохой,positive,opinion,
+1735,непобедимый,Adj,непобедимый,positive,opinion,
+1736,неповинный,Adj,неповинный,positive,opinion,
+1737,неповоротливый,Adj,неповоротливый,negative,opinion,
+1738,непогрешимый,Adj,непогрешимый,positive,opinion,
+1739,неподатливый,Adj,неподатливый,negative,opinion,
+1740,неподдельный,Adj,неподдельный,positive,opinion,
+1741,неподобающий,Adj,неподобающий,negative,opinion,
+1742,неподражаемый,Adj,неподражаемый,positive,opinion,
+1743,неподходящий,Adj,неподходящий,negative,opinion,
+1744,неподъемный,Adj,неподъемный,negative,opinion,
+1745,непозволительный,Adj,непозволительный,negative,opinion,
+1746,непокладистый,Adj,непокладистый,negative,opinion,
+1747,непоколебимый,Adj,непоколебимый,positive,opinion,
+1748,непокорный,Adj,непокорный,negative,opinion,
+1749,неполезный,Adj,неполезный,negative,opinion,
+1750,неполноценный,Adj,неполноценный,negative,opinion,
+1751,непонятный,Adj,непонятный,negative,opinion,
+1752,непорочный,Adj,непорочный,positive,opinion,
+1753,непорядочный,Adj,непорядочный,negative,opinion,
+1754,непосильный,Adj,непосильный,negative,opinion,
+1755,непоследовательный,Adj,непоследовательный,negative,opinion,
+1756,непослушный,Adj,непослушный,negative,opinion,
+1758,непосредственный,Adj,непосредственный,positive,opinion,НЕПОСРЕДСТВЕННЫЙ (ОТКРОВЕННЫЙ И НЕПРИНУЖДЕННЫЙ)
+1760,непостижимый,Adj,непостижимый,neutral,opinion,НЕПОСТИЖИМЫЙ
+1761,непотребный,Adj,непотребный,negative,opinion,
+1762,непохожий,Adj,непохожий,neutral,opinion,
+1765,неправдоподобный,Adj,неправдоподобный,neutral,opinion,"МАЛОВЕРОЯТНЫЙ,НЕПРАВДОПОДОБНЫЙ"
+1766,неправедный,Adj,неправедный,negative,opinion,
+1767,неправильный,Adj,неправильный,negative,opinion,"НЕПРАВИЛЬНЫЙ,НЕ ОТВЕЧАЮЩИЙ ПРАВИЛАМ"
+1768,неправильный,Adj,неправильный,negative,opinion,"НЕПРАВИЛЬНЫЙ,НЕ СООТВЕТСТВУЮЩИЙ ИСТИНЕ"
+1770,неправомерный,Adj,неправомерный,negative,opinion,
+1771,неправый,Adj,неправый,negative,opinion,
+1772,непревзойденный,Adj,непревзойденный,positive,opinion,
+1773,непредвзятый,Adj,непредвзятый,positive,opinion,
+1774,непредсказуемый,Adj,непредсказуемый,negative,opinion,
+1775,непредубежденный,Adj,непредубежденный,positive,opinion,
+1776,непредусмотрительный,Adj,непредусмотрительный,negative,opinion,
+1777,непреклонный,Adj,непреклонный,positive,opinion,
+1778,непреодолимый,Adj,непреодолимый,negative,opinion,
+1779,непререкаемый,Adj,безапелляционность,positive,opinion,
+1780,непреходящий,Adj,непреходящий,positive,opinion,
+1781,неприглядный,Adj,неприглядный,negative,opinion,
+1782,непригодный,Adj,непригодный,negative,opinion,
+1783,неприемлемый,Adj,неприемлемый,negative,opinion,
+1784,неприкрытый,Adj,неприкрытый,negative,opinion,
+1785,неприличный,Adj,неприличный,negative,opinion,
+1786,непримечательный,Adj,непримечательный,negative,opinion,
+1787,непримиримый,Adj,непримиримый,positive/negative,opinion,
+1788,непринужденный,Adj,непринужденный,positive,opinion,
+1789,непринципиальный,Adj,непринципиальный,negative,opinion,БЕСПРИНЦИПНЫЙ
+1790,непринципиальный,Adj,непринципиальный,neutral,opinion,"МАЛОЗНАЧИТЕЛЬНЫЙ,НЕЗНАЧИТЕЛЬНЫЙ"
+1791,непристойный,Adj,непристойный,negative,opinion,
+1792,непритворный,Adj,непритворный,positive,opinion,
+1793,непритязательный,Adj,непритязательный,positive,opinion,
+1794,неприхотливый,Adj,неприхотливый,positive,opinion,
+1796,неприятельский,Adj,неприятельский,negative,opinion,
+1797,неприятный,Adj,неприятный,negative,opinion,
+1798,непродуктивный,Adj,непродуктивный,negative,opinion,
+1799,непродуманный,Adj,непродуманный,negative,opinion,
+1800,непроизводительный,Adj,непроизводительный,negative,opinion,
+1801,непростительный,Adj,непростительный,negative,opinion,
+1802,непростой,Adj,непростой,negative,opinion,
+1803,непросторный,Adj,непросторный,negative,opinion,
+1804,непроходимый,Adj,непроходимый,negative,opinion,
+1805,непроясненный,Adj,непроясненный,negative,opinion,
+1806,непьяный,Adj,непьяный,positive,opinion,
+1810,нерадивый,Adj,нерадивый,negative,opinion,
+1811,нерадостный,Adj,нерадостный,negative,opinion,
+1813,неразвитой,Adj,неразвитой,negative,opinion,
+1814,неразвитый,Adj,неразвитый,negative,opinion,
+1815,неразговорчивый,Adj,неразговорчивый,negative,opinion,
+1817,неразрешимый,Adj,неразрешимый,negative,opinion,
+1818,неразумный,Adj,неразумный,negative,opinion,
+1819,нерасторопный,Adj,нерасторопный,negative,opinion,
+1820,нерациональный,Adj,нерациональный,negative,opinion,
+1821,нервический,Adj,нервический,negative,opinion,
+1822,нервный,Adj,нервный,negative,opinion,"ВОЗБУДИМЫЙ,НЕРВНЫЙ"
+1823,нервный,Adj,нервный,negative,opinion,НЕРВНОЕ СОСТОЯНИЕ
+1824,нервный,Adj,нервный,negative,opinion,НЕРВНЫЙ (ПОРЫВИСТЫЙ И СУДОРОЖНЫЙ)
+1826,нервозный,Adj,нервозный,negative,opinion,
+1827,нереалистичный,Adj,нереалистичный,negative,opinion,
+1828,нереальный,Adj,нереальный,negative,opinion,НЕОСУЩЕСТВИМЫЙ
+1830,нерезкий,Adj,нерезкий,positive,opinion,
+1831,нерезультативный,Adj,нерезультативный,negative,opinion,
+1832,нерешительный,Adj,нерешительный,negative,opinion,
+1833,неробкий,Adj,неробкий,positive,opinion,
+1835,неряшливый,Adj,неряшливый,negative,opinion,
+1837,несбыточный,Adj,несбыточный,negative,opinion,
+1838,несведущий,Adj,несведущий,negative,opinion,
+1839,несвоевременный,Adj,несвоевременный,negative,opinion,
+1840,несвязанный,Adj,несвязанный,positive,opinion,
+1841,несвязный,Adj,несвязный,negative,opinion,
+1842,несгибаемый,Adj,несгибаемый,positive,opinion,
+1843,несговорчивый,Adj,несговорчивый,negative,opinion,
+1844,несерьезный,Adj,несерьезный,negative,opinion,
+1845,нескладный,Adj,нескладный,negative,opinion,
+1846,нескончаемый,Adj,нескончаемый,negative,opinion,
+1847,нескромный,Adj,нескромный,negative,opinion,
+1848,нескрываемый,Adj,нескрываемый,neutral,opinion,
+1849,нескрытый,Adj,нескрытый,neutral,opinion,
+1850,нескучный,Adj,нескучный,positive,opinion,
+1851,несловоохотливый,Adj,несловоохотливый,negative,opinion,
+1852,несложный,Adj,несложный,neutral,opinion,
+1853,неслучайный,Adj,неслучайный,neutral,opinion,
+1854,несмелый,Adj,несмелый,negative,opinion,
+1855,несметный,Adj,несметный,neutral,opinion,
+1856,несносный,Adj,несносный,negative,opinion,
+1857,несовершенный,Adj,несовершенный,negative,opinion,
+1858,несовместимый,Adj,несовместимый,negative,opinion,
+1859,несовместный,Adj,несовместный,negative,opinion,
+1860,несовременный,Adj,несовременный,negative,opinion,
+1861,несодержательный,Adj,несодержательный,negative,opinion,
+1862,несозревший,Adj,несозревший,negative,opinion,
+1863,несообразный,Adj,несообразный,negative,opinion,
+1864,несоответствующий,Adj,несоответствующий,negative,opinion,
+1865,несопоставимый,Adj,несопоставимый,negative,opinion,
+1866,несостоятельный,Adj,несостоятельный,negative,opinion,
+1867,неспелый,Adj,неспелый,negative,opinion,
+1868,неспешный,Adj,неспешный,positive/negative,opinion,
+1870,неспособный,Adj,неспособный,negative,opinion,
+1871,несправедливый,Adj,несправедливый,negative,opinion,
+1872,несравненный,Adj,несравненный,positive,opinion,
+1873,нестабильный,Adj,нестабильный,negative,opinion,
+1874,нестандартный,Adj,нестандартный,positive,opinion,
+1875,нестерпимый,Adj,нестерпимый,negative,opinion,
+1876,нестойкий,Adj,нестойкий,negative,opinion,
+1877,нестрогий,Adj,нестрогий,positive,opinion,
+1878,несуразный,Adj,несуразный,negative,opinion,
+1879,несусветный,Adj,несусветный,negative,opinion,
+1880,несущественный,Adj,несущественный,negative,opinion,
+1881,несходный,Adj,несходный,neutral,opinion,
+1882,несхожий,Adj,несхожий,neutral,opinion,
+1883,несчастливый,Adj,несчастливый,negative,opinion,
+1884,несчастный,Adj,несчастный,negative,opinion,
+1885,несчетный,Adj,несчетный,neutral,opinion,
+1886,несъедобный,Adj,несъедобный,negative,opinion,
+1887,нетактичный,Adj,нетактичный,negative,opinion,
+1888,неталантливый,Adj,неталантливый,negative,opinion,
+1889,нетерпимый,Adj,нетерпимый,negative,opinion,
+1890,нетленный,Adj,нетленный,positive,opinion,
+1891,нетолстый,Adj,нетолстый,positive,opinion,
+1892,неторопливый,Adj,неторопливый,positive,opinion,
+1893,неточный,Adj,неточный,negative,opinion,
+1894,нетрезвый,Adj,нетрезвый,negative,opinion,
+1895,нетрудный,Adj,нетрудный,positive,opinion,
+1897,нетугой,Adj,нетугой,neutral,opinion,
+1898,неубедительный,Adj,неубедительный,negative,opinion,
+1901,неуверенный,Adj,неуверенный,negative,opinion,
+1902,неугодный,Adj,неугодный,negative,opinion,
+1903,неудачливый,Adj,неудачливый,negative,opinion,
+1904,неудачный,Adj,неудачный,negative,opinion,
+1905,неудобный,Adj,неудобный,negative,opinion,
+1906,неудобоваримый,Adj,неудобоваримый,negative,opinion,
+1908,неудовлетворительный,Adj,неудовлетворительный,negative,opinion,
+1909,неуживчивый,Adj,неуживчивый,negative,opinion,
+1910,неуклюжий,Adj,неуклюжий,negative,opinion,
+1911,неукротимый,Adj,неукротимый,positive,opinion,
+1912,неумелый,Adj,неумелый,negative,opinion,
+1913,неуместный,Adj,неуместный,negative,opinion,
+1914,неумный,Adj,неумный,negative,opinion,
+1916,неуравновешенный,Adj,неуравновешенный,negative,opinion,
+1917,неурегулированный,Adj,неурегулированный,negative,opinion,
+1918,неуспешный,Adj,неуспешный,negative,opinion,
+1920,неустанный,Adj,неустанный,positive,opinion,
+1921,неустойчивый,Adj,неустойчивый,negative,opinion,
+1922,неустрашимый,Adj,неустрашимый,positive,opinion,
+1923,неуступчивый,Adj,неуступчивый,negative,opinion,
+1924,неутешительный,Adj,неутешительный,negative,opinion,
+1925,неутешный,Adj,неутешный,negative,opinion,
+1927,неутомимый,Adj,неутомимый,positive,opinion,
+1928,неухоженный,Adj,неухоженный,negative,opinion,
+1929,неучтивый,Adj,неучтивый,negative,opinion,
+1930,неуютный,Adj,неуютный,negative,opinion,
+1931,неуязвимый,Adj,неуязвимый,positive,opinion,
+1932,нехвастливый,Adj,нехвастливый,positive,opinion,
+1933,нехилый,Adj,нехилый,negative,opinion,
+1934,нехитрый,Adj,нехитрый,negative,opinion,
+1935,нехолодный,Adj,нехолодный,neutral,opinion,
+1936,нехороший,Adj,нехороший,negative,opinion,
+1937,нецелесообразный,Adj,нецелесообразный,negative,opinion,
+1938,нецензурный,Adj,нецензурный,negative,opinion,
+1939,нечеловеческий,Adj,нечеловеческий,negative,opinion,
+1940,нечестивый,Adj,нечестивый,negative,opinion,
+1941,нечестный,Adj,нечестный,negative,opinion,
+1942,нечеткий,Adj,нечеткий,negative,opinion,
+1943,нечистоплотный,Adj,нечистоплотный,negative,opinion,
+1944,нечистый,Adj,нечистый,negative,opinion,
+1945,нечуткий,Adj,нечуткий,negative,opinion,
+1946,нещадный,Adj,нещадный,negative,opinion,
+1947,неэтичный,Adj,неэтичный,negative,opinion,
+1948,неэффективный,Adj,неэффективный,negative,opinion,
+1949,неявный,Adj,неявный,neutral,opinion,
+1950,неясный,Adj,неясный,negative,opinion,
+1951,нигилистический,Adj,нигилистический,negative,opinion,
+1952,нигилистский,Adj,нигилистский,negative,opinion,
+1954,низкий,Adj,низкий,negative,opinion,"НИЗКИЙ,ПОДЛЫЙ"
+1957,низкий,Adj,низкий,neutral,opinion,НИЗКИЙ ПО ВЫСОТЕ
+1958,низкокачественный,Adj,низкокачественный,negative,opinion,
+1959,низкоквалифицированный,Adj,низкоквалифицированный,negative,opinion,
+1960,низкопробный,Adj,низкопробный,negative,opinion,
+1961,низкосортный,Adj,низкосортный,negative,opinion,
+1962,низкотоксичный,Adj,низкотоксичный,negative,opinion,
+1963,низменный,Adj,низменный,negative,opinion,"НИЗКИЙ,ПОДЛЫЙ"
+1965,низший,Adj,низший,negative,opinion,
+1966,никакущий,Adj,никакующий,negative,opinion,
+1967,никудышный,Adj,никудышный,negative,opinion,
+1968,ничтожный,Adj,ничтожный,negative,opinion,
+1969,нищебродский,Adj,нищебродский,negative,opinion,
+1970,нищенский,Adj,нищенский,negative,opinion,
+1971,нищий,Adj,нищий,negative,opinion,"БЕДНЫЙ,СКУДНЫЙ"
+1972,нищий,Adj,нищий,negative,opinion,"НИЩЕТА,КРАЙНЯЯ БЕДНОСТЬ"
+1973,новомодный,Adj,новомодный,negative,opinion,
+1974,нормальный,Adj,нормальный,positive,opinion,
+1975,норовистый,Adj,норовистый,negative,opinion,
+1977,нравоучительный,Adj,нравоучительный,negative,opinion,
+1979,нравственный,Adj,нравственный,positive,opinion,"НРАВСТВЕННЫЙ,ЭТИЧНЫЙ"
+1980,нудный,Adj,нудный,negative,opinion,
+1981,няшный,Adj,няшный,positive,opinion,
+1983,обаятельнейший,Adj,обаятельнейший,positive,opinion,
+1984,обаятельный,Adj,обаятельный,positive,opinion,
+1985,обветшалый,Adj,обветшалый,negative,opinion,
+1986,обворожительный,Adj,обворожительный,positive,opinion,
+1987,обездоленный,Adj,обездоленный,negative,opinion,
+1988,обеспеченный,Adj,обеспеченный,positive,opinion,
+1991,обидчивый,Adj,обидчивый,negative,opinion,
+1992,обильный,Adj,обильный,positive,opinion,
+1994,облыжный,Adj,облыжный,negative,opinion,
+1996,обманчивый,Adj,обманчивый,negative,opinion,
+1998,ободрительный,Adj,ободрительный,positive,opinion,
+1999,обольстительный,Adj,обольстительный,positive,opinion,
+2000,обоснованный,Adj,обоснованный,positive,opinion,
+2001,обостренный,Adj,обостренный,negative,opinion,"ОБОСТРЕННЫЙ (НАПРЯЖЕННЫЙ,НЕПРИЯЗНЕННЫЙ)"
+2003,образцово-показательный,Adj,образцово-показательный,positive,opinion,
+2004,образцовый,Adj,образцовый,positive,opinion,
+2005,обременительный,Adj,обременительный,negative,opinion,
+2006,обрывочный,Adj,обрывочный,negative,opinion,
+2007,обрюзглый,Adj,обрюзглый,negative,opinion,
+2008,обскурантистский,Adj,обскурантистский,negative,opinion,
+2009,обстоятельный,Adj,обстоятельный,positive,opinion,
+2011,обходительный,Adj,обходительный,positive,opinion,
+2012,обширный,Adj,обширный,neutral,opinion,
+2013,общедоступный,Adj,общедоступный,positive,opinion,
+2014,общепризнанный,Adj,общепризнанный,positive,opinion,
+2015,общительный,Adj,общительный,positive,opinion,
+2016,объективный,Adj,объективный,positive,opinion,
+2018,обязательный,Adj,обязательный,neutral,opinion,"ОБЯЗАТЕЛЬНЫЙ (ПОСТОЯННЫЙ,НЕИЗМЕННЫЙ)"
+2019,обязательный,Adj,обязательный,positive,opinion,ОБЯЗАТЕЛЬНЫЙ (ОТВЕТСТВЕННЫЙ)
+2020,огорчительный,Adj,огорчительный,negative,opinion,
+2021,ограниченный,Adj,ограниченный,negative,opinion,
+2022,огромнейший,Adj,огромнейший,neutral,opinion,
+2023,огромный,Adj,огромный,neutral,opinion,
+2024,огрубелый,Adj,огрубелый,negative,opinion,
+2025,одаренный,Adj,одаренный,positive,opinion,
+2028,одиозный,Adj,одиозный,negative,opinion,
+2030,однобокий,Adj,однобокий,negative,opinion,ОДНОСТОРОННИЙ (ОГРАНИЧЕННЫЙ)
+2032,однообразный,Adj,однообразный,negative,opinion,
+2033,односторонний,Adj,односторонний,negative,opinion,
+2034,одноцветный,Adj,одноцветный,negative,opinion,ОДНООБРАЗНЫЙ
+2036,одобрительный,Adj,одобрительный,positive,opinion,
+2040,озабоченный,Adj,озабоченный,negative,opinion,
+2045,омерзительный,Adj,омерзительный,negative,opinion,
+2046,онемелый,Adj,онемелый,negative,opinion,
+2048,опальный,Adj,опальный,negative,opinion,
+2049,опасливый,Adj,опасливый,negative,opinion,
+2050,опаснейший,Adj,опаснейший,negative,opinion,
+2051,опасный,Adj,опасный,negative,opinion,
+2054,оправданный,Adj,оправданный,positive,opinion,
+2055,оправдательный,Adj,оправдательный,positive,opinion,
+2056,опрометчивый,Adj,опрометчивый,negative,opinion,
+2057,опрятный,Adj,опрятный,positive,opinion,
+2058,оптимальный,Adj,оптимальный,positive,opinion,
+2059,оптимизационный,Adj,оптимизационный,positive,opinion,
+2063,опустошительный,Adj,опустошительный,negative,opinion,
+2065,опытнейший,Adj,опытнейший,positive,opinion,
+2068,опытный,Adj,опытный,positive,opinion,"ОПЫТНЫЙ,ОБЛАДАЮЩИЙ ОПЫТОМ"
+2069,органичный,Adj,органичный,positive,opinion,
+2071,ординарный,Adj,ординарный,negative,opinion,ОРДИНАРНЫЙ (ОБЫКНОВЕННЫЙ)
+2074,оригинальный,Adj,оригинальный,positive,opinion,"СВОЕОБРАЗНЫЙ,ОРИГИНАЛЬНЫЙ"
+2076,ориентировочный,Adj,ориентировочный,neutral,opinion,"ПРИБЛИЗИТЕЛЬНЫЙ,НЕТОЧНЫЙ"
+2078,освежающий,Adj,освежающий,positive,opinion,
+2079,освободительский,Adj,освободительский,positive,opinion,
+2081,оскорбительный,Adj,оскорбительный,negative,opinion,
+2082,ослабелый,Adj,ослабелый,negative,opinion,
+2083,ослепительный,Adj,ослепительный,positive,opinion,
+2084,осложненный,Adj,осложненный,negative,opinion,
+2085,осложняющий,Adj,осложняющий,negative,opinion,
+2086,осмотрительный,Adj,осмотрительный,positive,opinion,
+2087,осмысленный,Adj,осмысленный,neutral,opinion,
+2088,основательный,Adj,основательный,positive,opinion,
+2089,особенный,Adj,особенный,neutral,opinion,
+2091,особый,Adj,особый,neutral,opinion,"ОСОБЕННЫЙ,НЕ ПОХОЖИЙ НА ДРУГИХ"
+2092,осовелый,Adj,осовелый,negative,opinion,
+2093,осознанный,Adj,осознанный,neutral,opinion,
+2094,осоловелый,Adj,осоловелый,negative,opinion,
+2096,осторожный,Adj,осторожный,positive,opinion,
+2098,остромодный,Adj,остромодный,positive,opinion,
+2099,остроумный,Adj,остроумный,positive,opinion,
+2100,острый,Adj,острый,negative,opinion,ЯЗВИТЕЛЬНЫЙ
+2102,острый,Adj,острый,positive,opinion,"ОСТРЫЙ,ТОНКИЙ (ХОРОШО ВОСПРИНИМАЮЩИЙ)"
+2103,острый,Adj,острый,positive/negative,opinion,ОСТРЫЙ НА ВКУС
+2105,осудительный,Adj,осудительный,negative,opinion,"ОСУДИТЬ,ВЫРАЗИТЬ НЕОДОБРЕНИЕ"
+2106,осуществимый,Adj,осуществимый,positive,opinion,
+2107,отборный,Adj,отборный,positive,opinion,
+2108,отважный,Adj,отважный,positive,opinion,
+2109,ответственнейший,Adj,ответственнейший,positive,opinion,
+2111,ответственный,Adj,ответственный,positive,opinion,ОТВЕТСТВЕННЫЙ ПО ХАРАКТЕРУ
+2112,ответственный,Adj,ответственный,positive,opinion,"ОТВЕТСТВЕННЫЙ (ВАЖНЫЙ,СЕРЬЕЗНЫЙ)"
+2113,отвратительный,Adj,отвратительный,negative,opinion,
+2114,отвратный,Adj,отвратный,negative,opinion,
+2115,отекший,Adj,отекший,negative,opinion,
+2117,отживший,Adj,отживший,negative,opinion,
+2118,отзывчивый,Adj,отзывчивый,positive,opinion,
+2120,откровенный,Adj,откровенный,negative,opinion,ОТКРОВЕННЫЙ (СЛИШКОМ ОБНАЖАЮЩИЙ ТЕЛО)
+2122,откровенный,Adj,откровенный,positive,opinion,"ЧИСТОСЕРДЕЧНЫЙ,ИСКРЕННИЙ,ОТКРОВЕННЫЙ"
+2127,открытый,Adj,открытый,positive,opinion,"ОТКРЫТЫЙ (ИСКРЕННИЙ,ОТКРОВЕННЫЙ)"
+2128,отличнейший,Adj,отличнейший,positive,opinion,
+2130,отличный,Adj,отличный,positive,opinion,"ОТЛИЧНЫЙ,ПРЕВОСХОДНЫЙ"
+2131,отменный,Adj,отменный,positive,opinion,
+2132,отрицательный,Adj,отрицательный,negative,opinion,ОТРИЦАТЕЛЬНАЯ ОЦЕНКА
+2135,отрывочный,Adj,отрывочный,negative,opinion,
+2136,отсталый,Adj,отсталый,negative,opinion,
+2137,отстойный,Adj,отстойный,negative,opinion,ОТВРАТИТЕЛЬНЫЙ (ОЧЕНЬ ПЛОХОЙ)
+2139,отталкивающий,Adj,отталкивающий,negative,opinion,
+2140,отчаянный,Adj,отчаянный,negative,opinion,
+2141,отчетливый,Adj,отчетливый,positive,opinion,
+2142,отъявленный,Adj,отъявленный,negative,opinion,
+2143,офигенный,Adj,офигенный/офигенна,positive,opinion,
+2144,офигительный,Adj,офигительный,positive,opinion,
+2145,охренительный,Adj,охренительный,positive,opinion,
+2147,очаровательный,Adj,очаровательный,positive,opinion,
+2148,очерствелый,Adj,очерствелый,negative,opinion,
+2151,ошеломительный,Adj,ошеломительный,positive,opinion,
+2152,ошеломляющий,Adj,ошеломляющий,positive,opinion,
+2153,ошибочный,Adj,ошибочный,negative,opinion,
+2154,пагубный,Adj,пагубный,negative,opinion,
+2155,падший,Adj,падший,negative,opinion,
+2156,пакостный,Adj,пакостный,negative,opinion,
+2157,палевный,Adj,палевный,negative,opinion,
+2159,памятный,Adj,памятный,positive,opinion,НЕЗАБЫВАЕМЫЙ
+2164,паразитический,Adj,паразитический,negative,opinion,"ПАРАЗИТИЗМ,ПОТРЕБИТЕЛЬСТВО"
+2167,пасквильный,Adj,пасквильный,negative,opinion,
+2168,пасквилянтский,Adj,пасквилянтский,negative,opinion,
+2169,паскудный,Adj,паскудный,negative,opinion,
+2170,пассивный,Adj,пассивный,negative,opinion,БЕЗДЕЯТЕЛЬНЫЙ
+2172,патетический,Adj,патетический,negative,opinion,
+2173,патетичный,Adj,патетичный,negative,opinion,
+2175,патологический,Adj,патологический,negative,opinion,
+2176,патриархальный,Adj,патриархальный,negative,opinion,"УСТАРЕЛЫЙ,НЕСОВРЕМЕННЫЙ"
+2181,педантический,Adj,педантический,positive,opinion,
+2182,педантичный,Adj,педантичный,positive,opinion,
+2183,педантский,Adj,педантский,negative,opinion,
+2187,первобытный,Adj,первобытный,neutral,opinion,ПРИМИТИВНЫЙ (ПРОСТЕЙШИЙ)
+2188,первобытный,Adj,первобытный,positive,opinion,"ДЕВСТВЕННЫЙ (НЕТРОНУТЫЙ,НЕВОЗДЕЛАННЫЙ)"
+2189,первозданный,Adj,первозданный,positive,opinion,
+2190,первоклассный,Adj,первоклассный,positive,opinion,
+2191,первостатейный,Adj,первостатейный,positive,opinion,
+2195,передовой,Adj,передовой,positive,opinion,"ПЕРЕДОВОЙ,ПРОГРЕССИВНЫЙ"
+2197,перенапряженный,Adj,перенапряженный,negative,opinion,
+2198,переполненный,Adj,переполненный,negative,opinion,
+2200,перспективный,Adj,перспективный,positive,opinion,"ПЕРСПЕКТИВНЫЙ,С ХОРОШИМИ ПЕРСПЕКТИВАМИ"
+2203,печальный,Adj,печальный,negative,opinion,
+2204,пикантный,Adj,пикантный,positive,opinion,
+2206,писклявый,Adj,писклявый,negative,opinion,
+2208,пламенный,Adj,пламенный,positive,opinion,"ПЫЛКИЙ,СТРАСТНЫЙ,ГОРЯЧИЙ"
+2210,пластичный,Adj,пластичный,positive,opinion,ПЛАСТИЧНЫЙ В ДВИЖЕНИИ
+2212,плачевный,Adj,плачевный,negative,opinion,
+2214,племенной,Adj,племенной,positive,opinion,"ЧИСТОКРОВНЫЙ,ЧИСТОПОРОДНЫЙ"
+2215,пленительный,Adj,пленительный,positive,opinion,
+2216,плодотворный,Adj,плодотворный,positive,opinion,
+2217,плоский,Adj,плоский,negative,opinion,БАНАЛЬНЫЙ
+2221,плотный,Adj,плотный,neutral,opinion,"КОРЕНАСТЫЙ,ПРИЗЕМИСТЫЙ"
+2222,плотный,Adj,плотный,neutral,opinion,ПЛОТНЫЙ (ТОЛСТЫЙ И ПРОЧНЫЙ)
+2223,плотный,Adj,плотный,positive,opinion,СЫТНЫЙ
+2224,плоховатый,Adj,плоховатый,negative,opinion,
+2225,плохой,Adj,плохой,negative,opinion,
+2226,плохонький,Adj,плохонький,negative,opinion,
+2227,победный,Adj,победный,positive,opinion,
+2228,победоносный,Adj,победоносный,positive,opinion,
+2229,поблеклый,Adj,поблеклый,negative,opinion,
+2230,повальный,Adj,повальный,negative,opinion,
+2231,поверхностный,Adj,поверхностный,negative,opinion,"ПОВЕРХНОСТНЫЙ,НЕГЛУБОКИЙ"
+2233,поверхностный,Adj,поверхностный,neutral,opinion,"НЕГЛУБОКИЙ,БЛИЗКИЙ К ПОВЕРХНОСТИ"
+2234,повинный,Adj,повинный,negative,opinion,
+2235,поворотливый,Adj,поворотливый,positive,opinion,
+2237,поганый,Adj,поганый,negative,opinion,
+2243,податливый,Adj,податливый,positive,opinion,"СГОВОРЧИВЫЙ,УСТУПЧИВЫЙ"
+2244,подвижнический,Adj,подвижнический,positive,opinion,
+2245,подвижный,Adj,подвижный,positive,opinion,
+2247,поддельный,Adj,поддельный,negative,opinion,
+2249,подковерный,Adj,подковерный,negative,opinion,
+2250,подложный,Adj,подложный,negative,opinion,
+2251,подлый,Adj,подлый,negative,opinion,
+2252,подневольный,Adj,подневольный,negative,opinion,
+2253,подобранный,Adj,подобранный,positive,opinion,
+2254,подозрительный,Adj,подозрительный,negative,opinion,
+2256,подробнейший,Adj,подробнейший,positive,opinion,
+2257,подробный,Adj,подробный,positive,opinion,
+2260,подспудный,Adj,подспудный,negative,opinion,
+2261,подставной,Adj,подставной,negative,opinion,"ПОДДЕЛЬНЫЙ,ФАЛЬШИВЫЙ"
+2264,подтянутый,Adj,подтянутый,positive,opinion,
+2265,подхалимский,Adj,подхалимский,negative,opinion,
+2266,подходящий,Adj,подходящий,positive,opinion,
+2267,позавчерашний,Adj,позавчерашний,negative,opinion,
+2268,позволительный,Adj,позволительный,positive,opinion,
+2269,позерский,Adj,позерский,negative,opinion,
+2271,позитивный,Adj,позитивный,positive,opinion,"ПОЛОЖИТЕЛЬНЫЙ,ПОЗИТИВНЫЙ"
+2272,позорный,Adj,позорный,negative,opinion,
+2273,показательный,Adj,показательный,neutral,opinion,ПОКАЗАТЕЛЬНЫЙ (ХАРАКТЕРНЫЙ)
+2274,показательный,Adj,показательный,positive,opinion,"ПРИМЕРНЫЙ,ОБРАЗЦОВЫЙ"
+2275,показной,Adj,показной,negative,opinion,
+2276,показушный,Adj,показушный,negative,opinion,
+2277,покладистый,Adj,покладистый,positive,opinion,
+2278,покорный,Adj,покорный,negative,opinion,
+2279,полезнейший,Adj,полезнейший,positive,opinion,
+2280,полезный,Adj,полезный,positive,opinion,
+2282,политкорректный,Adj,политкорректный,positive,opinion,
+2284,полненький,Adj,полненький,neutral,opinion,
+2285,полноватый,Adj,полноватый,negative,opinion,
+2286,полнокровный,Adj,полнокровный,positive,opinion,
+2287,полноценный,Adj,полноценный,positive,opinion,
+2290,полный,Adj,полный,neutral,opinion,ПОЛНЫЙ (ЗАНЯТЫЙ ЦЕЛИКОМ)
+2291,полный,Adj,полный,neutral,opinion,"ТОЛСТЫЙ,ТУЧНЫЙ"
+2294,положительный,Adj,положительный,positive,opinion,"ПОЛОЖИТЕЛЬНЫЙ,ПОЗИТИВНЫЙ"
+2295,положительный,Adj,положительный,positive,opinion,ХОРОШИЙ (ВПОЛНЕ ПОЛОЖИТЕЛЬНЫЙ ПО КАЧЕСТВАМ)
+2296,полоумный,Adj,полоумный,negative,opinion,
+2297,полуголодный,Adj,полуголодный,negative,opinion,
+2298,полуграмотный,Adj,полуграмотный,negative,opinion,
+2300,полумертвый,Adj,полумертвый,negative,opinion,
+2301,полупьяный,Adj,полупьяный,negative,opinion,
+2302,полусонный,Adj,полусонный,negative,opinion,
+2303,поместительный,Adj,поместительный,positive,opinion,
+2305,помешанный,Adj,помешанный,negative,opinion,
+2307,помпезный,Adj,помпезный,positive,opinion,
+2308,помятый,Adj,помятый,negative,opinion,
+2310,поношенный,Adj,поношенный,negative,opinion,
+2311,понурый,Adj,понурый,negative,opinion,
+2312,понятливый,Adj,понятливый,positive,opinion,
+2313,понятный,Adj,понятный,positive,opinion,
+2315,популистский,Adj,популистский,negative,opinion,
+2316,популярнейший,Adj,популярнейший,positive,opinion,
+2317,популярный,Adj,популярный,positive,opinion,
+2318,попустительский,Adj,попустительский,negative,opinion,
+2319,поразительный,Adj,поразительный,positive,opinion,
+2321,породистый,Adj,породистый,positive,opinion,
+2325,породный,Adj,породный,positive,opinion,"ЧИСТОКРОВНЫЙ,ЧИСТОПОРОДНЫЙ"
+2326,порочный,Adj,порочный,negative,opinion,
+2327,порядочный,Adj,порядочный,neutral,opinion,ВНУШИТЕЛЬНЫЙ ПО РАЗМЕРУ
+2328,порядочный,Adj,порядочный,positive,opinion,"ПОРЯДОЧНЫЙ,ДОБРОПОРЯДОЧНЫЙ"
+2330,последовательный,Adj,последовательный,positive,opinion,ПОСЛЕДОВАТЕЛЬНЫЙ (ЛОГИЧЕСКИ ОБОСНОВАННЫЙ)
+2331,послушный,Adj,послушный,positive,opinion,
+2332,поспешный,Adj,поспешный,negative,opinion,
+2333,посредственный,Adj,посредственный,negative,opinion,
+2334,постный,Adj,постный,negative,opinion,ХМУРЫЙ (УГРЮМЫЙ)
+2337,постный,Adj,постный,neutral,opinion,"НЕЖИРНЫЙ,МАЛОЖИРНЫЙ"
+2338,постыдный,Adj,постыдный,negative,opinion,
+2339,потасканный,Adj,потасканный,negative,opinion,
+2340,потертый,Adj,потертый,negative,opinion,
+2341,потешный,Adj,потешный,positive/negative,opinion,
+2342,потребительский,Adj,потребительский,negative,opinion,"ИЖДИВЕНЕЦ,ПОТРЕБИТЕЛЬ,ПАРАЗИТ"
+2344,потрепанный,Adj,потрепанный,negative,opinion,
+2345,потрясающий,Adj,потрясающий,positive,opinion,
+2346,потрясный,Adj,потрясный,positive,opinion,
+2347,поучительный,Adj,поучительный,positive,opinion,
+2348,похабный,Adj,похабный,negative,opinion,
+2349,похвальный,Adj,похвальный,positive,opinion,
+2352,похоронный,Adj,похоронный,negative,opinion,УНЫЛЫЙ
+2353,похотливый,Adj,похотливый,negative,opinion,
+2354,почетнейший,Adj,почетнейший,positive,opinion,
+2355,почетный,Adj,почетный,positive,opinion,
+2356,почтеннейший,Adj,почтеннейший,positive,opinion,
+2357,почтенный,Adj,почтенный,positive,opinion,
+2359,пошловатый,Adj,пошловатый,negative,opinion,
+2360,пошлый,Adj,пошлый,negative,opinion,
+2362,поэтический,Adj,поэтический,positive,opinion,ПОЭТИЧЕСКИ НАСТРОЕННЫЙ
+2363,поэтичный,Adj,поэтичный,positive,opinion,
+2364,правдивый,Adj,правдивый,positive,opinion,
+2365,правдоподобный,Adj,правдоподобный,positive,opinion,
+2366,праведнический,Adj,праведнический,positive,opinion,
+2367,праведный,Adj,праведный,positive,opinion,
+2369,правильный,Adj,правильный,positive,opinion,"ИСТИННЫЙ,ВЕРНЫЙ"
+2370,правильный,Adj,правильный,positive,opinion,"ПРАВИЛЬНЫЙ,СООТВЕТСТВУЮЩИЙ ПРАВИЛАМ"
+2371,правоверный,Adj,правоверный,positive,opinion,"ПРАВОВЕРНЫЙ,НАБОЖНЫЙ"
+2372,правомерный,Adj,правомерный,positive,opinion,
+2376,правый,Adj,правый,positive,opinion,НЕВИНОВНОСТЬ
+2377,празднословный,Adj,празднословный,negative,opinion,
+2378,праздный,Adj,праздный,negative,opinion,
+2379,практичный,Adj,практичный,positive,opinion,
+2380,превосходный,Adj,превосходный,positive,opinion,
+2381,превратный,Adj,превратный,negative,opinion,
+2382,предаварийный,Adj,предаварийный,negative,opinion,
+2383,преданный,Adj,преданный,positive,opinion,
+2384,предательский,Adj,предательский,negative,opinion,
+2385,предвзятый,Adj,предвзятый,negative,opinion,
+2386,предосудительный,Adj,предосудительный,negative,opinion,
+2387,предпочтительный,Adj,предпочтительный,positive,opinion,
+2388,предприимчивый,Adj,предприимчивый,positive,opinion,
+2390,представительный,Adj,представительный,positive,opinion,
+2391,предубежденный,Adj,предубежденный,negative,opinion,
+2393,предупредительный,Adj,предупредительный,positive,opinion,"ПРЕДУПРЕДИТЕЛЬНЫЙ (ВНИМАТЕЛЬНЫЙ,ЛЮБЕЗНЫЙ)"
+2395,преждевременный,Adj,преждевременный,negative,opinion,
+2396,презабавный,Adj,презабавный,positive,opinion,
+2397,презентабельный,Adj,презентабельный,positive,opinion,
+2398,презренный,Adj,презренный,negative,opinion,
+2401,преимущественный,Adj,преимущественный,positive,opinion,"ПРЕИМУЩЕСТВО,ПРЕВОСХОДСТВО"
+2402,прекраснейший,Adj,прекраснейший,positive,opinion,
+2403,прекрасный,Adj,прекрасный,positive,opinion,
+2404,прелестный,Adj,прелестный,positive,opinion,
+2405,прелюбопытнейший,Adj,прелюбопытнейший,positive,opinion,
+2406,прелюбопытный,Adj,прелюбопытный,positive,opinion,
+2407,премудрый,Adj,премудрый,positive,opinion,
+2408,пренеприятнейший,Adj,пренеприятнейший,negative,opinion,
+2409,пренеприятный,Adj,пренеприятный,negative,opinion,
+2410,преогромный,Adj,преогромный,neutral,opinion,
+2411,преотличный,Adj,преотличный,positive,opinion,
+2412,пресвятой,Adj,пресвятой,positive,opinion,
+2414,пресловутый,Adj,пресловутый,negative,opinion,
+2416,пресный,Adj,пресный,negative,opinion,НЕИНТЕРЕСНЫЙ
+2418,престарелый,Adj,престарелый,negative,opinion,
+2419,престижнейший,Adj,престижнейший,positive,opinion,
+2420,престижный,Adj,престижный,positive,opinion,
+2421,престранный,Adj,престранный,neutral,opinion,
+2422,преступный,Adj,преступный,negative,opinion,
+2423,пресыщенный,Adj,пресыщенный,negative,opinion,
+2425,претенциозный,Adj,претенциозный,negative,opinion,
+2427,прехорошенький,Adj,прехорошенький,positive,opinion,
+2428,приближенный,Adj,приближенный,neutral,opinion,
+2429,привередливый,Adj,привередливый,negative,opinion,
+2430,приверженный,Adj,приверженный,positive,opinion,
+2431,приветливый,Adj,приветливый,positive,opinion,
+2433,привлекательный,Adj,привлекательный,positive,opinion,
+2434,привольный,Adj,привольный,positive,opinion,
+2435,привязчивый,Adj,привязчивый,positive/negative,opinion,
+2436,приглядный,Adj,приглядный,positive,opinion,
+2437,пригожий,Adj,пригожий,positive,opinion,
+2438,придирчивый,Adj,придирчивый,negative,opinion,
+2439,приемлемый,Adj,приемлемый,positive,opinion,
+2440,прижимистый,Adj,прижимистый,negative,opinion,
+2442,прикольный,Adj,прикольный,positive,opinion,
+2443,прилипчивый,Adj,прилипчивый,negative,opinion,НАДОЕДЛИВЫЙ
+2445,приличный,Adj,приличный,neutral,opinion,"БОЛЬШОЙ,ЗНАЧИТЕЛЬНЫЙ"
+2446,приличный,Adj,приличный,positive,opinion,"ПОРЯДОЧНЫЙ,ДОБРОПОРЯДОЧНЫЙ"
+2447,приличный,Adj,приличный,positive,opinion,"ПРИЛИЧНЫЙ,СООТВЕТСТВУЮЩИЙ ПРИЛИЧИЯМ"
+2448,приличный,Adj,приличный,positive,opinion,УДОВЛЕТВОРИТЕЛЬНЫЙ (ДОСТАТОЧНО ХОРОШИЙ)
+2449,примерный,Adj,примерный,neutral,opinion,"ПРИБЛИЗИТЕЛЬНЫЙ,НЕТОЧНЫЙ"
+2450,примерный,Adj,примерный,positive,opinion,"ПРИМЕРНЫЙ,ОБРАЗЦОВЫЙ"
+2451,приметливый,Adj,приметливый,positive,opinion,
+2452,приметный,Adj,приметный,positive,opinion,
+2453,примечательный,Adj,примечательный,positive,opinion,
+2454,примитивный,Adj,примитивный,negative,opinion,ПРИМИТИВНЫЙ (НЕДОСТАТОЧНО ГЛУБОКИЙ)
+2455,примитивный,Adj,примитивный,neutral,opinion,ПРИМИТИВНЫЙ (ПРОСТЕЙШИЙ)
+2456,принудительный,Adj,принудительный,negative,opinion,
+2457,принужденный,Adj,принужденный,negative,opinion,
+2458,принципиальнейший,Adj,принципиальнейший,positive,opinion,
+2459,принципиальный,Adj,принципиальный,positive,opinion,
+2461,приподнятый,Adj,приподнятый,positive,opinion,ПРИПОДНЯТОЕ НАСТРОЕНИЕ
+2462,прискорбный,Adj,прискорбный,negative,opinion,
+2463,приспешнический,Adj,приспешнический,negative,opinion,
+2464,приспособленческий,Adj,приспособленческий,negative,opinion,
+2465,приставучий,Adj,приставучий,negative,opinion,
+2466,пристойный,Adj,пристойный,positive,opinion,
+2467,пристрастный,Adj,пристрастный,negative,opinion,"ПРИСТРАСТНЫЙ,ПРЕДВЗЯТЫЙ"
+2469,притворный,Adj,притворный,negative,opinion,
+2470,приторный,Adj,приторный,negative,opinion,
+2471,притягательный,Adj,притягательный,positive,opinion,
+2472,прихлебательский,Adj,прихлебательский,negative,opinion,
+2473,прихотливый,Adj,прихотливый,positive/negative,opinion,
+2474,причудливый,Adj,причудливый,positive/negative,opinion,
+2476,приятный,Adj,приятный,positive,opinion,
+2478,пробивной,Adj,пробивной,positive/negative,opinion,"ПРОБИВНОЙ,НАПОРИСТЫЙ"
+2479,проблематический,Adj,проблематический,negative,opinion,
+2480,проблематичный,Adj,проблематичный,negative,opinion,
+2481,проблемный,Adj,проблемный,negative,opinion,
+2483,провальный,Adj,провальный,negative,opinion,"ПРОВАЛИТЬСЯ,ПОТЕРПЕТЬ ПРОВАЛ"
+2484,провинциальный,Adj,провинциальный,negative,opinion,"ПРОВИНЦИАЛЬНЫЙ,МЕСТЕЧКОВЫЙ"
+2486,провокативный,Adj,провокативный,negative,opinion,
+2487,провокаторский,Adj,провокаторский,negative,opinion,
+2488,провокационный,Adj,провокационный,negative,opinion,
+2489,проворный,Adj,проворный,positive,opinion,
+2491,прогрессивный,Adj,прогрессивный,positive,opinion,"ПЕРЕДОВОЙ,ПРОГРЕССИВНЫЙ"
+2492,продажный,Adj,продажный,negative,opinion,ПРОДАЖНЫЙ (БЕСПРИНЦИПНЫЙ)
+2494,продвинутый,Adj,продвинутый,positive,opinion,
+2495,продуктивный,Adj,продуктивный,positive,opinion,
+2496,продуманный,Adj,продуманный,positive,opinion,
+2497,прожженный,Adj,прожженный,negative,opinion,
+2498,прозорливый,Adj,прозорливый,positive,opinion,
+2499,производительный,Adj,производительный,positive,opinion,
+2500,проклятый,Adj,проклятый,negative,opinion,
+2501,пронацистский,Adj,пронацистский,negative,opinion,
+2502,пронзительный,Adj,пронзительный,negative,opinion,"ПРОНЗИТЕЛЬНЫЙ,РЕЗКИЙ НА СЛУХ"
+2503,пронзительный,Adj,пронзительный,negative,opinion,РЕЗКИЙ (ВНЕЗАПНЫЙ И ОЧЕНЬ ЗНАЧИТЕЛЬНЫЙ)
+2504,пронзительный,Adj,пронзительный,positive,opinion,ТРОГАТЕЛЬНЫЙ
+2505,проникновенный,Adj,проникновенный,positive,opinion,
+2506,проницательный,Adj,проницательный,positive,opinion,
+2507,пронырливый,Adj,пронырливый,negative,opinion,
+2508,просветленный,Adj,просветленный,positive,opinion,
+2509,прославленный,Adj,прославленный,positive,opinion,
+2510,простейший,Adj,простейший,neutral,opinion,
+2511,простенький,Adj,простенький,negative,opinion,"ПРОСТОЙ (НЕ ЛУЧШЕГО КАЧЕСТВА,ГРУБЫЙ ПО ОБРАБОТКЕ)"
+2512,простенький,Adj,простенький,neutral,opinion,"ПРОСТОЙ ПО СОСТАВУ,СТРУКТУРЕ"
+2513,простенький,Adj,простенький,neutral,opinion,"ПРОСТОЙ,НЕСЛОЖНЫЙ"
+2514,простительный,Adj,простительный,positive,opinion,
+2515,простоватый,Adj,простоватый,negative,opinion,
+2516,простодушный,Adj,простодушный,positive,opinion,
+2517,простой,Adj,простой,negative,opinion,"ПРОСТОЙ (НЕ ЛУЧШЕГО КАЧЕСТВА,ГРУБЫЙ ПО ОБРАБОТКЕ)"
+2519,простой,Adj,простой,positive,opinion,"ПРОСТОЙ,НЕСЛОЖНЫЙ"
+2520,простой,Adj,простой,positive/negative,opinion,БЕСХИТРОСТНЫЙ
+2521,просторный,Adj,просторный,positive,opinion,
+2522,простосердечный,Adj,простосердечный,positive,opinion,
+2523,пространный,Adj,пространный,negative,opinion,МНОГОСЛОВНЫЙ
+2524,пространный,Adj,пространный,neutral,opinion,"ОБШИРНЫЙ ПО ОБЪЕМУ,КОЛИЧЕСТВУ"
+2527,противный,Adj,противный,negative,opinion,
+2528,противоестественный,Adj,противоестественный,negative,opinion,
+2529,противозаконный,Adj,противозаконный,negative,opinion,
+2530,противоправный,Adj,противоправный,negative,opinion,
+2531,противоречивый,Adj,противоречивый,negative,opinion,
+2532,профашистский,Adj,профашистский,negative,opinion,
+2534,профессиональный,Adj,профессиональный,positive,opinion,"ПРОФЕССИОНАЛИЗМ,ПРОФЕССИОНАЛЬНОЕ МАСТЕРСТВО"
+2535,профессиональный,Adj,профессиональный,positive,opinion,ПРОФЕССИОНАЛ
+2536,прохиндейский,Adj,прохиндейский,negative,opinion,
+2537,прохладный,Adj,прохладный,negative,opinion,ХОЛОДНЫЙ В ОТНОШЕНИЯХ
+2538,прохладный,Adj,прохладный,neutral,opinion,ПРОХЛАДНЫЙ (НЕ ЖАРКИЙ)
+2539,прочный,Adj,прочный,positive,opinion,
+2541,прямодушный,Adj,прямодушный,positive,opinion,
+2544,прямой,Adj,прямой,positive,opinion,"ЧИСТОСЕРДЕЧНЫЙ,ИСКРЕННИЙ,ОТКРОВЕННЫЙ"
+2545,псевдонаучный,Adj,псевдонаучный,negative,opinion,
+2547,пузатый,Adj,пузатый,negative,opinion,
+2548,пустоголовый,Adj,пустоголовый,negative,opinion,
+2549,пустой,Adj,пустой,negative,opinion,БЕССОДЕРЖАТЕЛЬНЫЙ
+2550,пустой,Adj,пустой,negative,opinion,ПУСТОГОЛОВЫЙ
+2552,пустопорожний,Adj,пустопорожний,negative,opinion,
+2553,пустословный,Adj,пустословный,negative,opinion,
+2554,пустяковый,Adj,пустяковый,neutral,opinion,
+2555,пустячный,Adj,пустячный,negative,opinion,
+2557,путаный,Adj,путаный,negative,opinion,ЗАПУТАННЫЙ
+2558,путный,Adj,путный,positive,opinion,
+2560,пухленький,Adj,пухленький,positive,opinion,
+2561,пушистый,Adj,пушистый,positive,opinion,
+2562,пылкий,Adj,пылкий,positive,opinion,
+2564,пышнотелый,Adj,пышнотелый,positive,opinion,
+2565,пышный,Adj,пышный,positive,opinion,
+2566,пьяненький,Adj,пьяненький,negative,opinion,
+2567,пьяный,Adj,пьяный,negative,opinion,АЛКОГОЛЬНОЕ ОПЬЯНЕНИЕ
+2568,пьяный,Adj,пьяный,positive/negative,opinion,УПОЕНИЕ
+2569,работоспособный,Adj,работоспособный,positive,opinion,
+2570,работящий,Adj,работящий,positive,opinion,
+2572,рабский,Adj,рабский,negative,opinion,РАБСКИЙ (ПОКОРНЫЙ)
+2573,равнодушный,Adj,равнодушный,negative,opinion,
+2578,радостный,Adj,радостный,positive,opinion,"РАДОСТНЫЙ,ДОСТАВЛЯЮЩИЙ РАДОСТЬ"
+2580,радужный,Adj,радужный,positive,opinion,РАДУЖНЫЙ (ПРИЯТНЫЙ)
+2581,радушный,Adj,радушный,positive,opinion,
+2583,разболтанный,Adj,разболтанный,negative,opinion,
+2584,развернутый,Adj,развернутый,positive,opinion,
+2585,развеселый,Adj,развеселый,positive/negative,opinion,
+2586,развинченный,Adj,развинченный,negative,opinion,
+2587,развратнический,Adj,развратнический,negative,opinion,
+2588,развратный,Adj,развратный,negative,opinion,
+2589,развязный,Adj,развязный,negative,opinion,
+2590,разгильдяйский,Adj,разгильдяйский,negative,opinion,
+2591,разгневанный,Adj,разгневанный,negative,opinion,
+2593,раздольный,Adj,раздольный,positive,opinion,
+2595,раздражительный,Adj,раздражительный,negative,opinion,
+2596,разительный,Adj,разительный,neutral,opinion,
+2597,различный,Adj,различный,neutral,opinion,
+2598,размеренный,Adj,размеренный,positive,opinion,
+2599,размытый,Adj,размытый,negative,opinion,
+2600,разноречивый,Adj,разноречивый,negative,opinion,
+2601,разносный,Adj,разносный,negative,opinion,
+2602,разносторонний,Adj,разносторонний,positive,opinion,
+2603,разный,Adj,разный,neutral,opinion,
+2605,разобщенный,Adj,разобщенный,negative,opinion,
+2606,разодетый,Adj,разодетый,positive/negative,opinion,
+2609,разрозненный,Adj,разрозненный,negative,opinion,
+2610,разрушительный,Adj,разрушительный,negative,opinion,
+2613,разумный,Adj,разумный,positive,opinion,РАЗУМНЫЙ (ОБОСНОВАННЫЙ)
+2614,разумный,Adj,разумный,positive,opinion,"РАЗУМНЫЙ,ЗДРАВОСМЫСЛЯЩИЙ"
+2616,райский,Adj,райский,positive,opinion,РАЙСКИЙ (ПРЕКРАСНЫЙ)
+2618,ранний,Adj,ранний,neutral,opinion,
+2619,расистский,Adj,расистский,negative,opinion,
+2620,расплывчатый,Adj,расплывчатый,negative,opinion,
+2621,располагающий,Adj,располагающий,positive,opinion,
+2624,расположенный,Adj,расположенный,positive/negative,opinion,"РАСПОЛОЖЕННЫЙ,СКЛОННЫЙ"
+2625,расположенный,Adj,расположенный,positive/negative,opinion,"СКЛОННОСТЬ,ПРЕДРАСПОЛОЖЕННОСТЬ"
+2626,распрекрасный,Adj,распрекрасный,positive,opinion,
+2627,распутнический,Adj,распутнический,negative,opinion,
+2628,распутный,Adj,распутный,negative,opinion,
+2629,распущенный,Adj,распущенный,negative,opinion,
+2630,рассеянный,Adj,рассеянный,negative,opinion,РАССЕЯННЫЙ
+2631,рассеянный,Adj,рассеянный,neutral,opinion,"РАССЕЯННЫЙ (СЛАБЫЙ,РАЗРЕЖЕННЫЙ)"
+2633,рассудительный,Adj,рассудительный,positive,opinion,
+2634,растерянный,Adj,растерянный,negative,opinion,
+2635,расторопный,Adj,расторопный,positive,opinion,
+2636,расточительный,Adj,расточительный,negative,opinion,
+2637,расточительский,Adj,расточительский,negative,opinion,
+2638,растянутый,Adj,растянутый,negative,opinion,
+2639,расхлябанный,Adj,расхлябанный,negative,opinion,
+2640,расхожий,Adj,расхожий,negative,opinion,БАНАЛЬНЫЙ
+2641,расхожий,Adj,расхожий,positive,opinion,"ХОДКИЙ,ХОРОШО ПРОДАЮЩИЙСЯ"
+2642,расчетливый,Adj,расчетливый,positive/negative,opinion,
+2643,расчудесный,Adj,расчудесный,positive,opinion,
+2645,рафинированный,Adj,рафинированный,positive,opinion,"УТОНЧЕННЫЙ,ИЗЫСКАННЫЙ"
+2646,рахитичный,Adj,рахитичный,negative,opinion,
+2648,рационалистический,Adj,рационалистический,positive,opinion,
+2649,рационалистичный,Adj,рационалистичный,positive,opinion,
+2651,рациональный,Adj,рациональный,positive,opinion,РАССУДИТЕЛЬНЫЙ (БЛАГОРАЗУМНЫЙ)
+2652,рациональный,Adj,рациональный,positive,opinion,"РАЦИОНАЛЬНЫЙ (ОБОСНОВАННЫЙ,ЦЕЛЕСООБРАЗНЫЙ)"
+2653,рачительный,Adj,рачительный,positive,opinion,
+2656,реалистический,Adj,реалистический,positive,opinion,РЕАЛИСТИЧНЫЙ (ТРЕЗВО-ПРАКТИЧЕСКИЙ)
+2657,реалистичный,Adj,реалистичный,positive,opinion,
+2659,реальный,Adj,реальный,positive,opinion,"ВЫПОЛНИМЫЙ,ИСПОЛНИМЫЙ,ОСУЩЕСТВИМЫЙ)"
+2660,реальный,Adj,реальный,positive,opinion,РЕАЛИСТИЧНЫЙ (ТРЕЗВО-ПРАКТИЧЕСКИЙ)
+2664,редкостный,Adj,редкостный,positive,opinion,ИСКЛЮЧИТЕЛЬНЫЙ ПО СВОИМ КАЧЕСТВАМ
+2665,резвый,Adj,резвый,positive,opinion,
+2666,резкий,Adj,резкий,negative,opinion,"ГРУБЫЙ,РЕЗКИЙ"
+2667,резкий,Adj,резкий,negative,opinion,РЕЗКИЙ (ЧЕРЕСЧУР СИЛЬНЫЙ)
+2668,резкий,Adj,резкий,negative,opinion,РЕЗКИЙ В ДВИЖЕНИИ
+2669,резкий,Adj,резкий,positive/negative,opinion,РЕЗКИЙ (ВНЕЗАПНЫЙ И ОЧЕНЬ ЗНАЧИТЕЛЬНЫЙ)
+2670,резковатый,Adj,резковатый,negative,opinion,
+2671,резонный,Adj,резонный,positive,opinion,
+2672,результативный,Adj,результативный,positive,opinion,
+2675,религиозный,Adj,религиозный,positive,opinion,"ПРАВОВЕРНЫЙ,НАБОЖНЫЙ"
+2676,ренегатский,Adj,ренегатский,negative,opinion,
+2678,респектабельный,Adj,респектабельный,positive,opinion,
+2682,решительный,Adj,решительный,positive,opinion,
+2683,ржачный,Adj,ржачный,positive,opinion,
+2684,рискованный,Adj,рискованный,negative,opinion,
+2686,рисковый,Adj,рисковый,negative,opinion,"РИСК (ВОЗМОЖНОСТЬ ОПАСНОСТИ,НЕУДАЧИ)"
+2687,рисковый,Adj,рисковый,negative,opinion,РИСКОВАННЫЙ
+2689,риторический,Adj,риторический,positive,opinion,КРАСНОРЕЧИЕ
+2690,робкий,Adj,робкий,negative,opinion,
+2691,ровный,Adj,ровный,positive,opinion,
+2692,родимый,Adj,родимый,positive,opinion,
+2693,родной,Adj,родной,positive,opinion,"ДОРОГОЙ,МИЛЫЙ"
+2695,розовый,Adj,розовый,positive,opinion,РАДУЖНЫЙ (ПРИЯТНЫЙ)
+2696,роковой,Adj,роковой,negative,opinion,
+2698,романтический,Adj,романтический,positive,opinion,РОМАНТИЗМ (МИРООЩУЩЕНИЕ)
+2699,романтический,Adj,романтический,positive,opinion,РОМАНТИЧНЫЙ
+2700,романтичный,Adj,романтичный,positive,opinion,
+2701,роскошный,Adj,роскошный,positive,opinion,
+2702,ругательный,Adj,ругательный,negative,opinion,
+2703,русофобский,Adj,русофобский,negative,opinion,
+2704,рутинный,Adj,рутинный,neutral,opinion,
+2705,рыхлый,Adj,рыхлый,negative,opinion,РЫХЛЫЙ (ДРЯБЛЫЙ)
+2706,рыхлый,Adj,рыхлый,neutral,opinion,"РЫХЛЫЙ (НЕПЛОТНЫЙ,РАССЫПЧАТЫЙ)"
+2708,садистский,Adj,садистский,negative,opinion,
+2709,садомазохистский,Adj,садомазохистский,negative,opinion,
+2710,сальный,Adj,сальный,negative,opinion,"ЖИРНЫЙ,ГРЯЗНЫЙ ОТ ЖИРА"
+2711,сальный,Adj,сальный,negative,opinion,НЕПРИСТОЙНЫЙ (НЕПРИЛИЧНЫЙ)
+2713,самобытный,Adj,самобытный,positive,opinion,
+2714,самовластный,Adj,самовластный,negative,opinion,
+2715,самовлюбленный,Adj,самовлюбленный,negative,opinion,
+2716,самовольный,Adj,самовольный,negative,opinion,
+2717,самодовлеющий,Adj,самодовлеющий,positive,opinion,
+2718,самодостаточный,Adj,самодостаточный,positive,opinion,
+2719,самодурский,Adj,самодурский,negative,opinion,
+2721,самонадеянный,Adj,самонадеянный,negative,opinion,
+2722,самоотверженный,Adj,самоотверженный,positive,opinion,
+2723,саморазрушительный,Adj,саморазрушительный,negative,opinion,
+2724,самостоятельный,Adj,самостоятельный,positive,opinion,
+2727,самоуверенный,Adj,самоуверенный,negative,opinion,
+2728,самоуничижительный,Adj,самоуничижительный,negative,opinion,
+2731,сардонический,Adj,сардонический,negative,opinion,
+2732,саркастический,Adj,саркастический,negative,opinion,
+2733,саркастичный,Adj,саркастичный,negative,opinion,
+2735,сатанинский,Adj,сатанинский,negative,opinion,ЗВЕРСТВО (ЖЕСТОКОСТЬ)
+2736,сахарный,Adj,сахарный,negative,opinion,"ПРИТОРНЫЙ,ИЗЛИШНЕ ЛЮБЕЗНЫЙ"
+2738,сбалансированный,Adj,сбалансированный,positive,opinion,
+2739,сбивчивый,Adj,сбивчивый,negative,opinion,
+2740,сварливый,Adj,сварливый,negative,opinion,
+2743,свеженький,Adj,свеженький,positive,opinion,СВЕЖИЙ (ЧИСТЫЙ)
+2744,свеженький,Adj,свеженький,positive,opinion,"СВЕЖИЙ,НЕ УСТАВШИЙ"
+2745,свеженький,Adj,свеженький,positive,opinion,СОЧНЫЙ ПО ЦВЕТУ
+2748,свежий,Adj,свежий,positive,opinion,ПРОХЛАДНЫЙ (НЕ ЖАРКИЙ)
+2749,свежий,Adj,свежий,positive,opinion,СВЕЖИЙ (ЧИСТЫЙ)
+2750,свежий,Adj,свежий,positive,opinion,"СВЕЖИЙ,НЕ УСТАВШИЙ"
+2751,свежий,Adj,свежий,positive,opinion,СОЧНЫЙ ПО ЦВЕТУ
+2752,сверхактуальный,Adj,сверхактуальный,positive,opinion,
+2753,сверходаренный,Adj,сверходаренный,positive,opinion,
+2754,сверхпрочный,Adj,сверхпрочный,positive,opinion,
+2755,сверхценный,Adj,сверхценный,positive,opinion,
+2756,сверхъестественный,Adj,сверхъестественный,neutral,opinion,
+2757,светленький,Adj,светленький,positive,opinion,
+2758,светлый,Adj,светлый,neutral,opinion,СВЕТЛЫЙ ПО ЦВЕТУ
+2759,светлый,Adj,светлый,positive,opinion,ПРОСВЕТЛЕННЫЙ (СПОКОЙНЫЙ И РАДОСТНЫЙ)
+2760,светлый,Adj,светлый,positive,opinion,"СВЕТЛЫЙ (РАДОСТНЫЙ,ПРИЯТНЫЙ)"
+2761,светлый,Adj,светлый,positive,opinion,"СВЕТЛЫЙ,ХОРОШО ОСВЕЩЕННЫЙ"
+2762,свинский,Adj,свинский,negative,opinion,
+2763,свирепый,Adj,свирепый,negative,opinion,
+2767,свободный,Adj,свободный,positive,opinion,НЕПРИНУЖДЕННЫЙ
+2768,свободный,Adj,свободный,positive,opinion,СВОБОДНЫЙ (НИЧЕМ НЕ СТЕСНЕННЫЙ)
+2769,свободный,Adj,свободный,positive,opinion,СВОБОДНЫЙ (ПРОСТОРНЫЙ)
+2770,своевольный,Adj,своевольный,negative,opinion,
+2771,своенравный,Adj,своенравный,negative,opinion,
+2772,своеобразный,Adj,своеобразный,neutral,opinion,СВОЕОБРАЗНЫЙ (ЧЕМ-ТО ПОХОЖИЙ)
+2773,своеобразный,Adj,своеобразный,positive,opinion,"СВОЕОБРАЗНЫЙ,ОРИГИНАЛЬНЫЙ"
+2774,своеобычный,Adj,своеобычный,positive,opinion,
+2775,связный,Adj,связный,positive,opinion,
+2776,святой,Adj,святой,positive,opinion,"СВЯТОЙ,СВЯЩЕННЫЙ"
+2777,святотатственный,Adj,святотатственный,negative,opinion,
+2778,священный,Adj,священный,positive,opinion,
+2779,сговорчивый,Adj,сговорчивый,positive,opinion,
+2780,сдержанный,Adj,сдержанный,positive,opinion,
+2781,себялюбивый,Adj,себялюбивый,negative,opinion,
+2784,сексапильный,Adj,сексапильный,positive,opinion,
+2786,сексуальный,Adj,сексуальный,positive/negative,opinion,"СОБЛАЗНИТЕЛЬНЫЙ,СЕКСУАЛЬНЫЙ"
+2788,сентиментальный,Adj,сентиментальный,positive/negative,opinion,"ЧУВСТВИТЕЛЬНЫЙ,ДУШЕЩИПАТЕЛЬНЫЙ"
+2789,сентиментальный,Adj,сентиментальный,positive/negative,opinion,"ЧУВСТВИТЕЛЬНЫЙ,СЕНТИМЕНТАЛЬНЫЙ"
+2792,сердечный,Adj,сердечный,positive,opinion,"ДОБРЫЙ,ДОБРОСЕРДЕЧНЫЙ"
+2793,сердечный,Adj,сердечный,positive,opinion,"ДУШЕВНЫЙ (ИСКРЕННИЙ,ДРУЖЕЛЮБНЫЙ)"
+2794,сердитый,Adj,сердитый,negative,opinion,
+2795,серенький,Adj,серенький,negative,opinion,СЕРЫЙ (ПОСРЕДСТВЕННЫЙ)
+2796,серенький,Adj,серенький,neutral,opinion,СЕРЫЙ ЦВЕТ
+2797,серый,Adj,серый,negative,opinion,ЗЕМЛИСТЫЙ (СЕРОВАТО-БЛЕДНЫЙ)
+2798,серый,Adj,серый,negative,opinion,СЕРЫЙ (ПОСРЕДСТВЕННЫЙ)
+2799,серый,Adj,серый,neutral,opinion,СЕРЫЙ ЦВЕТ
+2800,серьезный,Adj,серьезный,negative,opinion,ТЯЖЕЛЫЙ (ОПАСНЫЙ)
+2801,серьезный,Adj,серьезный,positive,opinion,СЕРЬЕЗНЫЙ (ВАЖНЫЙ ПО СОДЕРЖАНИЮ)
+2802,серьезный,Adj,серьезный,positive,opinion,"СЕРЬЕЗНЫЙ,СЕРЬЕЗНО НАСТРОЕННЫЙ"
+2804,симпатичный,Adj,симпатичный,positive,opinion,
+2805,симпотичный,Adj,симпотичный,positive,opinion,
+2809,сиротский,Adj,сиротский,negative,opinion,
+2810,сисястый,Adj,сисястый/сисястой,positive,opinion,
+2812,скабрезный,Adj,скабрезный,negative,opinion,
+2814,сказочный,Adj,сказочный,positive,opinion,"СКАЗОЧНЫЙ,ФЕЕРИЧЕСКИЙ"
+2817,скандальный,Adj,скандальный,negative,opinion,СКАНДАЛЬНЫЙ ПО ХАРАКТЕРУ
+2818,скаредный,Adj,скаредный,negative,opinion,
+2819,сквалыжнический,Adj,сквалыжнический,negative,opinion,
+2820,скверный,Adj,скверный,negative,opinion,
+2821,скептический,Adj,скептический,negative,opinion,
+2822,скептичный,Adj,скептичный,negative,opinion,
+2825,склочный,Adj,склочный,negative,opinion,
+2826,скованный,Adj,скованный,negative,opinion,
+2828,скользкий,Adj,скользкий,negative,opinion,ДВУСМЫСЛЕННЫЙ (НЕПРИЛИЧНЫЙ)
+2829,скопидомнический,Adj,скопидомнический,negative,opinion,
+2830,скопидомский,Adj,скопидомский,negative,opinion,
+2831,скорбный,Adj,скорбный,negative,opinion,
+2832,скоропалительный,Adj,скоропалительный,negative,opinion,
+2834,скоропреходящий,Adj,скоропреходящий,negative,opinion,
+2835,скороспелый,Adj,скороспелый,negative,opinion,СКОРОПАЛИТЕЛЬНЫЙ
+2836,скороспелый,Adj,скороспелый,positive,opinion,СКОРОСПЕЛЫЙ СОРТ
+2837,скромнейший,Adj,скромнейший,positive,opinion,
+2838,скромный,Adj,скромный,neutral,opinion,СКРОМНЫЙ (НЕБОЛЬШОЙ)
+2839,скромный,Adj,скромный,positive,opinion,"НЕПРИХОТЛИВЫЙ,НЕПРИТЯЗАТЕЛЬНЫЙ"
+2840,скромный,Adj,скромный,positive,opinion,"СКРОМНЫЙ,НЕХВАСТЛИВЫЙ"
+2841,скрупулезный,Adj,скрупулезный,positive,opinion,
+2842,скрытный,Adj,скрытный,negative,opinion,СКРЫТНЫЙ
+2844,скрытый,Adj,скрытый,neutral,opinion,
+2845,скряжнический,Adj,скряжнический,negative,opinion,
+2846,скудный,Adj,скудный,negative,opinion,
+2847,скудоумный,Adj,скудоумный,negative,opinion,
+2848,скупердяйский,Adj,скупердяйский,negative,opinion,
+2849,скупой,Adj,скупой,negative,opinion,
+2851,скучноватый,Adj,скучноватый,negative,opinion,
+2852,скучный,Adj,скучный,negative,opinion,
+2853,слабенький,Adj,слабенький,negative,opinion,"БОЛЕЗНЕННЫЙ,СЛАБЫЙ ПО ЗДОРОВЬЮ"
+2854,слабенький,Adj,слабенький,negative,opinion,СЛАБЫЙ ПО КАЧЕСТВУ
+2855,слабенький,Adj,слабенький,neutral,opinion,"СЛАБЫЙ ПО СИЛЕ,МОЩНОСТИ"
+2856,слабенький,Adj,слабенький,neutral,opinion,"СЛАБЫЙ,НЕТУГОЙ"
+2857,слабоватый,Adj,слабоватый,negative,opinion,
+2858,слабовольный,Adj,слабовольный,negative,opinion,
+2859,слабонервный,Adj,слабонервный,negative,opinion,
+2860,слаборазвитый,Adj,слаборазвитый,negative,opinion,
+2861,слабосильный,Adj,слабосильный,negative,opinion,
+2863,слабоумный,Adj,слабоумный,negative,opinion,
+2864,слабохарактерный,Adj,слабохарактерный,negative,opinion,
+2865,слабый,Adj,слабый,negative,opinion,"БОЛЕЗНЕННЫЙ,СЛАБЫЙ ПО ЗДОРОВЬЮ"
+2866,слабый,Adj,слабый,negative,opinion,СЛАБОВОЛЬНЫЙ
+2867,слабый,Adj,слабый,negative,opinion,СЛАБЫЙ ПО КАЧЕСТВУ
+2868,слабый,Adj,слабый,neutral,opinion,"СЛАБЫЙ ПО СИЛЕ,МОЩНОСТИ"
+2869,слабый,Adj,слабый,neutral,opinion,"СЛАБЫЙ,НЕТУГОЙ"
+2870,славный,Adj,славный,positive,opinion,
+2871,сладкий,Adj,сладкий,negative,opinion,"ПРИТОРНЫЙ,ИЗЛИШНЕ ЛЮБЕЗНЫЙ"
+2872,сладкий,Adj,сладкий,neutral,opinion,СЛАДКИЙ ВКУС
+2873,сладкий,Adj,сладкий,positive,opinion,СЛАДКИЙ (ПРИЯТНЫЙ)
+2875,сладостный,Adj,сладостный,positive,opinion,
+2877,сладчайший,Adj,сладчайший,positive,opinion,СЛАДКИЙ (ПРИЯТНЫЙ)
+2878,слаженный,Adj,слаженный,positive,opinion,
+2879,сластолюбивый,Adj,сластолюбивый,negative,opinion,
+2880,слащавый,Adj,слащавый,negative,opinion,
+2881,слезливый,Adj,слезливый,negative,opinion,
+2882,слезный,Adj,слезный,negative,opinion,"ЖАЛОБНЫЙ (ВЫРАЖАЮЩИЙ ЖАЛОБУ,СКОРБЬ,ТОСКУ)"
+2884,слепой,Adj,слепой,negative,opinion,БЕЗРАССУДНЫЙ ПОСТУПОК
+2885,слепой,Adj,слепой,negative,opinion,"СЛЕПОЙ,СЛЕПО ИСПОЛНЯЮЩИЙ"
+2886,сложный,Adj,сложный,negative,opinion,"СЛОЖНЫЙ (ТРУДНЫЙ,ЗАПУТАННЫЙ)"
+2888,слюнтяйский,Adj,слюнтяйский,negative,opinion,
+2889,слякотный,Adj,слякотный,negative,opinion,
+2890,смазливый,Adj,смазливый,negative,opinion,
+2891,смекалистый,Adj,смекалистый,positive,opinion,
+2892,смелый,Adj,смелый,positive,opinion,
+2894,смертоносный,Adj,смертоносный,negative,opinion,
+2896,сметливый,Adj,сметливый,positive,opinion,
+2897,смехотворный,Adj,смехотворный,negative,opinion,
+2899,смешной,Adj,смешной,negative,opinion,"СМЕШНОЙ,СМЕХОТВОРНЫЙ"
+2900,смешной,Adj,смешной,positive,opinion,СМЕШНОЙ (ВЫЗЫВАЮЩИЙ СМЕХ)
+2901,смиренный,Adj,смиренный,positive,opinion,
+2902,смирный,Adj,смирный,positive,opinion,
+2904,смурной,Adj,смурной,negative,opinion,
+2905,смутный,Adj,смутный,negative,opinion,
+2906,смышленый,Adj,смышленый,positive,opinion,
+2908,снайперский,Adj,снайперский,positive,opinion,"МЕТКИЙ,СНАЙПЕРСКИЙ"
+2909,снисходительный,Adj,снисходительный,negative,opinion,СНИСХОДИТЕЛЬНЫЙ (ОБИДНО ВЫСОКОМЕРНЫЙ)
+2910,снисходительный,Adj,снисходительный,positive,opinion,СНИСХОЖДЕНИЕ
+2911,сногсшибательный,Adj,сногсшибательный,positive,opinion,
+2912,сноровистый,Adj,сноровистый,positive,opinion,
+2913,сносный,Adj,сносный,positive,opinion,
+2914,соблазнительный,Adj,соблазнительный,positive,opinion,
+2915,совершенный,Adj,совершенный,positive,opinion,
+2916,совестливый,Adj,совестливый,positive,opinion,
+2918,совковый,Adj,совковый,negative,opinion,СОВЕТСКИЙ ОБРАЗ ЖИЗНИ
+2921,современный,Adj,современный,positive,opinion,СОВРЕМЕННЫЙ (ПРОГРЕССИВНЫЙ)
+2922,содержательный,Adj,содержательный,positive,opinion,
+2924,сознательный,Adj,сознательный,neutral,opinion,"СОЗНАТЕЛЬНЫЙ,НАМЕРЕННЫЙ"
+2925,сокровенный,Adj,сокровенный,positive,opinion,
+2926,сокрушенный,Adj,сокрушенный,negative,opinion,
+2927,солидный,Adj,солидный,positive,opinion,
+2930,солнечный,Adj,солнечный,positive,opinion,СЧАСТЛИВЫЙ (ПОЛНЫЙ СЧАСТЬЯ)
+2931,сомнительный,Adj,сомнительный,negative,opinion,
+2932,сонливый,Adj,сонливый,negative,opinion,
+2933,сонный,Adj,сонный,negative,opinion,
+2934,сообразительный,Adj,сообразительный,positive,opinion,
+2935,сообщнический,Adj,сообщнический,negative,opinion,
+2939,сортирный,Adj,сортирный,negative,opinion,
+2940,сосредоточенный,Adj,сосредоточенный,positive,opinion,
+2941,состоятельный,Adj,состоятельный,positive,opinion,
+2942,сочный,Adj,сочный,positive,opinion,
+2947,спасительный,Adj,спасительный,positive,opinion,
+2948,спаянный,Adj,спаянный,positive,opinion,
+2950,спелый,Adj,спелый,positive,opinion,
+2952,спесивый,Adj,спесивый,negative,opinion,
+2953,спешный,Adj,спешный,negative,opinion,ПОСПЕШНЫЙ
+2954,спешный,Adj,спешный,neutral,opinion,НЕОТЛОЖНЫЙ
+2956,сплоченный,Adj,сплоченный,positive,opinion,
+2958,спокойный,Adj,спокойный,positive,opinion,СПОКОЙНОЕ ПОВЕДЕНИЕ
+2959,спокойный,Adj,спокойный,positive,opinion,СПОКОЙНЫЙ (ИСПОЛНЕННЫЙ СПОКОЙСТВИЯ)
+2960,спокойный,Adj,спокойный,positive,opinion,СПОКОЙНЫЙ (ПРИЯТНЫЙ ДЛЯ ГЛАЗ)
+2961,спорный,Adj,спорный,negative,opinion,
+2962,спорый,Adj,спорый,positive,opinion,
+2963,справедливый,Adj,справедливый,positive,opinion,
+2964,сранный,Adj,сранный,negative,opinion,
+2965,сраный,Adj,сраный,negative,opinion,
+2966,средненький,Adj,средненький,negative,opinion,
+2967,средний,Adj,средний,negative,opinion,"ПОСРЕДСТВЕННЫЙ,СРЕДНИЙ"
+2969,средний,Adj,средний,neutral,opinion,"СРЕДНИЙ ПО СВОЙСТВАМ,ПРИЗНАКАМ"
+2970,ссаный,Adj,ссаный,negative,opinion,
+2971,стабилизационный,Adj,стабилизационный,positive,opinion,
+2972,стабильный,Adj,стабильный,positive,opinion,
+2977,стальной,Adj,стальной,positive,opinion,"ТВЕРДОСТЬ,СТОЙКОСТЬ,НЕПОКОЛЕБИМОСТЬ"
+2978,старательный,Adj,старательный,positive,opinion,
+2981,старейший,Adj,старейший,positive,opinion,"ОПЫТНЫЙ,ОБЛАДАЮЩИЙ ОПЫТОМ"
+2982,старенький,Adj,старенький,neutral,opinion,
+2983,староватый,Adj,староватый,negative,opinion,
+2984,старозаветный,Adj,старозаветный,negative,opinion,
+2985,старомодный,Adj,старомодный,negative,opinion,
+2986,старый,Adj,старый,negative,opinion,СТАРЫЙ (НЕГОДНЫЙ)
+2987,старый,Adj,старый,negative,opinion,"УСТАРЕЛЫЙ,НЕСОВРЕМЕННЫЙ"
+2990,старый,Adj,старый,neutral,opinion,"СТАРЫЙ,НЕНОВЫЙ"
+2991,старый,Adj,старый,positive,opinion,"ОПЫТНЫЙ,ОБЛАДАЮЩИЙ ОПЫТОМ"
+2992,статный,Adj,статный,positive,opinion,
+2995,стервозный,Adj,стервозный,negative,opinion,
+2996,стереотипный,Adj,стереотипный,negative,opinion,
+2997,стертый,Adj,стертый,negative,opinion,
+2999,стильный,Adj,стильный,positive,opinion,
+3000,стойкий,Adj,стойкий,positive,opinion,
+3002,страдальческий,Adj,страдальческий,negative,opinion,
+3003,странноватый,Adj,странноватый,negative,opinion,
+3004,странный,Adj,странный,neutral,opinion,
+3005,страстный,Adj,страстный,positive,opinion,
+3006,страшенный,Adj,страшенный,negative,opinion,СТРАШНЫЙ (ВЫЗЫВАЮЩИЙ СТРАХ)
+3007,страшенный,Adj,страшенный,neutral,opinion,СТРАШНЫЙ (СИЛЬНЫЙ)
+3008,страшненький,Adj,страшненький,negative,opinion,
+3009,страшный,Adj,страшный,negative,opinion,СТРАШНЫЙ (ВЫЗЫВАЮЩИЙ СТРАХ)
+3010,страшный,Adj,страшный,neutral,opinion,СТРАШНЫЙ (СИЛЬНЫЙ)
+3011,стремительный,Adj,стремительный,positive,opinion,
+3012,стремный,Adj,стремный,negative,opinion,
+3014,строгий,Adj,строгий,negative,opinion,"СТРОГИЙ (СУРОВЫЙ,ЖЕСТКИЙ)"
+3015,строгий,Adj,строгий,positive,opinion,СТРОГИЙ (ТРЕБОВАТЕЛЬНЫЙ)
+3016,строгий,Adj,строгий,positive,opinion,ТОЧНЫЙ (ДЕЙСТВУЮЩИЙ КАК ДОЛЖНО)
+3017,строжайший,Adj,строжайший,neutral,opinion,
+3018,стройный,Adj,стройный,positive,opinion,
+3019,строптивый,Adj,строптивый,negative,opinion,
+3020,студеный,Adj,студеный,negative,opinion,
+3022,стяжательский,Adj,стяжательский,negative,opinion,
+3023,субъективный,Adj,субъективный,negative,opinion,
+3024,сугубый,Adj,сугубый,positive/negative,opinion,
+3027,судорожный,Adj,судорожный,negative,opinion,СУДОРОЖНЫЙ (РЕЗКИЙ И НЕПРОИЗВОЛЬНЫЙ)
+3028,судорожный,Adj,судорожный,negative,opinion,СУДОРОЖНЫЙ (СУЕТЛИВЫЙ)
+3029,суеверный,Adj,суеверный,negative,opinion,
+3030,суетливый,Adj,суетливый,negative,opinion,
+3035,сумасбродный,Adj,сумасбродный,negative,opinion,
+3036,сумасшедший,Adj,сумасшедший,negative,opinion,
+3037,суматошный,Adj,суматошный,negative,opinion,
+3038,сумашедший,Adj,сумашедший,negative,opinion,
+3039,сумбурный,Adj,сумбурный,negative,opinion,
+3040,сумрачный,Adj,сумрачный,negative,opinion,
+3041,супермодный,Adj,супермодный,positive,opinion,
+3042,супер-надежный,Adj,супер-надежный,positive,opinion,
+3043,суперский,Adj,суперский,positive,opinion,
+3044,суперсовременный,Adj,суперсовременный,positive,opinion,
+3045,суперталантливый,Adj,суперталантливый,positive,opinion,
+3046,суровый,Adj,суровый,negative,opinion,
+3047,сусальный,Adj,сусальный,negative,opinion,"ПРИТОРНЫЙ,ИЗЛИШНЕ ЛЮБЕЗНЫЙ"
+3049,сутуловатый,Adj,сутуловатый,negative,opinion,
+3050,сутулый,Adj,сутулый,negative,opinion,
+3051,сухой,Adj,сухой,negative,opinion,"СУХОЙ (ЛИШЕННЫЙ СВЕЖЕСТИ,СОЧНОСТИ,МЯГКОСТИ)"
+3052,сухой,Adj,сухой,negative,opinion,СУХОЙ В ОБРАЩЕНИИ
+3054,сухой,Adj,сухой,neutral,opinion,"СУХОЙ (СКУПОЙ,ЛАКОНИЧНЫЙ)"
+3055,сухой,Adj,сухой,neutral,opinion,"ХУДОЙ,НЕТОЛСТЫЙ"
+3056,сухой,Adj,сухой,positive,opinion,"СУХОЙ,НЕМОКРЫЙ"
+3058,сухощавый,Adj,сухощавый,neutral,opinion,
+3059,счастливый,Adj,счастливый,positive,opinion,
+3061,сытный,Adj,сытный,positive,opinion,
+3062,сытый,Adj,сытый,positive,opinion,
+3064,тактичный,Adj,тактичный,positive,opinion,
+3065,талантливейший,Adj,талантливейший,positive,opinion,
+3066,талантливый,Adj,талантливый,positive,opinion,
+3068,твердокаменный,Adj,твердокаменный,negative,opinion,
+3069,твердолобый,Adj,твердолобый,negative,opinion,
+3070,твердый,Adj,твердый,neutral,opinion,"ТВЕРДЫЙ,НЕМЯГКИЙ"
+3071,твердый,Adj,твердый,positive,opinion,ПРОЧНЫЙ (НЕИЗМЕННЫЙ)
+3072,твердый,Adj,твердый,positive,opinion,"ТВЕРДОСТЬ,СТОЙКОСТЬ,НЕПОКОЛЕБИМОСТЬ"
+3073,театральный,Adj,театральный,negative,opinion,"ТЕАТРАЛЬНЫЙ (НЕЕСТЕСТВЕННЫЙ,ПОКАЗНОЙ)"
+3076,темный,Adj,темный,negative,opinion,ОТСТАЛЫЙ (СЛАБОРАЗВИТЫЙ)
+3077,темный,Adj,темный,negative,opinion,ТЕМНЫЙ (НЕПОНЯТНЫЙ)
+3078,темный,Adj,темный,neutral,opinion,ТЕМНЫЙ ПО ЦВЕТУ
+3079,темный,Adj,темный,neutral,opinion,"ТЕМНЫЙ,ПЛОХО ОСВЕЩЕННЫЙ"
+3080,тенденциозный,Adj,тенденциозный,negative,opinion,
+3081,тепленький,Adj,тепленький,neutral,opinion,
+3082,теплый,Adj,теплый,neutral,opinion,"ТЕПЛЫЙ,НЕХОЛОДНЫЙ"
+3083,теплый,Adj,теплый,positive,opinion,ТЕПЛЫЙ ПО ЦВЕТУ
+3084,теплый,Adj,теплый,positive,opinion,ХОРОШИЕ ОТНОШЕНИЯ
+3085,терпеливый,Adj,терпеливый,positive,opinion,
+3086,терпимый,Adj,терпимый,positive,opinion,
+3088,тесноватый,Adj,тесноватый,negative,opinion,
+3089,тесный,Adj,тесный,negative,opinion,"ЖАТЬ,БЫТЬ ТЕСНЫМ"
+3090,тесный,Adj,тесный,negative,opinion,"ТЕСНЫЙ,НЕПРОСТОРНЫЙ"
+3091,тесный,Adj,тесный,negative,opinion,"ТЕСНЫЙ,ТЕСНО РАСПОЛОЖЕННЫЙ"
+3092,тесный,Adj,тесный,negative,opinion,"ТЕСНЫЙ,УЗКИЙ"
+3093,тесный,Adj,тесный,positive,opinion,БЛИЗОСТЬ В ОТНОШЕНИЯХ
+3094,тиранический,Adj,тиранический,negative,opinion,
+3095,тиранский,Adj,тиранский,negative,opinion,
+3096,тихий,Adj,тихий,neutral,opinion,"ТИХИЙ,НЕГРОМКИЙ"
+3097,тихий,Adj,тихий,positive,opinion,"ТИХИЙ,НЕ ОЖИВЛЕННЫЙ"
+3098,тихий,Adj,тихий,positive/negative,opinion,"СМИРНЫЙ,ТИХИЙ"
+3102,токсичный,Adj,токсичный,negative,opinion,
+3103,толковый,Adj,толковый,positive,opinion,
+3104,толстенный,Adj,толстенный,negative,opinion,"ТОЛСТЫЙ,ТУЧНЫЙ"
+3105,толстенный,Adj,толстенный,neutral,opinion,"ТОЛСТЫЙ В ОБЪЕМЕ,В ОБХВАТЕ"
+3106,толстокожий,Adj,толстокожий,negative,opinion,
+3107,толстопузый,Adj,толстопузый,negative,opinion,
+3108,толстый,Adj,толстый,negative,opinion,"ТОЛСТЫЙ,ТУЧНЫЙ"
+3109,толстый,Adj,толстый,neutral,opinion,"ТОЛСТЫЙ В ОБЪЕМЕ,В ОБХВАТЕ"
+3110,тонкий,Adj,тонкий,neutral,opinion,ВЫСОКИЙ ПО ЗВУКУ
+3111,тонкий,Adj,тонкий,neutral,opinion,ТОНКИЙ ПО ШИРИНЕ
+3112,тонкий,Adj,тонкий,positive,opinion,"ДЕЛИКАТНЫЙ,ТАКТИЧНЫЙ"
+3113,тонкий,Adj,тонкий,positive,opinion,"ОСТРЫЙ,ТОНКИЙ (ХОРОШО ВОСПРИНИМАЮЩИЙ)"
+3114,тонкий,Adj,тонкий,positive,opinion,"УТОНЧЕННЫЙ,ИЗЫСКАННЫЙ"
+3115,тончайший,Adj,тончайший,neutral,opinion,ТОНКИЙ ПО ШИРИНЕ
+3116,тончайший,Adj,тончайший,positive,opinion,"УТОНЧЕННЫЙ,ИЗЫСКАННЫЙ"
+3118,топорный,Adj,топорный,negative,opinion,ТОПОРНО ИЗГОТОВЛЕННЫЙ
+3120,торгашеский,Adj,торгашеский,negative,opinion,
+3122,торжественный,Adj,торжественный,positive,opinion,"ТОРЖЕСТВЕННЫЙ (ВАЖНЫЙ,ВЕЛИЧАВЫЙ,СЕРЬЕЗНЫЙ)"
+3123,торопливый,Adj,торопливый,negative,opinion,
+3127,точный,Adj,точный,positive,opinion,
+3128,тошнотворный,Adj,тошнотворный,negative,opinion,
+3130,тошный,Adj,тошный,negative,opinion,
+3131,тощий,Adj,тощий,negative,opinion,
+3133,трагедийный,Adj,трагедийный,negative,opinion,НЕСЧАСТЬЕ
+3135,трагический,Adj,трагический,negative,opinion,ТРАГИЧНЫЙ
+3137,трагичный,Adj,трагичный,negative,opinion,
+3139,требовательный,Adj,требовательный,positive,opinion,
+3141,трезвомыслящий,Adj,трезвомыслящий,positive,opinion,
+3142,трезвый,Adj,трезвый,positive,opinion,
+3143,третьестепенный,Adj,третьестепенный,negative,opinion,
+3144,тривиальный,Adj,тривиальный,negative,opinion,
+3145,триумфальный,Adj,триумфальный,positive,opinion,
+3146,триумфаторский,Adj,триумфаторский,positive,opinion,
+3147,трогательный,Adj,трогательный,positive,opinion,
+3150,труднейший,Adj,труднейший,negative,opinion,
+3151,трудновыполнимый,Adj,трудновыполнимый,negative,opinion,
+3152,трудный,Adj,трудный,negative,opinion,
+3153,трудоемкий,Adj,трудоемкий,negative,opinion,
+3155,трудолюбивый,Adj,трудолюбивый,positive,opinion,
+3156,трусливый,Adj,трусливый,negative,opinion,
+3157,трусоватый,Adj,трусоватый,negative,opinion,
+3162,туманный,Adj,туманный,negative,opinion,РАСПЛЫВЧАТЫЙ (НЕЯСНЫЙ)
+3163,туманный,Adj,туманный,negative,opinion,РАСПЛЫВЧАТЫЙ ПО ФОРМЕ
+3164,тупейший,Adj,тупейший,negative,opinion,
+3165,тупиковый,Adj,тупиковый,negative,opinion,БЕЗВЫХОДНОЕ ПОЛОЖЕНИЕ
+3169,туповатый,Adj,туповатый,negative,opinion,
+3170,тупоголовый,Adj,тупоголовый,negative,opinion,
+3171,тупой,Adj,тупой,negative,opinion,ТУПОЙ (ГЛУПЫЙ)
+3173,тупорылый,Adj,тупорылый,negative,opinion,
+3174,тусклый,Adj,тусклый,negative,opinion,
+3175,тучный,Adj,тучный,negative,opinion,
+3176,тщательнейший,Adj,тщательнейший,positive,opinion,
+3177,тщательный,Adj,тщательный,positive,opinion,
+3178,тщедушный,Adj,тщедушный,negative,opinion,
+3179,тщеславный,Adj,тщеславный,negative,opinion,
+3180,тщетный,Adj,тщетный,negative,opinion,
+3182,тягомотный,Adj,тягомотный,negative,opinion,
+3183,тягучий,Adj,тягучий,positive/negative,opinion,
+3184,тягчайший,Adj,тягчайший,negative,opinion,
+3185,тяжеленный,Adj,тяжеленный,negative,opinion,
+3187,тяжеловатый,Adj,тяжеловатый,negative,opinion,
+3188,тяжелый,Adj,тяжелый,negative,opinion,
+3189,тяжкий,Adj,тяжкий,negative,opinion,
+3190,убедительнейший,Adj,убедительнейший,positive,opinion,
+3191,убедительный,Adj,убедительный,positive,opinion,
+3192,убежденный,Adj,убежденный,positive,opinion,
+3194,убийственный,Adj,убийственный,negative,opinion,
+3195,убогий,Adj,убогий,negative,opinion,
+3196,убожество,Adj,убожество,negative,opinion,
+3197,убойный,Adj,убойный,negative,opinion,ПАГУБНЫЙ
+3200,уважительный,Adj,уважительный,positive,opinion,"УВАЖАТЬ,СЧИТАТЬСЯ С МНЕНИЕМ"
+3201,уважительный,Adj,уважительный,positive,opinion,УВАЖИТЕЛЬНЫЙ (ДОСТАТОЧНЫЙ ДЛЯ ОПРАВДАНИЯ)
+3203,увеселительный,Adj,увеселительный,positive,opinion,
+3205,увлекательнейший,Adj,увлекательнейший,positive,opinion,
+3206,увлекательный,Adj,увлекательный,positive,opinion,
+3207,увлеченный,Adj,увлеченный,positive,opinion,
+3209,угодный,Adj,угодный,positive,opinion,
+3214,угрожающий,Adj,угрожающий,negative,opinion,
+3215,угрюмый,Adj,угрюмый,negative,opinion,
+3216,удачливый,Adj,удачливый,positive,opinion,
+3217,удачный,Adj,удачный,positive,opinion,
+3218,удивительный,Adj,удивительный,neutral,opinion,УДИВИТЕЛЬНЫЙ
+3219,удивительный,Adj,удивительный,positive,opinion,ИСКЛЮЧИТЕЛЬНЫЙ ПО СВОИМ КАЧЕСТВАМ
+3220,удобный,Adj,удобный,positive,opinion,
+3221,удовлетворительный,Adj,удовлетворительный,positive,opinion,
+3223,удушающий,Adj,удушающий,negative,opinion,
+3225,удушливый,Adj,удушливый,negative,opinion,ПРИТЕСНИТЬ
+3226,ужасающий,Adj,ужасающий,negative,opinion,
+3227,ужаснейший,Adj,ужаснейший,negative,opinion,
+3228,ужасный,Adj,ужасный,negative,opinion,
+3229,уживчивый,Adj,уживчивый,positive,opinion,
+3231,узкий,Adj,узкий,negative,opinion,"ЖАТЬ,БЫТЬ ТЕСНЫМ"
+3232,узкий,Adj,узкий,negative,opinion,"ТЕСНЫЙ,УЗКИЙ"
+3233,узкий,Adj,узкий,negative,opinion,"УЗКИЙ,ОГРАНИЧЕННЫЙ"
+3234,узкий,Adj,узкий,neutral,opinion,УЗКИЙ В ШИРИНУ
+3235,узкокорыстный,Adj,узкокорыстный,negative,opinion,
+3236,укоризненный,Adj,укоризненный,negative,opinion,
+3238,улетный,Adj,улетный,positive,opinion,
+3239,улыбчивый,Adj,улыбчивый,positive,opinion,
+3240,ультимативный,Adj,ультимативный,negative,opinion,
+3241,ультрамодный,Adj,ультрамодный,positive,opinion,
+3242,ультрарадикальный,Adj,ультрарадикальный,negative,opinion,
+3243,ультрасовременный,Adj,ультрасовременный,positive,opinion,
+3244,умалишенный,Adj,умалишенный,negative,opinion,
+3245,умелый,Adj,умелый,positive,opinion,
+3246,умеренный,Adj,умеренный,positive/negative,opinion,
+3247,уместный,Adj,уместный,positive,opinion,
+3248,умнейший,Adj,умнейший,positive,opinion,
+3249,умный,Adj,умный,positive,opinion,
+3251,уморительный,Adj,уморительный,positive,opinion,
+3252,умудренный,Adj,умудренный,positive,opinion,
+3253,универсальный,Adj,универсальный,positive,opinion,
+3254,унижающий,Adj,унижающий,negative,opinion,
+3255,унизительный,Adj,унизительный,negative,opinion,
+3256,уникальнейший,Adj,уникальнейший,positive,opinion,
+3257,уникальный,Adj,уникальный,neutral,opinion,
+3258,уничижительный,Adj,уничижительный,negative,opinion,
+3259,унылый,Adj,унылый,negative,opinion,
+3260,упаднический,Adj,упаднический,negative,opinion,
+3261,упадочный,Adj,упадочный,negative,opinion,
+3262,упертый,Adj,упертый,negative,opinion,УПРЯМЫЙ (НЕУСТУПЧИВЫЙ)
+3263,упертый,Adj,упертый,positive/negative,opinion,УПОРСТВО В ДОСТИЖЕНИИ ЦЕЛИ
+3264,упитанный,Adj,упитанный,positive/negative,opinion,
+3265,упоительный,Adj,упоительный,positive,opinion,
+3266,упоротый,Adj,упоротый/упорота,negative,opinion,
+3267,упрямый,Adj,упрямый,negative,opinion,
+3268,уравновешенный,Adj,уравновешенный,positive,opinion,
+3270,уродливый,Adj,уродливый,negative,opinion,
+3271,уродский,Adj,уродский,negative,opinion,
+3272,усердный,Adj,усердный,positive,opinion,
+3273,усложняющий,Adj,усложняющий,negative,opinion,
+3274,успешливый,Adj,успешливый,positive,opinion,
+3275,успешный,Adj,успешный,positive,opinion,
+3277,устаревший,Adj,устаревший,negative,opinion,
+3278,устарелый,Adj,устарелый,negative,opinion,
+3279,устойчивый,Adj,устойчивый,positive,opinion,
+3280,уступчивый,Adj,уступчивый,positive,opinion,
+3281,утомительный,Adj,утомительный,negative,opinion,
+3283,утонченный,Adj,утонченный,positive,opinion,
+3284,утопичный,Adj,утопичный,negative,opinion,
+3286,ухоженный,Adj,ухоженный,positive,opinion,
+3289,учительский,Adj,учительский,positive,opinion,"НАСТАВИТЕЛЬНЫЙ,ПОУЧИТЕЛЬНЫЙ"
+3290,ушлый,Adj,ушлый,negative,opinion,
+3291,ущербный,Adj,ущербный,negative,opinion,
+3292,уютный,Adj,уютный,positive,opinion,
+3293,уязвимый,Adj,уязвимый,negative,opinion,
+3297,фальшивый,Adj,фальшивый,negative,opinion,
+3298,фанатический,Adj,фанатический,negative,opinion,
+3299,фанатичный,Adj,фанатичный,positive/negative,opinion,
+3301,фантастический,Adj,фантастический,positive,opinion,ИСКЛЮЧИТЕЛЬНЫЙ ПО СВОИМ КАЧЕСТВАМ
+3302,фантастический,Adj,фантастический,positive,opinion,НЕМЫСЛИМЫЙ (НЕВОЗМОЖНЫЙ)
+3303,фантастический,Adj,фантастический,positive,opinion,ПОРАЗИТЕЛЬНЫЙ (НЕОБЫЧНЫЙ)
+3304,фанфаронский,Adj,фанфаронский,negative,opinion,
+3305,фартовый,Adj,фартовый,positive,opinion,
+3306,фатальный,Adj,фатальный,negative,opinion,
+3307,фашиствующий,Adj,фашиствующий,negative,opinion,
+3309,феерический,Adj,феерический,positive,opinion,
+3310,фееричный,Adj,фееричный,positive,opinion,
+3311,феноменальный,Adj,феноменальный,positive,opinion,
+3312,фешенебельный,Adj,фешенебельный,positive,opinion,
+3313,фигов,Adj,фигов,negative,opinion,
+3314,фиговый,Adj,фиговый,negative,opinion,ОТВРАТИТЕЛЬНЫЙ (ОЧЕНЬ ПЛОХОЙ)
+3317,фиктивный,Adj,фиктивный,negative,opinion,
+3320,филигранный,Adj,филигранный,positive,opinion,ФИЛИГРАННЫЙ
+3322,формалистский,Adj,формалистский,negative,opinion,
+3323,форсмажорный,Adj,форсмажорный,negative,opinion,
+3324,форс-мажорный,Adj,форс-мажорный,negative,opinion,
+3326,халатный,Adj,халатный,negative,opinion,ХАЛАТНЫЙ (НЕБРЕЖНЫЙ И НЕДОБРОСОВЕСТНЫЙ)
+3328,хамоватый,Adj,хамоватый,negative,opinion,
+3329,хамский,Adj,хамский,negative,opinion,
+3330,ханжеский,Adj,ханжеский,negative,opinion,
+3331,хаотический,Adj,хаотический,negative,opinion,
+3332,хаотичный,Adj,хаотичный,negative,opinion,
+3333,хардкорный,Adj,хардкорный,positive,opinion,
+3334,харизматический,Adj,харизматический,positive,opinion,
+3335,хвалебный,Adj,хвалебный,positive,opinion,
+3336,хваленый,Adj,хваленый,positive,opinion,
+3337,хвастливый,Adj,хвастливый,negative,opinion,
+3338,хваткий,Adj,хваткий,positive,opinion,
+3339,хворый,Adj,хворый,negative,opinion,
+3340,хилый,Adj,хилый,negative,opinion,
+3341,хитроватый,Adj,хитроватый,negative,opinion,
+3342,хитрожопый,Adj,хитрожопый/хитрожопые,negative,opinion,
+3343,хитроумный,Adj,хитроумный,positive,opinion,ХИТРОУМНЫЙ (СЛОЖНЫЙ И ИСКУСНЫЙ)
+3344,хитроумный,Adj,хитроумный,positive/negative,opinion,"ХИТРЫЙ,ХИТРОУМНЫЙ"
+3345,хитрый,Adj,хитрый,positive/negative,opinion,
+3346,хитрющий,Adj,хитрющий,positive/negative,opinion,
+3347,хладнокровный,Adj,хладнокровный,positive,opinion,
+3348,хлебосольный,Adj,хлебосольный,positive,opinion,
+3349,хлипкий,Adj,хлипкий,negative,opinion,
+3351,хмельной,Adj,хмель,negative,opinion,"ДУРМАНИТЬ,ТУМАНИТЬ"
+3353,хмельной,Adj,хмель,positive/negative,opinion,УПОЕНИЕ
+3354,хмурый,Adj,хмурый,negative,opinion,
+3355,ходкий,Adj,ходкий,positive,opinion,
+3358,ходовой,Adj,ходовой,positive,opinion,"ХОДКИЙ,ХОРОШО ПРОДАЮЩИЙСЯ"
+3359,ходульный,Adj,ходульный,negative,opinion,
+3360,хозяйственный,Adj,хозяйственный,positive,opinion,
+3363,холодненький,Adj,холодненький,positive,opinion,
+3364,холодноватый,Adj,холодноватый,negative,opinion,
+3365,холодный,Adj,холодный,negative,opinion,ХОЛОДНЫЙ В ОТНОШЕНИЯХ
+3366,холодный,Adj,холодный,neutral,opinion,ХОЛОДНЫЙ ПО ТЕМПЕРАТУРЕ
+3367,холодный,Adj,холодный,neutral,opinion,ХОЛОДНЫЙ ПО ЦВЕТУ
+3368,холуйский,Adj,холуйский,negative,opinion,
+3369,хорошенький,Adj,хорошенький,positive,opinion,
+3370,хороший,Adj,хороший,positive,opinion,
+3371,храбрый,Adj,храбрый,positive,opinion,
+3372,хреновый,Adj,хреновый,negative,opinion,ОТВРАТИТЕЛЬНЫЙ (ОЧЕНЬ ПЛОХОЙ)
+3378,хрупкий,Adj,хрупкий,negative,opinion,
+3379,худенький,Adj,худенький,neutral,opinion,
+3381,худой,Adj,худой,negative,opinion,"ПЛОХОЙ,НЕУДОВЛЕТВОРИТЕЛЬНЫЙ"
+3382,худой,Adj,худой,negative,opinion,"ХУДОЙ,НЕТОЛСТЫЙ"
+3383,худосочный,Adj,худосочный,negative,opinion,
+3384,худощавый,Adj,худощавый,neutral,opinion,
+3385,худший,Adj,худший,negative,opinion,
+3386,хулиганский,Adj,хулиганский,negative,opinion,
+3388,царский,Adj,царский,positive,opinion,"РОСКОШНЫЙ,ПЫШНЫЙ"
+3389,царственный,Adj,царственный,positive,opinion,
+3390,цветастый,Adj,цветастый,neutral,opinion,
+3391,цветистый,Adj,цветистый,positive/negative,opinion,
+3392,цветущий,Adj,цветущий,positive,opinion,
+3393,целебный,Adj,целебный,positive,opinion,
+3394,целесообразный,Adj,целесообразный,positive,opinion,
+3395,целеустремленный,Adj,целеустремленный,positive,opinion,
+3396,целительный,Adj,целительный,positive,opinion,
+3397,целостный,Adj,целостный,positive,opinion,
+3399,цензурный,Adj,цензурный,positive,opinion,ПРИСТОЙНЫЙ
+3400,ценительский,Adj,ценительский,positive,opinion,
+3401,ценный,Adj,ценный,positive,opinion,
+3402,цепкий,Adj,цепкий,positive,opinion,
+3403,цинический,Adj,цинический,negative,opinion,
+3404,циничный,Adj,циничный,negative,opinion,
+3405,чаемый,Adj,чаемый,positive,opinion,
+3406,чародейный,Adj,чародейный,positive,opinion,
+3407,чародейский,Adj,чародейский,positive,opinion,
+3408,чахлый,Adj,чахлый,negative,opinion,
+3409,чванливый,Adj,чванливый,negative,opinion,
+3410,чванный,Adj,чванный,negative,opinion,
+3411,человеколюбивый,Adj,человеколюбивый,positive,opinion,
+3413,человеческий,Adj,человеческий,positive,opinion,ЧЕЛОВЕЧНЫЙ
+3414,человечный,Adj,человечный,positive,opinion,
+3415,черствый,Adj,черствый,negative,opinion,
+3416,чертов,Adj,чертов,negative,opinion,
+3418,честнейший,Adj,честнейший,positive,opinion,
+3419,честный,Adj,честный,positive,opinion,
+3420,четкий,Adj,четкий,positive,opinion,
+3422,чистейший,Adj,чистейший,positive,opinion,"НРАВСТВЕННЫЙ,ЭТИЧНЫЙ"
+3423,чистейший,Adj,чистейший,positive,opinion,"ЧИСТЫЙ,НЕГРЯЗНЫЙ"
+3424,чистенький,Adj,чистенький,positive,opinion,
+3425,чистокровный,Adj,чистокровный,positive,opinion,
+3426,чистоплотный,Adj,чистоплотный,positive,opinion,
+3427,чистопородный,Adj,чистопородный,positive,opinion,
+3428,чистосердечный,Adj,чистосердечный,positive,opinion,
+3431,чистый,Adj,чистый,positive,opinion,"НРАВСТВЕННЫЙ,ЭТИЧНЫЙ"
+3432,чистый,Adj,чистый,positive,opinion,"ЧИСТЫЙ,НЕГРЯЗНЫЙ"
+3434,чокнутый,Adj,чокнутый,negative,opinion,
+3435,чреватый,Adj,чреватый,negative,opinion,
+3436,чревоугоднический,Adj,чревоугоднический,negative,opinion,
+3438,чрезмерный,Adj,чрезмерный,negative,opinion,
+3439,чувственный,Adj,чувственный,positive,opinion,
+3441,чувствительный,Adj,чувствительный,positive/negative,opinion,"ЧУВСТВИТЕЛЬНЫЙ,ДУШЕЩИПАТЕЛЬНЫЙ"
+3442,чувствительный,Adj,чувствительный,positive/negative,opinion,"ЧУВСТВИТЕЛЬНЫЙ,СЕНТИМЕНТАЛЬНЫЙ"
+3443,чудаковатый,Adj,чудаковатый,neutral,opinion,
+3444,чудаческий,Adj,чудаческий,neutral,opinion,
+3445,чудесный,Adj,чудесный,positive,opinion,
+3446,чудной,Adj,чудной,neutral,opinion,
+3447,чудный,Adj,чудный,positive,opinion,
+3448,чудовищный,Adj,чудовищный,negative,opinion,
+3449,чудодейственный,Adj,чудодейственный,positive,opinion,
+3450,чудотворный,Adj,чудотворный,positive,opinion,
+3451,чуждый,Adj,чуждый,negative,opinion,
+3452,чужеродный,Adj,чужеродный,negative,opinion,
+3454,чужой,Adj,чужой,negative,opinion,"ЧУЖДЫЙ,ДАЛЕКИЙ"
+3457,чумовой,Adj,чумовой,positive,opinion,
+3458,чуткий,Adj,чуткий,positive,opinion,
+3459,шаблонный,Adj,шаблонный,negative,opinion,БАНАЛЬНЫЙ
+3461,шаловливый,Adj,шаловливый,positive,opinion,
+3464,шаткий,Adj,шаткий,negative,opinion,
+3465,шедевральный,Adj,шедевральный,positive,opinion,
+3467,шикарнейший,Adj,шикарнейший,positive,opinion,
+3468,шикарный,Adj,шикарный,positive,opinion,
+3469,широкодоступный,Adj,широкодоступный,positive,opinion,
+3470,широчайший,Adj,широчайший,positive,opinion,
+3473,шкодливый,Adj,шкодливый,negative,opinion,
+3482,шулерский,Adj,шулерский,negative,opinion,
+3484,шустрый,Adj,шустрый,positive,opinion,
+3485,шутливый,Adj,шутливый,positive,opinion,
+3486,шутовской,Adj,шутовской,negative,opinion,
+3487,щедрый,Adj,щедрый,positive,opinion,
+3488,щекотливый,Adj,щекотливый,negative,opinion,
+3489,щепетильный,Adj,щепетильный,negative,opinion,ДЕЛИКАТНЫЙ (ЗАТРУДНИТЕЛЬНЫЙ)
+3490,щепетильный,Adj,щепетильный,positive,opinion,ЩЕПЕТИЛЬНЫЙ (ПОСЛЕДОВАТЕЛЬНЫЙ И ПРИНЦИПИАЛЬНЫЙ)
+3492,эгоистический,Adj,эгоистический,negative,opinion,
+3493,эгоистичность,Adj,эгоистичность,negative,opinion,
+3494,эгоистичный,Adj,эгоистичный,negative,opinion,
+3497,экзотический,Adj,экзотический,neutral,opinion,
+3498,экзотичный,Adj,экзотичный,neutral,opinion,
+3499,экономный,Adj,экономный,positive,opinion,
+3500,эксклюзивный,Adj,эксклюзивный,positive,opinion,
+3501,экспрессивный,Adj,экспрессивный,positive,opinion,
+3504,экстра,Adj,экстра,positive,opinion,
+3505,экстравагантный,Adj,экстравагантный,positive/negative,opinion,
+3507,экстремальный,Adj,экстремальный,neutral,opinion,
+3510,эксцентрический,Adj,эксцентрический,positive/negative,opinion,ЭКСЦЕНТРИЧНЫЙ (ВЫЗЫВАЮЩИЙ)
+3511,эксцентричный,Adj,эксцентричный,positive/negative,opinion,
+3512,элегантный,Adj,элегантный,positive,opinion,
+3513,элитарный,Adj,элитарный,positive,opinion,
+3514,элитный,Adj,элитный,positive,opinion,ВЕРХУШКА ОБЩЕСТВА
+3515,элитный,Adj,элитный,positive,opinion,ОТБОРНЫЙ
+3517,эмоциональный,Adj,эмоциональный,neutral,opinion,"ЭМОЦИОНАЛЬНЫЙ,ПОДВЕРЖЕННЫЙ ЭМОЦИЯМ"
+3518,энергичный,Adj,энергичный,positive,opinion,
+3520,эпатажный,Adj,эпатажный,negative,opinion,
+3523,эпический,Adj,эпический,positive,opinion,
+3524,эпичный,Adj,эпичный,positive,opinion,
+3525,эпохальный,Adj,эпохальный,positive,opinion,
+3528,эротический,Adj,эротический,positive/negative,opinion,"СОБЛАЗНИТЕЛЬНЫЙ,СЕКСУАЛЬНЫЙ"
+3530,эротичный,Adj,эротичный,positive/negative,opinion,"СОБЛАЗНИТЕЛЬНЫЙ,СЕКСУАЛЬНЫЙ"
+3531,эстетичный,Adj,эстетичный,positive,opinion,
+3532,этичный,Adj,этичный,positive,opinion,
+3535,эффективный,Adj,эффективный,positive,opinion,
+3536,эффектный,Adj,эффектный,positive,opinion,
+3539,ювелирный,Adj,ювелирный,positive,opinion,ФИЛИГРАННЫЙ
+3541,явный,Adj,явный,neutral,opinion,
+3542,ядовитый,Adj,ядовитый,negative,opinion,
+3544,яркий,Adj,яркий,neutral,opinion,ЯРКИЙ ПО СВЕТУ
+3545,яркий,Adj,яркий,neutral,opinion,ЯРКИЙ ПО ЦВЕТУ
+3546,яркий,Adj,яркий,positive,opinion,ЯРКИЙ (ВЫРАЗИТЕЛЬНЫЙ)
+3548,яростный,Adj,яростный,positive/negative,opinion,"БЕЗУДЕРЖНЫЙ,НЕУДЕРЖИМЫЙ"
+3549,яростный,Adj,яростный,positive/negative,opinion,НЕИСТОВЫЙ
+3550,ярый,Adj,ярый,negative,opinion,"БЕЗУДЕРЖНЫЙ,НЕУДЕРЖИМЫЙ"
+3551,ярый,Adj,ярый,positive,opinion,ПРЕДАННЫЙ
+3552,ясный,Adj,ясный,positive,opinion,
+
