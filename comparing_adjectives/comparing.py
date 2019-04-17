@@ -38,14 +38,12 @@ intersec_incremental = set.intersection(*map(set, vocabs_incremental))
 
 words_regular = []
 words_incremental = []
-eval_adj = pd.read_csv(sys.argv[1])
-tag = sys.argv[2]
-for line in eval_adj['WORD']:
-    word = line + '_' + tag
-    if word in intersec_regular:
-        words_regular.append(word)
-    if word in intersec_incremental:
-        words_incremental.append(word)
+eval_adj_regular = pd.read_csv(sys.argv[1])
+eval_adj_incremental = pd.read_csv(sys.argv[2])
+for word in eval_adj_regular['WORD']:
+    words_regular.append(word)
+for word in eval_adj_incremental['WORD']:
+    words_incremental.append(word)
 
 results_eval_regular = pd.DataFrame()
 results_eval_regular['WORD'] = words_regular

@@ -174,3 +174,10 @@ output_results(wordfreq_regular, restfreq_regular).to_csv(sys.argv[9])
 output_results(wordfreq_incremental, restfreq_incremental).to_csv(sys.argv[10])
 output_results(wordfreq_regular_filtered, restfreq_regular_filtered).to_csv(sys.argv[11])
 output_results(wordfreq_incremental_filtered, restfreq_incremental_filtered).to_csv(sys.argv[12])
+
+eval_filteres_regular = pd.DataFrame()
+eval_filteres_incremental = pd.DataFrame()
+eval_filteres_regular['WORD'] = words_regular_filtered
+eval_filteres_regular.to_csv(sys.argv[13])
+eval_filteres_incremental['WORD'] = words_incremental_filtered
+eval_filteres_incremental.to_csv(sys.argv[14])

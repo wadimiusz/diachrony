@@ -1,15 +1,16 @@
 Comparing outputs/rusentilex_eval_regular.csv outputs/rusentilex_rest_regular.csv
 Distances_procrustes
-Averages: 0.7172836494404086 0.7473431307582824
-T-test: Ttest_indResult(statistic=-7.261811936583513, pvalue=5.257920450368026e-13)
+Averages: 0.7489901158787997 0.7513851696994104
+T-test: Ttest_indResult(statistic=-0.5636700303020419, pvalue=0.5732180307123824)
 Distances_globalanchors
-Averages: 0.5674436449464252 0.7403841754284123
-T-test: Ttest_indResult(statistic=-16.666167941411864, pvalue=7.438390413890246e-59)
+Averages: 0.7237886445206626 0.7420305229228689
+T-test: Ttest_indResult(statistic=-3.1564371124205817, pvalue=0.001688253676613328)
 
 Comparing outputs/rusentilex_eval_incremental.csv outputs/rusentilex_rest_incremental.csv
 Distances_procrustes
-Averages: 0.9019013526554686 0.9312873321688433
-T-test: Ttest_indResult(statistic=-10.337217263188402, pvalue=1.428261302344597e-24)
+Averages: 0.9271708521207312 0.9316140876517426
+T-test: Ttest_indResult(statistic=-1.6626975304797833, pvalue=0.0966980682484106)
 Distances_globalanchors
-Averages: 0.8240778373747769 0.9506471301705707
-T-test: Ttest_indResult(statistic=-16.335465770577855, pvalue=3.638928645523598e-57)
+Averages: 0.9534114021422978 0.9502758915830704
+T-test: Ttest_indResult(statistic=1.1628637762689746, pvalue=0.24517255403110216)
+
