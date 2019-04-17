@@ -110,6 +110,31 @@ def get_mean_dist_globalanchors(wordlist, modellist):
     return mean_scores
 
 
+def get_freqdict(wordlist, vocablist, corpus_len):
+    all_freqs = []
+    word_freq = {}
+    for word in wordlist:
+        counts = [vocab[word].count for vocab in vocablist]
+        frequency = [counts[i] / corpus_len[i] for i in range(len(vocablist))]
+        mean_frequency = sum(frequency)/len(frequency)
+        all_freqs.append(mean_frequency)
+        word_freq[word] = mean_frequency
+
+    return word_freq
+
+
+corpus_len = [int(i) for i in sys.argv[9:]]
+
+wordfreq_eval_regular = get_freqdict(words_regular, vocabs_regular, corpus_len)
+wordfreq_eval_incremental = get_freqdict(words_incremental, vocabs_incremental, corpus_len)
+wordfreq_rest_regular = get_freqdict(rest_regular, vocabs_regular, corpus_len)
+wordfreq_rest_incremental = get_freqdict(rest_incremental, vocabs_incremental, corpus_len)
+
+results_eval_regular['frequency'] = results_eval_regular['WORD'].map(wordfreq_eval_regular)
+results_eval_incremental['frequency'] = results_eval_incremental['WORD'].map(wordfreq_eval_incremental)
+results_rest_regular['frequency'] = results_rest_regular['WORD'].map(wordfreq_rest_regular)
+results_rest_incremental['frequency'] = results_rest_incremental['WORD'].map(wordfreq_rest_incremental)
+
 eval_reg_proc = get_mean_dist_procrustes(words_regular, models_regular)
 eval_reg_ga = get_mean_dist_globalanchors(words_regular, models_regular)
 eval_incr_proc = get_mean_dist_procrustes(words_incremental, models_incremental)
