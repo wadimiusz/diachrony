@@ -1,4 +1,4 @@
-,WORD,POS,LEMMA,SENTIMENT,SOURCE,SENSE
+ID,WORD,POS,LEMMA,SENTIMENT,SOURCE,SENSE
 0,абсурдный,Adj,абсурдный,negative,opinion,
 1,авантюристический,Adj,авантюристический,negative,opinion,
 2,авантюристский,Adj,авантюристский,negative,opinion,
@@ -1165,7 +1165,6 @@
 1163,недотепистый,Adj,недотепистый,negative,opinion,
 1164,недоуменный,Adj,недоуменный,negative,opinion,
 1165,недурен,Adj,недурной,positive,opinion,
-1166,недурной,Adj,недурной,positive,opinion,
 1167,недюжинный,Adj,недюжинный,positive,opinion,
 1168,неестественный,Adj,неестественный,negative,opinion,
 1169,нежадный,Adj,нежадный,positive,opinion,
