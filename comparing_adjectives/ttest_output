@@ -1,0 +1,15 @@
+Comparing outputs/rusentilex_eval_regular.csv outputs/rusentilex_rest_regular.csv
+Distances_procrustes
+Averages: 0.7172836494404086 0.7473431307582824
+T-test: Ttest_indResult(statistic=-7.261811936583513, pvalue=5.257920450368026e-13)
+Distances_globalanchors
+Averages: 0.5674436449464252 0.7403841754284123
+T-test: Ttest_indResult(statistic=-16.666167941411864, pvalue=7.438390413890246e-59)
+
+Comparing outputs/rusentilex_eval_incremental.csv outputs/rusentilex_rest_incremental.csv
+Distances_procrustes
+Averages: 0.9019013526554686 0.9312873321688433
+T-test: Ttest_indResult(statistic=-10.337217263188402, pvalue=1.428261302344597e-24)
+Distances_globalanchors
+Averages: 0.8240778373747769 0.9506471301705707
+T-test: Ttest_indResult(statistic=-16.335465770577855, pvalue=3.638928645523598e-57)
