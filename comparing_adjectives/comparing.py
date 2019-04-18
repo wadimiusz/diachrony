@@ -171,10 +171,12 @@ if __name__ == '__main__':
 
     corpus_len = [int(i) for i in sys.argv[9:]]
 
-    wordfreq_eval_regular = get_freqdict(words_regular, vocabs_regular, corpus_len)
-    wordfreq_eval_incremental = get_freqdict(words_incremental, vocabs_incremental, corpus_len)
-    wordfreq_rest_regular = get_freqdict(rest_regular, vocabs_regular, corpus_len)
-    wordfreq_rest_incremental = get_freqdict(rest_incremental, vocabs_incremental, corpus_len)
+    wordfreq_eval_regular, wordfreq_rest_regular = [get_freqdict(words, vocabs_regular, corpus_len)
+                                                    for words in [words_regular, rest_regular]]
+
+    wordfreq_eval_incremental, wordfreq_rest_incremental = \
+        [get_freqdict(words, vocabs_incremental, corpus_len)
+         for words in [words_incremental, rest_incremental]]
 
     results_eval_regular['frequency'] = results_eval_regular['WORD'].map(wordfreq_eval_regular)
     results_eval_incremental['frequency'] = \
