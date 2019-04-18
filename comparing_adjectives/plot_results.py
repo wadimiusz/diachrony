@@ -10,24 +10,40 @@ rest = pd.read_csv(sys.argv[2])
 
 
 def plot_procrustes(evaluative, rest):
-    x = [i for i in evaluative['mean_dist_procrustes'].tolist()]
-    y = [i for i in rest['mean_dist_procrustes'].tolist()]
+    x = [i for i in evaluative[sys.argv[3]].tolist()]
+    y = [i for i in rest[sys.argv[3]].tolist()]
 
     bins = np.linspace(0, 1, 50)
 
-    pyplot.xlabel('mean_cos_dist')
+    pyplot.xlabel(sys.argv[3])
     pyplot.ylabel('number_of_adjectives')
-    pyplot.title('Mean cosine distance of coherent time bins Procrustes Aligner')
+    pyplot.title('Procrustes Aligner')
     pyplot.hist(x, bins, alpha=0.5, label='evaluative', ec='black')
     pyplot.hist(y, bins, alpha=0.5, label='rest', ec='black')
     pyplot.legend(loc='upper right')
     #pyplot.show()
-    pyplot.savefig(sys.argv[3])
+    pyplot.savefig(sys.argv[4])
 
 
 def plot_globalanchors(evaluative, rest):
-    x = [i for i in evaluative['mean_dist_globalanchors'].tolist()]
-    y = [i for i in rest['mean_dist_globalanchors'].tolist()]
+    x = [i for i in evaluative[sys.argv[3]].tolist()]
+    y = [i for i in rest[sys.argv[3]].tolist()]
+
+    bins = np.linspace(0, 1, 50)
+
+    pyplot.xlabel(sys.argv[3])
+    pyplot.ylabel('number_of_adjectives')
+    pyplot.title('Global Anchors')
+    pyplot.hist(x, bins, alpha=0.5, label='evaluative', ec='black')
+    pyplot.hist(y, bins, alpha=0.5, label='rest', ec='black')
+    pyplot.legend(loc='upper right')
+    #pyplot.show()
+    pyplot.savefig(sys.argv[4])
+
+
+def plot_std(evaluative, rest):
+    x = [i for i in evaluative[sys.argv[3]].tolist()]
+    y = [i for i in rest[sys.argv[3]].tolist()]
 
     bins = np.linspace(0, 1, 50)
 
@@ -37,11 +53,13 @@ def plot_globalanchors(evaluative, rest):
     pyplot.hist(x, bins, alpha=0.5, label='evaluative', ec='black')
     pyplot.hist(y, bins, alpha=0.5, label='rest', ec='black')
     pyplot.legend(loc='upper right')
-    #pyplot.show()
-    pyplot.savefig(sys.argv[3])
+    # pyplot.show()
+    pyplot.savefig(sys.argv[4])
 
 
-if sys.argv[3].endswith('procrustes.png'):
+if sys.argv[3].endswith('procrustes'):
     plot_procrustes(evaluative, rest)
-elif sys.argv[3].endswith('globalanchors.png'):
+elif sys.argv[3].endswith('globalanchors'):
     plot_globalanchors(evaluative, rest)
+else:
+    plot_std(evaluative, rest)
