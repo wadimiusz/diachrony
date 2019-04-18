@@ -110,6 +110,40 @@ def get_mean_dist_globalanchors(wordlist, modellist):
     return mean_scores
 
 
+def get_move_from_initial_procrustes(wordlist, modellist):
+    move_from_init = {}
+    for word in wordlist:
+        deltas = []
+        current = 0
+        for i in range(1, len(modellist)):
+            delta = ProcrustesAligner(w2v1=modellist[0], w2v2=modellist[i]).get_score(word) - current
+            current = ProcrustesAligner(w2v1=modellist[0], w2v2=modellist[i]).get_score(word)
+            if i == 1:
+                deltas.append(1 - delta)
+            else:
+                deltas.append(- delta)
+        move_from_init[word] = np.sum(deltas)
+
+    return move_from_init
+
+
+def get_move_from_initial_globalanchors(wordlist, modellist):
+    move_from_init = {}
+    for word in wordlist:
+        deltas = []
+        current = 0
+        for i in range(1, len(modellist)):
+            delta = GlobalAnchors(w2v1=modellist[0], w2v2=modellist[i]).get_score(word) - current
+            current = GlobalAnchors(w2v1=modellist[0], w2v2=modellist[i]).get_score(word)
+            if i == 1:
+                deltas.append(1 - delta)
+            else:
+                deltas.append(- delta)
+        move_from_init[word] = np.sum(deltas)
+
+    return move_from_init
+
+
 def get_deviation(wordlist, modellist):
     mean_vectors = {}
     all_vectors = {}
