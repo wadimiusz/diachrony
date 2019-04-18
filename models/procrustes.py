@@ -1,14 +1,14 @@
-from sklearn.metrics.pairwise import cosine_similarity
 import gensim
 import numpy as np
-
 from utils import log
 from utils import intersection_align_gensim
+
 
 def smart_procrustes_align_gensim(base_embed: gensim.models.KeyedVectors,
                                   other_embed: gensim.models.KeyedVectors):
     """
-    This code, taken from https://gist.github.com/quadrismegistus/09a93e219a6ffc4f216fb85235535faf and modified,
+    This code, taken from
+    https://gist.github.com/quadrismegistus/09a93e219a6ffc4f216fb85235535faf and modified,
     uses procrustes analysis to make two word embeddings compatible.
     :param base_embed: first embedding
     :param other_embed: second embedding to be changed
@@ -34,7 +34,7 @@ def smart_procrustes_align_gensim(base_embed: gensim.models.KeyedVectors,
 
 
 class ProcrustesAligner(object):
-    def __init__(self, w2v1: gensim.models.KeyedVectors, w2v2: gensim.models.KeyedVectors, **kwargs):
+    def __init__(self, w2v1: gensim.models.KeyedVectors, w2v2: gensim.models.KeyedVectors):
         self.w2v1, self.w2v2 = intersection_align_gensim(w2v1, w2v2)
         self.w2v2_changed = smart_procrustes_align_gensim(w2v1, w2v2)
 
@@ -44,13 +44,15 @@ class ProcrustesAligner(object):
     def get_score(self, word):
         vector1 = self.w2v1.wv[word]
         vector2 = self.w2v2_changed.wv[word]
-        score = cosine_similarity(vector1.reshape((1, -1)), vector2.reshape((1, -1)))[0][0]
+        # score = cosine_similarity(vector1.reshape((1, -1)), vector2.reshape((1, -1)))[0][0]
+        score = np.dot(vector1, vector2)  # More straightforward computation
         return score
 
     def get_changes(self, top_n_changed_words: int):
         log('Doing procrustes')
         result = list()
-        for word in self.w2v1.wv.vocab.keys():  # their vocabs should be the same, so it doesn't matter over which to iterate
+        # their vocabs should be the same, so it doesn't matter over which to iterate:
+        for word in self.w2v1.wv.vocab.keys():
             score = self.get_score(word)
             result.append((word, score))
 
