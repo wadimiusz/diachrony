@@ -6,7 +6,7 @@ from gensim.matutils import unitvec
 
 class GlobalAnchors(object):
     def __init__(self, w2v1, w2v2, assume_vocabs_are_identical=False):
-        if not assume_vocabs_are_aligned:
+        if not assume_vocabs_are_identical:
             w2v1, w2v2 = intersection_align_gensim(w2v1, w2v2)
         
         self.w2v1 = w2v1
