@@ -4,7 +4,7 @@
 import sys
 import numpy as np
 import pandas as pd
-from gensim import matutils
+from gensim.matutils import unitvec
 from get_adjs import get_models_by_decade
 from models import ProcrustesAligner, GlobalAnchors
 from utils import intersection_align_gensim
@@ -65,16 +65,20 @@ def get_move_from_initial_procrustes(wordlist, modellist):
 def get_move_from_initial_globalanchors(wordlist, modellist):
     move_from_init = {}
     for word in wordlist:
-        deltas = []
-        current = 0
+        distances = []
         for i in range(1, len(modellist)):
-            delta = GlobalAnchors(w2v1=modellist[0], w2v2=modellist[i]).get_score(word) - current
-            current = GlobalAnchors(w2v1=modellist[0], w2v2=modellist[i]).get_score(word)
-            if i == 1:
-                deltas.append(1 - delta)
-            else:
-                deltas.append(- delta)
-        move_from_init[word] = np.sum(deltas)
+            similarity = GlobalAnchors(w2v1=modellist[0], w2v2=modellist[i]).get_score(word)
+            distance = 1 - similarity
+            distances.append(distance)
+        deltas = 0
+        previous = distances[0]
+        for d in distances[1:]:
+            if d > previous:
+                deltas += 1
+            elif d < previous:
+                deltas -= 1
+            previous = d
+        move_from_init[word] = deltas / (len(distances) - 1)
 
     return move_from_init
 
@@ -91,11 +95,11 @@ def get_deviation(wordlist, modellist):
 
     deviations = {}
     for word in wordlist:
-        dists = []
+        similarities = []
         for vector in all_vectors[word]:
-            dist = np.dot(matutils.unitvec(mean_vectors[word]), matutils.unitvec(vector))
-            dists.append(dist)
-        deviations[word] = np.std(dists)
+            sim = np.dot(unitvec(mean_vectors[word]), unitvec(vector))
+            similarities.append(sim)
+        deviations[word] = np.std(similarities)
 
     return deviations
 
