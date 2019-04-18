@@ -47,40 +47,6 @@ def get_models_by_decade(cur_decade: int, kind: str):
     return model
 
 
-models_regular = []
-models_incremental = []
-for decade in range(1960, 2010, 10):
-    model_regular = get_models_by_decade(decade, 'regular')
-    model_incremental = get_models_by_decade(decade, 'incremental')
-
-    models_regular.append(model_regular)
-    models_incremental.append(model_incremental)
-
-vocabs_regular = [model.wv.vocab for model in models_regular]
-vocabs_incremental = [model.wv.vocab for model in models_incremental]
-
-intersec_regular = set.intersection(*map(set, vocabs_regular))
-intersec_incremental = set.intersection(*map(set, vocabs_incremental))
-
-# print(len(intersec_regular), len(intersec_incremental))
-
-
-words_regular = []
-words_incremental = []
-eval_adj = pd.read_csv(sys.argv[1])
-tag = sys.argv[2]
-for line in eval_adj['WORD']:
-    voc_word = line + '_' + tag
-    if voc_word in intersec_regular:
-        words_regular.append(voc_word)
-    if voc_word in intersec_incremental:
-        words_incremental.append(voc_word)
-
-
-# print(len(words_regular), len(words_incremental))
-# print(words_regular[:10], words_intersec[:10])
-
-
 def delete_lowfreqent(wordlist, treshold, vocablist):
     newlist = []
     for word in wordlist:
@@ -91,15 +57,6 @@ def delete_lowfreqent(wordlist, treshold, vocablist):
             newlist.append(word)
 
     return newlist
-
-
-words_regular_filtered = delete_lowfreqent(words_regular, int(sys.argv[3]), vocabs_regular)
-words_incremental_filtered = delete_lowfreqent(words_incremental, int(sys.argv[3]),
-                                               vocabs_incremental)
-
-
-# print(len(words_regular_filtered), len(words_incremental_filtered))
-# print(words_regular_filtered[:10], words_incremental_filtered[:10])
 
 
 def get_freqdict(wordlist, vocablist, corpus_size):
@@ -119,50 +76,6 @@ def get_freqdict(wordlist, vocablist, corpus_size):
     return percentiles
 
 
-corpus_len = [int(i) for i in sys.argv[4:8 + 1]]
-
-wordfreq_regular = get_freqdict(words_regular, vocabs_regular, corpus_len)
-wordfreq_incremental = get_freqdict(words_incremental, vocabs_incremental, corpus_len)
-wordfreq_regular_filtered = get_freqdict(words_regular_filtered, vocabs_regular, corpus_len)
-wordfreq_incremental_filtered = \
-    get_freqdict(words_incremental_filtered, vocabs_incremental, corpus_len)
-
-'''
-for x in list(wordfreq_regular)[0:5]:
-    print("key {}, value {} ".format(x, wordfreq_regular[x]))
-
-for x in list(wordfreq_incremental_filtered)[0:5]:
-    print("key {}, value {} ".format(x, wordfreq_incremental_filtered[x]))
-'''
-
-rest_regular = []
-rest_incremental = []
-for voc_word in intersec_regular:
-    if voc_word.endswith(tag) and voc_word not in words_regular:
-        rest_regular.append(voc_word)
-for voc_word in intersec_incremental:
-    if voc_word.endswith(tag) and voc_word not in words_incremental:
-        rest_incremental.append(voc_word)
-
-rest_regular_filtered = delete_lowfreqent(rest_regular, int(sys.argv[3]), vocabs_regular)
-rest_incremental_filtered = delete_lowfreqent(rest_incremental, int(sys.argv[3]),
-                                              vocabs_incremental)
-
-restfreq_regular = get_freqdict(rest_regular, vocabs_regular, corpus_len)
-restfreq_incremental = get_freqdict(rest_incremental, vocabs_incremental, corpus_len)
-restfreq_regular_filtered = get_freqdict(rest_regular_filtered, vocabs_regular, corpus_len)
-restfreq_incremental_filtered = get_freqdict(rest_incremental_filtered, vocabs_incremental,
-                                             corpus_len)
-
-'''
-for x in list(restfreq_regular)[0:5]:
-    print("key {}, value {} ".format(x, restfreq_regular[x]))
-
-for x in list(restfreq_incremental_filtered)[0:5]:
-    print("key {}, value {} ".format(x, restfreq_incremental_filtered[x]))
-'''
-
-
 def output_results(evaluative_dict, rest_dict):
     df = pd.DataFrame()
     finallist = []
@@ -179,14 +92,97 @@ def output_results(evaluative_dict, rest_dict):
     return df
 
 
-output_results(wordfreq_regular, restfreq_regular).to_csv(sys.argv[9])
-output_results(wordfreq_incremental, restfreq_incremental).to_csv(sys.argv[10])
-output_results(wordfreq_regular_filtered, restfreq_regular_filtered).to_csv(sys.argv[11])
-output_results(wordfreq_incremental_filtered, restfreq_incremental_filtered).to_csv(sys.argv[12])
+if __name__ == '__main__':
+    models_regular = []
+    models_incremental = []
+    for decade in range(1960, 2010, 10):
+        model_regular = get_models_by_decade(decade, 'regular')
+        model_incremental = get_models_by_decade(decade, 'incremental')
 
-eval_filteres_regular = pd.DataFrame()
-eval_filteres_incremental = pd.DataFrame()
-eval_filteres_regular['WORD'] = words_regular_filtered
-eval_filteres_regular.to_csv(sys.argv[13])
-eval_filteres_incremental['WORD'] = words_incremental_filtered
-eval_filteres_incremental.to_csv(sys.argv[14])
+        models_regular.append(model_regular)
+        models_incremental.append(model_incremental)
+
+    vocabs_regular = [model.wv.vocab for model in models_regular]
+    vocabs_incremental = [model.wv.vocab for model in models_incremental]
+
+    intersec_regular = set.intersection(*map(set, vocabs_regular))
+    intersec_incremental = set.intersection(*map(set, vocabs_incremental))
+
+    # print(len(intersec_regular), len(intersec_incremental))
+
+    words_regular = []
+    words_incremental = []
+    eval_adj = pd.read_csv(sys.argv[1])
+    tag = sys.argv[2]
+    for line in eval_adj['WORD']:
+        voc_word = line + '_' + tag
+        if voc_word in intersec_regular:
+            words_regular.append(voc_word)
+        if voc_word in intersec_incremental:
+            words_incremental.append(voc_word)
+
+    # print(len(words_regular), len(words_incremental))
+    # print(words_regular[:10], words_intersec[:10])
+
+    words_regular_filtered = delete_lowfreqent(words_regular, int(sys.argv[3]), vocabs_regular)
+    words_incremental_filtered = delete_lowfreqent(words_incremental, int(sys.argv[3]),
+                                                   vocabs_incremental)
+
+    # print(len(words_regular_filtered), len(words_incremental_filtered))
+    # print(words_regular_filtered[:10], words_incremental_filtered[:10])
+
+    corpus_len = [int(i) for i in sys.argv[4:8 + 1]]
+
+    wordfreq_regular = get_freqdict(words_regular, vocabs_regular, corpus_len)
+    wordfreq_incremental = get_freqdict(words_incremental, vocabs_incremental, corpus_len)
+    wordfreq_regular_filtered = get_freqdict(words_regular_filtered, vocabs_regular, corpus_len)
+    wordfreq_incremental_filtered = \
+        get_freqdict(words_incremental_filtered, vocabs_incremental, corpus_len)
+
+    '''
+    for x in list(wordfreq_regular)[0:5]:
+        print("key {}, value {} ".format(x, wordfreq_regular[x]))
+    
+    for x in list(wordfreq_incremental_filtered)[0:5]:
+        print("key {}, value {} ".format(x, wordfreq_incremental_filtered[x]))
+    '''
+
+    rest_regular = []
+    rest_incremental = []
+    for voc_word in intersec_regular:
+        if voc_word.endswith(tag) and voc_word not in words_regular:
+            rest_regular.append(voc_word)
+    for voc_word in intersec_incremental:
+        if voc_word.endswith(tag) and voc_word not in words_incremental:
+            rest_incremental.append(voc_word)
+
+    rest_regular_filtered = delete_lowfreqent(rest_regular, int(sys.argv[3]), vocabs_regular)
+    rest_incremental_filtered = delete_lowfreqent(rest_incremental, int(sys.argv[3]),
+                                                  vocabs_incremental)
+
+    restfreq_regular = get_freqdict(rest_regular, vocabs_regular, corpus_len)
+    restfreq_incremental = get_freqdict(rest_incremental, vocabs_incremental, corpus_len)
+    restfreq_regular_filtered = get_freqdict(rest_regular_filtered, vocabs_regular, corpus_len)
+    restfreq_incremental_filtered = get_freqdict(rest_incremental_filtered, vocabs_incremental,
+                                                 corpus_len)
+
+    '''
+    for x in list(restfreq_regular)[0:5]:
+        print("key {}, value {} ".format(x, restfreq_regular[x]))
+    
+    for x in list(restfreq_incremental_filtered)[0:5]:
+        print("key {}, value {} ".format(x, restfreq_incremental_filtered[x]))
+    '''
+
+    output_results(wordfreq_regular, restfreq_regular).to_csv(sys.argv[9])
+    output_results(wordfreq_incremental, restfreq_incremental).to_csv(sys.argv[10])
+    output_results(wordfreq_regular_filtered, restfreq_regular_filtered).to_csv(sys.argv[11])
+    output_results(wordfreq_incremental_filtered, restfreq_incremental_filtered).to_csv(
+        sys.argv[12])
+
+    eval_filteres_regular = pd.DataFrame()
+    eval_filteres_incremental = pd.DataFrame()
+    eval_filteres_regular['WORD'] = words_regular_filtered
+    eval_filteres_regular.to_csv(sys.argv[13])
+    eval_filteres_incremental['WORD'] = words_incremental_filtered
+    eval_filteres_incremental.to_csv(sys.argv[14])
