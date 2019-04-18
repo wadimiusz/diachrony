@@ -1,6 +1,7 @@
 krippendorff
 numpy
 pandas
+scipy
 scikit-learn
 nltk
 matplotlib
