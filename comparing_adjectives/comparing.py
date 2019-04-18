@@ -110,6 +110,27 @@ def get_mean_dist_globalanchors(wordlist, modellist):
     return mean_scores
 
 
+def get_deviation(wordlist, modellist):
+    mean_vectors = {}
+    all_vectors = {}
+    for word in wordlist:
+        vectors = []
+        for i in range(len(modellist)-1):
+            vectors.append(modellist[i][word])
+        mean_vectors[word] = np.mean(vectors, axis=0)
+        all_vectors[word] = vectors
+
+    deviations = {}
+    for word in wordlist:
+        dists = []
+        for vector in all_vectors[word]:
+            dist = np.dot(matutils.unitvec(mean_vectors[word]), matutils.unitvec(vector))
+            dists.append(dist)
+        deviations[word] = np.std(dists)
+
+    return deviations
+
+
 def get_freqdict(wordlist, vocablist, corpus_len):
     all_freqs = []
     word_freq = {}
@@ -135,14 +156,15 @@ results_eval_incremental['frequency'] = results_eval_incremental['WORD'].map(wor
 results_rest_regular['frequency'] = results_rest_regular['WORD'].map(wordfreq_rest_regular)
 results_rest_incremental['frequency'] = results_rest_incremental['WORD'].map(wordfreq_rest_incremental)
 
-eval_reg_proc = get_mean_dist_procrustes(words_regular, models_regular)
-eval_reg_ga = get_mean_dist_globalanchors(words_regular, models_regular)
-eval_incr_proc = get_mean_dist_procrustes(words_incremental, models_incremental)
-eval_incr_ga = get_mean_dist_globalanchors(words_incremental, models_incremental)
-rest_reg_proc = get_mean_dist_procrustes(rest_regular, models_regular)
-rest_reg_ga = get_mean_dist_globalanchors(rest_regular, models_regular)
-rest_incr_proc = get_mean_dist_procrustes(rest_incremental, models_incremental)
-rest_incr_ga = get_mean_dist_globalanchors(rest_incremental, models_incremental)
+
+eval_reg_proc = get_mean_dist_procrustes(words_regular, aligned_models_regular)
+eval_reg_ga = get_mean_dist_globalanchors(words_regular, aligned_models_regular)
+eval_incr_proc = get_mean_dist_procrustes(words_incremental, aligned_models_incremental)
+eval_incr_ga = get_mean_dist_globalanchors(words_incremental, aligned_models_incremental)
+rest_reg_proc = get_mean_dist_procrustes(rest_regular, aligned_models_regular)
+rest_reg_ga = get_mean_dist_globalanchors(rest_regular, aligned_models_regular)
+rest_incr_proc = get_mean_dist_procrustes(rest_incremental, aligned_models_incremental)
+rest_incr_ga = get_mean_dist_globalanchors(rest_incremental, aligned_models_incremental)
 
 results_eval_regular['mean_dist_procrustes'] = results_eval_regular['WORD'].map(eval_reg_proc)
 results_eval_regular['mean_dist_globalanchors'] = results_eval_regular['WORD'].map(eval_reg_ga)
@@ -155,6 +177,39 @@ results_rest_regular['mean_dist_globalanchors'] = results_rest_regular['WORD'].m
 
 results_rest_incremental['mean_dist_procrustes'] = results_rest_incremental['WORD'].map(rest_incr_proc)
 results_rest_incremental['mean_dist_globalanchors'] = results_rest_incremental['WORD'].map(rest_incr_ga)
+
+
+eval_deviation_regular = get_deviation(words_regular, aligned_models_regular)
+eval_deviation_incremental = get_deviation(words_incremental, aligned_models_incremental)
+rest_deviation_regular = get_deviation(rest_regular, aligned_models_regular)
+rest_deviation_incremental = get_deviation(rest_incremental, aligned_models_incremental)
+
+results_eval_regular['std_from_meanvec'] = results_eval_regular['WORD'].map(eval_deviation_regular)
+results_eval_incremental['std_from_meanvec'] = results_eval_incremental['WORD'].map(eval_deviation_incremental)
+results_rest_regular['std_from_meanvec'] = results_rest_regular['WORD'].map(rest_deviation_regular)
+results_rest_incremental['std_from_meanvec'] = results_rest_incremental['WORD'].map(rest_deviation_incremental)
+
+
+move_eval_reg_proc = get_move_from_initial_procrustes(words_regular, aligned_models_regular)
+move_eval_reg_ga = get_move_from_initial_globalanchors(words_regular, aligned_models_regular)
+move_eval_incr_proc = get_move_from_initial_procrustes(words_incremental, aligned_models_incremental)
+move_eval_incr_ga = get_move_from_initial_globalanchors(words_incremental, aligned_models_incremental)
+move_rest_reg_proc = get_move_from_initial_procrustes(rest_regular, aligned_models_regular)
+move_rest_reg_ga = get_move_from_initial_globalanchors(rest_regular, aligned_models_regular)
+move_rest_incr_proc = get_move_from_initial_procrustes(rest_incremental, aligned_models_incremental)
+move_rest_incr_ga = get_move_from_initial_globalanchors(rest_incremental, aligned_models_incremental)
+
+results_eval_regular['sum_deltas_procrustes'] = results_eval_regular['WORD'].map(move_eval_reg_proc)
+results_eval_regular['sum_deltas_globalanchors'] = results_eval_regular['WORD'].map(move_eval_reg_ga)
+
+results_eval_incremental['sum_deltas_procrustes'] = results_eval_incremental['WORD'].map(move_eval_incr_proc)
+results_eval_incremental['sum_deltas_globalanchors'] = results_eval_incremental['WORD'].map(move_eval_incr_ga)
+
+results_rest_regular['sum_deltas_procrustes'] = results_rest_regular['WORD'].map(move_rest_reg_proc)
+results_rest_regular['sum_deltas_globalanchors'] = results_rest_regular['WORD'].map(move_rest_reg_ga)
+
+results_rest_incremental['sum_deltas_procrustes'] = results_rest_incremental['WORD'].map(move_rest_incr_proc)
+results_rest_incremental['sum_deltas_globalanchors'] = results_rest_incremental['WORD'].map(move_rest_incr_ga)
 
 
 results_eval_regular.to_csv(sys.argv[5])
