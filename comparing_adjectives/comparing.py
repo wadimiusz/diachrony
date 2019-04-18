@@ -4,7 +4,7 @@
 import sys
 import numpy as np
 import pandas as pd
-from gensim import matutils
+from gensim.matutils import unitvec
 from get_adjs import get_models_by_decade
 from models import ProcrustesAligner, GlobalAnchors
 from utils import intersection_align_gensim
@@ -91,11 +91,11 @@ def get_deviation(wordlist, modellist):
 
     deviations = {}
     for word in wordlist:
-        dists = []
+        similarities = []
         for vector in all_vectors[word]:
-            dist = np.dot(matutils.unitvec(mean_vectors[word]), matutils.unitvec(vector))
-            dists.append(dist)
-        deviations[word] = np.std(dists)
+            sim = np.dot(unitvec(mean_vectors[word]), unitvec(vector))
+            similarities.append(sim)
+        deviations[word] = np.std(similarities)
 
     return deviations
 
