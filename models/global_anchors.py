@@ -1,6 +1,7 @@
 import gensim
 import numpy as np
 from utils import log, intersection_align_gensim
+from gensim.matutils import unitvec
 
 
 class GlobalAnchors(object):
@@ -21,7 +22,8 @@ class GlobalAnchors(object):
         :return: np.array of distances shaped (len(w2v.vocab),)
         """
         word_vector = w2v.get_vector(word)
-        return gensim.models.KeyedVectors.cosine_similarities(word_vector, w2v.vectors)
+        similarities = gensim.models.KeyedVectors.cosine_similarities(word_vector, w2v.vectors)
+        return unitvec(similarities)
 
     def get_score(self, word: str):
         w2v1_anchors = self.get_global_anchors(word, self.w2v1)
