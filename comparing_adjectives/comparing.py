@@ -48,8 +48,8 @@ def get_move_from_initial_procrustes(wordlist, modellist):
     move_from_init = {}
     for word in wordlist:
         deltas = []
-        current = 0
-        for i in range(1, len(modellist)):
+        current = ProcrustesAligner(w2v1=modellist[0], w2v2=modellist[1]).get_score(word)
+        for i in range(2, len(modellist)):
             delta = \
                 ProcrustesAligner(w2v1=modellist[0], w2v2=modellist[i]).get_score(word) - current
             current = ProcrustesAligner(w2v1=modellist[0], w2v2=modellist[i]).get_score(word)
