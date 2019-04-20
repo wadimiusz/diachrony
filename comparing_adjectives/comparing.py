@@ -6,16 +6,21 @@ import numpy as np
 import pandas as pd
 from gensim.matutils import unitvec
 from get_adjs import get_models_by_decade
-from models import ProcrustesAligner, GlobalAnchors
+from models import ProcrustesAligner, GlobalAnchors, smart_procrustes_align_gensim
 from utils import intersection_align_gensim
 
 
-def align_models(modellist):
-    # aligned_models = []
+def align_models(modellist, intersec_vocab):
     for model in modellist[1:]:
-        _, _ = intersection_align_gensim(m1=modellist[0], m2=model)
-        # aligned_models.append(model)
-    # aligned_models.insert(0, model1_aligned)
+        _, _ = intersection_align_gensim(m1=modellist[0], m2=model, words=intersec_vocab)
+        _ = smart_procrustes_align_gensim(modellist[0], model)
+
+    return modellist
+
+
+def intersec_models(modellist, intersec_vocab):
+    for model in modellist[1:]:
+        _, _ = intersection_align_gensim(m1=modellist[0], m2=model, words=intersec_vocab)
 
     return modellist
 
@@ -25,7 +30,7 @@ def get_mean_dist_procrustes(wordlist, modellist):
     for word in wordlist:
         scores = []
         for i in range(len(modellist) - 1):
-            score = ProcrustesAligner(w2v1=modellist[i], w2v2=modellist[i + 1]).get_score(word)
+            score = np.dot(modellist[i][word], modellist[i + 1][word])
             scores.append(1 - score)
         mean_scores[word] = np.mean(scores)
 
@@ -37,7 +42,7 @@ def get_mean_dist_globalanchors(wordlist, modellist):
     for word in wordlist:
         scores = []
         for i in range(len(modellist) - 1):
-            score = GlobalAnchors(w2v1=modellist[i], w2v2=modellist[i + 1]).get_score(word)
+            score = GlobalAnchors(w2v1=modellist[i], w2v2=modellist[i + 1], assume_vocabs_are_identical=True).get_score(word)
             scores.append(1 - score)
         mean_scores[word] = np.mean(scores)
 
@@ -48,11 +53,10 @@ def get_move_from_initial_procrustes(wordlist, modellist):
     move_from_init = {}
     for word in wordlist:
         deltas = []
-        current = ProcrustesAligner(w2v1=modellist[0], w2v2=modellist[1]).get_score(word)
+        current = np.dot(modellist[0][word], modellist[1][word])
         for i in range(2, len(modellist)):
-            delta = \
-                ProcrustesAligner(w2v1=modellist[0], w2v2=modellist[i]).get_score(word) - current
-            current = ProcrustesAligner(w2v1=modellist[0], w2v2=modellist[i]).get_score(word)
+            delta = np.dot(modellist[0][word], modellist[i][word]) - current
+            current = np.dot(modellist[0][word], modellist[i][word])
             if i == 1:
                 deltas.append(1 - delta)
             else:
@@ -67,7 +71,8 @@ def get_move_from_initial_globalanchors(wordlist, modellist):
     for word in wordlist:
         distances = []
         for i in range(1, len(modellist)):
-            similarity = GlobalAnchors(w2v1=modellist[0], w2v2=modellist[i]).get_score(word)
+            similarity = \
+                GlobalAnchors(w2v1=modellist[0], w2v2=modellist[i], assume_vocabs_are_identical=True).get_score(word)
             distance = 1 - similarity
             distances.append(distance)
         deltas = 0
@@ -170,8 +175,9 @@ if __name__ == '__main__':
     results_rest_incremental = pd.DataFrame()
     results_rest_incremental['WORD'] = rest_incremental
 
-    aligned_models_regular = align_models(models_regular)
-    aligned_models_incremental = align_models(models_incremental)
+    aligned_models_regular = align_models(models_regular, intersec_regular)
+    intersec_models_regular = intersec_models(models_regular, intersec_regular)
+    intersec_models_incremental = intersec_models(models_incremental, intersec_incremental)
 
     corpus_len = [int(i) for i in sys.argv[9:]]
 
@@ -190,13 +196,13 @@ if __name__ == '__main__':
         results_rest_incremental['WORD'].map(wordfreq_rest_incremental)
 
     eval_reg_proc = get_mean_dist_procrustes(words_regular, aligned_models_regular)
-    eval_reg_ga = get_mean_dist_globalanchors(words_regular, aligned_models_regular)
-    eval_incr_proc = get_mean_dist_procrustes(words_incremental, aligned_models_incremental)
-    eval_incr_ga = get_mean_dist_globalanchors(words_incremental, aligned_models_incremental)
+    eval_reg_ga = get_mean_dist_globalanchors(words_regular, intersec_models_regular)
+    eval_incr_proc = get_mean_dist_procrustes(words_incremental, intersec_models_incremental)
+    eval_incr_ga = get_mean_dist_globalanchors(words_incremental, intersec_models_incremental)
     rest_reg_proc = get_mean_dist_procrustes(rest_regular, aligned_models_regular)
-    rest_reg_ga = get_mean_dist_globalanchors(rest_regular, aligned_models_regular)
-    rest_incr_proc = get_mean_dist_procrustes(rest_incremental, aligned_models_incremental)
-    rest_incr_ga = get_mean_dist_globalanchors(rest_incremental, aligned_models_incremental)
+    rest_reg_ga = get_mean_dist_globalanchors(rest_regular, intersec_models_regular)
+    rest_incr_proc = get_mean_dist_procrustes(rest_incremental, intersec_models_incremental)
+    rest_incr_ga = get_mean_dist_globalanchors(rest_incremental, intersec_models_incremental)
 
     results_eval_regular['mean_dist_procrustes'] = results_eval_regular['WORD'].map(eval_reg_proc)
     results_eval_regular['mean_dist_globalanchors'] = results_eval_regular['WORD'].map(eval_reg_ga)
@@ -215,9 +221,9 @@ if __name__ == '__main__':
         results_rest_incremental['WORD'].map(rest_incr_ga)
 
     eval_deviation_regular = get_deviation(words_regular, aligned_models_regular)
-    eval_deviation_incremental = get_deviation(words_incremental, aligned_models_incremental)
+    eval_deviation_incremental = get_deviation(words_incremental, intersec_models_incremental)
     rest_deviation_regular = get_deviation(rest_regular, aligned_models_regular)
-    rest_deviation_incremental = get_deviation(rest_incremental, aligned_models_incremental)
+    rest_deviation_incremental = get_deviation(rest_incremental, intersec_models_incremental)
 
     results_eval_regular['std_from_meanvec'] = results_eval_regular['WORD'].map(
         eval_deviation_regular)
@@ -229,17 +235,17 @@ if __name__ == '__main__':
         results_rest_incremental['WORD'].map(rest_deviation_incremental)
 
     move_eval_reg_proc = get_move_from_initial_procrustes(words_regular, aligned_models_regular)
-    move_eval_reg_ga = get_move_from_initial_globalanchors(words_regular, aligned_models_regular)
+    move_eval_reg_ga = get_move_from_initial_globalanchors(words_regular, intersec_models_regular)
     move_eval_incr_proc = get_move_from_initial_procrustes(
-        words_incremental, aligned_models_incremental)
+        words_incremental, intersec_models_incremental)
     move_eval_incr_ga = get_move_from_initial_globalanchors(
-        words_incremental, aligned_models_incremental)
+        words_incremental, intersec_models_incremental)
     move_rest_reg_proc = get_move_from_initial_procrustes(rest_regular, aligned_models_regular)
-    move_rest_reg_ga = get_move_from_initial_globalanchors(rest_regular, aligned_models_regular)
+    move_rest_reg_ga = get_move_from_initial_globalanchors(rest_regular, intersec_models_regular)
     move_rest_incr_proc = get_move_from_initial_procrustes(
-        rest_incremental, aligned_models_incremental)
+        rest_incremental, intersec_models_incremental)
     move_rest_incr_ga = get_move_from_initial_globalanchors(
-        rest_incremental, aligned_models_incremental)
+        rest_incremental, intersec_models_incremental)
 
     results_eval_regular['sum_deltas_procrustes'] = \
         results_eval_regular['WORD'].map(move_eval_reg_proc)
