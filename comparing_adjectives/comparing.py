@@ -52,17 +52,18 @@ def get_mean_dist_globalanchors(wordlist, modellist):
 def get_move_from_initial_procrustes(wordlist, modellist):
     move_from_init = {}
     for word in wordlist:
-        deltas_sim = []
-        current = 1
+        deltas_sim = 0
+        previous = 1
         for i in range(1, len(modellist)):
-            delta = np.dot(modellist[0][word], modellist[i][word]) - current
+            sim = np.dot(modellist[0][word], modellist[i][word])
+            delta = sim - previous
             if delta > 0:
-                deltas_sim.append(-1)
+                deltas_sim -= 1
             elif delta < 0:
-                deltas_sim.append(1)
-            current = np.dot(modellist[0][word], modellist[i][word])
+                deltas_sim += 1
+            previous = sim
             
-        move_from_init[word] = np.sum(deltas_sim) / len(deltas_sim)
+        move_from_init[word] = deltas_sim / (len(modellist) - 1)
 
     return move_from_init
 
