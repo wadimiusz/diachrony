@@ -52,18 +52,18 @@ def get_mean_dist_globalanchors(wordlist, modellist):
 def get_move_from_initial_procrustes(wordlist, modellist):
     move_from_init = {}
     for word in wordlist:
-        deltas_sim = 0
+        deltas = 0
         previous = 1
         for i in range(1, len(modellist)):
-            sim = np.dot(modellist[0][word], modellist[i][word])
-            delta = sim - previous
+            similarity = np.dot(modellist[0][word], modellist[i][word])
+            delta = similarity - previous
             if delta > 0:
-                deltas_sim -= 1
+                deltas -= 1
             elif delta < 0:
-                deltas_sim += 1
-            previous = sim
+                deltas += 1
+            previous = similarity
             
-        move_from_init[word] = deltas_sim / (len(modellist) - 1)
+        move_from_init[word] = deltas / (len(modellist) - 1)
 
     return move_from_init
 
@@ -71,21 +71,19 @@ def get_move_from_initial_procrustes(wordlist, modellist):
 def get_move_from_initial_globalanchors(wordlist, modellist):
     move_from_init = {}
     for word in wordlist:
-        distances = []
+        deltas = 0
+        previous = 1
         for i in range(1, len(modellist)):
             similarity = \
                 GlobalAnchors(w2v1=modellist[0], w2v2=modellist[i], assume_vocabs_are_identical=True).get_score(word)
-            distance = 1 - similarity
-            distances.append(distance)
-        deltas = 0
-        previous = distances[0]
-        for d in distances[1:]:
-            if d > previous:
-                deltas += 1
-            elif d < previous:
+            delta = similarity - previous
+            if delta > 0:
                 deltas -= 1
-            previous = d
-        move_from_init[word] = deltas / (len(distances) - 1)
+            elif delta < 0:
+                deltas += 1
+            previous = similarity
+            
+        move_from_init[word] = deltas / (len(modellist) - 1)
 
     return move_from_init
 
