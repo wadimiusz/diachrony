@@ -67,7 +67,6 @@ def load_model(embeddings_file):
     return emb_model
 
 
-@functools.lru_cache()
 def intersection_align_gensim(m1: gensim.models.KeyedVectors, m2: gensim.models.KeyedVectors,
                               pos_tag: (str, None) = None, words: (list, None) = None,
                               top_n_most_frequent_words: (int, None) = None):
