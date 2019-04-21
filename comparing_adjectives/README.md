@@ -30,10 +30,6 @@ $ python3 plot_results.py outputs/rusentilex_eval_incremental.csv outputs/rusent
 
 $ python3 plot_results.py outputs/rusentilex_eval_incremental.csv outputs/rusentilex_rest_incremental.csv sum_deltas_globalanchors outputs/resuntilex_incremental_sum_deltas_globalanchors.png
 
-$ python3 plot_results.py outputs/rusentilex_eval_regular.csv outputs/rusentilex_rest_regular.csv std_from_meanvec outputs/resuntilex_regular_std.png
-
-$ python3 plot_results.py outputs/rusentilex_eval_incremental.csv outputs/rusentilex_rest_incremental.csv std_from_meanvec outputs/resuntilex_incremental_std.png
-
 **T-test:**  
 
 $ python3 ttest.py outputs/rusentilex_eval_regular.csv outputs/rusentilex_rest_regular.csv
