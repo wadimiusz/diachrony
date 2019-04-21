@@ -27,11 +27,11 @@ def align_models(modellist):
 def get_mean_dist_procrustes(wordlist, modellist):
     mean_scores = {}
     for word in wordlist:
-        scores = []
-        for i in range(len(modellist) - 1):
+        scores = 0
+        for i in range(len(modellist)-1):
             score = np.dot(modellist[i][word], modellist[i + 1][word])
-            scores.append(1 - score)
-        mean_scores[word] = np.mean(scores)
+            scores += (1 - score)
+        mean_scores[word] = scores/(len(modellist)-1)
 
     return mean_scores
 
@@ -39,11 +39,11 @@ def get_mean_dist_procrustes(wordlist, modellist):
 def get_mean_dist_globalanchors(wordlist, modellist):
     mean_scores = {}
     for word in wordlist:
-        scores = []
-        for i in range(len(modellist) - 1):
+        scores = 0
+        for i in range(len(modellist)-1):
             score = GlobalAnchors(w2v1=modellist[i], w2v2=modellist[i + 1], assume_vocabs_are_identical=True).get_score(word)
-            scores.append(1 - score)
-        mean_scores[word] = np.mean(scores)
+            scores += (1 - score)
+        mean_scores[word] = scores/(len(modellist)-1)
 
     return mean_scores
 
@@ -110,8 +110,8 @@ if __name__ == '__main__':
         models_regular.append(model_regular)
         models_incremental.append(model_incremental)
 
-    vocabs_regular = [model.wv.vocab for model in models_regular]
-    vocabs_incremental = [model.wv.vocab for model in models_incremental]
+    vocabs_regular = [model.vocab for model in models_regular]
+    vocabs_incremental = [model.vocab for model in models_incremental]
 
     intersec_regular = set.intersection(*map(set, vocabs_regular))
     intersec_incremental = set.intersection(*map(set, vocabs_incremental))
@@ -153,10 +153,6 @@ if __name__ == '__main__':
     results_rest_incremental = pd.DataFrame()
     results_rest_incremental['WORD'] = rest_incremental
 
-
-    intersec_models_regular = intersec_models(models_regular, intersec_regular)
-    intersec_models_incremental = intersec_models(models_incremental, intersec_incremental)
-
     corpus_len = [int(i) for i in sys.argv[9:]]
 
     wordfreq_eval_regular, wordfreq_rest_regular = [get_freqdict(words, vocabs_regular, corpus_len)
@@ -172,6 +168,9 @@ if __name__ == '__main__':
     results_rest_regular['frequency'] = results_rest_regular['WORD'].map(wordfreq_rest_regular)
     results_rest_incremental['frequency'] = \
         results_rest_incremental['WORD'].map(wordfreq_rest_incremental)
+
+    intersec_models_regular = intersec_models(models_regular, intersec_regular)
+    intersec_models_incremental = intersec_models(models_incremental, intersec_incremental)
 
     eval_reg_ga = get_mean_dist_globalanchors(words_regular, intersec_models_regular)
     eval_incr_proc = get_mean_dist_procrustes(words_incremental, intersec_models_incremental)
