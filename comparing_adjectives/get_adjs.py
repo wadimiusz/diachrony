@@ -3,6 +3,7 @@ import sys
 import pandas as pd
 import gensim
 import logging
+import random
 # from scipy.stats import percentileofscore
 
 
@@ -93,6 +94,33 @@ def output_results(evaluative_dict, rest_dict):
 
     return df
 '''
+
+def output_results(evaluative_dict, rest_dict):
+    
+    rest_dict_inv = {}
+
+    for key, value in rest_dict.items():
+        rest_dict_inv.setdefault(value, []).append(key)
+        
+        
+    df = pd.DataFrame()
+    finallist = set()
+    missing_perc = []
+    
+    for i in evaluative_dict:
+        perc = evaluative_dict[i]
+        try:
+            sl = random.sample(rest_dict_inv[perc], 2)
+        except ValueError:
+            missing_perc.append(evaluative_dict[i])
+            continue
+        for l in sl:
+            finallist.add(l)
+            rest_dict_inv[perc].remove(l)
+                    
+    df['WORD'] = list(finallist)
+    
+    return df, missing_perc
 
 
 def get_len(decade, lens_file):
