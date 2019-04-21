@@ -88,7 +88,6 @@ def intersection_align_gensim(m1: gensim.models.KeyedVectors, m2: gensim.models.
     :param m2: the second model
     :param pos_tag: if given, we remove words with other pos tags
     :param words: a container
-    :param top_n_most_frequent_words: if not None, we only use top n words by frequency
     :return m1, m2: both models after their vocabs are modified
     """
 
@@ -106,7 +105,7 @@ def intersection_align_gensim(m1: gensim.models.KeyedVectors, m2: gensim.models.
         common_vocab &= set(words)
 
     # If no alignment necessary because vocab is identical...
-    if not vocab_m1-common_vocab and not vocab_m2-common_vocab and top_n_most_frequent_words is None:
+    if not vocab_m1-common_vocab and not vocab_m2-common_vocab is None:
         return m1, m2
 
     # Otherwise sort lexicographically
