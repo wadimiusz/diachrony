@@ -101,8 +101,7 @@ def output_results(evaluative_dict, rest_dict):
 
     for key, value in rest_dict.items():
         rest_dict_inv.setdefault(value, []).append(key)
-        
-        
+            
     df = pd.DataFrame()
     finallist = set()
     missing_perc = []
