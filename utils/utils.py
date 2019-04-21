@@ -68,8 +68,7 @@ def load_model(embeddings_file):
 
 
 def intersection_align_gensim(m1: gensim.models.KeyedVectors, m2: gensim.models.KeyedVectors,
-                              pos_tag: (str, None) = None, words: (list, None) = None,
-                              top_n_most_frequent_words: (int, None) = None):
+                              pos_tag: (str, None) = None, words: (list, None) = None):
     """
     This procedure, taken from https://gist.github.com/quadrismegistus/09a93e219a6ffc4f216fb85235535faf and slightly
     modified, corrects two models in a way that only the shared words of the vocabulary are kept in the model,
@@ -80,8 +79,8 @@ def intersection_align_gensim(m1: gensim.models.KeyedVectors, m2: gensim.models.
     Only the shared vocabulary between them is kept.
     If 'words' is set (as list or set), then the vocabulary is intersected with this list as well.
     Indices are re-organized from 0..N in order of descending frequency (=sum of counts from both m1 and m2).
-    These indices correspond to the new syn0 and syn0norm objects in both gensim models:
-        -- so that Row 0 of m1.syn0 will be for the same word as Row 0 of m2.syn0
+    These indices correspond to the new vectors and vectors_norm objects in both gensim models:
+        -- so that Row 0 of m1.vectors will be for the same word as Row 0 of m2.vectors
         -- you can find the index of any word on the .index2word list: model.index2word.index(word) => 2
     The .vocab dictionary is also updated for each model, preserving the count but updating the index.
 
@@ -95,11 +94,11 @@ def intersection_align_gensim(m1: gensim.models.KeyedVectors, m2: gensim.models.
 
     # Get the vocab for each model
     if pos_tag is None:
-        vocab_m1 = set(m1.wv.vocab.keys())
-        vocab_m2 = set(m2.wv.vocab.keys())
+        vocab_m1 = set(m1.vocab.keys())
+        vocab_m2 = set(m2.vocab.keys())
     else:
-        vocab_m1 = set(word for word in m1.wv.vocab.keys() if word.endswith("_" + pos_tag))
-        vocab_m2 = set(word for word in m2.wv.vocab.keys() if word.endswith("_" + pos_tag))
+        vocab_m1 = set(word for word in m1.vocab.keys() if word.endswith("_" + pos_tag))
+        vocab_m2 = set(word for word in m2.vocab.keys() if word.endswith("_" + pos_tag))
 
     # Find the common vocabulary
     common_vocab = vocab_m1 & vocab_m2
@@ -110,27 +109,26 @@ def intersection_align_gensim(m1: gensim.models.KeyedVectors, m2: gensim.models.
     if not vocab_m1-common_vocab and not vocab_m2-common_vocab and top_n_most_frequent_words is None:
         return m1, m2
 
-    # Otherwise sort by frequency (summed for both)
+    # Otherwise sort lexicographically
     common_vocab = list(common_vocab)
-    common_vocab.sort(key=lambda w: m1.wv.vocab[w].count + m2.wv.vocab[w].count, reverse=True)
-    common_vocab = common_vocab[:top_n_most_frequent_words]
+    common_vocab.sort()
 
     # Then for each model...
     for m in (m1, m2):
-        # Replace old syn0norm array with new one (with common vocab)
-        indices = [m.wv.vocab[w].index for w in common_vocab]
-        old_arr = m.syn0norm
+        # Replace old vectors_norm array with new one (with common vocab)
+        indices = [m.vocab[w].index for w in common_vocab]
+        old_arr = m.vectors_norm
         new_arr = np.array([old_arr[index] for index in indices])
-        m.syn0norm = m.syn0 = new_arr
+        m.vectors_norm = m.vectors = new_arr
 
         # Replace old vocab dictionary with new one (with common vocab)
         # and old index2word with new one
         m.index2word = common_vocab
-        old_vocab = m.wv.vocab
+        old_vocab = m.vocab
         new_vocab = dict()
         for new_index, word in enumerate(common_vocab):
             old_vocab_obj = old_vocab[word]
             new_vocab[word] = gensim.models.word2vec.Vocab(index=new_index, count=old_vocab_obj.count)
-        m.wv.vocab = new_vocab
+        m.vocab = new_vocab
 
     return m1, m2
