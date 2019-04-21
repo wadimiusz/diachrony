@@ -105,7 +105,7 @@ def intersection_align_gensim(m1: gensim.models.KeyedVectors, m2: gensim.models.
         common_vocab &= set(words)
 
     # If no alignment necessary because vocab is identical...
-    if not vocab_m1-common_vocab and not vocab_m2-common_vocab is None:
+    if not vocab_m1-common_vocab and not vocab_m2-common_vocab:
         return m1, m2
 
     # Otherwise sort lexicographically
