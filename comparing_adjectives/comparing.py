@@ -5,7 +5,7 @@ import sys
 import numpy as np
 import pandas as pd
 from gensim.matutils import unitvec
-from get_adjs import get_models_by_decade
+from get_adjs import get_models_by_decade, get_len
 from models import ProcrustesAligner, GlobalAnchors, smart_procrustes_align_gensim
 from utils import intersection_align_gensim
 
@@ -103,10 +103,13 @@ def get_freqdict(wordlist, vocablist, corpus_size):
 if __name__ == '__main__':
     models_regular = []
     models_incremental = []
+    corpus_lens = []
     for decade in range(1960, 2010, 10):
         model_regular = get_models_by_decade(decade, 'regular')
         model_incremental = get_models_by_decade(decade, 'incremental')
+        corpus_len = get_len(decade, sys.argv[9])
 
+        corpus_lens.append(corpus_len)
         models_regular.append(model_regular)
         models_incremental.append(model_incremental)
 
@@ -153,13 +156,11 @@ if __name__ == '__main__':
     results_rest_incremental = pd.DataFrame()
     results_rest_incremental['WORD'] = rest_incremental
 
-    corpus_len = [int(i) for i in sys.argv[9:]]
-
-    wordfreq_eval_regular, wordfreq_rest_regular = [get_freqdict(words, vocabs_regular, corpus_len)
+    wordfreq_eval_regular, wordfreq_rest_regular = [get_freqdict(words, vocabs_regular, corpus_lens)
                                                     for words in [words_regular, rest_regular]]
 
     wordfreq_eval_incremental, wordfreq_rest_incremental = \
-        [get_freqdict(words, vocabs_incremental, corpus_len)
+        [get_freqdict(words, vocabs_incremental, corpus_lens)
          for words in [words_incremental, rest_incremental]]
 
     results_eval_regular['frequency'] = results_eval_regular['WORD'].map(wordfreq_eval_regular)
