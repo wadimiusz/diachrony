@@ -1,0 +1,18 @@
+Comparing outputs/rusentilex/eval_regular_500.csv outputs/rusentilex/rest_regular_500.csv
+=====
+Procrustes distances
+Averages: 0.230 	 0.251
+T-test (difference and p-value): -6.07955, 0.00000
+=====
+Global Anchors distances
+Averages: 0.216 	 0.223
+T-test (difference and p-value): -1.80554, 0.07135
+=====
+Sum of Procrustes deltas
+Averages: 0.732 	 0.750
+T-test (difference and p-value): -0.70160, 0.48313
+=====
+Sum of Global Anchors deltas
+Averages: 0.861 	 0.874
+T-test (difference and p-value): -0.63018, 0.52875
+
