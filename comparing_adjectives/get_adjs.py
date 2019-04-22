@@ -54,7 +54,12 @@ def delete_lowfreqent(wordlist, treshold, vocablist):
         counts = []
         for vocab in vocablist:
             counts.append(vocab[word].count)
-        if sum(counts) >= treshold * len(vocablist):
+
+        for count in counts:
+            if count < treshold:
+                counts.remove(count)
+
+        if len(counts) == len(vocablist):
             newlist.append(word)
 
     return newlist
