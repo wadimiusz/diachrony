@@ -4,7 +4,6 @@
 import sys
 import numpy as np
 import pandas as pd
-from gensim.matutils import unitvec
 from get_adjs import get_models_by_decade, get_len
 from models import ProcrustesAligner, GlobalAnchors, smart_procrustes_align_gensim
 from utils import intersection_align_gensim
@@ -114,8 +113,6 @@ if __name__ == '__main__':
 
     intersec = set.intersection(*map(set, vocabs))
 
-    # print(len(intersec))
-
     words = []
     eval_adjs = pd.read_csv(sys.argv[1])
     for word in eval_adjs['WORD']:
@@ -175,5 +172,5 @@ if __name__ == '__main__':
     results_eval['sum_deltas_procrustes'] = results_eval['WORD'].map(move_eval_proc)
     results_rest['sum_deltas_procrustes'] = results_rest['WORD'].map(move_rest_proc)
 
-    results_eval.to_csv(sys.argv[4])
-    results_rest.to_csv(sys.argv[5])
+    results_eval.to_csv(sys.argv[5]+'eval_'+sys.argv[3]+'_'+sys.argv[4]+'.csv')
+    results_rest.to_csv(sys.argv[5]+'rest_'+sys.argv[3]+'_'+sys.argv[4]+'.csv')
