@@ -48,14 +48,18 @@ def get_models_by_decade(cur_decade: int, kind: str):
     return model
 
 
-def delete_lowfreqent(wordlist, treshold, vocablist):
+def delete_lowfreqent(wordlist, threshold, vocablist):
     newlist = []
     for word in wordlist:
-        counts = []
+        hit = False
         for vocab in vocablist:
-            counts.append(vocab[word].count)
-        if sum(counts) >= treshold * len(vocablist):
-            newlist.append(word)
+            if vocab[word].count < threshold:
+                hit = True
+                break
+        print(word, hit)
+        if hit:
+            continue
+        newlist.append(word)
 
     return newlist
 
