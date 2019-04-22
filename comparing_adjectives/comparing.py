@@ -100,6 +100,25 @@ def get_move_from_initial_globalanchors(wordlist, modellist):
     return move_from_init
 
 
+def get_move_from_initial_jaccard(wordlist, modellist, top_n_neighbors):
+    move_from_init = {}
+    for word in wordlist:
+        deltas = 0
+        previous = Jaccard(modellist[0], modellist[1], top_n_neighbors=top_n_neighbors).get_score(word)
+        for i in range(2, len(modellist)):
+            similarity = Jaccard(modellist[0], modellist[i], top_n_neighbors=top_n_neighbors).get_score(word)
+            delta = similarity - previous
+            if delta > 0:
+                deltas -= 1
+            elif delta < 0:
+                deltas += 1
+            previous = similarity
+
+        move_from_init[word] = deltas / (len(modellist) - 2)
+
+    return move_from_init
+
+
 def get_freqdict(wordlist, vocablist, corpus_size):
     all_freqs = []
     word_freq = {}
@@ -177,14 +196,23 @@ def main():
     results_eval['sum_deltas_globalanchors'] = results_eval['WORD'].map(move_eval_ga)
     results_rest['sum_deltas_globalanchors'] = results_rest['WORD'].map(move_rest_ga)
 
+    eval_jaccard = get_mean_dist_jaccard(words, intersected_models, top_n_neighbors=args.n)
+    rest_jaccard = get_mean_dist_jaccard(rest, intersected_models, top_n_neighbors=args.n)
+
+    results_eval['mean_dist_jaccard'] = results_eval['WORD'].map(eval_jaccard)
+    results_rest['mean_dist_jaccard'] = results_rest['WORD'].map(rest_jaccard)
+
+    move_eval_jaccard = get_move_from_initial_jaccard(words, intersected_models, top_n_neighbors=args.n)
+    move_rest_jaccard = get_move_from_initial_jaccard(rest, intersected_models, top_n_neighbors=args.n)
+
+    results_eval["sum_deltas_jaccard"] = move_eval_jaccard["WORD"].map(move_eval_jaccard)
+    results_rest["sum_deltas_jaccard"] = move_rest_jaccard["WORD"].map(move_rest_jaccard)
+
     if args.kind == 'regular':
         aligned_models = align_models(intersected_models)
 
         eval_proc = get_mean_dist_procrustes(words, aligned_models)
         rest_proc = get_mean_dist_procrustes(rest, aligned_models)
-
-        eval_jaccard = get_mean_dist_jaccard(words, aligned_models, top_n_neighbors=args.n)
-        rest_jaccard = get_mean_dist_jaccard(words, aligned_models, top_n_neighbors=args.n)
 
         move_eval_proc = get_move_from_initial_procrustes(words, aligned_models)
         move_rest_proc = get_move_from_initial_procrustes(rest, aligned_models)
@@ -192,17 +220,11 @@ def main():
         eval_proc = get_mean_dist_procrustes(words, intersected_models)
         rest_proc = get_mean_dist_procrustes(rest, intersected_models)
 
-        eval_jaccard = get_mean_dist_jaccard(words, intersected_models, top_n_neighbors=args.n)
-        rest_jaccard = get_mean_dist_jaccard(words, intersected_models, top_n_neighbors=args.n)
-
         move_eval_proc = get_move_from_initial_procrustes(words, intersected_models)
         move_rest_proc = get_move_from_initial_procrustes(rest, intersected_models)
 
     results_eval['mean_dist_procrustes'] = results_eval['WORD'].map(eval_proc)
     results_rest['mean_dist_procrustes'] = results_rest['WORD'].map(rest_proc)
-
-    results_eval['mean_dist_jaccard'] = results_eval['WORD'].map(eval_jaccard)
-    results_rest['mean_dist_jaccard'] = results_rest['WORD'].map(rest_jaccard)
 
     results_eval['sum_deltas_procrustes'] = results_eval['WORD'].map(move_eval_proc)
     results_rest['sum_deltas_procrustes'] = results_rest['WORD'].map(move_rest_proc)
