@@ -205,8 +205,8 @@ def main():
     move_eval_jaccard = get_move_from_initial_jaccard(words, intersected_models, top_n_neighbors=args.n)
     move_rest_jaccard = get_move_from_initial_jaccard(rest, intersected_models, top_n_neighbors=args.n)
 
-    results_eval["sum_deltas_jaccard"] = move_eval_jaccard["WORD"].map(move_eval_jaccard)
-    results_rest["sum_deltas_jaccard"] = move_rest_jaccard["WORD"].map(move_rest_jaccard)
+    results_eval["sum_deltas_jaccard"] = results_eval["WORD"].map(move_eval_jaccard)
+    results_rest["sum_deltas_jaccard"] = results_rest["WORD"].map(move_rest_jaccard)
 
     if args.kind == 'regular':
         aligned_models = align_models(intersected_models)
