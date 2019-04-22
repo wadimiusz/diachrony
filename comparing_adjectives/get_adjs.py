@@ -94,6 +94,9 @@ def output_results(evaluative_dict, rest_dict):
         except ValueError:
             missing_perc.append(evaluative_dict[i])
             continue
+        except KeyError:
+            missing_perc.append(evaluative_dict[i])
+            continue
         for l in sl:
             finallist.add(l)
             rest_dict_inv[perc].remove(l)
