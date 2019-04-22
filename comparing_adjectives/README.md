@@ -6,9 +6,7 @@ $ python3 get_adjs.py adjectives/ProductSentiRus.csv ADJ 500 corpus_lengths_rus.
 
 **To evaluate adjectives:**  
 
-$ python3 comparing.py (adjectives/rusentilex_regular_filtered_500.csv \ adjectives/rusentilex_incremental_filtered_500.csv) (adjectives/rest/rusentilex/regular_filtered_500.csv \ adjectives/rest/rusentilex/incremental_filtered_500.csv) (regular | incremental) 500 outputs/rusentilex/ corpus_lengths_rus.tsv
-
-$ python3 comparing.py (adjectives/ProductSentiRus_regular_filtered_500.csv \ adjectives/ProductSentiRus_incremental_filtered_500.csv) (adjectives/rest/sentirus/regular_filtered_500.csv | adjectives/rest/sentirus/incremental_filtered_500.csv) (regular | incremental) 500 outputs/sentirus/ corpus_lengths_rus.tsv
+$ python3 comparing_adjectives/comparing.py -l rusentilex -k regular -mf 500 -lg comparing_adjectives/corpus_lengths_rus.tsv -n 50
 
 **To plot results:**  
 
