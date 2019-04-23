@@ -6,7 +6,7 @@ $ python3 get_adjs.py adjectives/ProductSentiRus.csv ADJ 500 corpus_lengths_rus.
 
 **To evaluate adjectives:**  
 
-$ python3 comparing_adjectives/comparing.py -l rusentilex -k regular -mf 500 -lg comparing_adjectives/corpus_lengths_rus.tsv -n 50
+$ python3 comparing_adjectives/comparing.py -l rus -k regular -mf 500 -n 50
 
 **To plot results:**  
 

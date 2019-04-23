@@ -1,13 +1,13 @@
 # python3
 # coding: utf-8
 
+import argparse
 import sys
 import numpy as np
 import pandas as pd
-from get_adjs import get_models_by_decade, get_len
-from models import ProcrustesAligner, GlobalAnchors, smart_procrustes_align_gensim, Jaccard
+from get_adjs import get_models_by_decade, get_len, get_freqdict
+from models import GlobalAnchors, smart_procrustes_align_gensim, Jaccard
 from utils import intersection_align_gensim
-import argparse
 
 
 def intersec_models(modellist, intersec_vocab):
@@ -41,7 +41,8 @@ def get_mean_dist_jaccard(wordlist, modellist, top_n_neighbors):
     for word in wordlist:
         scores = 0
         for i in range(len(modellist) - 1):
-            score = Jaccard(w2v1=modellist[i], w2v2=modellist[i+1], top_n_neighbors=top_n_neighbors).get_score(word)
+            score = Jaccard(w2v1=modellist[i], w2v2=modellist[i + 1],
+                            top_n_neighbors=top_n_neighbors).get_score(word)
             scores += (1 - score)
         mean_scores[word] = scores / (len(modellist) - 1)
 
@@ -53,8 +54,8 @@ def get_mean_dist_globalanchors(wordlist, modellist):
     for word in wordlist:
         scores = 0
         for i in range(len(modellist) - 1):
-            score = GlobalAnchors(w2v1=modellist[i], w2v2=modellist[i + 1], assume_vocabs_are_identical=True).get_score(
-                word)
+            score = GlobalAnchors(w2v1=modellist[i], w2v2=modellist[i + 1],
+                                  assume_vocabs_are_identical=True).get_score(word)
             scores += (1 - score)
         mean_scores[word] = scores / (len(modellist) - 1)
 
@@ -84,10 +85,12 @@ def get_move_from_initial_globalanchors(wordlist, modellist):
     move_from_init = {}
     for word in wordlist:
         deltas = 0
-        previous = GlobalAnchors(w2v1=modellist[0], w2v2=modellist[1], assume_vocabs_are_identical=True).get_score(word)
+        previous = GlobalAnchors(w2v1=modellist[0], w2v2=modellist[1],
+                                 assume_vocabs_are_identical=True).get_score(word)
         for i in range(2, len(modellist)):
             similarity = \
-                GlobalAnchors(w2v1=modellist[0], w2v2=modellist[i], assume_vocabs_are_identical=True).get_score(word)
+                GlobalAnchors(w2v1=modellist[0], w2v2=modellist[i],
+                              assume_vocabs_are_identical=True).get_score(word)
             delta = similarity - previous
             if delta > 0:
                 deltas -= 1
@@ -104,9 +107,11 @@ def get_move_from_initial_jaccard(wordlist, modellist, top_n_neighbors):
     move_from_init = {}
     for word in wordlist:
         deltas = 0
-        previous = Jaccard(modellist[0], modellist[1], top_n_neighbors=top_n_neighbors).get_score(word)
+        previous = Jaccard(modellist[0], modellist[1],
+                           top_n_neighbors=top_n_neighbors).get_score(word)
         for i in range(2, len(modellist)):
-            similarity = Jaccard(modellist[0], modellist[i], top_n_neighbors=top_n_neighbors).get_score(word)
+            similarity = Jaccard(modellist[0], modellist[i],
+                                 top_n_neighbors=top_n_neighbors).get_score(word)
             delta = similarity - previous
             if delta > 0:
                 deltas -= 1
@@ -119,37 +124,26 @@ def get_move_from_initial_jaccard(wordlist, modellist, top_n_neighbors):
     return move_from_init
 
 
-def get_freqdict(wordlist, vocablist, corpus_size):
-    all_freqs = []
-    word_freq = {}
-    for word in wordlist:
-        counts = [vocab[word].count for vocab in vocablist]
-        frequency = [counts[i] / corpus_size[i] for i in range(len(vocablist))]
-        mean_frequency = sum(frequency) / len(frequency)
-        all_freqs.append(mean_frequency)
-        word_freq[word] = mean_frequency
-
-    return word_freq
-
-
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--lexicon', '-l', dest='lexicon')
+    parser.add_argument('--lang', '-l', dest='lexicon', choices=['rus', 'eng', 'nor'])
     parser.add_argument('--kind', '-k', dest='kind', choices=['regular', 'incremental'])
     parser.add_argument('--min-freq', '-mf', dest='min_freq', type=int)
-    parser.add_argument('--lengths', '-lg', dest='lengths')
-    parser.add_argument('--top-n-neighbors', '-n', type=int, default=50, dest='n', help="Parameter of the Jaccard model: "
-                                                                  "how many word neighbors to take into account")
+    parser.add_argument('--lengths', '-lg', dest='lengths', default="datasets/corpus_lengths.json")
+    parser.add_argument('--top-n-neighbors', '-n', type=int, default=50, dest='n',
+                        help="Parameter of the Jaccard model: number of associates to consider")
     args = parser.parse_args()
 
-    evaluative_adj_path = "comparing_adjectives/adjectives/{}_{}_filtered_{}.csv".format(args.lexicon, args.kind, args.min_freq)
-    rest_adj_path = "comparing_adjectives/adjectives/rest/{}/{}_filtered_{}.csv".format(args.lexicon, args.kind, args.min_freq)
+    evaluative_adj_path = "comparing_adjectives/adjectives/{}_{}_filtered_{}.csv". \
+        format(args.lexicon, args.kind, args.min_freq)
+    rest_adj_path = "comparing_adjectives/adjectives/rest/{}/{}_filtered_{}.csv". \
+        format(args.lexicon, args.kind, args.min_freq)
 
     models = []
     corpus_lens = []
     for decade in range(1960, 2010, 10):
-        model = get_models_by_decade(decade, args.kind)
-        corpus_len = get_len(decade, args.lengths)
+        model = get_models_by_decade(decade, args.kind, lang=args.lexicon)
+        corpus_len = get_len(str(decade), args.lengths, lang=args.lexicon)
 
         corpus_lens.append(corpus_len)
         models.append(model)
@@ -158,32 +152,52 @@ def main():
 
     intersec = set.intersection(*map(set, vocabs))
 
-    words = []
+    print('Size of shared vocabulary:', len(intersec), file=sys.stderr)
+
+    words = set()
     eval_adjs = pd.read_csv(evaluative_adj_path)
     for word in eval_adjs['WORD']:
-        words.append(word)
+        if word in intersec:
+            words.add(word)
 
     results_eval = pd.DataFrame()
-    results_eval['WORD'] = words
+    results_eval['WORD'] = list(words)
 
     rest_adjs = pd.read_csv(rest_adj_path)
 
-    rest = []
-    for line in rest_adjs['WORD']:
-        if line in intersec:
-            rest.append(line)
+    rest = set()
+    for word in rest_adjs['WORD']:
+        if word in intersec:
+            rest.add(word)
 
     results_rest = pd.DataFrame()
-    results_rest['WORD'] = rest
+    results_rest['WORD'] = list(rest)
 
-    wordfreq_eval, wordfreq_rest = [get_freqdict(words, vocabs, corpus_lens)
-                                    for words in [words, rest]]
+    print('Calculating frequencies...', file=sys.stderr)
+    wordfreq_eval, wordfreq_rest = [get_freqdict(
+        words, vocabs, corpus_lens, return_percentiles=False) for words in [words, rest]]
 
     results_eval['frequency'] = results_eval['WORD'].map(wordfreq_eval)
     results_rest['frequency'] = results_rest['WORD'].map(wordfreq_rest)
 
+    # Don't need any alignment for Jaccard:
+    print('Calculating Jaccard...', file=sys.stderr)
+    eval_jaccard = get_mean_dist_jaccard(words, models, top_n_neighbors=args.n)
+    rest_jaccard = get_mean_dist_jaccard(rest, models, top_n_neighbors=args.n)
+
+    results_eval['mean_dist_jaccard'] = results_eval['WORD'].map(eval_jaccard)
+    results_rest['mean_dist_jaccard'] = results_rest['WORD'].map(rest_jaccard)
+
+    move_eval_jaccard = get_move_from_initial_jaccard(words, models, top_n_neighbors=args.n)
+    move_rest_jaccard = get_move_from_initial_jaccard(rest, models, top_n_neighbors=args.n)
+
+    results_eval["sum_deltas_jaccard"] = results_eval["WORD"].map(move_eval_jaccard)
+    results_rest["sum_deltas_jaccard"] = results_rest["WORD"].map(move_rest_jaccard)
+
+    print('Intersecting vocabularies...', file=sys.stderr)
     intersected_models = intersec_models(models, intersec)
 
+    print('Calculating Global Anchors...', file=sys.stderr)
     eval_ga = get_mean_dist_globalanchors(words, intersected_models)
     rest_ga = get_mean_dist_globalanchors(rest, intersected_models)
 
@@ -196,27 +210,18 @@ def main():
     results_eval['sum_deltas_globalanchors'] = results_eval['WORD'].map(move_eval_ga)
     results_rest['sum_deltas_globalanchors'] = results_rest['WORD'].map(move_rest_ga)
 
-    eval_jaccard = get_mean_dist_jaccard(words, intersected_models, top_n_neighbors=args.n)
-    rest_jaccard = get_mean_dist_jaccard(rest, intersected_models, top_n_neighbors=args.n)
-
-    results_eval['mean_dist_jaccard'] = results_eval['WORD'].map(eval_jaccard)
-    results_rest['mean_dist_jaccard'] = results_rest['WORD'].map(rest_jaccard)
-
-    move_eval_jaccard = get_move_from_initial_jaccard(words, intersected_models, top_n_neighbors=args.n)
-    move_rest_jaccard = get_move_from_initial_jaccard(rest, intersected_models, top_n_neighbors=args.n)
-
-    results_eval["sum_deltas_jaccard"] = results_eval["WORD"].map(move_eval_jaccard)
-    results_rest["sum_deltas_jaccard"] = results_rest["WORD"].map(move_rest_jaccard)
-
     if args.kind == 'regular':
+        print('Procrustes aligning...', file=sys.stderr)
         aligned_models = align_models(intersected_models)
 
+        print('Calculating distances...', file=sys.stderr)
         eval_proc = get_mean_dist_procrustes(words, aligned_models)
         rest_proc = get_mean_dist_procrustes(rest, aligned_models)
 
         move_eval_proc = get_move_from_initial_procrustes(words, aligned_models)
         move_rest_proc = get_move_from_initial_procrustes(rest, aligned_models)
     else:
+        print('Calculating distances...', file=sys.stderr)
         eval_proc = get_mean_dist_procrustes(words, intersected_models)
         rest_proc = get_mean_dist_procrustes(rest, intersected_models)
 
@@ -229,8 +234,11 @@ def main():
     results_eval['sum_deltas_procrustes'] = results_eval['WORD'].map(move_eval_proc)
     results_rest['sum_deltas_procrustes'] = results_rest['WORD'].map(move_rest_proc)
 
-    results_eval.to_csv("comparing_adjectives/outputs/{}/eval_{}_{}.csv".format(args.lexicon, args.kind , args.min_freq))
-    results_eval.to_csv("comparing_adjectives/outputs/{}/eval_{}_{}.csv".format(args.lexicon, args.kind , args.min_freq))
+    print('Saving output files...', file=sys.stderr)
+    results_eval.to_csv("comparing_adjectives/outputs/{}/eval_{}_{}.csv".format(
+        args.lexicon, args.kind, args.min_freq))
+    results_rest.to_csv("comparing_adjectives/outputs/{}/rest_{}_{}.csv".format(
+        args.lexicon, args.kind, args.min_freq))
 
 
 if __name__ == "__main__":
