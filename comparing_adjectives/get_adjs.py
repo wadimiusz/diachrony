@@ -101,7 +101,7 @@ def output_results(evaluative_dict, rest_dict):
         perc = evaluative_dict[i]
         try:
             sl = random.sample(rest_dict_inv[perc], 2)
-        except ValueError or KeyError:
+        except (ValueError, KeyError):
             missing_perc.append(evaluative_dict[i])
             continue
         for l in sl:
@@ -139,7 +139,7 @@ if __name__ == '__main__':
     for decade in range(1960, 2010, 10):
         model_regular = get_models_by_decade(decade, 'regular')
         model_incremental = get_models_by_decade(decade, 'incremental')
-        corpus_len = get_len(decade, corpora_sizes_file)
+        corpus_len = get_len(str(decade), corpora_sizes_file)
 
         corpus_lens.append(corpus_len)
         models_regular.append(model_regular)
@@ -149,8 +149,11 @@ if __name__ == '__main__':
     vocabs_incremental = [model.vocab for model in models_incremental]
 
     intersec_regular = set.intersection(*map(set, vocabs_regular))
+    print('Size of shared vocabulary, regular:', len(intersec_regular), file=sys.stderr)
     intersec_incremental = set.intersection(*map(set, vocabs_incremental))
+    print('Size of shared vocabulary, incremental:', len(intersec_incremental), file=sys.stderr)
 
+    print('Loading evaluative vocabulary...', file=sys.stderr)
     words_regular = []
     words_incremental = []
     eval_adj = pd.read_csv('datasets/sentiment_lexicons/{}/{}_sentiment.csv'.format(
@@ -158,8 +161,11 @@ if __name__ == '__main__':
 
     tag = 'ADJ'  # We work only with adjectives, no need to specify it each time
 
+    all_eval_adj = set() # All evaluative adjectives, independent of models
+
     for line in eval_adj['WORD']:
         voc_word = line + '_' + tag
+        all_eval_adj.add(voc_word)
         if voc_word in intersec_regular:
             words_regular.append(voc_word)
         if voc_word in intersec_incremental:
@@ -168,6 +174,7 @@ if __name__ == '__main__':
     # print(len(words_regular), len(words_incremental))
     # print(words_regular[:10], words_intersec[:10])
 
+    print('Filtering by frequency...', file=sys.stderr)
     words_regular_filtered = delete_lowfrequent(words_regular, int(sys.argv[2]), vocabs_regular)
     words_incremental_filtered = delete_lowfrequent(words_incremental, int(sys.argv[2]),
                                                     vocabs_incremental)
@@ -184,19 +191,20 @@ if __name__ == '__main__':
     '''
     for x in list(wordfreq_regular)[0:5]:
         print("key {}, value {} ".format(x, wordfreq_regular[x]))
-    
+
     for x in list(wordfreq_incremental_filtered)[0:5]:
         print("key {}, value {} ".format(x, wordfreq_incremental_filtered[x]))
     '''
 
-    rest_regular = []
-    rest_incremental = []
+    print('Generating fillers...', file=sys.stderr)
+    rest_regular = set()
+    rest_incremental = set()
     for voc_word in intersec_regular:
-        if voc_word.endswith(tag) and voc_word not in words_regular:
-            rest_regular.append(voc_word)
+        if voc_word.endswith(tag) and voc_word not in all_eval_adj:
+            rest_regular.add(voc_word)
     for voc_word in intersec_incremental:
-        if voc_word.endswith(tag) and voc_word not in words_incremental:
-            rest_incremental.append(voc_word)
+        if voc_word.endswith(tag) and voc_word not in all_eval_adj:
+            rest_incremental.add(voc_word)
 
     rest_regular_filtered = delete_lowfrequent(rest_regular, int(sys.argv[2]), vocabs_regular)
     rest_incremental_filtered = delete_lowfrequent(rest_incremental, int(sys.argv[2]),
@@ -211,11 +219,12 @@ if __name__ == '__main__':
     '''
     for x in list(restfreq_regular)[0:5]:
         print("key {}, value {} ".format(x, restfreq_regular[x]))
-    
+
     for x in list(restfreq_incremental_filtered)[0:5]:
         print("key {}, value {} ".format(x, restfreq_incremental_filtered[x]))
     '''
     if sys.argv[3] == 'with_distribution':
+        print('Sampling proper distribution...', file=sys.stderr)
         output_results(wordfreq_regular, restfreq_regular).to_csv(root + 'rest/'+language + '/'
                                                                   + sys.argv[3]+'/regular.csv')
         output_results(wordfreq_incremental, restfreq_incremental).to_csv(
@@ -226,23 +235,23 @@ if __name__ == '__main__':
             root + 'rest/'+language + '/' + sys.argv[3]+'/incremental_filtered_'+sys.argv[2]+'.csv')
     else:
         rest_reg_df = pd.DataFrame()
-        rest_reg_df['WORD'] = rest_regular
+        rest_reg_df['WORD'] = sorted(list(rest_regular))
         rest_reg_df.to_csv(root + 'rest/'+language+'/regular.csv')
         rest_incr_df = pd.DataFrame()
-        rest_incr_df['WORD'] = rest_incremental
+        rest_incr_df['WORD'] = sorted(list(rest_incremental))
         rest_incr_df.to_csv(root + 'rest/'+language+'/incremental.csv')
         rest_reg_fil_df = pd.DataFrame()
-        rest_reg_fil_df['WORD'] = rest_regular_filtered
-        rest_reg_fil_df.to_csv(root + 'rest/'+language+'regular_filtered_'+sys.argv[2]+'.csv')
+        rest_reg_fil_df['WORD'] = sorted(list(rest_regular_filtered))
+        rest_reg_fil_df.to_csv(root + 'rest/'+language+'/regular_filtered_'+sys.argv[2]+'.csv')
         rest_incr_fil_df = pd.DataFrame()
-        rest_incr_fil_df['WORD'] = rest_incremental_filtered
-        rest_incr_fil_df.to_csv(root + 'rest/'+language+'incremental_filtered_'+sys.argv[2]+'.csv')
-    
+        rest_incr_fil_df['WORD'] = sorted(list(rest_incremental_filtered))
+        rest_incr_fil_df.to_csv(root + 'rest/'+language+'/incremental_filtered_'+sys.argv[2]+'.csv')
+
     eval_filtered_regular = pd.DataFrame()
     eval_filtered_incremental = pd.DataFrame()
-    eval_filtered_regular['WORD'] = words_regular_filtered
+    eval_filtered_regular['WORD'] = sorted(list(words_regular_filtered))
     eval_filtered_regular.to_csv('{}{}_regular_filtered_{}.csv'.format(root, language, sys.argv[2]))
 
-    eval_filtered_incremental['WORD'] = words_incremental_filtered
+    eval_filtered_incremental['WORD'] = sorted(list(words_incremental_filtered))
     eval_filtered_incremental.to_csv('{}{}_incremental_filtered_{}.csv'.format(
         root, language, sys.argv[2]))

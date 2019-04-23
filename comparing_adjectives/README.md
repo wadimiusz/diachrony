@@ -1,8 +1,8 @@
 **To get adjectives from language for comparing:**  
 
-$ python3 get_adjs.py rus 500 (with_distribution | simple)
+$ python3 comparing_adjectives/get_adjs.py rus 500 (with_distribution | simple)
 
-$ python3 get_adjs.py eng 500 (with_distribution | simple)
+$ python3 comparing_adjectives/get_adjs.py eng 500 (with_distribution | simple)
 
 **To evaluate adjectives:**  
 
