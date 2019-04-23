@@ -1,8 +1,8 @@
-**To get adjectives from corpus for comparing:**  
+**To get adjectives from language for comparing:**  
 
-$ python3 get_adjs.py adjectives/rusentilex.csv ADJ 500 corpus_lengths_rus.tsv adjectives/rest/rusentilex/ (with_distribution | simple)
+$ python3 get_adjs.py rus 500 (with_distribution | simple)
 
-$ python3 get_adjs.py adjectives/ProductSentiRus.csv ADJ 500 corpus_lengths_rus.tsv adjectives/rest/sentirus/ (with_distribution | simple)
+$ python3 get_adjs.py eng 500 (with_distribution | simple)
 
 **To evaluate adjectives:**  
 
