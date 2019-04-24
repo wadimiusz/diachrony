@@ -137,8 +137,8 @@ if __name__ == '__main__':
     corpora_sizes_file = "datasets/corpus_lengths.json"  # will hardly ever change
 
     for decade in range(1960, 2010, 10):
-        model_regular = get_models_by_decade(decade, 'regular')
-        model_incremental = get_models_by_decade(decade, 'incremental')
+        model_regular = get_models_by_decade(decade, 'regular', lang=language)
+        model_incremental = get_models_by_decade(decade, 'incremental', lang=language)
         corpus_len = get_len(str(decade), corpora_sizes_file)
 
         corpus_lens.append(corpus_len)
@@ -161,7 +161,7 @@ if __name__ == '__main__':
 
     tag = 'ADJ'  # We work only with adjectives, no need to specify it each time
 
-    all_eval_adj = set() # All evaluative adjectives, independent of models
+    all_eval_adj = set()  # All evaluative adjectives, independent of models
 
     for line in eval_adj['WORD']:
         voc_word = line + '_' + tag
@@ -225,27 +225,31 @@ if __name__ == '__main__':
     '''
     if sys.argv[3] == 'with_distribution':
         print('Sampling proper distribution...', file=sys.stderr)
-        output_results(wordfreq_regular, restfreq_regular).to_csv(root + 'rest/'+language + '/'
-                                                                  + sys.argv[3]+'/regular.csv')
+        output_results(wordfreq_regular, restfreq_regular).to_csv(root + 'rest/' + language + '/'
+                                                                  + sys.argv[3] + '/regular.csv')
         output_results(wordfreq_incremental, restfreq_incremental).to_csv(
-            root + 'rest/'+language + '/' + sys.argv[3]+'/incremental.csv')
+            root + 'rest/' + language + '/' + sys.argv[3] + '/incremental.csv')
         output_results(wordfreq_regular_filtered, restfreq_regular_filtered).to_csv(
-            root + 'rest/'+language + '/' + sys.argv[3]+'/regular_filtered_'+sys.argv[2]+'.csv')
+            root + 'rest/' + language + '/' + sys.argv[3] + '/regular_filtered_' + sys.argv[
+                2] + '.csv')
         output_results(wordfreq_incremental_filtered, restfreq_incremental_filtered).to_csv(
-            root + 'rest/'+language + '/' + sys.argv[3]+'/incremental_filtered_'+sys.argv[2]+'.csv')
+            root + 'rest/' + language + '/' + sys.argv[3] + '/incremental_filtered_' + sys.argv[
+                2] + '.csv')
     else:
         rest_reg_df = pd.DataFrame()
         rest_reg_df['WORD'] = sorted(list(rest_regular))
-        rest_reg_df.to_csv(root + 'rest/'+language+'/regular.csv')
+        rest_reg_df.to_csv(root + 'rest/' + language + '/regular.csv')
         rest_incr_df = pd.DataFrame()
         rest_incr_df['WORD'] = sorted(list(rest_incremental))
-        rest_incr_df.to_csv(root + 'rest/'+language+'/incremental.csv')
+        rest_incr_df.to_csv(root + 'rest/' + language + '/incremental.csv')
         rest_reg_fil_df = pd.DataFrame()
         rest_reg_fil_df['WORD'] = sorted(list(rest_regular_filtered))
-        rest_reg_fil_df.to_csv(root + 'rest/'+language+'/regular_filtered_'+sys.argv[2]+'.csv')
+        rest_reg_fil_df.to_csv(
+            root + 'rest/' + language + '/regular_filtered_' + sys.argv[2] + '.csv')
         rest_incr_fil_df = pd.DataFrame()
         rest_incr_fil_df['WORD'] = sorted(list(rest_incremental_filtered))
-        rest_incr_fil_df.to_csv(root + 'rest/'+language+'/incremental_filtered_'+sys.argv[2]+'.csv')
+        rest_incr_fil_df.to_csv(
+            root + 'rest/' + language + '/incremental_filtered_' + sys.argv[2] + '.csv')
 
     eval_filtered_regular = pd.DataFrame()
     eval_filtered_incremental = pd.DataFrame()
