@@ -129,15 +129,27 @@ def main():
     parser.add_argument('--lang', '-l', dest='lexicon', choices=['rus', 'eng', 'nor'])
     parser.add_argument('--kind', '-k', dest='kind', choices=['regular', 'incremental'])
     parser.add_argument('--min-freq', '-mf', dest='min_freq', type=int)
+    parser.add_argument('--distrib', help="Use filler sets with distribution reproduction?",
+                        action="store_true")
     parser.add_argument('--lengths', '-lg', dest='lengths', default="datasets/corpus_lengths.json")
+    parser.add_argument('--root', '-r', default="comparing_adjectives/adjectives/")
+    parser.add_argument('--out_root', '-or', default="comparing_adjectives/outputs/")
     parser.add_argument('--top-n-neighbors', '-n', type=int, default=50, dest='n',
                         help="Parameter of the Jaccard model: number of associates to consider")
     args = parser.parse_args()
 
-    evaluative_adj_path = "comparing_adjectives/adjectives/{}_{}_filtered_{}.csv". \
-        format(args.lexicon, args.kind, args.min_freq)
-    rest_adj_path = "comparing_adjectives/adjectives/rest/{}/{}_filtered_{}.csv". \
-        format(args.lexicon, args.kind, args.min_freq)
+    root = args.root
+    output_root = args.out_root
+
+    evaluative_adj_path = "{}{}_{}_filtered_{}.csv".format(
+        root, args.lexicon, args.kind, args.min_freq)
+
+    if args.distrib:
+        rest_adj_path = "{}rest/{}/with_distribution/{}_filtered_{}.csv".format(
+            root, args.lexicon, args.kind, args.min_freq)
+    else:
+        rest_adj_path = "{}rest/{}/{}_filtered_{}.csv".format(
+            root, args.lexicon, args.kind, args.min_freq)
 
     models = []
     corpus_lens = []
@@ -235,10 +247,14 @@ def main():
     results_rest['sum_deltas_procrustes'] = results_rest['WORD'].map(move_rest_proc)
 
     print('Saving output files...', file=sys.stderr)
-    results_eval.to_csv("comparing_adjectives/outputs/{}/eval_{}_{}.csv".format(
-        args.lexicon, args.kind, args.min_freq))
-    results_rest.to_csv("comparing_adjectives/outputs/{}/rest_{}_{}.csv".format(
-        args.lexicon, args.kind, args.min_freq))
+    results_eval.to_csv("{}{}/eval_{}_{}.csv".format(
+        output_root, args.lexicon, args.kind, args.min_freq))
+    if args.distrib:
+        results_rest.to_csv("{}{}/rest_{}_{}_distrib.csv".format(
+            output_root, args.lexicon, args.kind, args.min_freq))
+    else:
+        results_rest.to_csv("{}{}/rest_{}_{}.csv".format(
+            output_root, args.lexicon, args.kind, args.min_freq))
 
 
 if __name__ == "__main__":

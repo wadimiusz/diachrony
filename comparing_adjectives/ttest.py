@@ -18,7 +18,7 @@ comparison_names = \
     ['Procrustes distances', 'Global Anchors distances',
      'Sum of Procrustes deltas', 'Sum of Global Anchors deltas']
 
-for name in dataset_eval.columns.values[3:]:
+for name in dataset_eval.columns.values[3:]:  # We don't need first columns
     print('=====')
     print(name)
     evals = dataset_eval[name].values

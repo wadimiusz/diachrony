@@ -8,6 +8,8 @@ $ python3 comparing_adjectives/get_adjs.py eng 500 (with_distribution | simple)
 
 $ python3 comparing_adjectives/comparing.py -l rus -k regular -mf 500 -n 50
 
+$ python3 comparing_adjectives/comparing.py -l eng -k incremental -mf 100 -n 10
+
 **To plot results:**  
 
 $ python3 plot_results.py outputs/rusentilex/eval_regular_500.csv outputs/rusentilex/rest_regular_500.csv (mean_dist_procrustes outputs/rusentilex/regular_mean_dist_procrustes_500.png | mean_dist_globalanchors outputs/rusentilex/regular_mean_dist_globalanchors_500.png)

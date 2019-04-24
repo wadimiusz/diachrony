@@ -1,0 +1,25 @@
+Comparing outputs/rus/eval_regular_100.csv and outputs/rus/rest_regular_100.csv
+=====
+mean_dist_jaccard
+Averages: 0.734 	 0.751
+T-test (difference and p-value): -2.46789, 0.01370
+=====
+sum_deltas_jaccard
+Averages: 0.117 	 0.162
+T-test (difference and p-value): -2.43254, 0.01511
+=====
+mean_dist_globalanchors
+Averages: 0.208 	 0.209
+T-test (difference and p-value): -0.40507, 0.68549
+=====
+sum_deltas_globalanchors
+Averages: 0.813 	 0.843
+T-test (difference and p-value): -1.84143, 0.06576
+=====
+mean_dist_procrustes
+Averages: 0.229 	 0.242
+T-test (difference and p-value): -4.67783, 0.00000
+=====
+sum_deltas_procrustes
+Averages: 0.726 	 0.717
+T-test (difference and p-value): 0.44087, 0.65937
