@@ -22,7 +22,7 @@ eval_frequencies = dataset_eval['frequency'].values
 filler_frequencies = dataset_fillers['frequency'].values
 freq_welch = test(eval_frequencies, filler_frequencies, equal_var=False)
 print('Average normalized frequencies: %.5f (evaluative), %.5f (fillers)' %
-        (np.average(eval_frequencies), np.average(filler_frequencies)))
+      (np.average(eval_frequencies), np.average(filler_frequencies)))
 print('Difference: %.5f' % (np.average(eval_frequencies) - np.average(filler_frequencies)))
 print('Welch T-test:', freq_welch)
 

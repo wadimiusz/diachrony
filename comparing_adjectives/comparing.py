@@ -9,7 +9,8 @@ from get_adjs import get_models_by_decade, get_len, get_freqdict
 from models import GlobalAnchors, smart_procrustes_align_gensim, Jaccard
 from utils import intersection_align_gensim
 import percache
-cache = percache.Cache("/tmp/my-cache")
+
+cache = percache.Cache('my-cache')
 
 
 def intersec_models(modellist, intersec_vocab):
@@ -28,8 +29,9 @@ def align_models(modellist):
 
 @cache
 def get_anchor(word, model):
-    model_anchor = GlobalAnchors(w2v1=model, w2v2=model,
-                                  assume_vocabs_are_identical=True).get_global_anchors(word, w2v=model)
+    model_anchor = GlobalAnchors(
+        w2v1=model, w2v2=model, assume_vocabs_are_identical=True).get_global_anchors(
+        word, w2v=model)
     return model_anchor
 
 
@@ -83,7 +85,6 @@ def get_mean_dist_globalanchors(wordlist, modellist):
         mean_scores[word] = scores / (len(modellist) - 1)
 
     return mean_scores
-
 
 
 def get_move_from_initial_procrustes(wordlist, modellist):
