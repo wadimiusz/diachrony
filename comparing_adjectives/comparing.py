@@ -27,12 +27,6 @@ def align_models(modellist):
     return modellist
 
 
-@cache
-def get_anchor(word, model):
-    model_anchor = GlobalAnchors(
-        w2v1=model, w2v2=model, assume_vocabs_are_identical=True).get_global_anchors(
-        word, w2v=model)
-    return model_anchor
 
 
 def get_mean_dist_procrustes(wordlist, modellist):
@@ -58,21 +52,6 @@ def get_mean_dist_jaccard(wordlist, modellist, top_n_neighbors):
         mean_scores[word] = scores / (len(modellist) - 1)
 
     return mean_scores
-
-
-'''
-def get_mean_dist_globalanchors(wordlist, modellist):
-    mean_scores = {}
-    for word in wordlist:
-        scores = 0
-        for i in range(len(modellist) - 1):
-            score = GlobalAnchors(w2v1=modellist[i], w2v2=modellist[i + 1],
-                                  assume_vocabs_are_identical=True).get_score(word)
-            scores += (1 - score)
-        mean_scores[word] = scores / (len(modellist) - 1)
-
-    return mean_scores
-'''
 
 
 def get_mean_dist_globalanchors(wordlist, modellist):
@@ -104,30 +83,6 @@ def get_move_from_initial_procrustes(wordlist, modellist):
         move_from_init[word] = deltas / (len(modellist) - 2)
 
     return move_from_init
-
-
-'''
-def get_move_from_initial_globalanchors(wordlist, modellist):
-    move_from_init = {}
-    for word in wordlist:
-        deltas = 0
-        previous = GlobalAnchors(w2v1=modellist[0], w2v2=modellist[1],
-                                 assume_vocabs_are_identical=True).get_score(word)
-        for i in range(2, len(modellist)):
-            similarity = \
-                GlobalAnchors(w2v1=modellist[0], w2v2=modellist[i],
-                              assume_vocabs_are_identical=True).get_score(word)
-            delta = similarity - previous
-            if delta > 0:
-                deltas -= 1
-            elif delta < 0:
-                deltas += 1
-            previous = similarity
-
-        move_from_init[word] = deltas / (len(modellist) - 2)
-
-    return move_from_init
-'''
 
 
 def get_move_from_initial_globalanchors(wordlist, modellist):
@@ -169,8 +124,7 @@ def get_move_from_initial_jaccard(wordlist, modellist, top_n_neighbors):
 
     return move_from_init
 
-
-def main():
+if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--lang', '-l', dest='lexicon', choices=['rus', 'eng', 'nor'])
     parser.add_argument('--kind', '-k', dest='kind', choices=['regular', 'incremental'])
@@ -198,6 +152,12 @@ def main():
             root, args.lexicon, args.kind, args.min_freq)
 
     cache = percache.Cache(rest_adj_path.replace('.csv', '') + '_tmp_cache')
+
+    @cache
+    def get_anchor(word, model):
+        model_anchor = GlobalAnchors(w2v1=model, w2v2=model, assume_vocabs_are_identical=True).get_global_anchors(word, w2v=model)
+        return model_anchor
+
     models = []
     corpus_lens = []
     for decade in range(1960, 2010, 10):
@@ -303,6 +263,3 @@ def main():
         results_rest.to_csv("{}{}/rest_{}_{}.csv".format(
             output_root, args.lexicon, args.kind, args.min_freq))
 
-
-if __name__ == "__main__":
-    main()
