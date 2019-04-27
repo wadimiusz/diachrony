@@ -10,7 +10,7 @@ from models import GlobalAnchors, smart_procrustes_align_gensim, Jaccard
 from utils import intersection_align_gensim
 import percache
 
-cache = percache.Cache('my-cache')
+
 
 
 def intersec_models(modellist, intersec_vocab):
@@ -197,6 +197,7 @@ def main():
         rest_adj_path = "{}rest/{}/{}_filtered_{}.csv".format(
             root, args.lexicon, args.kind, args.min_freq)
 
+    cache = percache.Cache(rest_adj_path.replace('.csv', '') + '_tmp_cache')
     models = []
     corpus_lens = []
     for decade in range(1960, 2010, 10):
