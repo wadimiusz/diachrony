@@ -8,8 +8,8 @@ import pandas as pd
 from get_adjs import get_models_by_decade, get_len, get_freqdict
 from models import GlobalAnchors, smart_procrustes_align_gensim, Jaccard
 from utils import intersection_align_gensim
-#import percache
-#cache = percache.Cache("/tmp/my-cache")
+import percache
+cache = percache.Cache("/tmp/my-cache")
 
 
 def intersec_models(modellist, intersec_vocab):
@@ -25,13 +25,12 @@ def align_models(modellist):
 
     return modellist
 
-'''
+
 @cache
 def get_anchor(word, model):
     model_anchor = GlobalAnchors(w2v1=model, w2v2=model,
                                   assume_vocabs_are_identical=True).get_global_anchors(word, w2v=model)
     return model_anchor
-'''
 
 
 def get_mean_dist_procrustes(wordlist, modellist):
@@ -59,6 +58,7 @@ def get_mean_dist_jaccard(wordlist, modellist, top_n_neighbors):
     return mean_scores
 
 
+'''
 def get_mean_dist_globalanchors(wordlist, modellist):
     mean_scores = {}
     for word in wordlist:
@@ -70,8 +70,9 @@ def get_mean_dist_globalanchors(wordlist, modellist):
         mean_scores[word] = scores / (len(modellist) - 1)
 
     return mean_scores
-
 '''
+
+
 def get_mean_dist_globalanchors(wordlist, modellist):
     mean_scores = {}
     for word in wordlist:
@@ -82,7 +83,7 @@ def get_mean_dist_globalanchors(wordlist, modellist):
         mean_scores[word] = scores / (len(modellist) - 1)
 
     return mean_scores
- '''
+
 
 
 def get_move_from_initial_procrustes(wordlist, modellist):
@@ -104,6 +105,7 @@ def get_move_from_initial_procrustes(wordlist, modellist):
     return move_from_init
 
 
+'''
 def get_move_from_initial_globalanchors(wordlist, modellist):
     move_from_init = {}
     for word in wordlist:
@@ -124,8 +126,9 @@ def get_move_from_initial_globalanchors(wordlist, modellist):
         move_from_init[word] = deltas / (len(modellist) - 2)
 
     return move_from_init
-
 '''
+
+
 def get_move_from_initial_globalanchors(wordlist, modellist):
     move_from_init = {}
     for word in wordlist:
@@ -143,7 +146,6 @@ def get_move_from_initial_globalanchors(wordlist, modellist):
         move_from_init[word] = deltas / (len(modellist) - 2)
 
     return move_from_init
-'''
 
 
 def get_move_from_initial_jaccard(wordlist, modellist, top_n_neighbors):
