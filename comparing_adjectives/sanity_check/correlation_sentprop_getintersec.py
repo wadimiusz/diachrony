@@ -2,22 +2,22 @@ from scipy.stats import pearsonr
 import pandas as pd
 import sys
 
-ours1 = pd.read_csv('adjectives/eng_regular_filtered_0.csv')
-ours2 = pd.read_csv('adjectives/rest/eng/regular.csv')
+ours1 = pd.read_csv('../adjectives/eng_regular_filtered_0.csv')
+ours2 = pd.read_csv('../adjectives/rest/eng/regular.csv')
 
-ours3 = pd.read_csv('adjectives/eng_incremental_filtered_0.csv')
-ours4 = pd.read_csv('adjectives/rest/eng/incremental.csv')
+ours3 = pd.read_csv('../adjectives/eng_incremental_filtered_0.csv')
+ours4 = pd.read_csv('../adjectives/rest/eng/incremental.csv')
 
 ours_regular = pd.concat([ours1, ours2])
 #print(ours_regular.head())
 ours_incremental = pd.concat([ours3, ours4])
 #print(ours_incremental.head())
 
-sentprop_60 = pd.read_csv('../datasets/sentiment_lexicons/historical/1960.tsv', sep='\t')
-sentprop_70 = pd.read_csv('../datasets/sentiment_lexicons/historical/1970.tsv', sep='\t')
-sentprop_80 = pd.read_csv('../datasets/sentiment_lexicons/historical/1980.tsv', sep='\t')
-sentprop_90 = pd.read_csv('../datasets/sentiment_lexicons/historical/1990.tsv', sep='\t')
-sentprop_00 = pd.read_csv('../datasets/sentiment_lexicons/historical/2000.tsv', sep='\t')
+sentprop_60 = pd.read_csv('../../datasets/sentiment_lexicons/historical/1960.tsv', sep='\t')
+sentprop_70 = pd.read_csv('../../datasets/sentiment_lexicons/historical/1970.tsv', sep='\t')
+sentprop_80 = pd.read_csv('../../datasets/sentiment_lexicons/historical/1980.tsv', sep='\t')
+sentprop_90 = pd.read_csv('../../datasets/sentiment_lexicons/historical/1990.tsv', sep='\t')
+sentprop_00 = pd.read_csv('../../datasets/sentiment_lexicons/historical/2000.tsv', sep='\t')
 
 ours_vocab_reg = ours_regular['WORD'].tolist()
 print(len(ours_vocab_reg))
@@ -32,7 +32,7 @@ print()
 
 vocabs = []
 for decade in [sentprop_60, sentprop_70, sentprop_80, sentprop_90, sentprop_00]:
-    vocab = (decade.iloc[:, 0]).tolist()
+    vocab = (decade[decade.iloc[:, 2] > 0.5].iloc[:, 0]).tolist()
     vocabs.append(vocab)
 
 sentprop_all = set.intersection(*map(set, vocabs))

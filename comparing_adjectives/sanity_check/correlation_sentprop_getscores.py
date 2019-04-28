@@ -45,9 +45,9 @@ def load_model(embeddings_file):
 
 def get_models_by_decade(cur_decade: int, kind: str):
     if kind == "regular":
-        model = load_model('data_eng/{decade}.model'.format(decade=cur_decade))
+        model = load_model('../data_eng/{decade}.model'.format(decade=cur_decade))
     else:
-        model = load_model('data_eng/{decade}_incremental.model'.format(decade=cur_decade))
+        model = load_model('../data_eng/{decade}_incremental.model'.format(decade=cur_decade))
 
     return model
 
