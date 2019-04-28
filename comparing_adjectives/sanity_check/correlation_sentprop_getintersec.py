@@ -57,8 +57,8 @@ results_incremental['WORD'] = list(intersec_incremental)
 def get_diff(decade1, decade2, wordlist):
     dic = {}
     for word in wordlist:
-        dic[word] = decade2[decade2.iloc[:, 0] == word.split('_')[0]].iloc[:, 1].item() -\
-                    decade1[decade1.iloc[:, 0] == word.split('_')[0]].iloc[:, 1].item()
+        dic[word] = abs(decade2[decade2.iloc[:, 0] == word.split('_')[0]].iloc[:, 1].item() -\
+                    decade1[decade1.iloc[:, 0] == word.split('_')[0]].iloc[:, 1].item())
         #print(dic[word])
 
     return dic
