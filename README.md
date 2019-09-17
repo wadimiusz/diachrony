@@ -12,3 +12,5 @@ Team:
 Vadim Fomin https://github.com/wadimiusz  
 Julia Rodina https://github.com/juliarodina  
 Daria Bakshandaeva https://github.com/Gugutse  
+
+**!!!** The project consist of two parts, for better understanding please ignore this repo and look at https://github.com/wadimiusz/diachrony_for_russian and https://github.com/ltgoslo/diachronic_multiling_adjectives.
