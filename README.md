@@ -1,16 +1,13 @@
 # diachrony
 
-**Warning!!!** This project consist of two parts, for better understanding please ignore this repo and look at https://github.com/wadimiusz/diachrony_for_russian and https://github.com/ltgoslo/diachronic_multiling_adjectives.
+This is the repository of the workshop on tracking semantic shifts in languages by means of distributional semantics. The workshop was held at the Higher School of Economics. 
 
+There were several projects within this workshop:
 
-This is the repository of the project that uses distributional semantics to track semantic shifts in words within short time spans.
+* https://github.com/wadimiusz/diachrony_for_russian
+* https://github.com/ltgoslo/diachronic_multiling_adjectives
 
-You can use sh scripts in scripts/ folder to understand how to use the models.
-E. g. for comparing embeddings from 2013 and embeddings from 2014 in a verbose manner, run:
-```
-sh scripts/comparison_2013_2014_informative.sh
-```
-
+This repo contains our work on the workshop. It contains code related to both of the projects and cannot be considered a stable version. For stable versions, please check out the repos mentioned above in the first place. Also feel free to check out our papers linked in the descriptions of these repos.
 
 Team:  
 Vadim Fomin https://github.com/wadimiusz  
