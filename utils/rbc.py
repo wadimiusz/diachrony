@@ -58,27 +58,30 @@ def retrieve(site):
     # exceptions = []
     for url in rbc.keys():
         print("Processing url: {}".format(url))
-        page = requests.get(url)
-        soup = bs(page.text, 'html5lib')
-        try: # title [1]
-            rbc[url].extend([p.get_text().split(' :: ')[0] for p in soup.select('title')])
-            # source [2]
-            rbc[url].extend([p.get_text().split(' :: ')[2] for p in soup.select('title')])
-            # text [3]
-            text = bs(' '.join([re.sub('[ ]{2,}', '', p.text) for p in soup.find_all('p')]), \
+        try:
+            page = requests.get(url)
+            soup = bs(page.text, 'html5lib')
+            try:
+                # title [1]
+                rbc[url].extend([p.get_text().split(' :: ')[0] for p in soup.select('title')])
+                # source [2]
+                rbc[url].extend([p.get_text().split(' :: ')[2] for p in soup.select('title')])
+                # text [3]
+                text = bs(' '.join([re.sub('[ ]{2,}', '', p.text) for p in soup.find_all('p')]), \
                 'html5lib').text.replace('\xa0', ' ').replace('\n', '').replace('\u200b', '')
-            rbc[url].append(text)
-            # author [4]
-            author = [re.sub('[ ]{2,}', '', p.get_text().replace('\n', '')).split(':')[1] for p \
-                    in soup.select('div.article__authors')]
-            rbc[url].extend(author if len(author) > 0 else ['unknown'])
-            # wordcount [5]
-            rbc[url].append(len([w.strip(punctuation + '«»—…“”*№– ') for w in \
+                rbc[url].append(text)
+                # author [4]
+                author = ""
+                rbc[url].extend([author] if author else ['unknown'])
+                # wordcount [5]
+                rbc[url].append(len([w.strip(punctuation + '«»—…“”*№– ') for w in \
                               text.split()]))
-        except:
-            print('Cannot open', str(url))
+            except:
+                print('Cannot open', str(url))
             # exceptions.append(url)
-            rbc[url].extend(['-', '-', '-', '-', '-'])
+                rbc[url].extend(['-', '-', '-', '-', '-'])
+        except:
+            rbc[url].extend("- - - - -".split())
     return rbc # exceptions
 
 
@@ -120,4 +123,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
