@@ -6,6 +6,7 @@ from time import sleep
 import os
 import csv
 from string import punctuation
+from smart_open import open
 
 punct = punctuation + '«»—…“”*№–'
 
@@ -107,7 +108,7 @@ def save_articles_and_get_paths(content: list):
     # записываем в файлы сами тексты
     path1 = os.path.join(root, 'plain_text', year, month)
     os.makedirs(path1, exist_ok=True)
-    with open(path1 + os.sep + filename + '.txt', 'w', encoding='UTF-8') as f:
+    with open(path1 + os.sep + filename + '.txt.gz', 'w', encoding='UTF-8') as f:
         f.write(content[-1])
     content.remove(content[-1])  # теперь сам текст можно удалить
     path = os.path.join('.', 'plain_text', year, month, filename + '.txt')
@@ -123,7 +124,7 @@ def main():
 
     wordcount = 0
 
-    f = open("ng_metatable.csv", "w", encoding="UTF-8")
+    f = open("ng_metatable.csv.gz", "w", encoding="UTF-8")
     csv_writer = csv.writer(f, delimiter='\t')
     csv_writer.writerow(['path', 'author', 'date', 'source', 'title', 'url', 'wordcount'])
     # запишем в csv-файл название колонок
