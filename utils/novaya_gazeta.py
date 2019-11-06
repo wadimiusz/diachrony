@@ -1,3 +1,4 @@
+import sys
 import requests
 from bs4 import BeautifulSoup
 from random import randint
@@ -25,7 +26,7 @@ def read_page(link: str):
 def get_issues(startpage: str):
     link_path = "novaya_gazeta_links.txt"
     if os.path.exists(link_path):
-        print("Opening links.txt")
+        print("Opening links.txt", file=sys.stderr)
         issues = [
             link for link in open(link_path, "r", encoding="utf-8").read().split("\n") if link]
         return issues
@@ -46,7 +47,7 @@ def get_articles(issues: list):
     for issue in issues:
         sleep(randint(1, 3))
         page = read_page(issue)
-        print(issue)
+        print(issue, file=sys.stderr)
         if page is not None:
             for i in page.find_all("h2"):
                 # if i.text in sections:
@@ -55,7 +56,7 @@ def get_articles(issues: list):
                         articles.append("https://www.novayagazeta.ru" + j["href"])
                     else:
                         continue
-    print('Ссылки на статьи собраны')
+    print('Ссылки на статьи собраны', file=sys.stderr)
     return articles
 
 
@@ -63,7 +64,8 @@ def get_content(link: str):
     if "articles" not in link:
         return None
     article = read_page(link)
-    print(link)  # на всякий случай выводим ссылку, чтобы в случае ошибки понять, в чем дело
+    # на всякий случай выводим ссылку, чтобы в случае ошибки понять, в чем дело
+    print(link, file=sys.stderr)
 
     if article is not None:
         author = "No author"
@@ -135,7 +137,7 @@ def main():
             csv_writer.writerow(content_with_paths)  # пишем в метатаблицу
 
             # на экран выводим количество сохраненных слов
-            print('{} слов сохранены'.format(wordcount))
+            print('{} слов сохранены'.format(wordcount), file=sys.stderr)
 
     f.close()
 
