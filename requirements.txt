@@ -1,3 +1,5 @@
+requests
+bs4
 percache
 gensim
 krippendorff
