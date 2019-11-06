@@ -57,6 +57,7 @@ def retrieve(site):
     rbc = get_dates(site)
     # exceptions = []
     for url in rbc.keys():
+        print("Processing url: {}".format(url))
         page = requests.get(url)
         soup = bs(page.text, 'html5lib')
         try: # title [1]
