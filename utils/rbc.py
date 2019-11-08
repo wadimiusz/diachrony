@@ -8,13 +8,14 @@ from bs4 import BeautifulSoup
 import pandas as pd
 from string import punctuation
 from smart_open import open
+import sys
 
 
 def get_sitemap(sitemaps):
     request = requests.get(sitemaps)
     sitemaps = [sitemap.get_text() for sitemap in
                 BeautifulSoup(request.text, 'lxml').find_all('loc')]
-    print('{} sitemaps crawled'.format(len(sitemaps)))
+    print('{} sitemaps crawled'.format(len(sitemaps)), file=sys.stderr)
     return sitemaps
 
 
@@ -37,7 +38,7 @@ def crawl_sitemap(sitemaps, n=512):
                        if 'rbc' in chunk and 'wmv' not in chunk and 'video' not in chunk]
         all_links.extend([text_chunk.split('*')[0] for text_chunk in text_chunks])
         all_dates.extend([text_chunk.split('*')[1] for text_chunk in text_chunks])
-    print('{} links crawled in total'.format(len(all_links)))
+    print('{} links crawled in total'.format(len(all_links)), file=sys.stderr)
     return dict(zip(all_links, all_dates))
 
 
@@ -51,7 +52,7 @@ def get_dates(rbc):
     for url, date in rbc.items():
         if date in clean_dates:
             clean_rbc[url] = [date]
-    print('{} links crawled;'.format(len(clean_rbc.keys())))
+    print('{} links crawled;'.format(len(clean_rbc.keys())), file=sys.stderr)
     return clean_rbc
 
 
@@ -65,7 +66,7 @@ def retrieve(site):
     rbc = get_dates(site)
     # exceptions = []
     for url in rbc.keys():
-        print("Processing url: {}".format(url))
+        print("Processing url: {}".format(url), file=sys.stderr)
         try:
             page = requests.get(url)
             soup = BeautifulSoup(page.text, 'html5lib')
@@ -86,7 +87,7 @@ def retrieve(site):
                 # wordcount [5]
                 rbc[url].append(len([w.strip(punctuation + '«»—…“”*№– ') for w in text.split()]))
             except:
-                print('Cannot open', str(url))
+                print('Cannot open', str(url), file=sys.stderr)
                 # exceptions.append(url)
                 rbc[url].extend(['-', '-', '-', '-', '-'])
         except:
@@ -118,7 +119,7 @@ def make_dirs_and_files(rbc):
             with open(plain_path + os.sep + name + '.txt.gz', 'a', encoding='utf-8') as f:
                 f.write(url[3])
                 f.close()
-            print('Plain {} created'.format(name + '.txt.gz'))
+            print('Plain {} created'.format(name + '.txt.gz'), file=sys.stderr)
     return rbc_df.to_csv('rbc.csv', sep='\t', encoding='utf-8', index=False)
 
 
