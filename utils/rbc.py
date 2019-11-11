@@ -91,6 +91,7 @@ def retrieve(site):
                 # exceptions.append(url)
                 rbc[url].extend(['-', '-', '-', '-', '-'])
         except:
+            print('Failed', url, file=sys.stderr)
             rbc[url].extend("- - - - -".split())
     return rbc  # exceptions
 
@@ -109,7 +110,7 @@ def make_dirs_and_files(rbc):
         year, month = url[0].split('-')[0], url[0].split('-')[1]
         plain_path = os.path.join(os.getcwd(), 'plain_texts', '{}'.format(year), '{}'.format(month))
         os.makedirs(plain_path, exist_ok=True)
-        file_path = os.path.join(plain_path, name + '.txt')
+        file_path = os.path.join(plain_path, name + '.txt.gz')
         '''кормим датафрейм'''
         rbc_df.loc[len(rbc_df)] = [file_path, url[4], url[0], url[2], url[1], link, url[5]]
         '''сохраняем файлы в соответствующих папках так, что если за текущий день есть другая
