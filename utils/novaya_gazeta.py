@@ -28,12 +28,14 @@ def read_page(link: str):
 
 
 def get_issues(startpage: str):
+    """
     link_path = "novaya_gazeta_links.txt"
     if os.path.exists(link_path):
         print("Opening links.txt", file=sys.stderr)
         issues = [
             link for link in open(link_path, "r", encoding="utf-8").read().split("\n") if link]
         return issues
+    """
     issues = []
     # берем ссылку на последний в 2019 году номер архива
     issue_number = int(startpage.split('/')[-1])
