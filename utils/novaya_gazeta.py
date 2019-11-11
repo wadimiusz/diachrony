@@ -121,7 +121,7 @@ def save_articles_and_get_paths(content: list):
 
 
 def main():
-    startpage = 'https://www.novayagazeta.ru/issues/2903'
+    startpage = 'https://www.novayagazeta.ru/issues/2559'
     issues = get_issues(startpage)  # генерируем ссылки на номера газеты
     articles = get_articles(issues)  # со страниц номеров собираем ссылки на статьи
 
