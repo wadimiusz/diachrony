@@ -7,6 +7,7 @@ import re
 import urllib.request
 from bs4 import BeautifulSoup
 from smart_open import open
+import sys
 
 URL = 'https://nplus1.ru'  # источник текстов
 
@@ -81,7 +82,7 @@ def main():
             article_name = article_path.split('/')[-1]
             article_text = data['article_text']
             write_in_file(corpus_path + os.sep + article_name + '.txt.gz', article_text)
-            print(f"{article_name}.txt saved")
+            print('%s.txt saved' % article_name, file=sys.stderr)
             metadatas.append(data['article_metadata'])
     write_in_file('metadata.csv.gz', '\n'.join(['\t'.join([str(el) for el in metadata])
                                                 for metadata in metadatas]))
