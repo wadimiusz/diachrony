@@ -3,6 +3,7 @@ import os
 import datetime
 from bs4 import BeautifulSoup
 import json
+from smart_open import open
 
 
 URL = 'https://nplus1.ru'   #источник текстов
@@ -77,10 +78,10 @@ def main():
             data = parse_article_page(article_path)
             article_name = article_path.split('/')[-1]
             article_text = data['article_text']
-            write_in_file(corpus_path + os.sep + article_name + '.txt', article_text)
+            write_in_file(corpus_path + os.sep + article_name + '.txt.gz', article_text)
             print(f"{article_name}.txt saved")
             metadatas.append(data['article_metadata'])
-    write_in_file('metadata.csv', '\n'.join(['\t'.join([str(el) for el in metadata]) for metadata in metadatas]))
+    write_in_file('metadata.csv.gz', '\n'.join(['\t'.join([str(el) for el in metadata]) for metadata in metadatas]))
     return
 
 
