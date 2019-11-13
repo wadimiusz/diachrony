@@ -1,12 +1,14 @@
-import urllib.request, re
-import os
+# python3
+# coding: utf-8
+
 import datetime
+import os
+import re
+import urllib.request
 from bs4 import BeautifulSoup
-import json
 from smart_open import open
 
-
-URL = 'https://nplus1.ru'   #источник текстов
+URL = 'https://nplus1.ru'  # источник текстов
 
 
 def download_page(url):
@@ -40,7 +42,7 @@ def parse_article_page(article_path):
     article_html = BeautifulSoup(article_page, features="lxml")
     paragraphs = article_html.find(class_="body").findChildren('p', recursive=False)
     author = None
-    if (len(paragraphs) > 0 and paragraphs[-1].i):
+    if len(paragraphs) > 0 and paragraphs[-1].i:
         author = paragraphs[-1].i.extract().text
     article_text = ' '.join([p.text for p in paragraphs])
     title = article_html.h1.text
@@ -70,7 +72,7 @@ def main():
         [year, month, day] = str(date).split('-')
         path = year + os.sep + month
         corpus_path = 'n_plus_one' + os.sep + path
-        if not(os.path.exists(corpus_path)):
+        if not (os.path.exists(corpus_path)):
             os.makedirs(corpus_path)
         date_string = '/'.join([year, month, day])
         article_paths = get_links_from_daily_page(date_string)
@@ -81,7 +83,8 @@ def main():
             write_in_file(corpus_path + os.sep + article_name + '.txt.gz', article_text)
             print(f"{article_name}.txt saved")
             metadatas.append(data['article_metadata'])
-    write_in_file('metadata.csv.gz', '\n'.join(['\t'.join([str(el) for el in metadata]) for metadata in metadatas]))
+    write_in_file('metadata.csv.gz', '\n'.join(['\t'.join([str(el) for el in metadata])
+                                                for metadata in metadatas]))
     return
 
 
