@@ -1,3 +1,7 @@
+# python3
+# coding: utf-8
+
+import sys
 import requests
 import re
 import os
@@ -9,18 +13,22 @@ import random
 import json
 
 
-def getHrefs(link):
+def gethrefs(link):
     links = []
     r = requests.get(link)
-    refs = re.split('href="', re.split('<svg class="control_mini-icon control_mini-icon-prev">', re.split('">Все материалы</a></div></div></div><div id="context_3"></div></div></section><div id="root_footer">', r.text)[0])[1])
+    refs = re.split('href="',
+                    re.split('<svg class="control_mini-icon control_mini-icon-prev">',
+                             re.split('">Все материалы</a></div></div></div><div id="context_3">'
+                                      '</div></div></section><div id="root_footer">',
+                                      r.text)[0])[1])
     for i in refs:
         ilink = ""
         if i.startswith("/news/"):
-            ilink = re.split('">',i)[0]
+            ilink = re.split('">', i)[0]
         if i.startswith("/article/"):
-            ilink = re.split('">',i)[0]
+            ilink = re.split('">', i)[0]
         if ilink:
-            new_link = f"https://lenta.ru{ilink}"
+            new_link = 'https://lenta.ru' + ilink
             links.append(new_link)
     return links
 
@@ -35,18 +43,15 @@ def time_period(year):
             if day < 10:
                 day = "0" + str(day)
             onlink = "https://lenta.ru/news/" + str(year) + "/" + str(month) + "/" + str(day) + "/"
-            try:
-                curr_links = getHrefs(onlink)
-                if curr_links:
-                    time_period_links.extend(curr_links)
-                else:
-                    pass
-            except:
+            curr_links = gethrefs(onlink)
+            if curr_links:
+                time_period_links.extend(curr_links)
+            else:
                 pass
     return time_period_links
 
 
-def getArticleTextLenta(link):
+def getarticletextlenta(link):
     r = requests.get(link)
     try:
         text = re.split('<div class=', re.split('"articleBody"', r.text)[1])[0]
@@ -63,17 +68,18 @@ def crawl(hrefs, to_save):
     progress_bar = tqdm(desc="Getting texts...", total=len(hrefs))
     for i, link in enumerate(hrefs):
         try:
-            text = getArticleTextLenta(link)
+            text = getarticletextlenta(link)
             if text:
                 filename, text_len = text.split()[0], len(text.split())
                 stats["2019"] += text_len
-                with open(to_save + os.sep + "{}_{}".format(filename, i) + ".txt.gz", "a", encoding="utf-8") as f:
+                with open(to_save + os.sep + "{}_{}".format(filename, i) + ".txt.gz", "a",
+                          encoding="utf-8") as f:
                     f.write(text)
                     f.close()
             else:
                 pass
         except:
-            print(f"FAILED {link}")
+            print('FAILED', link, file=sys.stderr)
             pass
         progress_bar.update(1)
     progress_bar.close()
@@ -89,7 +95,7 @@ def main():
     print(get_statistics_and_crawl)
     with open("lenta_2019_statistics.json", "w", encoding="utf-8") as c:
         json.dump(get_statistics_and_crawl, c, ensure_ascii=False, indent=4)
-    print("I'm done")
+    print("I'm done", file=sys.stderr)
 
 
 if __name__ == "__main__":
