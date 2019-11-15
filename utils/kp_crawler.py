@@ -56,7 +56,7 @@ def main():
     os.makedirs(to_save, exist_ok=True)
     get_statistics_and_crawl = crawl(start, end, to_save)
     print(get_statistics_and_crawl)
-    with open("kp_2019_statistics.json", "w", encoding="utf-8") as c:
+    with open("kp_2019_statistics.json", "a", encoding="utf-8") as c:
         json.dump(get_statistics_and_crawl, c, ensure_ascii=False, indent=4)
     print("I'm done")
 
