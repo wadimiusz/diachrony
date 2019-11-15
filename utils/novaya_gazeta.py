@@ -17,7 +17,7 @@ punct = punctuation + '«»—…“”*№–'
 def read_page(link: str):
     user_agent = 'Chrome/72.0.3626.119'
     try:
-        response = requests.get(link, timeout=100000, headers={'user-agent': user_agent}).text
+        response = requests.get(link, timeout=10000, headers={'user-agent': user_agent}).text
         page = BeautifulSoup(response, "lxml")
         if not page.h1.text == '404':
             return page

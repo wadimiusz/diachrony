@@ -16,11 +16,15 @@ import json
 def gethrefs(link):
     links = []
     r = requests.get(link)
-    refs = re.split('href="',
+    try:
+        refs = re.split('href="',
                     re.split('<svg class="control_mini-icon control_mini-icon-prev">',
                              re.split('">Все материалы</a></div></div></div><div id="context_3">'
                                       '</div></div></section><div id="root_footer">',
                                       r.text)[0])[1])
+    except IndexError:
+        print('Error splitting', link, file=sys.stderr)
+        return None
     for i in refs:
         ilink = ""
         if i.startswith("/news/"):

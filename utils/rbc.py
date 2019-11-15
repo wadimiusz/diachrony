@@ -67,9 +67,10 @@ def retrieve(site):
     # exceptions = []
     for url in rbc.keys():
         print("Processing url: {}".format(url), file=sys.stderr)
-        try:
-            page = requests.get(url)
-            soup = BeautifulSoup(page.text, 'html5lib')
+        #try:
+        page = requests.get(url)
+        soup = BeautifulSoup(page.text, 'lxml')
+        if True:
             try:
                 # title [1]
                 rbc[url].extend([p.get_text().split(' :: ')[0] for p in soup.select('title')])
@@ -78,7 +79,7 @@ def retrieve(site):
                 # text [3]
                 text = BeautifulSoup(' '.join([re.sub('[ ]{2,}', '', p.text)
                                                for p in soup.find_all('p')]),
-                                     'html5lib').text.replace('\xa0', ' '). \
+                                     'lxml').text.replace('\xa0', ' '). \
                     replace('\n', '').replace('\u200b', '')
                 rbc[url].append(text)
                 # author [4]
@@ -90,9 +91,9 @@ def retrieve(site):
                 print('Cannot open', str(url), file=sys.stderr)
                 # exceptions.append(url)
                 rbc[url].extend(['-', '-', '-', '-', '-'])
-        except:
-            print('Failed', url, file=sys.stderr)
-            rbc[url].extend("- - - - -".split())
+        #except:
+        #    print('Failed', url, file=sys.stderr)
+        #    rbc[url].extend("- - - - -".split())
     return rbc  # exceptions
 
 

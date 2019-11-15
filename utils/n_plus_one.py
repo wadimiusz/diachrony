@@ -20,7 +20,7 @@ def download_page(url):
 
 
 def write_in_file(filename, text):
-    with open(filename, 'w+', encoding='UTF-8') as f:
+    with open(filename, 'w', encoding='UTF-8') as f:
         f.write(text)
         f.close()
 
@@ -82,7 +82,7 @@ def main():
             article_name = article_path.split('/')[-1]
             article_text = data['article_text']
             write_in_file(corpus_path + os.sep + article_name + '.txt.gz', article_text)
-            print('%s.txt saved' % article_name, file=sys.stderr)
+            print('%s saved' % article_name, file=sys.stderr)
             metadatas.append(data['article_metadata'])
     write_in_file('metadata.csv.gz', '\n'.join(['\t'.join([str(el) for el in metadata])
                                                 for metadata in metadatas]))
