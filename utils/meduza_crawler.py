@@ -11,7 +11,6 @@ from urllib.parse import urlencode
 
 
 class Meduza(object):
-
     def __init__(self):
         self.curr_dir = os.getcwd()
         self.main_url = "https://meduza.io/"
@@ -51,7 +50,7 @@ class Meduza(object):
                     "chrono": section,
                     "page": page,
                     "per_page": 45,
-                    "locale": "ru"
+                    "locale": "ru",
                 }
                 batch_urls = self.article_urls(self.api + urlencode(payload))
                 if self.year == break_year:
@@ -68,7 +67,13 @@ class Meduza(object):
         try:
             content = data["content"]
             if "blocks" in content:
-                text = " ".join([block["data"] for block in content["blocks"] if block["type"] in types])
+                text = " ".join(
+                    [
+                        block["data"]
+                        for block in content["blocks"]
+                        if block["type"] in types
+                    ]
+                )
                 text = bs(text, "lxml").get_text().replace("\xa0", " ").strip()
                 return text
             else:
@@ -80,7 +85,11 @@ class Meduza(object):
         text = self.extract_text(url)
         if text:
             url_ = url.split("/")
-            year, section, filename = url_[1], url_[0], "_".join(url_[-1].split("-")[:3])
+            year, section, filename = (
+                url_[1],
+                url_[0],
+                "_".join(url_[-1].split("-")[:3]),
+            )
             to_save = os.path.join(self.curr_dir, "meduza", year)
             os.makedirs(to_save, exist_ok=True)
             file_path = os.path.join(to_save, "{}_{}.{}".format(section, filename, ext))
@@ -113,7 +122,10 @@ class Meduza(object):
             if not curr_section_urls:
                 curr_section_urls = self.section_urls(section)
                 self.section_url_cache(section, curr_section_urls, url_cache_path)
-            progress_bar = tqdm(desc="Getting urls from section {}...".format(section), total=len(curr_section_urls))
+            progress_bar = tqdm(
+                desc="Getting urls from section {}...".format(section),
+                total=len(curr_section_urls),
+            )
             for url in curr_section_urls:
                 if url not in global_urls:
                     year, text_len = self.save_text(url)
@@ -130,5 +142,5 @@ def main():
     print(crawl_and_count)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
