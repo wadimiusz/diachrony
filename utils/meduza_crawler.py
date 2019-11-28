@@ -1,6 +1,7 @@
 import os
 import json
 import requests
+import gzip
 from tqdm import tqdm
 from time import sleep
 from random import randint
@@ -27,7 +28,7 @@ class Meduza(object):
         if not url.startswith(self.main_url):
             url = urljoin(self.main_url, url)
         if self.w4 not in url:
-            url = url.replace(self.main_url, "{}/{}".format(self.main_url, self.w4)
+            url = url.replace(self.main_url, "{}/{}".format(self.main_url, self.w4))
         return self.get_response(url)["root"]    
     
     def get_response(self, url):
