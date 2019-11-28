@@ -8,6 +8,7 @@ from random import randint
 from smart_open import open
 from bs4 import BeautifulSoup as bs
 from urllib.parse import urlencode
+from smart_open import open
 
 
 class Meduza(object):
@@ -114,7 +115,7 @@ class Meduza(object):
                     section_urls = set(cache[section])
         return section_urls
 
-    def crawl_sections(self, url_cache_path="section_url_cache.json"):
+    def crawl_sections(self, url_cache_path="section_url_cache.json.gz"):
         statistics = {"201{}".format(i + 5): 0 for i in range(5)}
         global_urls = set()
         for section in self.sections:
