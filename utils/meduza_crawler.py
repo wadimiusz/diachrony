@@ -119,7 +119,7 @@ class Meduza(object):
             text_len = len(text.split())
             return year, text_len
         else:
-            pass
+            return None, None
 
     @staticmethod
     def section_url_cache(section, section_urls, url_cache_path):
@@ -144,13 +144,14 @@ class Meduza(object):
                 curr_section_urls = self.section_urls(section)
                 self.section_url_cache(section, curr_section_urls, url_cache_path)
             progress_bar = tqdm(
-                desc="Getting urls from section {}...".format(section),
+                desc="Getting texts from section {}...".format(section),
                 total=len(curr_section_urls),
             )
             for url in curr_section_urls:
                 if url not in global_urls:
                     year, text_len = self.save_text(url)
-                    statistics[year] += text_len
+                    if year:
+                        statistics[year] += text_len
                 progress_bar.update(1)
             global_urls.union(curr_section_urls)
             progress_bar.close()
