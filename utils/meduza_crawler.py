@@ -31,7 +31,8 @@ class Meduza(object):
             url = url.replace(self.main_url, "{}/{}".format(self.main_url, self.w4))
         return self.get_response(url)["root"]    
     
-    def get_response(self, url):
+    @staticmethod
+    def get_response(url):
         response = urlopen(url)
         headers = dict(response.headers)
         data = response.read()
