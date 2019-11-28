@@ -24,25 +24,22 @@ class Meduza(object):
                                       "AppleWebKit/537.36 (KHTML, like Gecko) "
                                       "Chrome/47.0.3411.123 YaBrowser/16.2.0.2314 Safari/537.36"}
 
-    def get_article(self, url: str) -> dict:
-        if not url.startswith(self.main_url):
-            url = urljoin(self.main_url, url)
-        if self.w4 not in url:
-            url = url.replace(self.main_url, "{}{}/".format(self.main_url, self.w4))
-        return self.get_response(url)["root"]    
-    
     @staticmethod
     def get_response(url):
         response = urlopen(url)
         headers = dict(response.headers)
         data = response.read()
-        # if the data is compressed using gzip, then decompress this.
-        # (u is a gzip file if the first two bytes are '0x1f' and '0x8b')
         if headers.get("Content-Encoding") == "gzip":
             data = gzip.decompress(data)
-        # remove all non-breaking spaces
         data = data.decode("utf-8").replace("\xa0", " ")
         return json.loads(data)
+
+    def get_article(self, url: str) -> dict:
+        if not url.startswith(self.main_url):
+            url = urljoin(self.main_url, url)
+        if self.w4 not in url:
+            url = url.replace(self.main_url, "{}{}/".format(self.main_url, self.w4))
+        return self.get_response(url)["root"]
 
     @staticmethod
     def time_period(start, end):
