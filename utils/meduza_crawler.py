@@ -1,26 +1,46 @@
 import os
 import json
-import meduza
 import requests
 from tqdm import tqdm
 from time import sleep
 from random import randint
 from smart_open import open
 from bs4 import BeautifulSoup
-from urllib.parse import urlencode
+from urllib.request import urlopen
+from urllib.parse import urlencode, urljoin
 
 
 class Meduza(object):
     def __init__(self):
         self.curr_dir = os.getcwd()
         self.main_url = "https://meduza.io/"
-        self.api = "https://meduza.io/api/w4/search?"
+        self.w4 = "api/w4"
+        self.api = "https://meduza.io/{}/search?".format(self.w4)
         self.sections = ["news", "articles", "shapito", "razbor", "feature"]
         self.years = self.time_period(2015, 2020)
         self.year = None
         self.headers = {"User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) "
                                       "AppleWebKit/537.36 (KHTML, like Gecko) "
                                       "Chrome/47.0.3411.123 YaBrowser/16.2.0.2314 Safari/537.36"}
+
+    def get_article(self, url: str) -> dict:
+        if not url.startswith(self.main_url):
+            url = urljoin(self.main_url, url)
+        if self.w4 not in url:
+            url = url.replace(self.main_url, "{}/{}".format(self.main_url, self.w4)
+        return self.get_response(url)["root"]    
+    
+    def get_response(self, url):
+        response = urlopen(url)
+        headers = dict(response.headers)
+        data = response.read()
+        # if the data is compressed using gzip, then decompress this.
+        # (u is a gzip file if the first two bytes are '0x1f' and '0x8b')
+        if headers.get("Content-Encoding") == "gzip":
+            data = gzip.decompress(data)
+        # remove all non-breaking spaces
+        data = data.decode("utf-8").replace("\xa0", " ")
+        return json.loads(data)
 
     @staticmethod
     def time_period(start, end):
@@ -64,7 +84,7 @@ class Meduza(object):
 
     def extract_text(self, url, types=("p", "context_p", "lead", "blockquote")):
         sleep(randint(1, 3))
-        data = meduza.get(self.main_url + url)
+        data = self.get_article(self.main_url + url)
         try:
             content = data["content"]
             if "blocks" in content:
