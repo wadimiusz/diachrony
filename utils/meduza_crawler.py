@@ -6,9 +6,8 @@ from tqdm import tqdm
 from time import sleep
 from random import randint
 from smart_open import open
-from bs4 import BeautifulSoup as bs
+from bs4 import BeautifulSoup
 from urllib.parse import urlencode
-from smart_open import open
 
 
 class Meduza(object):
@@ -18,15 +17,16 @@ class Meduza(object):
         self.api = "https://meduza.io/api/w4/search?"
         self.sections = ["news", "articles", "shapito", "razbor", "feature"]
         self.years = self.time_period(2015, 2020)
-        self.headers = {
-            "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) \
-            Chrome/47.0.3411.123 YaBrowser/16.2.0.2314 Safari/537.36"
-        }
+        self.year = None
+        self.headers = {"User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) "
+                                      "AppleWebKit/537.36 (KHTML, like Gecko) "
+                                      "Chrome/47.0.3411.123 YaBrowser/16.2.0.2314 Safari/537.36"}
 
-    def time_period(self, start, end):
+    @staticmethod
+    def time_period(start, end):
         return [str(year) for year in range(start, end)]
 
-    def filter_url(self, url):
+    def filter_url(self, url, documents):
         if url == "nil":
             url = documents["nil"]["root"]["url"]
         if not any([url.startswith(section) for section in self.sections]):
@@ -38,7 +38,7 @@ class Meduza(object):
         urls = set()
         documents = requests.get(url, headers=self.headers).json()["collection"]
         for url in documents:
-            if self.filter_url(url):
+            if self.filter_url(url, documents):
                 urls.add(url)
         return urls
 
@@ -58,7 +58,7 @@ class Meduza(object):
                     break
                 if batch_urls:
                     urls = urls.union(batch_urls)
-            except:
+            except TimeoutError:
                 continue
         return urls
 
@@ -75,7 +75,7 @@ class Meduza(object):
                         if block["type"] in types
                     ]
                 )
-                text = bs(text, "lxml").get_text().replace("\xa0", " ").strip()
+                text = BeautifulSoup(text, "lxml").get_text().replace("\xa0", " ").strip()
                 return text
             else:
                 return None
@@ -102,7 +102,8 @@ class Meduza(object):
         else:
             pass
 
-    def section_url_cache(self, section, section_urls, url_cache_path):
+    @staticmethod
+    def section_url_cache(section, section_urls, url_cache_path):
         with open(url_cache_path, "a", encoding="utf-8") as f:
             json.dump({section: list(section_urls)}, f, ensure_ascii=False, indent=4)
 

@@ -1,3 +1,4 @@
+meduza
 tqdm
 requests
 bs4
