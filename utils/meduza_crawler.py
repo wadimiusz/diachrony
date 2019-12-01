@@ -19,7 +19,7 @@ class Meduza(object):
         self.url_cache_path = "section_url_cache.json"
         self.url_cache = self.read_url_cache()
         self.api = "https://meduza.io/{}/search?".format(self.w4)
-        self.sections = ["news", "articles", "shapito", "razbor", "feature"]
+        self.sections = ["news", "articles", "shapito"]
         self.years = self.time_period(2015, 2020)
         self.year = None
         self.headers = {
