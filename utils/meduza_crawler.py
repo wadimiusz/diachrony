@@ -16,13 +16,17 @@ class Meduza(object):
         self.curr_dir = os.getcwd()
         self.main_url = "https://meduza.io/"
         self.w4 = "api/w4"
+        self.url_cache_path = "section_url_cache.json"
+        self.url_cache = self.read_url_cache()
         self.api = "https://meduza.io/{}/search?".format(self.w4)
-        self.sections = ["news", "articles", "shapito", "razbor", "feature"]
+        self.sections = ["articles", "shapito", "razbor", "feature"]
         self.years = self.time_period(2015, 2020)
         self.year = None
-        self.headers = {"User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) "
-                                      "AppleWebKit/537.36 (KHTML, like Gecko) "
-                                      "Chrome/47.0.3411.123 YaBrowser/16.2.0.2314 Safari/537.36"}
+        self.headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) "
+            "AppleWebKit/537.36 (KHTML, like Gecko) "
+            "Chrome/47.0.3411.123 YaBrowser/16.2.0.2314 Safari/537.36"
+        }
 
     @staticmethod
     def get_response(url):
@@ -64,7 +68,7 @@ class Meduza(object):
     def section_urls(self, section, break_year="2014"):
         urls = set()
         for page in range(10000):
-            sleep(randint(1, 3))
+            sleep(randint(1, 2))
             try:
                 payload = {
                     "chrono": section,
@@ -82,7 +86,7 @@ class Meduza(object):
         return urls
 
     def extract_text(self, url, types=("p", "context_p", "lead", "blockquote")):
-        sleep(randint(1, 3))
+        sleep(randint(1, 2))
         data = self.get_article(self.main_url + url)
         try:
             content = data["content"]
@@ -94,7 +98,9 @@ class Meduza(object):
                         if block["type"] in types
                     ]
                 )
-                text = BeautifulSoup(text, "lxml").get_text().replace("\xa0", " ").strip()
+                text = (
+                    BeautifulSoup(text, "lxml").get_text().replace("\xa0", " ").strip()
+                )
                 return text
             else:
                 return None
@@ -102,58 +108,57 @@ class Meduza(object):
             return None
 
     def save_text(self, url, ext=".txt.gz"):
-        text = self.extract_text(url)
-        if text:
-            url_ = url.split("/")
-            year, section, filename = (
-                url_[1],
-                url_[0],
-                "_".join(url_[-1].split("-")[:3]),
-            )
-            to_save = os.path.join(self.curr_dir, "meduza", year)
-            os.makedirs(to_save, exist_ok=True)
-            file_path = os.path.join(to_save, "{}_{}.{}".format(section, filename, ext))
-            with open(file_path, "w", encoding="utf-8") as f:
-                f.write(text)
-                f.close()
-            text_len = len(text.split())
-            return year, text_len
-        else:
-            return None, None
+        url_ = url.split("/")
+        year, section, filename = (
+            url_[1],
+            url_[0],
+            "_".join(url_[-1].split("-")[:3]),
+        )
+        to_save = os.path.join(self.curr_dir, "meduza", year)
+        os.makedirs(to_save, exist_ok=True)
+        file_path = os.path.join(to_save, "{}_{}.{}".format(section, filename, ext))
+        if not os.path.exists(file_path):
+            text = self.extract_text(url)
+            if text:
+                text_len = len(text.split())
+                with open(file_path, "w", encoding="utf-8") as f:
+                    f.write(text)
+                    f.close()
+                return year, text_len
+        return None, None
 
-    @staticmethod
-    def section_url_cache(section, section_urls, url_cache_path):
-        with open(url_cache_path, "a", encoding="utf-8") as f:
-            json.dump({section: list(section_urls)}, f, ensure_ascii=False, indent=4)
+    def read_url_cache(self):
+        if os.path.exists(os.path.join(self.curr_dir, self.url_cache_path)):
+            with open(self.url_cache_path, "r", encoding="utf-8") as f:
+                curr_section_url_cache = json.load(f)
+        return curr_section_url_cache
 
-    def read_url_cache(self, section, url_cache_path):
-        section_urls = []
-        if os.path.exists(os.path.join(self.curr_dir, url_cache_path)):
-            with open(url_cache_path, "r", encoding="utf-8") as f:
-                cache = json.load(f)
-                if section in cache:
-                    section_urls = set(cache[section])
-        return section_urls
+    def save_url_cache(self, section, section_urls):
+        if section not in self.url_cache:
+            self.url_cache[section] = list(section_urls)
+            with open(self.url_cache_path, "w+", encoding="utf-8") as c:
+                json.dump(self.url_cache, c, ensure_ascii=False, indent=4)
+                c.close()
 
-    def crawl_sections(self, url_cache_path="section_url_cache.json.gz"):
+    def crawl_sections(self):
         statistics = {"201{}".format(i + 5): 0 for i in range(5)}
-        global_urls = set()
         for section in self.sections:
-            curr_section_urls = self.read_url_cache(section, url_cache_path)
+            curr_section_urls = (
+                self.url_cache[section] if section in self.url_cache else []
+            )
             if not curr_section_urls:
                 curr_section_urls = self.section_urls(section)
-                self.section_url_cache(section, curr_section_urls, url_cache_path)
-            progress_bar = tqdm(
-                desc="Getting texts from section {}...".format(section),
+                self.save_url_cache(section, curr_section_urls)
+            progress_bar = tqdm_notebook(
+                desc="Getting from section {}...".format(section),
                 total=len(curr_section_urls),
             )
             for url in curr_section_urls:
-                if url not in global_urls:
+                if url not in self.url_cache:
                     year, text_len = self.save_text(url)
                     if year:
                         statistics[year] += text_len
                 progress_bar.update(1)
-            global_urls.union(curr_section_urls)
             progress_bar.close()
         return statistics
 
