@@ -149,7 +149,7 @@ class Meduza(object):
             if not curr_section_urls:
                 curr_section_urls = self.section_urls(section)
                 self.save_url_cache(section, curr_section_urls)
-            progress_bar = tqdm_notebook(
+            progress_bar = tqdm(
                 desc="Getting from section {}...".format(section),
                 total=len(curr_section_urls),
             )
