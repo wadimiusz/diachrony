@@ -65,8 +65,8 @@ def daterange(start_date, end_date):
 
 
 def main():
-    start_date = datetime.date(2019, 1, 1)
-    end_date = datetime.date(2019, 11, 12)
+    start_date = datetime.date(2020, 1, 1)
+    end_date = datetime.date(2020, 11, 12)
     dates = daterange(start_date, end_date)
     metadatas = [['path', 'author', 'date', 'source', 'title', 'url', 'wordcount']]
     for date in dates:

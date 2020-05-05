@@ -68,14 +68,14 @@ def getarticletextlenta(link):
 
 
 def crawl(hrefs, to_save):
-    stats = {"2019": 0}
+    stats = {"2020": 0}
     progress_bar = tqdm(desc="Getting texts...", total=len(hrefs))
     for i, link in enumerate(hrefs):
         try:
             text = getarticletextlenta(link)
             if text:
                 filename, text_len = text.split()[0], len(text.split())
-                stats["2019"] += text_len
+                stats["2020"] += text_len
                 with open(to_save + os.sep + "{}_{}".format(filename, i) + ".txt.gz", "a",
                           encoding="utf-8") as f:
                     f.write(text)
@@ -91,13 +91,13 @@ def crawl(hrefs, to_save):
 
 
 def main():
-    hrefs = time_period(2019)
+    hrefs = time_period(2020)
     curr_dir_path = os.getcwd()
-    to_save = os.path.join(curr_dir_path, "lenta/2019")
+    to_save = os.path.join(curr_dir_path, "lenta/2020")
     os.makedirs(to_save, exist_ok=True)
     get_statistics_and_crawl = crawl(hrefs, to_save)
     print(get_statistics_and_crawl)
-    with open("lenta_2019_statistics.json", "w", encoding="utf-8") as c:
+    with open("lenta_2020_statistics.json", "w", encoding="utf-8") as c:
         json.dump(get_statistics_and_crawl, c, ensure_ascii=False, indent=4)
     print("I'm done", file=sys.stderr)
 

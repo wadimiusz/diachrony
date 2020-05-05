@@ -30,7 +30,7 @@ def getarticletextkp(link):
 
 
 def crawl(start, end, to_save):
-    stats = {"2019": 0}
+    stats = {"2020": 0}
     progress_bar = tqdm(desc="Getting texts...", total=start - end)
     while True:
         link = "http://www.kp.ru/online/news/" + str(start) + "/"
@@ -38,7 +38,7 @@ def crawl(start, end, to_save):
             # print(f"Getting a text from {link}")
             filename, text = getarticletextkp(link)
             text_len = len(text.split())
-            stats["2019"] += text_len
+            stats["2020"] += text_len
             with open(to_save + os.sep + filename + ".txt.gz", "a", encoding="utf-8") as f:
                 f.write(text)
                 f.close()
@@ -56,11 +56,11 @@ def crawl(start, end, to_save):
 def main():
     start, end = 3672811, 3345000
     curr_dir_path = os.getcwd()
-    to_save = os.path.join(curr_dir_path, "KP/2019")
+    to_save = os.path.join(curr_dir_path, "KP/2020")
     os.makedirs(to_save, exist_ok=True)
     get_statistics_and_crawl = crawl(start, end, to_save)
     print(get_statistics_and_crawl, file=sys.stderr)
-    with open("kp_2019_statistics.json", "a", encoding="utf-8") as c:
+    with open("kp_2020_statistics.json", "a", encoding="utf-8") as c:
         json.dump(get_statistics_and_crawl, c, ensure_ascii=False, indent=4)
     print("I'm done")
 

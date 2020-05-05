@@ -12,7 +12,7 @@ global_url = r'http://www.the-village.ru/news?&page='
 
 
 curr_dir_path = os.getcwd()
-to_save = os.path.join(curr_dir_path, 'the_village/2019')
+to_save = os.path.join(curr_dir_path, 'the_village/2020')
 if not os.path.exists(to_save):
     os.makedirs(to_save)
 
@@ -32,11 +32,11 @@ def find_dates(global_url):
         url = global_url + str(i)
         soup = make_request(url)
         for item in soup.find_all('h2'):
-            if '13 ноября' in item:
+            if '5 мая' in item:
                 page_range.append(i)
                 for div in str(soup.find_all('div')).split('\n'):
                     if 'p-news' in div:
-                        slice = div[div.index('13 ноября'):]
+                        slice = div[div.index('5 мая'):]
                         find_links(slice)
             if '1 января' in item:
                 page_range.append(i)
@@ -63,13 +63,13 @@ def parse_page(idx, article):
     for num, item in enumerate(paragraphs):
         if item == 'telegram':
             paragraphs = paragraphs[:num]
-        if '© 2019 The Village.' in item:
+        if '© 2020 The Village.' in item:
             paragraphs = paragraphs[:num]
     text = ' '.join(paragraphs)
     wordcount = len(text.split(' '))
     total += wordcount
     title = soup.find('h1', attrs={'class': 'article-title'}).text
-    filename = title if title else text.split()[0] + f"_{idx}"
+    filename = title if title else text.split()[0] + "_" + idx
     with open(to_save + os.sep + filename + ".txt.gz", "a", encoding="utf-8") as file:
         file.write(text)
         file.close()
@@ -91,9 +91,9 @@ def main():
             pass
         progress_bar.update(1)
     progress_bar.close()
-    print(f"Token statistics: {total}")
-    with open("the_village_2019_statistics.json", "w", encoding="utf-8") as f:
-        json.dump({"2019": total}, f, ensure_ascii=False, indent=4)
+    print("Token statistics:", total)
+    with open("the_village_2020_statistics.json", "w", encoding="utf-8") as f:
+        json.dump({"2020": total}, f, ensure_ascii=False, indent=4)
 
 
 if __name__ == '__main__':

@@ -9,6 +9,7 @@ import pandas as pd
 from string import punctuation
 from smart_open import open
 import sys
+from requests import exceptions as rex
 
 
 def get_sitemap(sitemaps):
@@ -46,7 +47,8 @@ def get_dates(rbc):
     """ловим ссылки в указанном диапазоне времени"""
     clean_dates, clean_rbc = [], {}
     for date in rbc.values():
-        clean_dates.extend(re.findall('201[5-9]-\d{2}-\d{2}', date))
+        # clean_dates.extend(re.findall('201[5-9]-\d{2}-\d{2}', date))
+        clean_dates.extend(re.findall('2020-\d{2}-\d{2}', date))
         # clean_dates.extend(re.findall('2015-0[7-9]-\d{2}', date))
         # clean_dates.extend(re.findall('2015-1[0-2]-\d{2}', date))
     for url, date in rbc.items():
@@ -67,8 +69,10 @@ def retrieve(site):
     # exceptions = []
     for url in rbc.keys():
         print("Processing url: {}".format(url), file=sys.stderr)
-        #try:
-        page = requests.get(url)
+        try:
+            page = requests.get(url)
+        except rex.TooManyRedirects:
+            continue
         soup = BeautifulSoup(page.text, 'lxml')
         if True:
             try:
