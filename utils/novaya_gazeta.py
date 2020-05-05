@@ -19,10 +19,7 @@ def read_page(link: str):
     try:
         response = requests.get(link, timeout=10000, headers={'user-agent': user_agent}).text
         page = BeautifulSoup(response, "lxml")
-        if not page.h1.text == '404':
-            return page
-        else:
-            return None
+        return page
     except requests.HTTPError:
         return None
 
