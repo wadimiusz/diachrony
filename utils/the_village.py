@@ -27,7 +27,7 @@ def make_request(url):
 
 def find_dates(global_url):
     page_range = []
-    for i in range(1, 460):
+    for i in range(1, 25):
         print('Номер страницы: ' + str(i))
         url = global_url + str(i)
         soup = make_request(url)
