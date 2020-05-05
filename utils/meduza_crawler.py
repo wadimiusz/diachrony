@@ -16,12 +16,10 @@ class Meduza(object):
         self.curr_dir = os.getcwd()
         self.main_url = "https://meduza.io/"
         self.w4 = "api/w4"
-        self.url_cache_path = "section_url_cache.json"
-        self.url_cache = self.read_url_cache()
         self.api = "https://meduza.io/{}/search?".format(self.w4)
         self.sections = ["news", "articles", "shapito"]
-        self.years = self.time_period(2015, 2020)
-        self.year = None
+        self.years = self.time_period(2020, 2021)
+        self.year = 2020
         self.headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) "
             "AppleWebKit/537.36 (KHTML, like Gecko) "
@@ -65,7 +63,7 @@ class Meduza(object):
                 urls.add(url)
         return urls
 
-    def section_urls(self, section, break_year="2014"):
+    def section_urls(self, section, break_year="2019"):
         urls = set()
         for page in range(10000):
             sleep(randint(1, 2))
@@ -73,7 +71,7 @@ class Meduza(object):
                 payload = {
                     "chrono": section,
                     "page": page,
-                    "per_page": 45,
+                    "per_page": 30,
                     "locale": "ru",
                 }
                 batch_urls = self.article_urls(self.api + urlencode(payload))
@@ -127,37 +125,18 @@ class Meduza(object):
                 return year, text_len
         return None, None
 
-    def read_url_cache(self):
-        if os.path.exists(os.path.join(self.curr_dir, self.url_cache_path)):
-            with open(self.url_cache_path, "r", encoding="utf-8") as f:
-                curr_section_url_cache = json.load(f)
-        return curr_section_url_cache
-
-    def save_url_cache(self, section, section_urls):
-        if section not in self.url_cache:
-            self.url_cache[section] = list(section_urls)
-            with open(self.url_cache_path, "w+", encoding="utf-8") as c:
-                json.dump(self.url_cache, c, ensure_ascii=False, indent=4)
-                c.close()
-
     def crawl_sections(self):
-        statistics = {"201{}".format(i + 5): 0 for i in range(5)}
+        statistics = {}
         for section in self.sections:
-            curr_section_urls = (
-                self.url_cache[section] if section in self.url_cache else []
-            )
-            if not curr_section_urls:
-                curr_section_urls = self.section_urls(section)
-                self.save_url_cache(section, curr_section_urls)
+            curr_section_urls = self.section_urls(section)
             progress_bar = tqdm(
                 desc="Getting from section {}...".format(section),
                 total=len(curr_section_urls),
             )
             for url in curr_section_urls:
-                if url not in self.url_cache:
-                    year, text_len = self.save_text(url)
-                    if year:
-                        statistics[year] += text_len
+                year, text_len = self.save_text(url)
+                if year:
+                    statistics[year] += text_len
                 progress_bar.update(1)
             progress_bar.close()
         return statistics
