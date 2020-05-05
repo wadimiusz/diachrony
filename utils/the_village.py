@@ -32,11 +32,11 @@ def find_dates(global_url):
         url = global_url + str(i)
         soup = make_request(url)
         for item in soup.find_all('h2'):
-            if '5 мая' in item:
+            if '3 мая' in item:
                 page_range.append(i)
                 for div in str(soup.find_all('div')).split('\n'):
                     if 'p-news' in div:
-                        slice = div[div.index('5 мая'):]
+                        slice = div[div.index('3 мая'):]
                         find_links(slice)
             if '1 января' in item:
                 page_range.append(i)
