@@ -36,7 +36,7 @@ def get_issues(startpage: str):
     issues = []
     # берем ссылку на последний в 2019 году номер архива
     issue_number = int(startpage.split('/')[-1])
-    first_issue_number = 2207  # первый номер 2015 года
+    first_issue_number = 2924  # первый номер 2015 года
     while issue_number >= first_issue_number:
         issues.append('https://www.novayagazeta.ru/issues/' + str(issue_number))
         issue_number -= 1
@@ -59,6 +59,8 @@ def get_articles(issues: list):
                         articles.append("https://www.novayagazeta.ru" + j["href"])
                     else:
                         continue
+    articles.append('https://novayagazeta.ru/articles/2020/04/24/85086-kvota-na-vylet')
+    articles.append('https://novayagazeta.ru/articles/2020/04/18/84968-rezhim-giperizolyatsii')
     print('Ссылки на статьи собраны', file=sys.stderr)
     return articles
 
@@ -119,10 +121,15 @@ def save_articles_and_get_paths(content: list):
     return content
 
 
-def main():
-    startpage = 'https://www.novayagazeta.ru/issues/2350'
-    issues = get_issues(startpage)  # генерируем ссылки на номера газеты
-    articles = get_articles(issues)  # со страниц номеров собираем ссылки на статьи
+def main(url_file=None):
+    if url_file:
+        articles = set()
+        for line in open(url_file, 'r').readlines():
+            articles.add(line.strip())
+    else:
+        startpage = 'https://www.novayagazeta.ru/issues/2971'
+        issues = get_issues(startpage)  # генерируем ссылки на номера газеты
+        articles = get_articles(issues)  # со страниц номеров собираем ссылки на статьи
 
     wordcount = 0
 
@@ -146,4 +153,7 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    if len(sys.argv) > 1:
+        main(url_file=sys.argv[1])
+    else:
+        main()

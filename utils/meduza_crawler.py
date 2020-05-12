@@ -9,13 +9,15 @@ from smart_open import open
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
 from urllib.parse import urlencode, urljoin
+import sys
 
 
 class Meduza(object):
     def __init__(self):
         self.curr_dir = os.getcwd()
         self.main_url = "https://meduza.io/"
-        self.w4 = "api/w4"
+        # self.w4 = "api/w4"
+        self.w4 = "api/v3"
         self.api = "https://meduza.io/{}/search?".format(self.w4)
         self.sections = ["news", "articles", "shapito"]
         self.years = self.time_period(2020, 2021)
@@ -128,6 +130,7 @@ class Meduza(object):
     def crawl_sections(self):
         statistics = {}
         for section in self.sections:
+            print(section, file=sys.stderr)
             curr_section_urls = self.section_urls(section)
             progress_bar = tqdm(
                 desc="Getting from section {}...".format(section),
