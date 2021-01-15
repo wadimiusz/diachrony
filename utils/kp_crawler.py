@@ -54,7 +54,7 @@ def crawl(start, end, to_save):
 
 
 def main():
-    start, end = 3672811, 3345000
+    start, end = 3860887, 3720000
     curr_dir_path = os.getcwd()
     to_save = os.path.join(curr_dir_path, "KP/2020")
     os.makedirs(to_save, exist_ok=True)

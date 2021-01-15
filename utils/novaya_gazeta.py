@@ -59,8 +59,6 @@ def get_articles(issues: list):
                         articles.append("https://www.novayagazeta.ru" + j["href"])
                     else:
                         continue
-    articles.append('https://novayagazeta.ru/articles/2020/04/24/85086-kvota-na-vylet')
-    articles.append('https://novayagazeta.ru/articles/2020/04/18/84968-rezhim-giperizolyatsii')
     print('Ссылки на статьи собраны', file=sys.stderr)
     return articles
 
@@ -123,9 +121,11 @@ def save_articles_and_get_paths(content: list):
 
 def main(url_file=None):
     if url_file:
+        base = 'https://novayagazeta.ru/articles'
         articles = set()
         for line in open(url_file, 'r').readlines():
-            articles.add(line.strip())
+            articles.add(base + line.strip())
+        print('Found URLs:', len(articles))
     else:
         startpage = 'https://www.novayagazeta.ru/issues/2971'
         issues = get_issues(startpage)  # генерируем ссылки на номера газеты
